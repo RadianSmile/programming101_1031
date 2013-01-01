@@ -25,9 +25,11 @@
 		Parse.initialize("9eo5r1mHWoIPSTCzmrpdKa3lcHPjySx4y5D6q8Nq", "R8SWwYxpJcy73ogQKuSD43y7FigrlDGjBLcy1lzC");	
 
 
-	//var arr2 = arr1.slice(0);
+var ASSIGN_NTH = "1"//rq.params.assignNum	 ;	
+var STD_NUM = 0 ; //user(role=std).length
+var REVIEW_MAX = 5 ; 
 
-
+	
 
 function getReviewNumArr (){
 	var reviewList = [];
@@ -141,59 +143,69 @@ function shuffle(o){ //v1.0
 
 
 
-var ASSIGN_NTH = 1;//rq.params.assignBum	 ;	
-var STD_NUM = 60 ;
-var REVIEW_MAX = 5 ;
 
 var Test_User = Parse.Object.extend("Test_User");
 var Test_Assign =	Parse.Object.extend("Test_Assign");
 
 var qa= new Parse.Query(Test_Assign);
-qa.equalTo("nth",ASSIGN_NTH.toString())
+qa.equalTo("nth",ASSIGN_NTH);
+qa.include("maker");
 var AssignArr =[];
 
 var qu = new Parse.Query(Test_User);
 qu.equalTo("role","std");
 var UserArr = [];
 
+STD_NUM;REVIEW_MAX // two var used in  "getReviewNumArr()";
+
+var reviewRandomArr = []; 
+
 qa.find().then(function(o){AssignArr = o ;}).then(function(e){
 	qu.find().then(function(o){UserArr = o ; 
-		console.log (UserArr);
+		STD_NUM = UserArr.length;
+		console.log ("STD_NUM",STD_NUM);
+		reviewRandomArr = getReviewNumArr ();
 		Record();
 	},function(e){console.log(e);});
 });
 
-STD_NUM;REVIEW_MAX // two var used in  "getReviewNumArr()";
-var reviewRandomArr = getReviewNumArr ();
 
-function Record ()  {
 
-for (var i = 0 ; i < STD_NUM ; i++ ){
-	var q = [] ;
-	var reviewArr = reviewRandomArr[i] ;
-	for (var j = 0 ; j < REVIEW_MAX ; j++){
-		var qAssign = new Parse.Query(Test_Assign);
-		qAssign.equalTo("maker",UserArr[reviewArr[j]]);
-		q.push(qAssign);
+function Record (){
+	AssignArr ;
+	UserArr ;
+	reviewRandomArr ;
+	var saveAllArr = [];
+	var ReviewRecord = Parse.Object.extend("Test_Review_Record");
+	for ( var i = 0 ; i < reviewRandomArr.length; i++){
+		var  row = reviewRandomArr[i] ;
+		for ( var j = 0  ; j < row.length; j++){
+			var makerIndex = row[j]
+				//console.log("UserFromIndex",UserArr[makerIndex]);
+			for ( var k = 0 ; k < AssignArr.length; k++){
+				var assign = AssignArr[k] ;
+				//if (k === 1 )console.log("UserFromAssign",assign.get("maker"));
+				if (assign.get("maker").id === UserArr[makerIndex].id ){//
+					console.log("y",k);
+					//console.log("Compare",(assign.get("maker") === UserArr[makerIndex]),assign.get("maker"),UserArr[makerIndex]);
+					var reviewRecord = new ReviewRecord ();
+					reviewRecord.set("reviewer",UserArr[i]);
+					reviewRecord.set("assign",assign);
+					reviewRecord.set("nth",ASSIGN_NTH);	
+					console.log(reviewRecord);	
+					saveAllArr.push (reviewRecord);		
+				}
+			}
+		}
 	}
-	var queryAssignToReview = new Parse.Query.or(q[0],q[1],q[2],q[3],q[4]);
-	queryAssignToReview.find().then(function(o){
-		var ReviewUser = Parse.Object.extend("Test_Review_User");
-		var reviewUser = new ReviewUser();
-		//document.write(UserArr[i].get("id"));
-		reviewUser.set("reviewer",UserArr[i]);
-		console.log(o);
-		reviewUser.set("AssignToReview",o);
-		reviewUser.save().then(function(){console.log("yes 1 \t");},
-		function(e){
-			console.log(e);
-		});
-	},function(e){console.log(e)});
+	console.log("saveAllArr",saveAllArr);
+	Parse.Object.saveAll(saveAllArr).then(function(l){
+		console.log("Fuck");
+		console.log(l);}
+	,function(e){
+		console.log (e);		
+	});
 }
-console.log ("done!");
-}
-
-
 
 </script>
 </body>

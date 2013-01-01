@@ -5,92 +5,17 @@ Parse.Cloud.define("hello", function(request, response) {
   response.success("Hello world!");
 });
 
-Parse.Cloud.job("Random_review", function(request, status) {
-  // Set up to modify user data
-  Parse.Cloud.useMasterKey();
-  var counter = 0;
-  // Query for all users
+Parse.Cloud.job("Random_review", function(rq, status) {
+	
+var ASSIGN_NTH = rq.params.assignNum	 ;	
+var STD_NUM = 0 ; //user(role=std).length
+var REVIEW_MAX = 5 ; 
 
-	query.each(function(user) {
-      // Update to plan value passed in
-      user.set("plan", request.params.plan);
-      if (counter % 100 === 0) {
-        // Set the  job's progress status
-        status.message(counter + " users processed.");
-      }
-      counter += 1;
-      return user.save();
-  }).then(function() {
-    // Set the job's success status
-    status.success("Migration completed successfully.");
-  }, function(error) {
-    // Set the job's error status
-    status.error("Uh oh, something went wrong.");
-  });
-});
-
-
-
-
-
-
-
-
-Parse.Cloud.define("RadomAssign",function(rq,rp){
-//// test
-// about the nth type
-
-
-	//var arr2 = arr1.slice(0);
-var ASSIGN_NTH = rq.params.assignBum	 ;	
-var STD_NUM = 60 ;
-var REVIEW_MAX = 5 ;
-
-var Test_User = Parse.Object.extend("Test_User");
-var Test_Assign =	Parse.Object.extend("Test_Assign");
-
-var q = new Parse.Query(Test_Assign);
-q.equalTo("nth",ASSIGN_NTH.toString())
-var AssignArr =[];
-q.find().then(function(o){AssignArr = o ;});
-
-var q = new Parse.Query(Test_User);
-q.equalTo("role","std");
-var UserArr = [];
-q.find().then(function(o){UserArr = o ; });
-
-
-
-STD_NUM;REVIEW_MAX // two var used in  "getReviewNumArr()";
-var reviewRandomArr = getReviewNumArr ();
-
-
-
-for (var i = 0 ; i < STD_NUM ; i++ ){
-	var qArr = [] ;
-	var reviewArr = reviewRandomArr[i] ;
-	for (var j = 0 ; j < REVIEW_MAX ; j++){
-		var qAssign = new Parse.Query(Test_Assign);
-		qAssign.equalTo("maker",UserArr[reviewArr[j]]);
-		q.push(qAssign);
-	}
-	var queryAssignToReview = new Parse.Query.or(q[0],q[1],q[2],q[3],q[4]);
-	queryAssignToReview.find().then(function(o){
-		UserArr[i].set("AssignToReview",o);
-		UserArr[i].save().then(function(){console.log("yes 1 \t");},
-		function(e){
-			console.log(e);
-		});
-	},function(e){console.log(e)});
-}
-console.log ("done!");
-
-
-var ReviewUser = new Parse.Object.extend("Test_Review_User");
-
-
+	
 
 function getReviewNumArr (){
+	var reviewList = [];
+
 	var arr = [];
 	for (var i = 0 ; i <= REVIEW_MAX; i++) {
 		arr =  (i === 0 ) ? makeArrBtw(0,STD_NUM) : shuffle(makeArrBtw(0,STD_NUM)) ;
@@ -190,5 +115,70 @@ function shuffle(o){ //v1.0
     for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x   );
     return o;
 };
+
+
+
+var Test_User = Parse.Object.extend("Test_User");
+var Test_Assign =	Parse.Object.extend("Test_Assign");
+
+var qa= new Parse.Query(Test_Assign);
+qa.equalTo("nth",ASSIGN_NTH);
+qa.include("maker");
+var AssignArr =[];
+
+var qu = new Parse.Query(Test_User);
+qu.equalTo("role","std");
+var UserArr = [];
+
+STD_NUM;REVIEW_MAX // two var used in  "getReviewNumArr()";
+
+var reviewRandomArr = []; 
+
+qa.find().then(function(o){AssignArr = o ;}).then(function(e){
+	qu.find().then(function(o){UserArr = o ; 
+		STD_NUM = UserArr.length;
+		console.log ("STD_NUM",STD_NUM);
+		reviewRandomArr = getReviewNumArr ();
+		Record();
+	},function(e){console.log(e);});
+});
+
+
+
+function Record (){
+	AssignArr ;
+	UserArr ;
+	reviewRandomArr ;
+	var saveAllArr = [];
+	var ReviewRecord = Parse.Object.extend("Test_Review_Record");
+	for ( var i = 0 ; i < reviewRandomArr.length; i++){
+		var  row = reviewRandomArr[i] ;
+		for ( var j = 0  ; j < row.length; j++){
+			var makerIndex = row[j]
+			for ( var k = 0 ; k < AssignArr.length; k++){
+				var assign = AssignArr[k] ;
+				if (assign.get("maker").id === UserArr[makerIndex].id ){//
+					var reviewRecord = new ReviewRecord ();
+					reviewRecord.set("reviewer",UserArr[i]);
+					reviewRecord.set("assign",assign);
+					reviewRecord.set("nth",ASSIGN_NTH);	
+					saveAllArr.push (reviewRecord);		
+				}
+			}
+		}
+	}
+	console.log("saveAllArr",saveAllArr);
+	Parse.Object.saveAll(saveAllArr).then(function(l){
+		console.log("Fuck");
+		console.log(l);
+		status.success("Random Done!! Congratulations!!");
+		}
+	,function(e){
+		console.log (e);	
+		status.error(e.message);	
+	});
+}
+
+
 });
 

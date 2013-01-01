@@ -177,6 +177,7 @@
 	},
 	"file_history":
 	[
+		"/Applications/XAMPP/xamppfiles/htdocs_CodeEDU/submitAssign.html",
 		"/Volumes/HDD/Users/Radian/Desktop/minin.js",
 		"/Volumes/HDD/Users/Radian/R.City/工坊/周老師/Chou/Original/Chinese publications.htm",
 		"/Volumes/HDD/Users/Radian/Desktop/.DS_Store",
@@ -303,7 +304,7 @@
 	],
 	"find":
 	{
-		"height": 32.0
+		"height": 35.0
 	},
 	"find_in_files":
 	{
@@ -317,6 +318,9 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"\\",
+			"val",
+			"@",
 			"， ",
 			" ",
 			"'",

@@ -4,6 +4,30 @@
 		"selected_items":
 		[
 			[
+				"head",
+				"head	Tag"
+			],
+			[
+				"ht",
+				"html	.html()"
+			],
+			[
+				"sty",
+				"style	Attr"
+			],
+			[
+				"css",
+				"css	.css() - single"
+			],
+			[
+				"he",
+				"height	Attr"
+			],
+			[
+				"if",
+				"iframe	<iframe>"
+			],
+			[
 				"f",
 				"fw:n	font-weight:normal"
 			],
@@ -71,8 +95,35 @@
 	},
 	"buffers":
 	[
+		{
+			"contents": "",
+			"settings":
+			{
+				"buffer_size": 0,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "<!DOCTYPE html>\n<html>\n<head>\n<title>Facebook Login JavaScript Example</title>\n<meta charset=\"UTF-8\">\n</head>\n<body>\n  <script type=\"text/javascript\" src=\"http://www.parsecdn.com/js/parse-1.2.19.min.js\"></script>\n\n<script type=\"text/javascript\" src=\"//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js\"></script>\n<script>\n\nParse.initialize(\"9eo5r1mHWoIPSTCzmrpdKa3lcHPjySx4y5D6q8Nq\", \"R8SWwYxpJcy73ogQKuSD43y7FigrlDGjBLcy1lzC\");\n\n  // This is called with the results from from FB.getLoginStatus().\n  function statusChangeCallback(response) {\n    console.log('statusChangeCallback');\n    console.log(response);\n    // The response object is returned with a status field that lets the\n    // app know the current login status of the person.\n    // Full docs on the response object can be found in the documentation\n    // for FB.getLoginStatus().\n    if (response.status === 'connected') {\n      // Logged into your app and Facebook.\n			\n			//testAPI();\n    } else if (response.status === 'not_authorized') {\n      // The person is logged into Facebook, but not your app.\n      document.getElementById('status').innerHTML = 'Please log ' +\n        'into this app.';\n			 console.log (\"U have to connect with this app.\");\n    } else {\n      // The person is not logged into Facebook, so we're not sure if\n      // they are logged into this app or not.\n      document.getElementById('status').innerHTML = 'Please log ' +\n        'into Facebook.';\n			 console.log (\"U should login to FB.\");\n				\n    }\n  }\n\n  // This function is called when someone finishes with the Login\n  // Button.  See the onlogin handler attached to it in the sample\n  // code below.\n  function checkLoginState() {\n    FB.getLoginStatus(function(response) {\n      statusChangeCallback(response);\n    });\n  }\n\nwindow.fbAsyncInit = function() {\n  Parse.FacebookUtils.init({\n    appId      : '1452756891666119', // Facebook App ID\n    channelUrl : '//codedu.com', // Channel File\n    cookie     : true, // enable cookies to allow Parse to access the session\n    xfbml      : true,  // parse XFBML\n    version    : 'v2.0'\n  });\n \n  // Additional initialization code here\n\n\n  // Now that we've initialized the JavaScript SDK, we call \n  // FB.getLoginStatus().  This function gets the state of the\n  // person visiting this page and can return one of three states to\n  // the callback you provide.  They can be:\n  //\n  // 1. Logged into your app ('connected')\n  // 2. Logged into Facebook, but not your app ('not_authorized')\n  // 3. Not logged into Facebook and can't tell if they are logged into\n  //    your app or not.\n  //\n  // These three cases are handled in the callback function.\n\n  FB.getLoginStatus(function(response) {\n    statusChangeCallback(response);\n  });\n\n  };\n\n  // Load the SDK asynchronously\n  (function(d, s, id) {\n    var js, fjs = d.getElementsByTagName(s)[0];\n    if (d.getElementById(id)) return;\n    js = d.createElement(s); js.id = id;\n    js.src = \"//connect.facebook.net/zh_TW/sdk.js#xfbml=1&appId=1452756891666119&version=v2.0\";\n    fjs.parentNode.insertBefore(js, fjs);\n  }(document, 'script', 'facebook-jssdk'));\n\n  // Here we run a very simple test of the Graph API after login is\n  // successful.  See statusChangeCallback() for when this call is made.\n  function testAPI() {\n    console.log('Welcome!  Fetching your information.... ');\n    FB.api('/me', function(response) {\n      console.log('Successful login for: ' + response.name);\n      document.getElementById('status').innerHTML =\n        'Thanks for logging in, ' + response.name + '!';\n    });\n  }\n\n\n</script>\n\n\n<script>\n	 function logout () {   \n	  FB.logout(function(response) {\n       console.log (\"Logout\")\n    });\n\n		}\nfunction fb_login () {\n  Parse.FacebookUtils.logIn(null, {\n    success: function(user) {\n      if (!user.existed()) {\n\n      } else {\n        alert(\"User logged in through Facebook!\");\n      }\n    },  \n    error: function(user, error) {\n      alert(\"User cancelled the Facebook login or did not fully authorize.\");\n    }\n  });\n}\n\n</script>\n\n<!--\n  Below we include the Login Button social plugin. This button uses\n  the JavaScript SDK to present a graphical Login button that triggers\n  the FB.login() function when clicked.\n-->\n\n<!-- fb:login-button data-scope=\"public_profile,email\" onlogin=\"checkLoginState();\">\n</fb:login-button-->\n<fb:login-button scope=\"public_profile,email\" onlogin=\"checkLoginState();\">\n</fb:login-button>\n\n\n\n\n</body>\n</html>\n\n\n\n",
+			"file": "fb-login.html",
+			"file_size": 4689,
+			"file_write_time": 130533663210000000,
+			"settings":
+			{
+				"buffer_size": 4442,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "getcode.php",
+			"settings":
+			{
+				"buffer_size": 675,
+				"line_ending": "Unix"
+			}
+		}
 	],
-	"build_system": "",
+	"build_system": "Packages/SASS Build/SASS - Compressed.sublime-build",
 	"command_palette":
 	{
 		"height": 390.0,
@@ -177,6 +228,28 @@
 	},
 	"file_history":
 	[
+		"/Applications/XAMPP/xamppfiles/htdocs_CodeEDU/bs.modal.html",
+		"/Applications/XAMPP/xamppfiles/htdocs_CodeEDU/dashboard.html",
+		"/Applications/XAMPP/xamppfiles/htdocs_CodeEDU/php/parse-php.php",
+		"/Applications/XAMPP/xamppfiles/htdocs_CodeEDU/parse-php.php",
+		"/Applications/XAMPP/xamppfiles/htdocs_CodeEDU/fb-login.html",
+		"/Applications/XAMPP/xamppfiles/htdocs_CodeEDU/modal-view-test.html",
+		"/Applications/XAMPP/xamppfiles/htdocs_CodeEDU/parse/index.html",
+		"/Applications/XAMPP/xamppfiles/htdocs_CodeEDU/final_11/index.html",
+		"/Volumes/HDD/Users/Radian/Desktop/LastModified",
+		"/Volumes/HDD/Users/Radian/Desktop/文件1.htm",
+		"/Applications/XAMPP/xamppfiles/htdocs_CodeEDU/composer.json",
+		"/Applications/XAMPP/xamppfiles/htdocs_CodeEDU/test.html",
+		"/Volumes/HDD/Users/Radian/R.City/倉庫/From 行囊_未整理/profile folders/xampp-htmls/appserv_beck/Dw6/Register User/shop_create.sql",
+		"/Applications/XAMPP/xamppfiles/htdocs_CodeEDU/ace/editor-test1.html",
+		"/Applications/XAMPP/xamppfiles/htdocs_CodeEDU/ace/editor-origin.html",
+		"/Applications/XAMPP/xamppfiles/htdocs_CodeEDU/ace/editor-final.html",
+		"/Applications/Processing.app/Contents/Java/lib/theme.txt",
+		"/private/etc/apache2/extra/httpd-vhosts.conf",
+		"/Applications/XAMPP/xamppfiles/htdocs_codedu/submitAssign.html",
+		"/Volumes/HDD/Users/Radian/Websites/CodeEDU/css.css",
+		"/Volumes/HDD/Users/Radian/Websites/CodeEDU/submitAssign.html",
+		"/Applications/XAMPP/xamppfiles/etc/httpd.conf",
 		"/Volumes/HDD/Users/Radian/Desktop/minin.js",
 		"/Volumes/HDD/Users/Radian/R.City/工坊/周老師/Chou/Original/Chinese publications.htm",
 		"/Volumes/HDD/Users/Radian/Desktop/.DS_Store",
@@ -206,8 +279,6 @@
 		"/Users/Radian/Desktop/total Finder 破解 /擺放位置",
 		"/Users/Radian/R.City/廣場1022/送舊很好/送舊/102送舊影片/未命名 - 3.ufo",
 		"/Applications/XAMPP/xamppfiles/htdocs_college/wp-config.php",
-		"/private/etc/apache2/extra/httpd-vhosts.conf",
-		"/Applications/XAMPP/xamppfiles/etc/httpd.conf",
 		"/Applications/XAMPP/xamppfiles/etc/extra/httpd-vhosts.conf",
 		"/Applications/XAMPP/xamppfiles/htdocs_college/index.html",
 		"/Applications/XAMPP/xamppfiles/phpmyadmin/config.inc.php",
@@ -284,26 +355,11 @@
 		"/Applications/XAMPP/xamppfiles/etc/php.ini",
 		"/Users/Radian/R.City/樹屋/5Computer/Dreamweaver/Learn/相關檔案/php.ini",
 		"/usr/bin/lp",
-		"/Users/Radian/Desktop/unity default resources",
-		"/Users/Radian/Desktop/csr4c3.sinf",
-		"/private/var/folders/8t/xg_f48v571v995lcnyhkbpn00000gn/T/temp.r46Xnd/content-datacollection.json",
-		"/Users/Radian/Desktop/mainData",
-		"/Users/Radian/Desktop/flurryCache_adLogManager_38XEJT2XRT2I9H9BFB29_118.archive",
-		"/Users/Radian/R.City/樹屋/1MySelf/帳密資訊/微博.txt",
-		"/Volumes/Soundflower-1.5.2/ReadMe.rtf",
-		"/Users/Radian/R.City/樹屋/1MySelf/帳密資訊/國科會.txt",
-		"/Users/Radian/Desktop/untitled.html",
-		"/Users/Radian/Desktop/waiting for activate",
-		"/Applications/Unity/u4.3.2f1cmac/Unity_v4.x.ulf",
-		"/Volumes/JANE/SmsContactsBackup/sms/sms_20131215110943.xml",
-		"/Users/Radian/Desktop/office rebuild shortcut",
-		"/Users/Radian/Library/Application Support/Sublime Text 3/Packages/Default/Preferences.sublime-settings",
-		"/Applications/XAMPP/xamppfiles/rename manager-osx.app to xampp.app",
-		"/Applications/XAMPP/xamppfiles/etc/extra/httpd-xampp.conf"
+		"/Users/Radian/Desktop/unity default resources"
 	],
 	"find":
 	{
-		"height": 32.0
+		"height": 35.0
 	},
 	"find_in_files":
 	{
@@ -317,6 +373,22 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"version",
+			"socpe",
+			"checkLoginState()",
+			"checkLoginState",
+			"onlogin",
+			"login",
+			"checkLoginState",
+			"<div id=\"fb-root\"></div>\n<script>(function(d, s, id) {\n  var js, fjs = d.getElementsByTagName(s)[0];\n  if (d.getElementById(id)) return;\n  js = d.createElement(s); js.id = id;\n  js.src = \"//connect.facebook.net/zh_TW/sdk.js#xfbml=1&appId=1452756891666119&version=v2.0\";\n  fjs.parentNode.insertBefore(js, fjs);\n}(document, 'script', 'facebook-jssdk'));</script>",
+			".login",
+			"testAPI",
+			"statusChangeCallback",
+			" FB.getAuthResponse",
+			"PImage",
+			"</",
+			"regex",
+			"\\",
 			"， ",
 			" ",
 			"'",
@@ -427,14 +499,103 @@
 	"groups":
 	[
 		{
+			"selected": 1,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"auto_name": "",
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "fb-login.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4442,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4008,
+								4008
+							]
+						],
+						"settings":
+						{
+							"hasHeader": false,
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1874.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "getcode.php",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 675,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"hasHeader": false,
+							"syntax": "Packages/PHP/PHP.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				}
 			]
 		}
 	],
 	"incremental_find":
 	{
-		"height": 32.0
+		"height": 25.0
 	},
 	"input":
 	{
@@ -463,6 +624,10 @@
 		]
 	},
 	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 51.0
+	},
 	"output.find_results":
 	{
 		"height": 0.0
@@ -470,7 +635,7 @@
 	"project": "codedu.sublime-project",
 	"replace":
 	{
-		"height": 60.0
+		"height": 46.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -504,7 +669,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 150.0,
+	"side_bar_width": 231.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

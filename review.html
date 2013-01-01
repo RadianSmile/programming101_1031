@@ -87,6 +87,10 @@ html {
 	float:left;
 	margin: 0 20px;
 }
+.star-graded {
+	color:red;
+	
+}
 
 
 .-grading-button{
@@ -124,36 +128,113 @@ html {
 <ul id="review-tab" class="nav nav-tabs col-md-12" role="tablist">
   <li class="title disabled"><a >Assign</a></li>
 	<li class="tab active">
-			<a href="#assign1" role="tab" data-toggle="tab">#1 <div class="grade-preview"></div></a></li>
-  <li class="tab" ><a href="#assign2" role="tab" data-toggle="tab">#2 <div class="grade-preview"></div></a></li>
-  <li class="tab"><a href="#assign3" role="tab" data-toggle="tab">#3 <div class="grade-preview"></div></a></li>
-  <li class="tab"><a href="#assign4" role="tab" data-toggle="tab">#4 <div class="grade-preview"></div></a></li>
-  <li class="tab"><a href="#assign5" role="tab" data-toggle="tab">#5 <div class="grade-preview"></div></a></li>
+			<a href="#assign0" role="tab" data-toggle="tab">#1 <div class="grade-preview"></div></a></li>
+  <li class="tab" ><a href="#assign1" role="tab" data-toggle="tab">#2 <div class="grade-preview"></div></a></li>
+  <li class="tab"><a href="#assign2" role="tab" data-toggle="tab">#3 <div class="grade-preview"></div></a></li>
+  <li class="tab"><a href="#assign3" role="tab" data-toggle="tab">#4 <div class="grade-preview"></div></a></li>
+  <li class="tab"><a href="#assign4" role="tab" data-toggle="tab">#5 <div class="grade-preview"></div></a></li>
 </ul>
 <div id="review-submit-block" class="col-md-2">
-	<button id="review-submit" class="btn btn-primary btn-lg">確認繳交</button>
+	<button id="review-submit" class="btn btn-primary btn-lg" onClick="submitReview();">確認繳交</button>
 </div>
 </div>
 <!-- Tab panes -->
 <div class="tab-content ">
-  <div  class="tab-pane fade row  in active" id="assign1">
+  <div  class="tab-pane fade row  in active" id="assign0">
 		<div class="play col-xs-7"></div><div class="editor-container col-xs-5"><div class="editor"></div></div><div></div>
 		<div class="grading-pane">
-			<select class="grade-select form-control input-md" >
+			<select class=" grade grade-select form-control input-md" >
 				<option>-</option>
 				<option>O</option>
 				<option>C</option>
 				<option>B</option>
 				<option>A</option>
 			</select>
-			
-			<button class="btn btn-danger">顯示霸個</button>
+			<div class="checkbox">
+				<label>
+					<input class="grade star" type="checkbox">是否為最佳解
+				</label>
+			</div>
+
+			<button class="btn btn-danger togglebug" >顯示霸個</button>
 		</div>
 	</div>
-  <div class="tab-pane fade row" id="assign2">B</div>
-  <div class="tab-pane fade row" id="assign3">C</div>
-  <div class="tab-pane fade row" id="assign4">D</div>
-  <div class="tab-pane fade row" id="assign5">E</div>
+  <div class="tab-pane fade row" id="assign1">
+		<div class="play col-xs-7"></div><div class="editor-container col-xs-5"><div class="editor"></div></div><div></div>
+		<div class="grading-pane">
+			<select class=" grade grade-select form-control input-md" >
+				<option>-</option>
+				<option>O</option>
+				<option>C</option>
+				<option>B</option>
+				<option>A</option>
+			</select>
+			<div class="checkbox">
+				<label>
+					<input class="grade star" type="checkbox">是否為最佳解
+				</label>
+			</div>
+
+
+			<button class="btn btn-danger togglebug" >顯示霸個</button>
+
+
+	</div>
+	</div>
+  <div class="tab-pane fade row" id="assign2">
+		<div class="play col-xs-7"></div><div class="editor-container col-xs-5"><div class="editor"></div></div><div></div>
+		<div class="grading-pane">
+			<select class="grade grade-select form-control input-md" >
+				<option>-</option>
+				<option>O</option>
+				<option>C</option>
+				<option>B</option>
+				<option>A</option>
+			</select>
+			<div class="checkbox">
+				<label>
+					<input class="grade star" type="checkbox">是否為最佳解
+				</label>
+			</div>		
+			<button class="btn btn-danger togglebug" >顯示霸個</button>
+	</div>
+	</div>
+  <div class="tab-pane fade row" id="assign3">
+		<div class="play col-xs-7"></div><div class="editor-container col-xs-5"><div class="editor"></div></div><div></div>
+		<div class="grading-pane">
+			<select class="grade grade-select form-control input-md" >
+				<option>-</option>
+				<option>O</option>
+				<option>C</option>
+				<option>B</option>
+				<option>A</option>
+			</select>
+			<div class="checkbox">
+				<label>
+					<input class="grade star" type="checkbox">是否為最佳解
+				</label>
+			</div>			
+			<button class="btn btn-danger togglebug" >顯示霸個</button>
+	</div>
+	</div>
+  <div class="tab-pane fade row" id="assign4">
+		<div class="play col-xs-7"></div><div class="editor-container col-xs-5"><div class="editor"></div></div><div></div>
+		<div class="grading-pane">
+			<select class="grade grade-select form-control input-md" >
+				<option>-</option>
+				<option>O</option>
+				<option>C</option>
+				<option>B</option>
+				<option>A</option>
+			</select>
+			<div class="grade checkbox">
+				<label>
+					<input class="grade star" type="checkbox">是否為最佳解
+				</label>
+			</div>
+			<button class="btn btn-danger togglebug" >顯示霸個</button>
+	
+	</div>
 </div>
 
 </div>
@@ -185,29 +266,9 @@ html {
 	background-repeat:no-repeat;
 }
 </style>
-<div id="bug-list" class="container-fluid">
-	<div class="row bug">
-		<div class=" bug-img col-md-2">		
-		</div>
-		<div class="bug-des col-md-5">
-		</div>		
-	</div>
-	<div class="row bug">
-		<div class=" bug-img col-md-2">		
-		</div>
-		<div class="bug-des col-md-5">
-		</div>
-	</div>
-	
-	<div class="row add-bug ">
-		<div class="add-bug-img col-md-2">		
-		</div>
-		<div class="add-bug-des col-md-5">
-		</div>		
-	</div>
-	<div class="row">
-		<button id="submit-bug"></button>
-	</div>
+<div class="bug-list container-fluid">
+ <div style="height:100vh; width:100%;">
+ </div>
 </div>
 
 
@@ -230,7 +291,7 @@ html {
 <script>
 
 
-$('#myTab a').click(function (e) {
+$('#review-tab a').click(function (e) {
   e.preventDefault();
   $(this).tab('show');
 })
@@ -250,28 +311,81 @@ $(document).on("mouseover",".source", function (){
 });
 */
 Parse.initialize("9eo5r1mHWoIPSTCzmrpdKa3lcHPjySx4y5D6q8Nq", "R8SWwYxpJcy73ogQKuSD43y7FigrlDGjBLcy1lzC");	
-var currentUser = Parse.User.current();		
 
+
+var currentUser = Parse.User.current();		
 var assignToReview = "1";
 
-
-
+//**Rn Test  ---------------**/
+var User  = Parse.Object.extend("Test_User");
+var qqq = new Parse.Query (User);
+qqq.get("x4bNlnkioW").then (function(o){
+	currentUser =  o
+	console.log(o);
+	showAssign ();
 	
-var Assign = Parse.Object.extend("Assign");
+});
+///**Rn  end**/
+
+
+
+// showAssign ();
+
+
+
+
+
+var QueryAssigns = function (){
+var promise = new Parse.Promise();
+var Assign = Parse.Object.extend("Test_Review_Record");
 var assign = new Assign();
 var q = new Parse.Query(Assign);
-q.equalTo("uid",currentUser.get("authData").facebook.id );
-q.equalTo("assign",assignToReview);
-q.first().then(function(r){
-	console.log("Parse Done, Querying Data..");
-	var url = r.get("url");
-	
-	isInTime(url);
+console.log(currentUser);
+q.equalTo("reviewer",currentUser);
+q.equalTo("nth",assignToReview);
+//q.include("maker");
+q.ascending("createdAt");
+q.include("assign");
+q.find().then(function(r){
+	promise.resolve(r);
+	//console.log("Parse Done, Querying Data..");
+
 },function(e){
+	promise.reject(e.message);
+
 	console.log(e.message);
 });
+	return promise ;
+}
 
-function isInTime(url){
+function showAssign(){
+	QueryAssigns().then (function(r){
+	for (var i = 0 ; i < r.length ; i++){
+		console.log(r[i].get("assign").get("url"));
+		isInTime(	r[i].get("assign").get("url"),"assign"+i);	
+	}
+	},function (e){console.log (e);});
+}
+function submitReview (e) {
+	//checkResult ; /**************************************/
+	console.log("click");
+	$(this).addClass("disabled");
+	QueryAssigns().then (function(r){	
+		for (var i = 0 ; i < r.length ; i++){
+			var g  = gradeArr [i];
+			r[i].set("grade",g[0]);
+			r[i].set("star",g[1]);
+		}
+		Parse.Object.saveAll(r).then (function (re){
+			console.log ("SaveResult",re);
+		},function(e){
+			console.log ("e")
+		});
+	},function (ee){console.log (ee);});
+}
+
+
+function isInTime(url,id){
 	console.log("Check Last Modified...");
 		$.ajax({
 			url : "lastModify.php",
@@ -281,13 +395,12 @@ function isInTime(url){
 			dataType : 'text', //explicitly requesting the xml as text, rather than an xml document
 			success : function (data, status, xhr) {	
 				console.log (data);
-				
-				getCode(url,"assign1");
+				getCode(url,id);
 				var play = document.createElement("iframe");
-				play.style.width = "100%";
+				play.style.width = "600px";
 				play.style.height = "400px";
 				play.setAttribute("src",url);
-				$("#assign1").find(".play").first().html(play);
+				$("#" + id).find(".play").first().html(play);
 			}
 		});
 }
@@ -295,16 +408,46 @@ function isInTime(url){
 </script>
 
 <script data-file="grade">
-var gradeArr = new Array(5);
 
-	$(document).on("change",".grade-select",function(){
-		var g = $(this).val();
-		console.log(g)
-		var $p = $(this).closest(".tab-pane") ;
+var gradeArr = [];
+for (var i = 0 ; i < 5 ; i++){
+	var arr = ["-",false];
+	gradeArr.push(arr);
+}
+
+	$(document).on("change",".grade",function(){
+		var $this = $(this);
+		var $p = $this.closest(".tab-pane") ;
 		var i = $p.index();
-		console.log(i);
-		gradeArr[i] = g ;
-		console.log($($(".tab").get(i)).find(".grade-preview").first().text(g));
+		console.log(i);		
+		if ($this.hasClass("grade-select")){
+			var g = $this.val();	
+			console.log($($(".tab").get(i)).find(".grade-preview").first().text(g));
+			gradeArr[i][0] = g ;
+		}else if ($this.hasClass("star")){
+			var g = $(this).is(":checked") ;
+			gradeArr[i][1] = g ;
+			console.log ("g",g);
+			if (g){
+				$(".star").each(function(j, e) {
+					console.log("$(e).is($this)",$(e).is($this));
+					if ($(e).is($this)){
+						$($(".tab").get(i)).find(".grade-preview").first().addClass("star-graded");			
+						return true;
+					}else{
+						gradeArr[j][1] = false ;
+						$(e).prop('checked', false);
+						var $pp = $(e).closest(".tab-pane") ;
+						var ii = $pp.index();
+						$($(".tab").get(ii)).find(".grade-preview").first().removeClass("star-graded");
+						$(e).val(false);
+					}
+				});	
+			}else {
+				$($(".tab").get(i)).find(".grade-preview").first().removeClass("star-graded");
+			}
+		}
+		console.log (gradeArr);
 	} );
 </script>
 
@@ -323,7 +466,7 @@ function getCode (url,id){
 				if (status == 'success') {
 					var tabEditor = $("#"+id).find(".editor").first().get(0);
 					console.log(tabEditor);
-	
+					
 					var editor = ace.edit( tabEditor );
 					editor.setTheme("ace/theme/twilight");
 					editor.getSession().setUseWrapMode(true);
@@ -335,8 +478,46 @@ function getCode (url,id){
 			}
 		});
 }
+
+
+
 </script>
 <script data-file="Bug">
+
+$(document).on('click',".togglebug",function(){	
+	$bugArea = $(".bug-list") ;
+	console.log($bugArea.is(":hidden"));
+	if ($bugArea.is(":hidden")) {
+		$bugArea.toggle( "blind" );
+		$('html, body').animate({
+     scrollTop: $(".bug-list").offset().top
+    }, 1000);
+	}else {
+		$(".toTop").trigger("click");
+		$bugArea.toggle( "blind" );
+	}
+	
+	
+	
+});
+
+ var a = '<div class="row bug">
+		<div class=" bug-img col-md-2">		
+		</div>
+		<div class="bug-des col-md-5">
+		</div>
+	</div>
+	
+	<div class="row add-bug ">
+		<div class="add-bug-img col-md-2">		
+		</div>
+		<div class="add-bug-des col-md-5">
+		</div>		
+	</div>
+	<div class="row">
+		<button id="submit-bug"></button>
+	</div>'
+
 
 </script>
 
