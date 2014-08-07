@@ -82,7 +82,7 @@ PImage win;
 boolean isClick = false ;
 boolean fromWin = false ; 
 void setup() {
-  
+   enter = loadImage("enter.jpg");
   size(957, 500);
   //music
   minim = new Minim(this);
@@ -248,7 +248,7 @@ void draw() {
     /*textSize(50);
      fill(#74D2FF);
      text("click to start", (width/2)-150, (height/2));*/
-    enter = loadImage("enter.jpg");
+   
     image(enter, 0, 0);
     if (isClick && frame==0 ) {
       isClick = false;
