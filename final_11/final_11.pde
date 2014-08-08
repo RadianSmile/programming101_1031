@@ -104,7 +104,46 @@ void setup() {
   pig= minim.loadFile("pig.mp3");
   win2= minim.loadFile("win.mp3");
   win3= minim.loadFile("win.mp3");
-  
+        charac =loadImage("charac.jpg");
+      map = loadImage("map.png");
+              bird = loadImage("bird.png");
+        cat = loadImage("cat.png");
+        dog = loadImage("dog.png");
+        sihua = loadImage("sihua.png");
+        stu_b = loadImage("stu_b.png");
+        stu_g = loadImage("stu_g.png");
+        tutor = loadImage("tutor.png");
+        siwei_back = loadImage("siwei.jpg");
+
+        siwei_cat = loadImage("siwei_cat.png");
+        siwei_boy = loadImage("siwei_boy.png");
+        siwei_girl = loadImage("siwei_girl.png");
+        siwei_sihua = loadImage("siwei_sihua.png");
+        siwei_dog = loadImage("siwei_dog.png");
+        siwei_cat = loadImage("siwei_cat.png");
+        siwei_tutor = loadImage("siwei_tutor.png"); 
+        siwei_bird = loadImage("siwei_bird.png");
+        check = loadImage("check.png");
+        bird = loadImage("bird.png");
+        cat = loadImage("cat.png");
+        dog = loadImage("dog.png");
+        sihua = loadImage("sihua.png");
+        stu_b = loadImage("stu_b.png");
+        stu_g = loadImage("stu_g.png");
+        tutor = loadImage("tutor.png");
+
+        water_back = loadImage("water.jpg");
+
+        waterCat = loadImage("water_cat.png");
+        water_boy = loadImage("water_boy.png");
+        water_girl = loadImage("water_girl.png");
+        water_sihua = loadImage("water_sihua.png");
+        water_dog = loadImage("water_dog.png");
+        water_cat = loadImage("water_cat.png");
+        water_tutor = loadImage("water_tutor.png");
+        water_bird = loadImage("water_bird.png");
+
+        check = loadImage("check.png");
 }
 void mouseReleased() {
   
@@ -258,7 +297,6 @@ void draw() {
   }
   else if (frame==4) {
       // bling.play(0));
-      charac =loadImage("charac.jpg");
       image(charac, 0, 0);
 
       if (isClick && frame==4) {
@@ -270,7 +308,6 @@ void draw() {
 
     else if (frame==1) {
       frameRate(59);
-      map = loadImage("map.png");
       image(map, 0, 0);
 
 
@@ -280,51 +317,15 @@ void draw() {
         print("left i am here!");
         popo.play(0);
         //siwei
-        bird = loadImage("bird.png");
-        cat = loadImage("cat.png");
-        dog = loadImage("dog.png");
-        sihua = loadImage("sihua.png");
-        stu_b = loadImage("stu_b.png");
-        stu_g = loadImage("stu_g.png");
-        tutor = loadImage("tutor.png");
-        siwei_back = loadImage("siwei.jpg");
 
-        siwei_cat = loadImage("siwei_cat.png");
-        siwei_boy = loadImage("siwei_boy.png");
-        siwei_girl = loadImage("siwei_girl.png");
-        siwei_sihua = loadImage("siwei_sihua.png");
-        siwei_dog = loadImage("siwei_dog.png");
-        siwei_cat = loadImage("siwei_cat.png");
-        siwei_tutor = loadImage("siwei_tutor.png"); 
-        siwei_bird = loadImage("siwei_bird.png");
 
-        check = loadImage("check.png");
         cha();
       }
       else if (isClick && frame==1 &&mouseX>500) {
         isClick = false;
         frame=3;
         print("right i am here!");
-        bird = loadImage("bird.png");
-        cat = loadImage("cat.png");
-        dog = loadImage("dog.png");
-        sihua = loadImage("sihua.png");
-        stu_b = loadImage("stu_b.png");
-        stu_g = loadImage("stu_g.png");
-        tutor = loadImage("tutor.png");
 
-        water_back = loadImage("water.jpg");
-
-        waterCat = loadImage("water_cat.png");
-        water_boy = loadImage("water_boy.png");
-        water_girl = loadImage("water_girl.png");
-        water_sihua = loadImage("water_sihua.png");
-        water_dog = loadImage("water_dog.png");
-        water_cat = loadImage("water_cat.png");
-        water_tutor = loadImage("water_tutor.png");
-        water_bird = loadImage("water_bird.png");
-
-        check = loadImage("check.png");
        // pig.play(0);
 
         water();
