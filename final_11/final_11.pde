@@ -142,6 +142,7 @@ void setup() {
         water_cat = loadImage("water_cat.png");
         water_tutor = loadImage("water_tutor.png");
         water_bird = loadImage("water_bird.png");
+        win= loadImage("win.jpg");
 
         check = loadImage("check.png");
 }
@@ -344,7 +345,6 @@ void draw() {
       popo.play();
 
       if ((a==true && b==true && c==true && d==true && e==true && f==true ) ) {
-        win= loadImage("win.jpg");
        frameRate(0.13);
         image(win, 0, 0);
       
