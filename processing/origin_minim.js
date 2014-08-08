@@ -24,12 +24,11 @@ function AudioPlayer(str) {
     }, false);
     audio.preload = 'auto';
     audio.autobuffer = true;
-   /** reference:http://forum.processing.org/one/topic/minim-js-failing-on-chrome-and-firefox.html**/
-	 /* if (canPlayOgg()) {
+    if (canPlayOgg()) {
       audio.src = str.split(".")[0] + ".ogg";
     } else if (canPlayMp3()) {
       audio.src = str;
-    }*/audio.src = str;
+    }
     loaded = true;
   }
   this.play = function () {
