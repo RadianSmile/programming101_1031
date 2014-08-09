@@ -1,10 +1,42 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Untitled Document</title>
+<title>ACE in Action</title>
+<style type="text/css" media="screen">
+    #editor { 
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+    }
+</style>
 </head>
-
 <body>
+
+<div id="editor"></div>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+<script>
+    var callback = function (data, status, xhr) {
+        //data will be the xml returned from the server
+        if (status == 'success') {
+            var editor = ace.edit("editor");
+            //apparently, only modes supported are 'html', 'javascript' & 'text'
+            editor.getSession().setMode("ace/mode/html");
+            editor.setValue(data);
+        }
+    };
+    //using jQuery to fire off an ajax request to load the xml,
+    //using our callback as the success function
+    $.ajax(
+        {
+            url : '/testing/cd_catalog.xml',
+            dataType : 'text', //explicitly requesting the xml as text, rather than an xml document
+            success : callback
+        }
+    );
+
+</script>
 </body>
 </html>
