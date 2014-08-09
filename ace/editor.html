@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Editor</title>
+  <style type="text/css" media="screen">
+    body {
+        overflow: hidden;
+    }
+    
+    #editor { 
+        margin: 0;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+    }
+  </style>
+</head>
+<body>
+
+<pre id="editor">function foo(items) {
+    var i;
+    for (i = 0; i &lt; items.length; i++) {
+        alert("Ace Rocks " + items[i]);
+    }
+}</pre>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+
+<script src="src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+<script>
+</script>
+
+<script>
+    var callback = function (data, status, xhr) {
+        //data will be the xml returned from the server
+        if (status == 'success') {
+            var editor = ace.edit("editor");
+            //apparently, only modes supported are 'html', 'javascript' & 'text'
+  		      editor.setTheme("ace/theme/twilight");
+	
+		        editor.getSession().setMode("ace/mode/html");
+            editor.setValue(data);
+        }
+    };
+    //using jQuery to fire off an ajax request to load the xml,
+    //using our callback as the success function
+    $.ajax(
+        {
+            url : 'http://radiansmile.github.io/CodeEDU/final_11/final_11.pde',
+            dataType : 'text', //explicitly requesting the xml as text, rather than an xml document
+            success : callback
+        }
+    );
+
+</script>
+
+</body>
+</html>
