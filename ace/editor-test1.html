@@ -53,7 +53,6 @@
 						</div>
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
-
 <script src="src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
 <script>
 </script>
@@ -64,14 +63,21 @@
         if (status == 'success') {
             var editor = ace.edit("editor");
             //apparently, only modes supported are 'html', 'javascript' & 'text'
-  		      editor.setTheme("ace/theme/twilight");
-	editor.setReadOnly(true);
+  		      //editor.setTheme("ace/theme/twilight");
 	editor.getSession().setTabSize(4);
 	document.getElementById('editor').style.fontSize='16px';
-	editor.setReadOnly(true);
 		        editor.getSession().setMode("ace/mode/java");
             editor.setValue(data);
-						setEditorHeight();
+					
+						
+	function setEditorHeight(){
+		var lastLine = $("#editor .ace_gutter-cell:last");
+		var neededHeight = lastLine.position().top + lastLine.outerHeight();
+		$("#editor-container").height(neededHeight);
+	}
+		setEditorHeight();
+	$(window).on('resize', setEditorHeight);
+						
         }
     };
     //using jQuery to fire off an ajax request to load the xml,
@@ -87,13 +93,7 @@
 </script>
 
 <script type="text/javascript">
-	function setEditorHeight(){
-		var lastLine = $("#editor .ace_gutter-cell:last");
-		var neededHeight = lastLine.position().top + lastLine.outerHeight();
-		$("#editor-container").height(neededHeight);
-	}
-	
-	$(window).on('resize', setEditorHeight);
+
 	
 </script>
 
