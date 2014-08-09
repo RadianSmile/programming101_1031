@@ -33,7 +33,7 @@
  *
  * ***** END LICENSE BLOCK ***** */
 
-define('ace/mode/processing', ['require', 'exports', 'module' , 'ace/lib/oop', 'ace/mode/text', 'ace/tokenizer', 'ace/mode/processing_highlight_rules', 'ace/mode/folding/cstyle'], function(require, exports, module) {
+ace.define('ace/mode/processing', ['require', 'exports', 'module' , 'ace/lib/oop', 'ace/mode/text', 'ace/tokenizer', 'ace/mode/processing_highlight_rules', 'ace/mode/folding/cstyle'], function(require, exports, module) {
 
 
 var oop = require("../lib/oop");
