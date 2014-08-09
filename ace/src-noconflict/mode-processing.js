@@ -142,7 +142,7 @@ oop.inherits(ProcessingHighlightRules, TextHighlightRules);
 exports.ProcessingHighlightRules = ProcessingHighlightRules;
 });
 
-define('ace/mode/folding/cstyle', ['require', 'exports', 'module' , 'ace/lib/oop', 'ace/range', 'ace/mode/folding/fold_mode'], function(require, exports, module) {
+ace.define('ace/mode/folding/cstyle', ['require', 'exports', 'module' , 'ace/lib/oop', 'ace/range', 'ace/mode/folding/fold_mode'], function(require, exports, module) {
 
 
 var oop = require("../../lib/oop");
