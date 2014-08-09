@@ -18,15 +18,41 @@
         right: 0;
     }
   </style>
+	
+	<style type="text/css" media="screen">
+			#editor-mask {
+				height: 1000px;
+				overflow-y: hidden;
+			}
+			
+			#editor-container {
+				position: relative;
+				height: 10000px;
+			}
+			
+			#editor {
+				position: absolute;
+				top: 0;
+				right: 0;
+				bottom: 0;
+				left: 0;
+			}
+			
+			#editor .ace_sb {
+				display: none;
+			}
+			
+			
+		</style>
 </head>
 <body>
+<div id="editor-mask">
+					<div id="editor-container">
+						<div id="editor">
+						</div>
+						</div>
+						</div>
 
-<pre id="editor">function foo(items) {
-    var i;
-    for (i = 0; i &lt; items.length; i++) {
-        alert("Ace Rocks " + items[i]);
-    }
-}</pre>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
 
 <script src="src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
