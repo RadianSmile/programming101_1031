@@ -65,7 +65,17 @@ $("#submit").on('click',function(){
 
 </script>
 
-<iframe src="http://radiansmile.github.io/CodeEDU/final_11/final_11.pde" width="300px" height="300px"></iframe>
+<iframe id="ajax-iframe" src="http://radiansmile.github.io/CodeEDU/final_11/final_11.pde" width="300px" height="300px"></iframe>
 
+<div id="test">
+
+</div>
+
+<script type="text/javascript">
+    $("#ajax-iframe").contents().find( "body" ).css( "color", "#BADA55" );
+    //console.log ("a , ",a);
+    //$("#test").html(a);
+
+</script>
 </body>
 </html>
