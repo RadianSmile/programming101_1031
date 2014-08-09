@@ -4,27 +4,42 @@
 <meta charset="UTF-8">
 <title>Untitled Document</title>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
-<script src="ace/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
-
+<script src="src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
 <script src="../processing/minim.js"></script>
 <script src="../processing/processing.js"></script> 
 
-<link href="css.css" rel="stylesheet"> 
+
+<style>
+#editor-container {
+	position:relative;
+	margin:50px;
+	height:3000px;
+	
+}
+ #editor { 
+        margin: 0;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+    }
+</style>
+<link href="../css.css" rel="stylesheet"> 
 </head>
 
 <body>
-
 <form id="submitAssign">
 	<input id="link" placeholder="請貼入作業pde檔連結" style="width:400px; padding:10px;"><br>
 	<input id="submit" type="button" value="送出作業" style="padding:10px;">
 </form>
-<canvas data-processing-sources="http://radiansmile.github.io/CodeEDU/final_11/final_11.pde"></canvas>
 
 <div id="editor-container">
 	<div id="editor">
 
 	</div>
 </div>
+<canvas data-processing-sources="http://radiansmile.github.io/CodeEDU/final_11/final_11.pde"></canvas>
 
 <script type="text/javascript">
 $("#submit").on('click',function(){
@@ -37,9 +52,10 @@ $("#submit").on('click',function(){
 
 <script>
     var callback = function (data, status, xhr) {
-			console.log ("test");
+			
         //data will be the xml returned from the server
         if (status == 'success') {
+					console.log (data);
             var editor = ace.edit("editor");
             //apparently, only modes supported are 'html', 'javascript' & 'text'
   		      //editor.setTheme("ace/theme/twilight");
@@ -72,6 +88,7 @@ $("#submit").on('click',function(){
             }
         );
     }
+
 
 </script>
 </body>
