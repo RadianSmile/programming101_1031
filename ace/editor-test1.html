@@ -6,7 +6,6 @@
   <title>Editor</title>
   <style type="text/css" media="screen">
     body {
-        overflow: hidden;
     }
     
     #editor { 
@@ -23,13 +22,9 @@
 	/** 改變Editor的範圍不要滿頁 
 			 reference: http://dylemma.io/post/4
 	**/
-			#editor-mask {
-				position:static;
-				height: 1000px;
-				overflow-y:scroll;
-			}
-			
+
 			#editor-container {
+				margin:50px;
 				position: relative;
 				height: 10000px;
 			}
@@ -95,7 +90,7 @@
 	function setEditorHeight(){
 		var lastLine = $("#editor .ace_gutter-cell:last");
 		var neededHeight = lastLine.position().top + lastLine.outerHeight();
-		$("#editor-mask").height(neededHeight);
+		$("#editor-container").height(neededHeight);
 	}
 	
 	$(window).on('resize', setEditorHeight);
