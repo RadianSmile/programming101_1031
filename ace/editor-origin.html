@@ -18,44 +18,15 @@
         right: 0;
     }
   </style>
-	
-	<style type="text/css" media="screen">
-	/** 改變Editor的範圍不要滿頁 
-			 reference: http://dylemma.io/post/4
-	**/
-			#editor-mask {
-				height: 1000px;
-				overflow-y:scroll;
-			}
-			
-			#editor-container {
-				position: relative;
-				height: 10000px;
-			}
-			
-			#editor {
-				position: absolute;
-				top: 0;
-				right: 0;
-				bottom: 0;
-				left: 0;
-			}
-			
-			#editor .ace_sb {
-				display: none;
-			}
-			
-			
-		</style>
 </head>
 <body>
-<div id="editor-mask">
-					<div id="editor-container">
-						<div id="editor">
-						</div>
-						</div>
-						</div>
 
+<pre id="editor">function foo(items) {
+    var i;
+    for (i = 0; i &lt; items.length; i++) {
+        alert("Ace Rocks " + items[i]);
+    }
+}</pre>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
 
 <script src="src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
@@ -73,9 +44,8 @@
 	editor.getSession().setTabSize(4);
 	document.getElementById('editor').style.fontSize='16px';
 	editor.setReadOnly(true);
-		        editor.getSession().setMode("ace/mode/java");
+		        editor.getSession().setMode("ace/mode/html");
             editor.setValue(data);
-						setEditorHeight();
         }
     };
     //using jQuery to fire off an ajax request to load the xml,
@@ -88,17 +58,6 @@
         }
     );
 
-</script>
-
-<script type="text/javascript">
-	function setEditorHeight(){
-		var lastLine = $("#editor .ace_gutter-cell:last");
-		var neededHeight = lastLine.position().top + lastLine.outerHeight();
-		$("#editor-mask").height(neededHeight);
-	}
-	
-	$(window).on('resize', setEditorHeight);
-	
 </script>
 
 </body>
