@@ -5,8 +5,13 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <title>Editor</title>
   <style type="text/css" media="screen">
-    body {
+		body {
+			padding:50px;
+		}
+    .editor-container {
         overflow: hidden;
+				position:relative;
+				height:400px;
     }
     
     #editor { 
@@ -21,12 +26,9 @@
 </head>
 <body>
 
-<pre id="editor">function foo(items) {
-    var i;
-    for (i = 0; i &lt; items.length; i++) {
-        alert("Ace Rocks " + items[i]);
-    }
-}</pre>
+<div class="editor-container">
+<pre id="editor"></pre>
+</div>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
 
 <script src="src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
@@ -40,10 +42,8 @@
             var editor = ace.edit("editor");
             //apparently, only modes supported are 'html', 'javascript' & 'text'
   		      editor.setTheme("ace/theme/twilight");
-	editor.setReadOnly(false);
 	editor.getSession().setTabSize(4);
 	document.getElementById('editor').style.fontSize='16px';
-	editor.setReadOnly(true);
 		        editor.getSession().setMode("ace/mode/html");
             editor.setValue(data);
         }
