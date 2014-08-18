@@ -6152,6 +6152,7 @@ var accordion = $.widget( "ui.accordion", {
 	},
 
 	_animate: function( toShow, toHide, data ) {
+		console.log (toShow.length); // Rn.Md;
 		var total, easing, duration,
 			that = this,
 			adjust = 0,
