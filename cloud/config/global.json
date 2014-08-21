@@ -1,0 +1,14 @@
+{
+    "applications": {
+        "Codedu": {
+            "applicationId": "9eo5r1mHWoIPSTCzmrpdKa3lcHPjySx4y5D6q8Nq", 
+            "masterKey": "eaZQgR00D42lVdRIXZNUp5agsCWxZ5D9o9TP3X9E"
+        }, 
+        "_default": {
+            "link": "Codedu"
+        }
+    }, 
+    "global": {
+        "parseVersion": "1.2.19"
+    }
+}

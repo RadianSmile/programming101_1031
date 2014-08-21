@@ -96,6 +96,16 @@
     });
 
 		}
+function fb_login (){
+ FB.login(function(response) {
+   // handle the response
+ }, {
+   scope: 'public_profile,email', 
+   
+
+   return_scopes: true
+ });
+}
 
 
 </script>
@@ -112,8 +122,14 @@
 </fb:login-button>
 
 
+<div style=" padding:20px; display:block; background:blue; color : white;" onclick="fb_login();">
+  登入FB
+</div>
+  
+</style>
 
-<button onclick="logout">登出</button>
+
+<button onclick="logout();">登出</button>
 
 <div id="status">
 </div>

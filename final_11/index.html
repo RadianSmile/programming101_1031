@@ -3,11 +3,22 @@
 <head>
 <meta charset="UTF-8">
 <title>Untitled Document</title>
-<script src="minim.js"></script>
-<script src="processing.js"></script> 
-<canvas data-processing-sources="final_11.pde"></canvas>
+ <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script src="../pkgs/processing/minim.js"></script>
+<script src="../pkgs/processing/processing.js"></script> 
+<canvas id="pde"  data-processing-sources="final_11.pde"></canvas>
+
 </head>
 
 <body>
 </body>
 </html>
+
+<script type="text/javascript">
+$(document).ready(function() {
+
+Processing.getInstanceById('pde').size(300, 167.2);
+Processing.getInstanceById('pde').scale(0.313);	
+});
+
+</script>

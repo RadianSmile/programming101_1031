@@ -30,8 +30,11 @@
 
 <div class="row">
 	<div class="container">
+	<h1> GG3 </h1>
 	<div id="act">
+	
 		<h3>上課問問題</h3>
+		
 		<input type="number" id="ask" class="input-area"/>
 		<h3 class="title">上課回答問題</h3>
 		<input type="number"  class="input-area" id="reply" ></input>
@@ -69,7 +72,10 @@
 				heightStyle: "content",
 			 activate: function (event,ui) {
 				 if (ui.newPanel.length !== 0 ){
-				 ui.newPanel.focus();
+				 
+				 $(ui.newPanel).trigger("click");
+				 $(ui.newPanel).select();
+				 $(ui.newPanel).focus();
 				 }else {// 當縮起來的時候
 				 }
 				 

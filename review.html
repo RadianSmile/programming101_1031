@@ -34,10 +34,11 @@
 
 <div class="row">
 	<div class="one-game container no-padding">
-		<div class="expand game">f
+		<div class="expand game">
+			<iframe src="final_11/index.html" width="100%" frameborder="0" height="313"></iframe>
 		</div>
-		<div class="expand source">
-		f
+		<div class="expand source" style="height:313px; overflow:hidden;">
+			<script src="https://gist.github.com/RadianSmile/e84d6bea589693b979d0.js"></script>
 		</div>
 	</div>
 </div>
@@ -45,12 +46,14 @@
 <script>
 
 $(document).on("mouseover",".game", function (){
-	$(this).animate({width:"60%"},1000);
-	$(this).siblings(".source").animate({width:"40%"},1000);
+	$(this).animate({width:"60%"},300);
+	
+	$(this).siblings(".source").animate({width:"40%"},300);
+	//alert ("yes");
 });
 $(document).on("mouseover",".source", function (){
-	$(this).animate({width:"60%"},1000);
-	$(this).siblings(".game").animate({width:"40%"},1000);
+	$(this).animate({width:"60%"},300);
+	$(this).siblings(".game").animate({width:"40%"},300);
 });
 
 
