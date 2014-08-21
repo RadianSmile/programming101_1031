@@ -30,7 +30,7 @@
 
 <div class="row">
 	<div class="container">
-	<h1> GG3 </h1>
+	<h1> GG3-m </h1>
 	<div id="act">
 	
 		<h3>上課問問題</h3>
@@ -82,6 +82,31 @@
 			},animate:200
     });
   });
+	
 </script>
+
+  <!--script type="text/javascript">
+    window.addEventListener('DOMContentLoaded', function() {
+      var button = document.querySelector('#button');
+      var input = document.querySelector('#input');
+      var focus = function(e) {
+        e.stopPropagation();
+        e.preventDefault();
+        var clone = input.cloneNode(true);
+        var parent = input.parentElement;
+        parent.appendChild(clone);
+        parent.replaceChild(clone, input);
+        input = clone;
+        window.setTimeout(function() {
+          input.value = input.value || "";
+          input.focus();
+        }, 0);
+      }
+      button.addEventListener('mousedown', focus);
+      button.addEventListener('touchstart', focus);
+    }, false);
+  </script-->
+	<script src="jquery-mobile.js"></script>
+
 </body>
 </html> 
