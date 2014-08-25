@@ -4,18 +4,6 @@
 		"selected_items":
 		[
 			[
-				"css",
-				"css	.css() - single"
-			],
-			[
-				"he",
-				"height	Attr"
-			],
-			[
-				"if",
-				"iframe	<iframe>"
-			],
-			[
 				"f",
 				"fw:n	font-weight:normal"
 			],
@@ -83,41 +71,8 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "fb-login.html",
-			"settings":
-			{
-				"buffer_size": 3723,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "parse/index.html",
-			"settings":
-			{
-				"buffer_size": 1946,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "/Volumes/HDD/Users/Radian/Desktop/LastModified",
-			"settings":
-			{
-				"buffer_size": 54,
-				"line_ending": "Unix",
-				"name": "javascript:(function(){alert(document.lastModified"
-			}
-		},
-		{
-			"file": "final_11/index.html",
-			"settings":
-			{
-				"buffer_size": 589,
-				"line_ending": "Unix"
-			}
-		}
 	],
-	"build_system": "Packages/SASS Build/SASS - Compressed.sublime-build",
+	"build_system": "",
 	"command_palette":
 	{
 		"height": 390.0,
@@ -222,20 +177,6 @@
 	},
 	"file_history":
 	[
-		"/Volumes/HDD/Users/Radian/Desktop/文件1.htm",
-		"/Applications/XAMPP/xamppfiles/htdocs_CodeEDU/fb-login.html",
-		"/Applications/XAMPP/xamppfiles/htdocs_CodeEDU/composer.json",
-		"/Applications/XAMPP/xamppfiles/htdocs_CodeEDU/test.html",
-		"/Volumes/HDD/Users/Radian/R.City/倉庫/From 行囊_未整理/profile folders/xampp-htmls/appserv_beck/Dw6/Register User/shop_create.sql",
-		"/Applications/XAMPP/xamppfiles/htdocs_CodeEDU/ace/editor-test1.html",
-		"/Applications/XAMPP/xamppfiles/htdocs_CodeEDU/ace/editor-origin.html",
-		"/Applications/XAMPP/xamppfiles/htdocs_CodeEDU/ace/editor-final.html",
-		"/Applications/Processing.app/Contents/Java/lib/theme.txt",
-		"/private/etc/apache2/extra/httpd-vhosts.conf",
-		"/Applications/XAMPP/xamppfiles/htdocs_codedu/submitAssign.html",
-		"/Volumes/HDD/Users/Radian/Websites/CodeEDU/css.css",
-		"/Volumes/HDD/Users/Radian/Websites/CodeEDU/submitAssign.html",
-		"/Applications/XAMPP/xamppfiles/etc/httpd.conf",
 		"/Volumes/HDD/Users/Radian/Desktop/minin.js",
 		"/Volumes/HDD/Users/Radian/R.City/工坊/周老師/Chou/Original/Chinese publications.htm",
 		"/Volumes/HDD/Users/Radian/Desktop/.DS_Store",
@@ -265,6 +206,8 @@
 		"/Users/Radian/Desktop/total Finder 破解 /擺放位置",
 		"/Users/Radian/R.City/廣場1022/送舊很好/送舊/102送舊影片/未命名 - 3.ufo",
 		"/Applications/XAMPP/xamppfiles/htdocs_college/wp-config.php",
+		"/private/etc/apache2/extra/httpd-vhosts.conf",
+		"/Applications/XAMPP/xamppfiles/etc/httpd.conf",
 		"/Applications/XAMPP/xamppfiles/etc/extra/httpd-vhosts.conf",
 		"/Applications/XAMPP/xamppfiles/htdocs_college/index.html",
 		"/Applications/XAMPP/xamppfiles/phpmyadmin/config.inc.php",
@@ -349,11 +292,18 @@
 		"/Users/Radian/R.City/樹屋/1MySelf/帳密資訊/微博.txt",
 		"/Volumes/Soundflower-1.5.2/ReadMe.rtf",
 		"/Users/Radian/R.City/樹屋/1MySelf/帳密資訊/國科會.txt",
-		"/Users/Radian/Desktop/untitled.html"
+		"/Users/Radian/Desktop/untitled.html",
+		"/Users/Radian/Desktop/waiting for activate",
+		"/Applications/Unity/u4.3.2f1cmac/Unity_v4.x.ulf",
+		"/Volumes/JANE/SmsContactsBackup/sms/sms_20131215110943.xml",
+		"/Users/Radian/Desktop/office rebuild shortcut",
+		"/Users/Radian/Library/Application Support/Sublime Text 3/Packages/Default/Preferences.sublime-settings",
+		"/Applications/XAMPP/xamppfiles/rename manager-osx.app to xampp.app",
+		"/Applications/XAMPP/xamppfiles/etc/extra/httpd-xampp.conf"
 	],
 	"find":
 	{
-		"height": 35.0
+		"height": 32.0
 	},
 	"find_in_files":
 	{
@@ -367,17 +317,6 @@
 		"case_sensitive": false,
 		"find_history":
 		[
-			"login",
-			"checkLoginState",
-			"<div id=\"fb-root\"></div>\n<script>(function(d, s, id) {\n  var js, fjs = d.getElementsByTagName(s)[0];\n  if (d.getElementById(id)) return;\n  js = d.createElement(s); js.id = id;\n  js.src = \"//connect.facebook.net/zh_TW/sdk.js#xfbml=1&appId=1452756891666119&version=v2.0\";\n  fjs.parentNode.insertBefore(js, fjs);\n}(document, 'script', 'facebook-jssdk'));</script>",
-			".login",
-			"testAPI",
-			"statusChangeCallback",
-			" FB.getAuthResponse",
-			"PImage",
-			"</",
-			"regex",
-			"\\",
 			"， ",
 			" ",
 			"'",
@@ -488,142 +427,14 @@
 	"groups":
 	[
 		{
-			"selected": 1,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "fb-login.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3723,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								125,
-								125
-							]
-						],
-						"settings":
-						{
-							"hasHeader": false,
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "parse/index.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1946,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								391,
-								280
-							]
-						],
-						"settings":
-						{
-							"hasHeader": false,
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				}
-			]
-		},
-		{
-			"selected": 1,
-			"sheets":
-			[
-				{
-					"buffer": 2,
-					"file": "/Volumes/HDD/Users/Radian/Desktop/LastModified",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 54,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								52,
-								52
-							]
-						],
-						"settings":
-						{
-							"auto_name": "javascript:(function(){alert(document.lastModified",
-							"hasHeader": false,
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "final_11/index.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 589,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								468,
-								468
-							]
-						],
-						"settings":
-						{
-							"hasHeader": false,
-							"syntax": "Packages/HTML/HTML.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				}
 			]
 		}
 	],
 	"incremental_find":
 	{
-		"height": 35.0
+		"height": 32.0
 	},
 	"input":
 	{
@@ -638,18 +449,11 @@
 				0,
 				1,
 				1
-			],
-			[
-				1,
-				0,
-				2,
-				1
 			]
 		],
 		"cols":
 		[
 			0.0,
-			0.5,
 			1.0
 		],
 		"rows":
@@ -659,10 +463,6 @@
 		]
 	},
 	"menu_visible": true,
-	"output.exec":
-	{
-		"height": 51.0
-	},
 	"output.find_results":
 	{
 		"height": 0.0
@@ -670,7 +470,7 @@
 	"project": "codedu.sublime-project",
 	"replace":
 	{
-		"height": 66.0
+		"height": 60.0
 	},
 	"save_all_on_build": true,
 	"select_file":

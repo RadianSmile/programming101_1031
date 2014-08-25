@@ -5,7 +5,13 @@
 <meta charset="UTF-8">
 </head>
 <body>
+  <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.2.19.min.js"></script>
+
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 <script>
+
+Parse.initialize("9eo5r1mHWoIPSTCzmrpdKa3lcHPjySx4y5D6q8Nq", "R8SWwYxpJcy73ogQKuSD43y7FigrlDGjBLcy1lzC");
+
   // This is called with the results from from FB.getLoginStatus().
   function statusChangeCallback(response) {
     console.log('statusChangeCallback');
@@ -16,16 +22,28 @@
     // for FB.getLoginStatus().
     if (response.status === 'connected') {
       // Logged into your app and Facebook.
-      testAPI();
+ 
+
+
+    
+
+      
+
+
+			
+			testAPI();
     } else if (response.status === 'not_authorized') {
       // The person is logged into Facebook, but not your app.
       document.getElementById('status').innerHTML = 'Please log ' +
         'into this app.';
+			 console.log ("U have to connect with this app.");
     } else {
       // The person is not logged into Facebook, so we're not sure if
       // they are logged into this app or not.
       document.getElementById('status').innerHTML = 'Please log ' +
         'into Facebook.';
+			 console.log ("U should login to FB.");
+				
     }
   }
 
@@ -38,14 +56,17 @@
     });
   }
 
-  window.fbAsyncInit = function() {
-  FB.init({
-    appId      : '1452756891666119',
-    cookie     : true,  // enable cookies to allow the server to access 
-                        // the session
-    xfbml      : true,  // parse social plugins on this page
-    version    : 'v2.0' // use version 2.0
+window.fbAsyncInit = function() {
+  Parse.FacebookUtils.init({
+    appId      : '1452756891666119', // Facebook App ID
+    channelUrl : '//codedu.com', // Channel File
+    cookie     : true, // enable cookies to allow Parse to access the session
+    xfbml      : true,  // parse XFBML
+    version    : 'v2.0'
   });
+ 
+  // Additional initialization code here
+
 
   // Now that we've initialized the JavaScript SDK, we call 
   // FB.getLoginStatus().  This function gets the state of the
@@ -96,17 +117,20 @@
     });
 
 		}
-function fb_login (){
- FB.login(function(response) {
-   // handle the response
- }, {
-   scope: 'public_profile,email', 
-   
-
-   return_scopes: true
- });
+function fb_login () {
+  Parse.FacebookUtils.logIn(null, {
+    success: function(user) {
+      if (!user.existed()) {
+        
+      } else {
+        alert("User logged in through Facebook!");
+      }
+    },
+    error: function(user, error) {
+      alert("User cancelled the Facebook login or did not fully authorize.");
+    }
+  });
 }
-
 
 </script>
 
@@ -118,7 +142,7 @@ function fb_login (){
 
 <!-- fb:login-button data-scope="public_profile,email" onlogin="checkLoginState();">
 </fb:login-button-->
-<fb:login-button scope="public_profile,email,user_birthday" onlogin="checkLoginState();">
+<fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
 </fb:login-button>
 
 
@@ -133,6 +157,8 @@ function fb_login (){
 
 <div id="status">
 </div>
+
+<div id="result"></div>
 
 </body>
 </html>
