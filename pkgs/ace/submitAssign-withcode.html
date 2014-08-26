@@ -51,43 +51,41 @@ $("#submit").on('click',function(){
 </script>
 
 <script>
-    var callback = function (data, status, xhr) {
-			
-        //data will be the xml returned from the server
-        if (status == 'success') {
-					console.log (data);
-            var editor = ace.edit("editor");
-            //apparently, only modes supported are 'html', 'javascript' & 'text'
-  		      //editor.setTheme("ace/theme/twilight");
-	editor.getSession().setTabSize(4);
-	document.getElementById('editor').style.fontSize='16px';
-		        editor.getSession().setMode("ace/mode/java");
-            editor.setValue(data);
-					
-						
-	function setEditorHeight(){
-		var lastLine = $("#editor .ace_gutter-cell:last");
-		var neededHeight = lastLine.position().top + lastLine.outerHeight();
-		$("#editor-container").height(neededHeight);
-	}
+var callback = function (data, status, xhr) {		
+	//data will be the xml returned from the server
+	if (status == 'success') {
+		console.log (data);
+		var editor = ace.edit("editor");
+		//apparently, only modes supported are 'html', 'javascript' & 'text'
+		editor.setTheme("ace/theme/twilight");
+		editor.getSession().setTabSize(2);
+		document.getElementById('editor').style.fontSize='16px';
+		editor.getSession().setMode("ace/mode/java");
+		editor.setValue(data);
 		//setEditorHeight();
-	//$(window).on('resize', setEditorHeight);
-						
-        }
-    };
+		//$(window).on('resize', setEditorHeight);
+	}	
+};
+		
+function setEditorHeight(){
+	var lastLine = $("#editor .ace_gutter-cell:last");
+	var neededHeight = lastLine.position().top + lastLine.outerHeight();
+	$("#editor-container").height(neededHeight);
+}
+
     //using jQuery to fire off an ajax request to load the xml,
     //using our callback as the success function
-    function toSubmit (url){
-        $.ajax(
-            {
-                url : "http://codedu.com/getcode.php" ,
-							 		type: "POST",
-									data:{url:url},
-                dataType : 'text', //explicitly requesting the xml as text, rather than an xml document
-                success : callback
-            }
-        );
-    }
+function toSubmit (url){
+		$.ajax(
+				{
+						url : "http://codedu.com/getcode.php" ,
+							type: "POST",
+							data:{url:url},
+						dataType : 'text', //explicitly requesting the xml as text, rather than an xml document
+						success : callback
+				}
+		);
+}
 
 
 </script>
