@@ -22,30 +22,25 @@ function fb_login () {
   Parse.FacebookUtils.logIn(null, {
     success: function(user) {
       if (!user.existed()) {
+			if(confirm ("你尚未註冊，是否自動跳轉註冊頁面?")){
 			document.location="signup.html";
+			}
       } else {
         //alert("User logged in through Facebook!");
-        document.location ="dashboard.html";
-				
-				$("#loginModal").modal('hide')
+        document.location ="dashboard.html";	
+				//$("#loginModal").modal('hide')
       }
     },  
     error: function(user, error) {
-			
+			alert("你還沒註冊或你拒絕登入。")
       alert(error.message);
     }
   });
 }
 
+
+
 </script>
-
-
-
-  
-
-
-
-
 
 
 <!-- Button trigger modal -->
@@ -68,7 +63,6 @@ function fb_login () {
   登入FB
 </div>
   
-</style>
 
 
 <button class="btn btn-info" onclick="logout();">登出</button>

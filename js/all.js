@@ -1,24 +1,46 @@
 // JavaScript Document
 
-      window.fbAsyncInit = function() {
-         Parse.initialize("9eo5r1mHWoIPSTCzmrpdKa3lcHPjySx4y5D6q8Nq", "R8SWwYxpJcy73ogQKuSD43y7FigrlDGjBLcy1lzC");	
-					Parse.FacebookUtils.init({
-    			 appId      : '1452756891666119', // Facebook App ID
-          xfbml      : true,
-					 cookie     : true, // enable cookies to allow Parse to access the session
-  				  version    : 'v1.0'
-        });
-      };
+  window.fbAsyncInit = function() {
+		Parse.initialize("9eo5r1mHWoIPSTCzmrpdKa3lcHPjySx4y5D6q8Nq", "R8SWwYxpJcy73ogQKuSD43y7FigrlDGjBLcy1lzC");	
+		Parse.FacebookUtils.init({
+			appId      : '1452756891666119',
+			cookie     : true,  // enable cookies to allow the server to access 
+			xfbml      : true,  // parse social plugins on this page
+			version    : 'v1.0' // use version 2.1
+  });
 
-      (function(d, s, id){
-         var js, fjs = d.getElementsByTagName(s)[0];
-         if (d.getElementById(id)) {return;}
-         js = d.createElement(s); js.id = id;
-         js.src = "//connect.facebook.net/en_US/all.js";
-         fjs.parentNode.insertBefore(js, fjs);
-       }(document, 'script', 'facebook-jssdk'));
+	
+	// 規定只能使用這種，使用 status:true 會造成，
+  FB.getLoginStatus(function(response) {
+  });
+};
+  (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/zh_TW/all.js";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
 
 
+Parse.User.prototype.ID = function () {
+	return this.get("ID");
+}
+/* make the API call */
+/*
+FB.getLoginStatus(function(response) {
+  if (response.status === 'connected') {
+   
+    var uid = response.authResponse.userID;
+    var accessToken = response.authResponse.accessToken;
+  } else if (response.status === 'not_authorized') {
+    // the user is logged in to Facebook, 
+    // but has not authenticated your app
+  } else {
+    // the user isn't logged in to Facebook.
+  }
+ });
+*/
 
 
 
