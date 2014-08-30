@@ -300,12 +300,14 @@ function syntaxHighlight(json) {
 function FBinitDone (){
 }
 function checkPassword() {
-	$.ajax({
-  type: "POST",
-  url: "coursePassword.php",
-  data: {pwd:$("#pwd").val()},
-  success: function(result){
-		if (result === "true"){
+	var Password = Parse.Object.extend("Password");
+	var password = new Password();
+	var q = new Parse.Query(Password);
+	q.equalTo("name","signup");
+	q.equalTo("password",$("#pwd").val());
+	q.first().then(function(r){
+	 var result = r.get("status");
+		if (result === "student"){
 			$("#step2").fadeIn();
 			checkLoginStatus ();
 			//跑出FB登入頁面	
@@ -315,7 +317,7 @@ function checkPassword() {
 			checkLoginStatus (); 
 			//alert("Hello Teacher");
 			//跑出FB登入頁面	
-		}else if (result === "TA"){
+		}else if (result === "ta"){
 			checkLoginStatus (); 
 			$("#step2").fadeIn();
 
@@ -324,9 +326,7 @@ function checkPassword() {
 		}else {
 			alert ("The Password is wrong" ) ;
 		}
-
-	}
-});
+	},function(e){alert(e.message);});
 }
 </script>
 <div id="fb-status">
