@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Sign Up</title>
+<meta charset="UTF-8">
+<!-- Common links -->
+<!----><link rel="icon" type="image/png" href="/include/icon.png" />
+<!----><link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+<!----><script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<!----><script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<!----><script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.2.19.min.js"></script>
+<!----><link href="/css/all.css" rel="stylesheet" />
+<!----><script src="/js/all.js?v=d"></script>
+<!---------------------->
+
+<style>
+.unvisible {
+	display:none;
+}
+</style>
+</head>
+<body>
+<div id="fb-root"></div>
+<script>
+  // This is called with the results from from FB.getLoginStatus().
+  function statusChangeCallback(response) {
+    console.log('statusChangeCallback');
+    if (response.status === 'connected') {
+			"";
+    } else if (response.status === 'not_authorized') {
+      document.getElementById('status').innerHTML = 'Please log ' +
+        'into this app.';
+    } else {
+      document.getElementById('status').innerHTML = 'Please log ' +
+        'into Facebook.';
+    }
+  }
+  function checkLoginState() {
+    FB.getLoginStatus(function(response) {
+      statusChangeCallback(response);
+    });
+  }
+	
+function logout () {   
+    FB.logout(function(response) {
+      console.log ("Logout")
+    });
+	 }
+function checkLoginStatus ()  {
+	FB.getLoginStatus(function(response) {
+    if (response.status === 'connected') {
+			 	if(checkIfExist(response)){
+		alert("嘿，你已經註冊過惹... \n即將跳轉到個人頁面");
+		document.location = "dashboard.html"; 
+		}else{fb_getInfo();}
+			 
+    } else {
+			showLoginBtn ();
+			
+			$("#fb_login_btn").fadeIn();
+		}
+  });
+}
+
+function fb_login () {
+ FB.login(function(response) {
+	console.log(response);
+	if(checkIfExist(response)){
+		alert("嘿，你已經註冊過惹... \n即將跳轉到個人頁面");
+		document.location = "dashboard.html"; 
+	}else{
+		fb_getInfo();
+		$("#cntFB").fadeOut();
+	}
+ });
+}
+
+
+
+function fb_getInfo () {
+	FB.api("/me/picture",{
+		"redirect": false,
+		"height": "50",
+		"type": "normal",
+		"width": "50"
+	},function (response) {
+		if (response && !response.error) {
+			console.log(response);
+			var url = response.data.url;
+			$("#pf_photo").html("<img src='" + url + "' />")//.append("");
+			
+
+				$("#pf_des").text("歡迎，您已經登入了，請直接完成第三步");
+
+		}
+		$("#fb_status").fadeIn({complete:function(){
+			$("#step3").fadeIn();	
+		}});
+	});
+}
+
+function showLoginBtn () {
+	
+}
+
+function signUp () {
+	  Parse.FacebookUtils.logIn(null, {
+    success: function(user) {
+				user.set("uid",user.get("authData").facebook.id);
+				user.set("ID",$("#id").val());
+				user.set("name",$("#name").val());
+				user.save(null, {
+					success: function(user) {
+						if (user.existed()){
+							
+						}
+						
+						/// $("#status").html(syntaxHighlight(user));
+							
+						alert(user.ID() +' 註冊成功! \n頁面即將跳轉至個人頁面');
+						
+						///document.location = "dashboard.html"; 
+						
+					},
+					error: function(userdata, error) {
+						// Execute any logic that should take place if the save fails.
+						// error is a Parse.Error with an error code and description.
+						alert('Failed to create new object, with error code: ' + error.message);
+					}
+				});
+
+			//$("#status").html(syntaxHighlight(user.get("authData")));
+	
+      if (!user.existed()) {
+				//setUserData() ;
+      } else {
+        //document.location ="dashboard.html";			
+				//$("#loginModal").modal('hide')
+
+			$("#status").html(syntaxHighlight(user.get("authData")));
+      }
+    },  
+    error: function(user, error) {
+      alert(error.message);
+    }
+  });
+}
+function checkIfExist(r){
+	var uid = r.authResponse.userID ;
+	var query = new Parse.Query(Parse.User);
+	query.equalTo("uid",uid);
+	query.find({
+		success:function(r){
+			console.log(r);}
+	});
+	return true;
+}
+
+function syntaxHighlight(json) {
+    if (typeof json != 'string') {
+         json = JSON.stringify(json, undefined, 2);
+    }
+    json = json.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    return json.replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g, function (match) {
+        var cls = 'number';
+        if (/^"/.test(match)) {
+            if (/:$/.test(match)) {
+                cls = 'key';
+            } else {
+                cls = 'string';
+            }
+        } else if (/true|false/.test(match)) {
+            cls = 'boolean';
+        } else if (/null/.test(match)) {
+            cls = 'null';
+        }
+        return '<span class="' + cls + '">' + match + '</span>';
+    });
+}
+
+
+
+
+</script>
+
+<div class="row">
+<div class="container">
+<form class="form-horizontal" onsubmit="return false;">
+<fieldset>
+
+<!-- Form Name -->
+<legend>Step 1. 請輸入課程密碼</legend>
+
+<!-- Password input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="pwd">請輸入課程密碼</label>
+  <div class="col-md-4">
+    <input id="pwd" name="pwd" type="password" placeholder="" class="form-control input-md" required="">
+    
+  </div>
+</div>
+
+<!-- Button -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="checkPwdBtn"></label>
+  <div class="col-md-4">
+    <button id="checkPwdBtn" name="checkPwdBtn" class="btn btn-info"  onClick="checkPassword();">驗證密碼</button>
+  </div>
+</div>
+
+</fieldset>
+</form>
+</div>
+</div>
+<div class="row">
+<div class="container">
+<form id="step2" class="form-horizontal unvisible" onsubmit="return false;">
+<fieldset>
+
+<!-- Form Name -->
+<legend>Step 2. 與 Facebook 帳號連結</legend>
+
+<!-- Button -->
+<div id="fb_login_btn" class="form-group unvisible">
+  <label class="col-md-4 control-label" for="cntFB"></label>
+  <div class="col-md-4">
+    <button id="cntFB" name="cntFB" class="btn btn-primary" onClick="fb_login();">與 Facebook 帳號連結</button>
+  </div>
+</div>
+
+
+<div id="fb_status" class="form-group unvisible">
+	<div id="pf_photo" class="col-md-4" style="text-align:right;">
+		
+	</div>
+	<div id="pf_des" class="col-md-4 ">
+	</div>
+</div>
+
+</fieldset>
+</form>
+
+</div>
+</div>
+<div class="row">
+<div class="container">
+
+
+<form id="step3" class="form-horizontal unvisible" onsubmit="return false;">
+<fieldset>
+
+<!-- Form Name -->
+<legend >Step 3. 填寫學生資料</legend>
+
+<!-- Text input-->
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="id">請輸入學號</label>  
+  <div class="col-md-4">
+  <input id="id" name="id" type="text" placeholder="ex: 100102035" class="form-control input-md" value="100102035">
+    
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="name">請輸入姓名</label>  
+  <div class="col-md-4">
+  <input id="name" name="name" type="text" placeholder="鄭竣丰" class="form-control input-md" required="" value="鄭竣丰">
+    
+  </div>
+</div>
+
+<!-- Button -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for=""></label>
+  <div class="col-md-4">
+<button id="tt" class="btn btn-primary"  onClick="signUp();">註冊</button>
+  </div>
+</div>
+
+</fieldset>
+</form>
+
+<button class="btn btn-dangerous" onclick="logout();">登出</button>
+</div>
+</div>
+
+
+<!--fb:login-button id="test" scope="public_profile,email" onlogin="fb_login();">
+</fb:login-button-->
+
+
+
+
+<div id="status">
+</div>
+<script>
+function FBinitDone (){
+}
+function checkPassword() {
+	$.ajax({
+  type: "POST",
+  url: "coursePassword.php",
+  data: {pwd:$("#pwd").val()},
+  success: function(result){
+		if (result === "true"){
+			$("#step2").fadeIn();
+			checkLoginStatus ();
+			//跑出FB登入頁面	
+		}else if (result === "teacher"){ 
+			$("#step2").fadeIn();
+			$("#fb_login_btn").fadeIn();
+			checkLoginStatus (); 
+			//alert("Hello Teacher");
+			//跑出FB登入頁面	
+		}else if (result === "TA"){
+			checkLoginStatus (); 
+			$("#step2").fadeIn();
+
+			alert ("Hello TA");
+			//跑出FB登入頁面	
+		}else {
+			alert ("The Password is wrong" ) ;
+		}
+
+	}
+});
+}
+</script>
+<div id="fb-status">
+	
+</div>
+</body>
+</html>

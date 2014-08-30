@@ -1,0 +1,148 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Untitled Document</title>
+<!-- Common links -->
+<!----><link rel="icon" type="image/png" href="/include/icon.png" />
+<!----><link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+<!----><script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<!----><script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<!----><script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.2.19.min.js"></script>
+<!----><link href="/css/all.css" rel="stylesheet" />
+<!----><script src="/js/all.js"></script>
+<!---------------------->
+
+</head>
+
+<body>
+<div id="result">
+</div>
+<script>
+
+//+ Jonas Raoni Soares Silva
+//@ http://jsfromhell.com/array/shuffle [v1.0]
+//courtesy of Google 
+//http://stackoverflow.com/questions/6274339/how-can-i-shuffle-an-array-in-javascript
+var reviewList = [];
+var reviewList2 = [];
+	//var arr2 = arr1.slice(0);
+var STD_NUM = 60	 ;
+var REVIEW_MAX = 5 ;
+
+function initialize (){
+	var arr = [];
+	for (var i = 0 ; i <= REVIEW_MAX; i++) {
+		arr =  (i === 0 ) ? makeArrBtw(1,STD_NUM) : shuffle(makeArrBtw(1,STD_NUM)) ;
+		reviewList.push(arr);	
+	} //!show (reviewList,"Origin:");
+	var hw = checkDuplicate(reviewList);
+	var stdHwArr = breakHW (hw);
+		show(stdHwArr);
+
+}
+
+var overflowX = [] ;
+function checkDuplicate (hw) {
+		for( var x = 0 ; x < STD_NUM ; x ++){ // 直排檢查開始  
+		Vcheck(hw,x);
+	}//
+	if (overflowX.length > 0 ){//!show(overflowX);
+		var a = overflowX.shift() ;
+		while (typeof a  !== 'undefined')
+		{	//!show(["Rechecking",a]);
+			var obj = Vcheck(hw,a,true);
+			a = overflowX.shift() ;
+		}//!show(["success"]);
+	}//!show (hw,"Alter:");
+	return (hw)
+}
+function Vcheck(hw,x,isOverflow){
+		for( var y = 1 ; y <= REVIEW_MAX ; y++){		
+			var obj = Hcheck(hw,x,y);			// 執行到這裡代表Unique，會得到一個新的X
+			switch (obj.status) {
+				case 3:  //!console.log("obj.x: ",obj.x);
+					overflowX.push(obj.x);
+				case 2 :  // 執行交換  //!var testArr =["原y",y,"原x",x,"後y",y,"後x",obj.x];
+					if(isOverflow){overflowX.push(obj.x);} //!show(testArr,"test");
+					var temp = hw[y][x] ;
+					hw[y][x] = hw[y][obj.x];
+					hw[y][obj.x] = temp ; 
+					break ;
+				case 1 ://!if(isOverflow) {show(["Unique"]);}
+					break;
+				default :
+					break; 
+			}
+		}//	
+	
+}	
+function Hcheck(hw,x,y){
+	//判別：下面這邊開始要縱項檢查
+	var obj = new Object();
+	obj.status = 0 ; //!console.log("tempY",y);
+	tempY = y ; 								//正在變動的Y
+	tempX = x ; 								//正在變動的X
+		while ( --tempY >= 0 ){			//檢查下一個縱向檢查值 //!console.log("tempY",y);
+			var vCheck = hw[tempY][x]; //變動的縱向檢查值
+			var hCheck = hw[y][tempX]; //變動的橫向檢查值
+			if( hCheck !== vCheck  ){
+				obj.status = (obj.status < 1) ? 1 : obj.status;
+			}else{
+				obj.status =  (obj.status < 2) ? 2 : obj.status;
+				if (tempX < STD_NUM -1 ){ 		//開始往右   //讓回圈用下一個橫向檢查值，來做縱向檢查。
+					tempX++;
+				}else {
+				obj.status =  (obj.status < 3) ? 3 : obj.status;
+					tempX = 0 ;
+				}
+				tempY = y ; //讓Y值回歸，重新縱向檢查。
+			}
+		}//while
+		obj.x = tempX;
+		obj.y = tempY; 	//console.log(obj.status);
+	return obj ;
+}
+function breakHW (hw){
+	var stdHW = [];
+	for (var x = 0 ; x < STD_NUM ; x++){
+		var arr = [] ;
+		for (var y = 0 ; y < REVIEW_MAX +1 ; y++ ){
+			arr.push (hw[y][x]);
+		}
+		stdHW.push(arr);
+	}
+	return stdHW ;
+}
+
+function makeArrBtw (lowEnd , highEnd ){
+	var arr = [] ; 
+	for (var i = lowEnd; i <= highEnd; i++) {
+		arr.push(i);
+	}
+	return arr ;
+}
+function shuffle(o){ //v1.0
+    for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x   );
+    return o;
+};
+function show (arr,txt){
+	if (arr[0] instanceof Array) {
+		for (var i = 0 ; i < arr.length ; i++){
+			var a = JSON.stringify(arr[i]);
+			$("#result").append(a + "<br />");	
+		}
+	console.log(txt," ",arr);
+	}else{
+		var a = JSON.stringify(arr);
+		$("#result").append(a + "<br />");	
+	}
+}
+
+
+
+initialize();
+
+</script>
+</body>
+</html>

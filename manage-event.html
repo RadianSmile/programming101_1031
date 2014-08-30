@@ -1,0 +1,94 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Untitled Document</title>
+<!-- Common links -->
+<!----><link rel="icon" type="image/png" href="/include/icon.png" />
+<!----><link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+<!----><script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
+<!----><script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<!----><script type="text/javascript" src="//www.parsecdn.com/js/parse-1.2.19.min.js"></script>
+<!----><link href="/css/all.css" rel="stylesheet" />
+<!---------------------->
+<script>
+
+
+Parse.initialize("9eo5r1mHWoIPSTCzmrpdKa3lcHPjySx4y5D6q8Nq", "R8SWwYxpJcy73ogQKuSD43y7FigrlDGjBLcy1lzC");	
+	
+function init () {
+	var E = Parse.Object.extend("Event_List");
+var q = new Parse.Query(E);	
+q.find({
+  success: function(results) {
+for (var i = 0; i < results.length; i++) { 
+			show(results[i]);
+}}});
+}
+
+init ();
+function show (e){
+	$("#add").after(	 "<tr class='result-row'> 	\
+	<td>"+e.get('type')+"</td> 		<td>"+e.get("ID")+"</td> 		<td>"+e.get("name")+"</td> 		<td>"+e.get("description")+"</td> 		<td>"+e.get("isNotification")+"</td> 		<td>"+e.get("effect_target")+"</td>  <td></td> 	</tr>");
+
+}
+		
+function Submit (){
+	var E = Parse.Object.extend("Event_List");
+	var e = new E();
+	e.set("type",$("#t").val());
+	e.set("ID",$("#i").val());
+	e.set("name",$("#h").val());
+	e.set("description",$("#d").val());
+	e.set("isNotification",Boolean($("#n").val()));
+	e.set("effect_target",$("#e").val().split());
+	e.save(null,{
+		success:function(e){
+			$("#t").val("");
+			$("#i").val("");
+			$("#h").val("");
+			$("#d").val("");
+			$("#n").val("");
+			$("#e").val("");
+			show(e);
+	}});
+}
+
+</script>
+
+</head>
+
+<body>
+
+<table id="result" class="table">
+  <tr>
+		<th >Type</th>
+		<th >ID</th>			
+		<th>Title</th>	
+		<th>Description</th>	
+		<th>isNotification</th>	
+		<th>Effect-Target</th>	
+		<th>Btn</th>	
+	</tr>
+	<tr id="add">
+		<td><input id="t" class="input-md form-control" type="text" /></td>	
+		<td><input id="i" class="input-md form-control" type="number" /></td>	
+		<td><input  id="h" class="input-md form-control" type="text" /></td>	
+		<td><input  id="d" class="input-md form-control" type="text" /></td>	
+		<td><input  id="n"  class="input-md form-control" type="checkbox" /></td>	
+		<td><input  id="e" class="input-md form-control" type="text" /></td>	
+		<td><button  id="b" class="btn btn-primary" onClick="Submit();">繳交此比資料</button></td>	
+	
+	</tr>
+	<!--tr id="template" class="row">
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>		
+	</tr-->
+</table>
+
+</body>
+</html>

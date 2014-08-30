@@ -1,5 +1,7 @@
 // JavaScript Document
 
+$("title").append(" | 程式學習平台");
+
   window.fbAsyncInit = function() {
 		Parse.initialize("9eo5r1mHWoIPSTCzmrpdKa3lcHPjySx4y5D6q8Nq", "R8SWwYxpJcy73ogQKuSD43y7FigrlDGjBLcy1lzC");	
 		Parse.FacebookUtils.init({
@@ -10,8 +12,9 @@
   });
 
 	
-	// 規定只能使用這種，使用 status:true 會造成，
+	// 規定只能使用這種，使用 status:true 會造成Parse出問題
   FB.getLoginStatus(function(response) {
+		FBinitDone();
   });
 };
   (function(d, s, id) {
@@ -26,6 +29,11 @@
 Parse.User.prototype.ID = function () {
 	return this.get("ID");
 }
+
+function getLoginStatus () {
+	
+	}
+function FBinitDone(){}
 /* make the API call */
 /*
 FB.getLoginStatus(function(response) {

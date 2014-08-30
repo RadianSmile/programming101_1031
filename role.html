@@ -1,0 +1,105 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+
+<!-- Common links -->
+<!----><link rel="icon" type="image/png" href="/include/icon.png" />
+<!----><link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+<!----><script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<!----><script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<!----><script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.2.19.min.js"></script>
+<!----><link href="/css/all.css" rel="stylesheet" />
+<!----><script src="/js/all.js"></script>
+<!---------------------->
+<style>
+</style>
+<script>
+		Parse.initialize("9eo5r1mHWoIPSTCzmrpdKa3lcHPjySx4y5D6q8Nq", "R8SWwYxpJcy73ogQKuSD43y7FigrlDGjBLcy1lzC");	
+
+function s(e){
+	console.log(e);
+}
+//function FBinitDone (){
+	makeAdmin();
+function makeAdmin(){
+var adminACL = new Parse.ACL();
+adminACL.setRoleWriteAccess("Admin",true);
+adminACL.setRoleReadAccess("Admin",true);
+adminACL.setWriteAccess(Parse.User.current(),true);
+adminACL.setReadAccess(Parse.User.current(),true);
+
+var admin = new Parse.Role("Admin",adminACL);
+admin.save().then(function(r){
+	r.getUsers().add(Parse.User.current());
+	r.save().then(function(e){s(e);makeTeacher();});
+	
+});
+}
+
+function makeTeacher (){
+var teacherACL = new Parse.ACL ();
+teacherACL.setRoleWriteAccess("Admin",true);
+teacherACL.setRoleReadAccess("Admin",true);
+var teacher = new Parse.Role("Teacher",teacherACL);
+teacher.save().then(function(r){
+	var q = new Parse.Query(Parse.Role);
+	q.equalTo("name","Admin");
+	q.first().then(function(a){
+		r.getRoles().add(a);
+		r.save().then(makeTA(),function (error){console.log (error);});
+	});
+});
+}
+
+function makeTA () {
+var taACL =  new Parse.ACL ();
+taACL.setRoleWriteAccess("Admin",true);
+taACL.setRoleReadAccess("Admin",true);
+var assistant = new Parse.Role("Assistant",taACL);
+assistant.save().then(function(r){
+	var q = new Parse.Query(Parse.Role);
+	q.equalTo("name","Teacher");
+	q.first().then(function(a){
+		r.getRoles().add(a);
+		r.save().then(makeStudent(),function (error){console.log (error);});
+	});
+});
+
+}
+
+function makeStudent(){
+var stdACL = new Parse.ACL();
+stdACL.setRoleWriteAccess("Admin",true);
+stdACL.setRoleReadAccess("Admin",true);
+var student = new Parse.Role("Student",stdACL);
+student.save().then(function(r){
+	var q = new Parse.Query(Parse.Role);
+	q.equalTo("name","Assistant");
+	q.first().then(function(a){
+		r.getRoles().add(a);
+		r.save().then(function(){alert("fuck!!!!!")},function (error){console.log (error);});
+	});
+});
+}
+
+
+//role.getUsers().add(usersToAddToRole);
+//role.getRoles().add(rolesToAddToRole);
+
+
+
+//}
+
+
+</script>
+<title>Codedu</title>
+</head>
+<body>
+
+
+<script>
+
+</script>
+</body>
+</html>

@@ -13,7 +13,27 @@
 <!----><script src="js/all.js"></script>
 <!---------------------->
 <style>
+#editor-container {
+	position:relative;
+	margin:50px;
+	height:3000px;
+	
+}
+ #editor { 
+	margin: 0;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+}
 </style>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/ace/1.1.3/ace.js" type="text/javascript" charset="utf-8"></script>
+<script src="pkgs/processing/minim.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/processing.js/1.4.8/processing.min.js"></script> 
+
+
 <script>
 
 
@@ -37,10 +57,12 @@
         <h4 class="modal-title" id="myModalLabel">Modal title</h4>
       </div>
       <div class="modal-body">
-        <form id="submitAssign">
-        	<input type="url" id="submitURL" />
-        </form>
+       <form id="submitAssign">
+					<input id="submitURL" type="url" placeholder="請貼入連入作業 play.html 的網址 " style="width:400px; padding:10px;"><br>
+				</form>
+
       </div>
+			
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         <button id="submitAssignAction" type="button" class="btn btn-primary">Save changes</button>
@@ -48,23 +70,32 @@
     </div>
   </div>
 </div>
+<div id="play">
+</div>
+<div id="editor-container">
+	<div id="editor">
+
+	</div>
+</div>
 
 
 <script>
-
+var assignToSubmit = "1";
 
 $("#submitAssignAction").click(function (){
-	FB.getLoginStatus(function(response) {
+	//getLoginStatus();
 		var currentUser = Parse.User.current();		
+		
 		var Assign = Parse.Object.extend("Assign");
 		var query = new Parse.Query(Assign);
-		query.equalTo("User_id",currentUser.get("authData").facebook.id );
+		query.equalTo("uid",currentUser.get("authData").facebook.id );
+		query.equalTo("assign",assignToSubmit);
 		query.first({
 		success: function(existAssign) {
 		if (typeof(existAssign) !== "undefined") {
-			existAssign.set("Assign1",$("#submitURL").val());
+			existAssign.set("url",$("#submitURL").val());
 			existAssign.save(null, {
-				success: function(gameScore) {
+				success: function() {
 				// Execute any logic that should take place after the object is saved.
 					$("#myModal").modal('hide');
 					alert ("update success");
@@ -75,10 +106,10 @@ $("#submitAssignAction").click(function (){
 				 }
 				});
 			}else {
-
 				var assign = new Assign();
-				assign.set("User_id", currentUser.get("authData").facebook.id );
-				assign.set("Assign1",$("#submitURL").val());
+				assign.set("uid", currentUser.get("authData").facebook.id );
+				assign.set("url",$("#submitURL").val());
+				assign.set("assign",assignToSubmit);
 				$("#submitURL").val("");
 				assign.save(null, {
 				success: function(assign) {
@@ -96,8 +127,6 @@ $("#submitAssignAction").click(function (){
 		},error : function () {
 				alert ("Find Faild");
 		}
-		
-			
 		});	
 			
 		
@@ -107,8 +136,48 @@ $("#submitAssignAction").click(function (){
 
 	
 });
+
+</script>
+
+
+
+<script type="text/javascript">
+
+
+</script>
+
+<script data-file="這是程式預覽" >
+$("#submitAssignAction").on('click',function(){
+    getCode($('#submitURL').val());
+		var play = document.createElement("iframe");
+		play.setAttribute("src",$('#submitURL').val());
+		$("#play").html(play);
+		return false;
 });
 
+var callback = function (data, status, xhr) {		
+	console.log(data);
+	if (status == 'success') {
+		var editor = ace.edit("editor");
+		editor.setTheme("ace/theme/twilight");
+		editor.getSession().setTabSize(2);
+		editor.getSession().setUseWrapMode(true)
+		document.getElementById('editor').style.fontSize='16px';
+		editor.getSession().setMode("ace/mode/java");
+		editor.setValue(data);
+	}	
+}
+function getCode (url){
+		$.ajax(
+				{
+						url : "http://codedu.com/getcode.php" ,
+							type: "POST",
+							data:{url:url},
+						dataType : 'text', //explicitly requesting the xml as text, rather than an xml document
+						success : callback
+				}
+		);
+}
 </script>
 </body>
 </html>

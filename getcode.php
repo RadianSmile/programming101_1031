@@ -5,7 +5,7 @@ if (isset($_POST['url']) )
 {
 	$url = $_POST['url'];
 }else {
-	//$url = "http://radiansmile.github.io/CodeEDU/final_11/play.html";
+	$url = "http://radiansmile.github.io/CodeEDU/final_11/play.html";
 }
 
 $root = substr($url, 0 , strripos($url, "/") ) . "/";

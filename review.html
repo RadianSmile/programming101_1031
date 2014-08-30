@@ -16,8 +16,47 @@
 
 <link rel="stylesheet" href="jquery-ui/jquery-ui.css">
 <script type="text/javascript" src="jquery-ui/jquery-ui.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/ace/1.1.3/ace.js" type="text/javascript" charset="utf-8"></script>
+
+
 
 <style>
+html {
+  margin:0;
+  padding:0;
+  overflow-x:hidden;
+}
+.play {
+	background:gray;
+	height:100%;
+	padding:0;
+	position:relative;
+}
+.play iframe {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-right: -50%;
+	transform: translate(-50%, -50%)	;
+}
+.editor-container {
+	position:relative;
+	height:100%;
+	
+}
+ .editor { 
+	margin: 0;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+}
+.tab-pane{
+	height:600px;
+	height:-webkit-calc(100vh - 42px); 
+}
+
 .expand {
 	width:50%;
 	background:rgba(199,199,199,1.00);
@@ -42,7 +81,7 @@
 
 <body>
 <div class="row">
-	<div class="container">
+	<div class="container-fluid">
 	</div>
 </div>
 <div class="row">
@@ -59,19 +98,15 @@
 
 </ul>
 
-<style>
-.tab-pane {
-	min-height:300px;
-	
-}
-</style>
 <!-- Tab panes -->
-<div class="tab-content">
-  <div class="tab-pane fade in active" id="assign1">A</div>
-  <div class="tab-pane fade " id="assign2">B</div>
-  <div class="tab-pane fade " id="assign3">C</div>
-  <div class="tab-pane fade " id="assign4">D</div>
-  <div class="tab-pane fade " id="assign5">E</div>
+<div class="tab-content ">
+  <div  class="tab-pane fade row  in active" id="assign1">
+		<div class="play col-xs-7"></div><div class="editor-container col-xs-5"><div class="editor"></div></div><div></div>
+	</div>
+  <div class="tab-pane fade row" id="assign2">B</div>
+  <div class="tab-pane fade row" id="assign3">C</div>
+  <div class="tab-pane fade row" id="assign4">D</div>
+  <div class="tab-pane fade row" id="assign5">E</div>
 </div>
 
 </div>
@@ -79,21 +114,21 @@
 
 
 
-<div class="row">
+<!--div class="row">
 	<div class="one-game container no-padding">
 		<div class="expand game">
 			<iframe src="final_11/index.html" width="100%" frameborder="0" height="313"></iframe>
 		</div>
 		<div class="expand source" style="height:313px; overflow:hidden;">
-			<script src="https://gist.github.com/RadianSmile/e84d6bea589693b979d0.js"></script>
+			
 		</div>
 	</div>
-</div>
+</div-->
 
 <script>
 $('#myTab a').click(function (e) {
-  e.preventDefault()
-  $(this).tab('show')
+  e.preventDefault();
+  $(this).tab('show');
 })
 
 /*
@@ -109,7 +144,74 @@ $(document).on("mouseover",".source", function (){
 	$(this).siblings(".game").animate({width:"40%"},300);
 });
 */
+Parse.initialize("9eo5r1mHWoIPSTCzmrpdKa3lcHPjySx4y5D6q8Nq", "R8SWwYxpJcy73ogQKuSD43y7FigrlDGjBLcy1lzC");	
+var currentUser = Parse.User.current();		
 
+var assignToReview = "1";
+var Assign = Parse.Object.extend("Assign");
+var assign = new Assign();
+var q = new Parse.Query(Assign);
+q.equalTo("uid",currentUser.get("authData").facebook.id );
+q.equalTo("assign",assignToReview);
+q.first().then(function(r){
+	console.log("Querying");
+	var url = r.get("url");
+	
+	if (isInTime()){
+		getCode(url,"assign1");
+	var play = document.createElement("iframe");
+	play.style.width = "100%";
+	play.style.height = "400px";
+	play.setAttribute("src",url);
+	$("#assign1").find(".play").first().html(play);
+
+	}else {
+	}
+	
+	
+},function(e){
+	console.log(e.message);
+});
+
+function isInTime(){
+		$.ajax({
+			url : "/lastModify.php",
+			async : false,
+			type: "POST",
+			data:{url:url},
+			dataType : 'text', //explicitly requesting the xml as text, rather than an xml document
+			success : function (data, status, xhr) {	
+			}
+		});
+}
+
+</script>
+
+<script data-file="這是程式預覽" >
+function getCode (url,id){
+		console.log("Ajaxing");
+		$.ajax({
+			url : "/getcode.php",
+			async : true,
+			type: "POST",
+			data:{url:url},
+			dataType : 'text', //explicitly requesting the xml as text, rather than an xml document
+			success : function (data, status, xhr) {		
+				if (status == 'success') {
+					var tabEditor = $("#"+id).find(".editor").first().get(0);
+					console.log(tabEditor);
+	
+					var editor = ace.edit( tabEditor );
+					editor.setTheme("ace/theme/twilight");
+					editor.getSession().setUseWrapMode(true);
+					editor.getSession().setTabSize(2);
+					tabEditor.style.fontSize='14px';
+					editor.getSession().setMode("ace/mode/java");
+					editor.setValue(data);
+				}	
+			}
+		});
+}
 </script>
 </body>
 </html>
