@@ -41,7 +41,7 @@ function randomNum(){
 var current_user = Parse.User.current();
 if(current_user){
     function getData(){
-    var card = Parse.Object.extend("card");
+    var card = Parse.Object.extend("Card_info");
     var query = new Parse.Query(card);
     var No = randomNum();
     query.equalTo("cardno", No);
