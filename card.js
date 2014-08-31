@@ -38,7 +38,7 @@ $(document).ready(function(){
     }
     else{
     	alert("Please Login!");
-    	window.location.assign("fb-login.html");
+    	window.location.assign("fblogin.html");
     }
 });
 
