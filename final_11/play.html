@@ -12,11 +12,16 @@
 </head>
 
 <body>
+<div id="console">
+</div>
 </body>
 </html>
 
 <script type="text/javascript">
 $(document).ready(function() {
+$("#console").text("H = "+$( window ).height() + "\n" +"W = "+$( window ).height() );
+
+
 
 //Processing.getInstanceById('pde').size(300, 167.2);
 //Processing.getInstanceById('pde').scale(0.313);	

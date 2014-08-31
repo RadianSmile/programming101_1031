@@ -154,33 +154,34 @@ var q = new Parse.Query(Assign);
 q.equalTo("uid",currentUser.get("authData").facebook.id );
 q.equalTo("assign",assignToReview);
 q.first().then(function(r){
-	console.log("Querying");
+	console.log("Parse Done, Querying Data..");
 	var url = r.get("url");
 	
-	if (isInTime()){
-		getCode(url,"assign1");
-	var play = document.createElement("iframe");
-	play.style.width = "100%";
-	play.style.height = "400px";
-	play.setAttribute("src",url);
-	$("#assign1").find(".play").first().html(play);
-
-	}else {
-	}
-	
-	
+	isInTime(url);
 },function(e){
 	console.log(e.message);
 });
 
-function isInTime(){
+function isInTime(url){
+	console.log("Check Last Modified...");
 		$.ajax({
-			url : "/lastModify.php",
+			url : "lastModify.php",
 			async : false,
 			type: "POST",
 			data:{url:url},
 			dataType : 'text', //explicitly requesting the xml as text, rather than an xml document
 			success : function (data, status, xhr) {	
+				console.log (data);
+				
+				getCode(url,"assign1");
+				var play = document.createElement("iframe");
+				play.style.width = "100%";
+				play.style.height = "400px";
+				play.setAttribute("src",url);
+				$("#assign1").find(".play").first().html(play);
+			
+			
+			
 			}
 		});
 }
