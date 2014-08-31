@@ -9,6 +9,7 @@ $(document).ready(function(){
         query.equalTo('user', current_user);
         query.find({
             success: function(data){
+                    console.log(data);
             	    var ccontainer = "";
             	    for(var i = 0; i<data.length; i++){
             	        var card = data[i].get('card');
