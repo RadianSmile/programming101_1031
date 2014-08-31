@@ -48,7 +48,6 @@ if(current_user){
     query.first({
         success: function(results){
             var object = results;
-            console.log(object);
             if(typeof(Storage) !== "undefined"){
                   localStorage.setItem("cardid", object.id);
             }
@@ -69,7 +68,7 @@ if(current_user){
             var own = new owncard();
 
             own.set("user", current_user);
-            own.set("card", object);
+            own.set("card", object.id);
             own.save(null, {
                 success: function(){
 
