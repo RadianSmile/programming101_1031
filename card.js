@@ -23,6 +23,7 @@ $(document).ready(function(){
                     }
             	        var s = getElementStringByowncard(card.get('name'), card.get('imagesrc'));
             	        ccontainer += s;
+            	        console.log(ccontainer);
             	        if((i+1) % 5 == 0){
             	        	var string = "div class='cards'" + ccontainer + "</div>";
             	        	$('div.cardbox').append(string);
