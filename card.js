@@ -9,10 +9,10 @@ $(document).ready(function(){
         query.equalTo('user', current_user);
         query.find({
             success: function(data){
-                    console.log(data);
             	    var ccontainer = "";
             	    for(var i = 0; i<data.length; i++){
             	        var card = data[i].get('card');
+            	        console.log(card);
                     //catch cardid
                     var cardid = card.get('objectId');
                     if(typeof(Storage) !== "undefined"){
@@ -23,7 +23,6 @@ $(document).ready(function(){
                     }
             	        var s = getElementStringByowncard(card.get('name'), card.get('imagesrc'));
             	        ccontainer += s;
-            	        console.log(ccontainer);
             	        if((i+1) % 5 == 0){
             	        	var string = "div class='cards'" + ccontainer + "</div>";
             	        	$('div.cardbox').append(string);
