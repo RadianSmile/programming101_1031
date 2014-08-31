@@ -33,6 +33,7 @@ $(document).ready(function(){
             	        	ccontainer = "";
             	        }
             	    }
+                    window.location.assign("http://radiansmile.github.io/CodeEDU/card.html");
             }
         })
     }
