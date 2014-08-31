@@ -14,7 +14,7 @@ $(document).ready(function(){
             	    for(var i = 0; i<data.length; i++){
             	        var card = data[i].get('card');
                     //catch cardid
-                    var cardid = card.get('id');
+                    var cardid = card.get('objectId');
                     if(typeof(Storage) !== "undefined"){
                         localStorage.setItem("cardid" , cardid);
                     }
