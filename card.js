@@ -11,7 +11,7 @@ $(document).ready(function(){
             success: function(data){
             	    var ccontainer = "";
             	    for(var i = 0; i<data.length; i++){
-            	        var card = data[i].get('Card_info');
+            	        var card = data[i].get('card');
             	        console.log(card);
                     //catch cardid
                     /*var cardid = card.get('objectId');
