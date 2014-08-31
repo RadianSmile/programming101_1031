@@ -2,6 +2,7 @@
 $(document).ready(function(){
     Parse.initialize("9eo5r1mHWoIPSTCzmrpdKa3lcHPjySx4y5D6q8Nq", "R8SWwYxpJcy73ogQKuSD43y7FigrlDGjBLcy1lzC");
     var current_user = Parse.User.current();
+    console.log(current_user);
     if(current_user){
         var ownCard = Parse.Object.extend('Owncard');
         var query = new Parse.Query(ownCard);
