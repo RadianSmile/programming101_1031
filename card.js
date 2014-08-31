@@ -13,8 +13,6 @@ $(document).ready(function(){
             	    for(var i = 0; i<data.length; i++){
             	        var card = data[i].get('card');
             	        console.log(card);
-            	        var name = card.name;
-            	        console.log(name);
                     //catch cardid
                     /*var cardid = card.get('objectId');
                     if(typeof(Storage) !== "undefined"){
