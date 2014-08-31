@@ -38,7 +38,7 @@ $(document).ready(function(){
     }
     else{
     	alert("Please Login!");
-    	window.location.assign("http://radiansmile.github.io/fblogin.html");
+    	window.location.assign("http://radiansmile.github.io/CodeEDU/fblogin.html");
     }
 });
 
