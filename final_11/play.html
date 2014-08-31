@@ -6,7 +6,8 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.css">
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 <script src="../pkgs/processing/minim.js"></script>
-<script src="../pkgs/processing/processing.js"></script> 
+<!--script src="../pkgs/processing/processing.js"></script-->
+<script src="https://cloud.github.com/downloads/processing-js/processing-js/processing-1.3.6.min.js"></script> 
 <canvas id="pde"  data-processing-sources="final_11.pde"></canvas>
 
 </head>
@@ -19,12 +20,31 @@
 
 <script type="text/javascript">
 $(document).ready(function() {
-$("#console").text("H = "+$( window ).height() + "\n" +"W = "+$( window ).height() );
 
-
-
-//Processing.getInstanceById('pde').size(300, 167.2);
-//Processing.getInstanceById('pde').scale(0.313);	
+Processing.getInstanceById('pde').size(300, 167.2);
+Processing.getInstanceById('pde').scale(0.313);	
 });
+
+function properScaleUp(scaleUp)
+{
+    if (scaleUp)
+    {
+        if (!alreadyScaledUp)
+        {
+            //~ Processing.getInstanceById('canvas1').multiplier = 2;
+            //~ Processing.getInstanceById('canvas1').draw();
+            Processing.getInstanceById('canvas1').size(800, 600);
+            Processing.getInstanceById('canvas1').scale(4.0);
+        }
+        alreadyScaledUp = true;
+    }
+    else
+    {
+        //!! Notice that above the size is set first, scale second
+        Processing.getInstanceById('canvas1').scale(0.25);
+        Processing.getInstanceById('canvas1').size(200, 150);
+        alreadyScaledUp = false;
+    }
+}
 
 </script>
