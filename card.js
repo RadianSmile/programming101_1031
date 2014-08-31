@@ -13,15 +13,16 @@ $(document).ready(function(){
             	    for(var i = 0; i<data.length; i++){
             	        var card = data[i].get('card');
             	        console.log(card);
+            	        var name = card.get('name');
+            	        console.log(name);
                     //catch cardid
-                    var cardid = card.get('objectId');
-                    console.log(cardid);
+                    /*var cardid = card.get('objectId');
                     if(typeof(Storage) !== "undefined"){
                         localStorage.setItem("cardid" , cardid);
                     }
                     else{
                         alert("Can't store to localstorage!");
-                    }
+                    }*/
             	        var s = getElementStringByowncard(card.get('name'), card.get('imagesrc'));
             	        ccontainer += s;
             	        if((i+1) % 5 == 0){
