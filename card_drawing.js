@@ -68,7 +68,7 @@ if(current_user){
             var own = new owncard();
 
             own.set("user", current_user);
-            own.set("card", object.id);
+            own.set("card", object);
             own.save(null, {
                 success: function(){
 
