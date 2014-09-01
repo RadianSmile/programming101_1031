@@ -8,6 +8,7 @@
 <link href="css/all.css" rel="stylesheet" />
 <script src="js/all.js"></script>
 
+<title>這是最新的</title>
 </head>
 <body>
 <div id="fb-root"></div>
@@ -45,10 +46,24 @@ function fb_login () {
 				alert ("你尚未註冊，系統將自動跳轉註冊頁面。");
 				document.location="signup.html";
 			}
+<<<<<<< HEAD
 			
 		},function(e){
 			console.log(e.message);	
 		});
+=======
+      } else {
+        //alert("User logged in through Facebook!");
+        document.location ="card.html";	
+				//$("#loginModal").modal('hide')
+      }
+    },  
+    error: function(user, error) {
+			alert("你還沒註冊或你拒絕登入。")
+      alert(error.message);
+    }
+  });
+>>>>>>> FETCH_HEAD
 	}, {scope: 'email,user_likes'});
 }
 
