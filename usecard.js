@@ -8,7 +8,7 @@ $(document).ready(function(){
         var ownCard = Parse.Object.extend('Owncard');
         var query = new Parse.Query(ownCard);
         query.include('card');
-        query.equalTo('card', cardid);
+        query.equalTo('user', current_user);
         query.find({
         	success: function(data){
         	    console.log(data);
