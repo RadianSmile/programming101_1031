@@ -4,12 +4,14 @@ $(document).ready(function(){
     if(current_user){
         var getcardid = localStorage.getItem('cardarray');
         var cardid = getcardid[0];
+        console.log(cardid);
         var ownCard = Parse.Object.extend('Owncard');
         var query = new Parse.Query(ownCard);
         query.include('card');
         query.equalTo('card', cardid);
         query.find({
         	success: function(data){
+        	    console.log(data);
         	    var ccontainer = "";
         	    for(var i = 0; i<data.length; i++){
         	        var carddata = data[i].get('card');
