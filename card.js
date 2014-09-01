@@ -34,6 +34,14 @@ $(document).ready(function(){
             	        	$('div.cardbox').append(string);
             	        	ccontainer = "";
             	        }
+                    $('card'+i+'').click(function(){
+                        if(typeof(Storage) !== "undefined"){
+                            localStorage.setItem("num", i);
+                        }
+                        else{
+                            alert('error!');
+                        }
+                    })
             	    }
             }
         })

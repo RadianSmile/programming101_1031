@@ -3,8 +3,8 @@ $(document).ready(function(){
     var current_user = Parse.User.current();
     if(current_user){
         var getcardid = JSON.parse(localStorage["cardarray"]);
-        var cardid = getcardid[0];
-        console.log(cardid);
+        var cardnum = localStorage.getItem('num');
+        var cardid = getcardid[cardnum];
         var ownCard = Parse.Object.extend('Owncard');
         var query = new Parse.Query(ownCard);
         query.include('card');
