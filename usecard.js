@@ -15,14 +15,16 @@ $(document).ready(function(){
         	    var ccontainer = "";
         	    for(var i = 0; i<data.length; i++){
         	        var carddata = data[i].get('card');
-        	        if(carddata == cardid){
+        	        try{
+        	            if(carddata == cardid){
         	            var s = getElementStringByowncard(carddata.get('name'), carddata.get('imagesrc'), carddata.get('shortdes'));
         	            ccontainer += s;
         	            var string = "<div class = 'cards'>" + ccontainer + "</div>";
         	            $('div.cardbox').append(string);
         	        }
-        	        else{
-        	            alert("Your data is broken!!!");
+        	        }
+        	        catch(e){
+
         	        }
         	    }
         	}
