@@ -3,6 +3,7 @@
 $("title").append(" | 程式學習平台");
 
   window.fbAsyncInit = function() {
+		Parse.initialize("9eo5r1mHWoIPSTCzmrpdKa3lcHPjySx4y5D6q8Nq", "R8SWwYxpJcy73ogQKuSD43y7FigrlDGjBLcy1lzC");
 		Parse.FacebookUtils.init({
 			appId      : '1452756891666119',
 			cookie     : true,  // enable cookies to allow the server to access 
