@@ -14,7 +14,7 @@ $(document).ready(function(){
         	    var ccontainer = "";
         	    for(var i = 0; i<data.length; i++){
         	        var carddata = data[i].get('card');
-        	        var carddataid = cardata.id;
+        	        var carddataid = carddata.id;
         	        console.log(carddataid);
         	        try{
         	            if(carddata == cardid){
