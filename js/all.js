@@ -3,7 +3,6 @@
 $("title").append(" | 程式學習平台");
 
   window.fbAsyncInit = function() {
-		Parse.initialize("9eo5r1mHWoIPSTCzmrpdKa3lcHPjySx4y5D6q8Nq", "R8SWwYxpJcy73ogQKuSD43y7FigrlDGjBLcy1lzC");	
 		Parse.FacebookUtils.init({
 			appId      : '1452756891666119',
 			cookie     : true,  // enable cookies to allow the server to access 
@@ -51,5 +50,19 @@ FB.getLoginStatus(function(response) {
 */
 
 
+$(document).on("click",".toTop",function(e){
+	var scroll_pos=(0);          
+   $('html, body').animate({scrollTop:(scroll_pos)}, '2000');
+	
+});
 
+$(document).on("scroll","window",function(e){
+	console.log($(document).scrollTop());
+	if($(document).scrollTop() > 50 ){
+		$(".toTop").fadeIn();	
+	}else {
+		$(".toTop").fadeOut();	
+	}
+	
+});
 

@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Untitled Document</title>
+
 <!-- Common links -->
 <!----><link rel="icon" type="image/png" href="/include/icon.png" />
 <!----><link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
@@ -10,36 +10,37 @@
 <!----><script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <!----><script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.2.19.min.js"></script>
 <!----><link href="/css/all.css" rel="stylesheet" />
-<!----><script src="/js/all.js"></script>
 <!---------------------->
-
+<style>
+</style>
+<title>Codedu</title>
 </head>
-
 <body>
-<div id="result">
-</div>
-<script>
 
-//+ Jonas Raoni Soares Silva
-//@ http://jsfromhell.com/array/shuffle [v1.0]
-//courtesy of Google 
-//http://stackoverflow.com/questions/6274339/how-can-i-shuffle-an-array-in-javascript
-var reviewList = [];
-var reviewList2 = [];
+
+
+
+
+<script type="text/javascript">
+		Parse.initialize("9eo5r1mHWoIPSTCzmrpdKa3lcHPjySx4y5D6q8Nq", "R8SWwYxpJcy73ogQKuSD43y7FigrlDGjBLcy1lzC");	
+
+
 	//var arr2 = arr1.slice(0);
-var STD_NUM = 60	 ;
-var REVIEW_MAX = 5 ;
 
-function initialize (){
+
+
+function getReviewNumArr (){
+	var reviewList = [];
+
 	var arr = [];
 	for (var i = 0 ; i <= REVIEW_MAX; i++) {
 		arr =  (i === 0 ) ? makeArrBtw(0,STD_NUM) : shuffle(makeArrBtw(0,STD_NUM)) ;
-		reviewList.push(arr);	
+		reviewList.push(arr);		
 	} //!show (reviewList,"Origin:");
 	var hw = checkDuplicate(reviewList);
 	var stdHwArr = breakHW (hw);
-		show(stdHwArr);
-
+		//show(stdHwArr);
+		return stdHwArr ;
 }
 
 var overflowX = [] ;
@@ -55,7 +56,7 @@ function checkDuplicate (hw) {
 			a = overflowX.shift() ;
 		}//!show(["success"]);
 	}//!show (hw,"Alter:");
-	return (hw)
+	return (hw);
 }
 function Vcheck(hw,x,isOverflow){
 		for( var y = 1 ; y <= REVIEW_MAX ; y++){		
@@ -116,6 +117,7 @@ function breakHW (hw){
 		stdHW.push(arr);
 	}
 	return stdHW ;
+
 }
 
 function makeArrBtw (lowEnd , highEnd ){
@@ -129,22 +131,69 @@ function shuffle(o){ //v1.0
     for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x   );
     return o;
 };
-function show (arr,txt){
-	if (arr[0] instanceof Array) {
-		for (var i = 0 ; i < arr.length ; i++){
-			var a = JSON.stringify(arr[i]);
-			$("#result").append(a + "<br />");	
-		}
-	console.log(txt," ",arr);
-	}else{
-		var a = JSON.stringify(arr);
-		$("#result").append(a + "<br />");	
+
+
+
+
+
+
+
+
+
+
+var ASSIGN_NTH = 1;//rq.params.assignBum	 ;	
+var STD_NUM = 60 ;
+var REVIEW_MAX = 5 ;
+
+var Test_User = Parse.Object.extend("Test_User");
+var Test_Assign =	Parse.Object.extend("Test_Assign");
+
+var qa= new Parse.Query(Test_Assign);
+qa.equalTo("nth",ASSIGN_NTH.toString())
+var AssignArr =[];
+
+var qu = new Parse.Query(Test_User);
+qu.equalTo("role","std");
+var UserArr = [];
+
+qa.find().then(function(o){AssignArr = o ;}).then(function(e){
+	qu.find().then(function(o){UserArr = o ; 
+		console.log (UserArr);
+		Record();
+	},function(e){console.log(e);});
+});
+
+STD_NUM;REVIEW_MAX // two var used in  "getReviewNumArr()";
+var reviewRandomArr = getReviewNumArr ();
+
+function Record ()  {
+
+for (var i = 0 ; i < STD_NUM ; i++ ){
+	var q = [] ;
+	var reviewArr = reviewRandomArr[i] ;
+	for (var j = 0 ; j < REVIEW_MAX ; j++){
+		var qAssign = new Parse.Query(Test_Assign);
+		qAssign.equalTo("maker",UserArr[reviewArr[j]]);
+		q.push(qAssign);
 	}
+	var queryAssignToReview = new Parse.Query.or(q[0],q[1],q[2],q[3],q[4]);
+	queryAssignToReview.find().then(function(o){
+		var ReviewUser = Parse.Object.extend("Test_Review_User");
+		var reviewUser = new ReviewUser();
+		//document.write(UserArr[i].get("id"));
+		reviewUser.set("reviewer",UserArr[i]);
+		console.log(o);
+		reviewUser.set("AssignToReview",o);
+		reviewUser.save().then(function(){console.log("yes 1 \t");},
+		function(e){
+			console.log(e);
+		});
+	},function(e){console.log(e)});
+}
+console.log ("done!");
 }
 
 
-
-initialize();
 
 </script>
 </body>

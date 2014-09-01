@@ -54,7 +54,8 @@ html {
 }
 .tab-pane{
 	height:600px;
-	height:-webkit-calc(100vh - 42px); 
+	height:-webkit-calc(100vh - 54px); 
+	position:relative;
 }
 
 .expand {
@@ -74,6 +75,38 @@ html {
 .grade-preview {
 	display:inline;
 }
+
+.grading-pane {
+	position:absolute;
+	
+	bottom:0px;;
+	left:0px;
+	height:80px;
+	z-index:10;
+}.grading-pane * {
+	float:left;
+	margin: 0 20px;
+}
+
+
+.-grading-button{
+		height:100%;
+		border:rgba(0,0,0,1.00) ;
+	width:25%;
+	float:left;
+	background:rgba(196,196,196,1.00);
+	color:rgba(0,0,0,1.00);
+}
+
+#review-submit-block{
+	position:absolute;
+	right:10px;
+	top:4px;
+}
+#review-tab{
+	padding-top:12px;
+}
+
 </style>
 
 
@@ -87,21 +120,35 @@ html {
 <div class="row">
 <div class=" container-fluid">
 <!-- Nav tabs -->
-<ul class="nav nav-tabs" role="tablist">
+<div class="row" style="position:relative;">
+<ul id="review-tab" class="nav nav-tabs col-md-12" role="tablist">
   <li class="title disabled"><a >Assign</a></li>
-	<li class="active">
+	<li class="tab active">
 			<a href="#assign1" role="tab" data-toggle="tab">#1 <div class="grade-preview"></div></a></li>
-  <li><a href="#assign2" role="tab" data-toggle="tab">#2 <div class="grade-preview"></div></a></li>
-  <li><a href="#assign3" role="tab" data-toggle="tab">#3 <div class="grade-preview"></div></a></li>
-  <li><a href="#assign4" role="tab" data-toggle="tab">#4 <div class="grade-preview"></div></a></li>
-  <li><a href="#assign5" role="tab" data-toggle="tab">#5 <div class="grade-preview"></div></a></li>
-
+  <li class="tab" ><a href="#assign2" role="tab" data-toggle="tab">#2 <div class="grade-preview"></div></a></li>
+  <li class="tab"><a href="#assign3" role="tab" data-toggle="tab">#3 <div class="grade-preview"></div></a></li>
+  <li class="tab"><a href="#assign4" role="tab" data-toggle="tab">#4 <div class="grade-preview"></div></a></li>
+  <li class="tab"><a href="#assign5" role="tab" data-toggle="tab">#5 <div class="grade-preview"></div></a></li>
 </ul>
-
+<div id="review-submit-block" class="col-md-2">
+	<button id="review-submit" class="btn btn-primary btn-lg">確認繳交</button>
+</div>
+</div>
 <!-- Tab panes -->
 <div class="tab-content ">
   <div  class="tab-pane fade row  in active" id="assign1">
 		<div class="play col-xs-7"></div><div class="editor-container col-xs-5"><div class="editor"></div></div><div></div>
+		<div class="grading-pane">
+			<select class="grade-select form-control input-md" >
+				<option>-</option>
+				<option>O</option>
+				<option>C</option>
+				<option>B</option>
+				<option>A</option>
+			</select>
+			
+			<button class="btn btn-danger">顯示霸個</button>
+		</div>
 	</div>
   <div class="tab-pane fade row" id="assign2">B</div>
   <div class="tab-pane fade row" id="assign3">C</div>
@@ -110,9 +157,64 @@ html {
 </div>
 
 </div>
+
+</div>
+<style>
+.bug-img  {
+	min-height:150px;
+	background-image:url(img/bug.jpg);
+	background-size:cover;
+}
+
+.bug-des, .add-bug-des {
+		min-height:150px;
+		background:rgba(252,204,205,1.00);
+}
+.bug , .add-bug {
+	margin:20px 0 0 0  ;
+		min-height:150px;
+
+
+}
+.add-bug-img {
+		min-height:150px;
+
+	background:url(img/photo-upload.jpg);
+	background-size:contain;
+	background-position:center center;
+	background-repeat:no-repeat;
+}
+</style>
+<div id="bug-list" class="container-fluid">
+	<div class="row bug">
+		<div class=" bug-img col-md-2">		
+		</div>
+		<div class="bug-des col-md-5">
+		</div>		
+	</div>
+	<div class="row bug">
+		<div class=" bug-img col-md-2">		
+		</div>
+		<div class="bug-des col-md-5">
+		</div>
+	</div>
+	
+	<div class="row add-bug ">
+		<div class="add-bug-img col-md-2">		
+		</div>
+		<div class="add-bug-des col-md-5">
+		</div>		
+	</div>
+	<div class="row">
+		<button id="submit-bug"></button>
+	</div>
 </div>
 
 
+
+<div class="toTop">
+
+</style>
 
 <!--div class="row">
 	<div class="one-game container no-padding">
@@ -126,10 +228,13 @@ html {
 </div-->
 
 <script>
+
+
 $('#myTab a').click(function (e) {
   e.preventDefault();
   $(this).tab('show');
 })
+
 
 /*
 $(document).on("mouseover",".game", function (){
@@ -148,6 +253,10 @@ Parse.initialize("9eo5r1mHWoIPSTCzmrpdKa3lcHPjySx4y5D6q8Nq", "R8SWwYxpJcy73ogQKu
 var currentUser = Parse.User.current();		
 
 var assignToReview = "1";
+
+
+
+	
 var Assign = Parse.Object.extend("Assign");
 var assign = new Assign();
 var q = new Parse.Query(Assign);
@@ -179,16 +288,29 @@ function isInTime(url){
 				play.style.height = "400px";
 				play.setAttribute("src",url);
 				$("#assign1").find(".play").first().html(play);
-			
-			
-			
 			}
 		});
 }
 
 </script>
 
+<script data-file="grade">
+var gradeArr = new Array(5);
+
+	$(document).on("change",".grade-select",function(){
+		var g = $(this).val();
+		console.log(g)
+		var $p = $(this).closest(".tab-pane") ;
+		var i = $p.index();
+		console.log(i);
+		gradeArr[i] = g ;
+		console.log($($(".tab").get(i)).find(".grade-preview").first().text(g));
+	} );
+</script>
+
+
 <script data-file="這是程式預覽" >
+
 function getCode (url,id){
 		console.log("Ajaxing");
 		$.ajax({
@@ -214,5 +336,14 @@ function getCode (url,id){
 		});
 }
 </script>
+<script data-file="Bug">
+
+</script>
+
+<script data-file="pull-Bug">
+
+</script>
+
+
 </body>
 </html>

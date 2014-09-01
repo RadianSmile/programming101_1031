@@ -33,7 +33,7 @@ var REVIEW_MAX = 5 ;
 function initialize (){
 	var arr = [];
 	for (var i = 0 ; i <= REVIEW_MAX; i++) {
-		arr =  (i === 0 ) ? makeArrBtw(1,STD_NUM) : shuffle(makeArrBtw(1,STD_NUM)) ;
+		arr =  (i === 0 ) ? makeArrBtw(0,STD_NUM) : shuffle(makeArrBtw(0,STD_NUM)) ;
 		reviewList.push(arr);	
 	} show (reviewList,"Origin: ");
 	var hw = checkDuplicate(reviewList);
@@ -122,10 +122,13 @@ function Hcheck(hw,x,y){
 
 function breakHW (hw){
 	var stdHW = [];
+	var HW = hw.slice();
+	HW.shift();
+	
 	for (var x = 0 ; x < STD_NUM ; x++){
 		var arr = [] ;
-		for (var y = 0 ; y < REVIEW_MAX +1 ; y++ ){
-			arr.push (hw[y][x]);
+		for (var y = 0 ; y < REVIEW_MAX  ; y++ ){
+			arr.push (HW[y][x]);
 		}
 		stdHW.push(arr);
 	}
@@ -135,7 +138,7 @@ function breakHW (hw){
 
 function makeArrBtw (lowEnd , highEnd ){
 	var arr = [] ; 
-	for (var i = lowEnd; i <= highEnd; i++) {
+	for (var i = lowEnd; i < highEnd; i++) {
 		arr.push(i);
 	}
 	return arr ;

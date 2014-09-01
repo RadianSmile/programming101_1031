@@ -19,24 +19,36 @@
 
     }
 function fb_login () {
-	FB.login(function(){
-  Parse.FacebookUtils.logIn(null, {
-    success: function(user) {
-      if (!user.existed()) {
-			if(confirm ("你尚未註冊，是否自動跳轉註冊頁面?")){
-			document.location="signup.html";
+	FB.login(function(response){
+		//console.log(response);
+		var u = response.authResponse.userID;
+		var q = new Parse.Query(Parse.User);
+		q.equalTo("uid",u);
+		q.first().then(function(s){	
+			if(typeof(s) !== "undefined"){
+				Parse.FacebookUtils.logIn(null,{success:function(u){
+					if (!u.existed()) {
+						//這裡理論上不能發生！
+						alert ("我幫你註冊了，但好像有哪裡不太對噢");
+						document.location="signup.html";
+					}else{
+							
+						document.location ="dashboard.html";	
+					}
+				}, error : function(){
+					alert("你拒絕登入，不然就是你尚未足夠授權。")
+					console.log(alert(error.message));
+				}});	
+					
+			}else{
+				
+				alert ("你尚未註冊，系統將自動跳轉註冊頁面。");
+				document.location="signup.html";
 			}
-      } else {
-        //alert("User logged in through Facebook!");
-        document.location ="dashboard.html";	
-				//$("#loginModal").modal('hide')
-      }
-    },  
-    error: function(user, error) {
-			alert("你還沒註冊或你拒絕登入。")
-      alert(error.message);
-    }
-  });
+			
+		},function(e){
+			console.log(e.message);	
+		});
 	}, {scope: 'email,user_likes'});
 }
 

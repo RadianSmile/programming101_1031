@@ -13,6 +13,27 @@
 <!----><script src="js/all.js"></script>
 <!---------------------->
 
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/jquery.validate.min.js"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/additional-methods.min.js"></script>
+
+<script>
+$(document).ready(function () {
+
+    $('#step3').validate({ // initialize the plugin
+        rules: {
+            name: {
+                required: true,
+            },
+            id: {
+                required: true,
+                minlength: 5
+            }
+        }
+    });
+
+});
+</script>
+
 <style>
 .unvisible {
 	display:none;
@@ -46,38 +67,38 @@ function logout () {
       console.log ("Logout")
     });
 	 }
-function checkLoginStatus ()  {
+function checkLoginStatus (goStep3)  {
 	FB.getLoginStatus(function(response) {
     if (response.status === 'connected') {
-			 	if(checkIfExist(response)){
-		alert("嘿，你已經註冊過惹... \n即將跳轉到個人頁面");
-		document.location = "dashboard.html"; 
-		}else{fb_getInfo();}
-			 
-    } else {
+			checkIfExist(response).then(function(o){
+				console.log(typeof (o));
+				if (typeof (o) !== "undefined"){ // 已經存在了
+				  console.log("已經登入了，而且也註冊了。");
+
+					alert("嘿，"+o.get("name")+"，你已經註冊過惹噢... \n即將跳轉到個人頁面");
+					document.location = "dashboard.html"; 
+				}else {//登入了，但還沒存在，但，將第二步的資訊準備好
+				  console.log("已經登入，但尚未註冊了");
+					fb_getInfo(goStep3);
+				}
+			},function(e){console.log(e.message);});
+		}else { // 它FB根本還沒登入
+			console.log("FB還沒登入");
 			showLoginBtn ();
-			
 			$("#fb_login_btn").fadeIn();
-		}
-  });
+		}		
+ });
 }
 
 function fb_login () {
  FB.login(function(response) {
-	console.log(response);
-	if(checkIfExist(response)){
-		alert("嘿，你已經註冊過惹... \n即將跳轉到個人頁面");
-		document.location = "dashboard.html"; 
-	}else{
-		fb_getInfo();
-		$("#cntFB").fadeOut();
-	}
+	checkLoginStatus(true);
  });
 }
 
 
 
-function fb_getInfo () {
+function fb_getInfo (goStep3) {
 	FB.api("/me/picture",{
 		"redirect": false,
 		"height": "50",
@@ -88,14 +109,16 @@ function fb_getInfo () {
 			console.log(response);
 			var url = response.data.url;
 			$("#pf_photo").html("<img src='" + url + "' />")//.append("");
-			
-
-				$("#pf_des").text("歡迎，您已經登入了，請直接完成第三步");
+			$("#pf_des").text("歡迎，您已經登入了，請直接完成第三步");
 
 		}
-		$("#fb_status").fadeIn({complete:function(){
-			$("#step3").fadeIn();	
-		}});
+		if(goStep3){
+			$("#cntFB").fadeOut({complete:function(){
+				$("#fb_status").fadeIn({complete:function(){
+					$("#step3").fadeIn();	
+				}});
+			}});
+		}
 	});
 }
 
@@ -104,57 +127,63 @@ function showLoginBtn () {
 }
 
 function signUp () {
-	  Parse.FacebookUtils.logIn(null, {
-    success: function(user) {
+	console.log($("#name").val().length);
+	if($("#id").val().length === 9 ||$("#id").val().length === 8){
+	}else{
+		alert("學號格式是不是錯了?");
+		return false;
+	}
+	if($("#name").val().length === 3 || $("#name").val().length ===2 ){
+	}else {
+		alert("名稱格式正確嗎?");
+		return false ;
+	}
+		  Parse.FacebookUtils.logIn(null, {
+   		 success: function(user) {
+
 				user.set("uid",user.get("authData").facebook.id);
 				user.set("ID",$("#id").val());
 				user.set("name",$("#name").val());
 				user.save(null, {
 					success: function(user) {
-						if (user.existed()){
-							
-						}
-						
-						/// $("#status").html(syntaxHighlight(user));
-							
 						alert(user.ID() +' 註冊成功! \n頁面即將跳轉至個人頁面');
-						
-						///document.location = "dashboard.html"; 
-						
+						document.location="dashboard.html";
 					},
 					error: function(userdata, error) {
-						// Execute any logic that should take place if the save fails.
-						// error is a Parse.Error with an error code and description.
 						alert('Failed to create new object, with error code: ' + error.message);
 					}
 				});
-
-			//$("#status").html(syntaxHighlight(user.get("authData")));
-	
-      if (!user.existed()) {
-				//setUserData() ;
-      } else {
-        //document.location ="dashboard.html";			
-				//$("#loginModal").modal('hide')
-
-			$("#status").html(syntaxHighlight(user.get("authData")));
-      }
+			///$("#status").html(syntaxHighlight(user.get("authData")));
     },  
     error: function(user, error) {
       alert(error.message);
     }
   });
 }
+
+/**Rn
 function checkIfExist(r){
 	var uid = r.authResponse.userID ;
 	var query = new Parse.Query(Parse.User);
 	query.equalTo("uid",uid);
-	query.find({
+	query.first({
 		success:function(r){
 			console.log(r);}
 	});
-	return true;
+}**/
+var checkIfExist  = function (response){
+	var promise = new Parse.Promise();
+	var uid = response.authResponse.userID ;
+	var q = new Parse.Query(Parse.User);
+	q.equalTo("uid",uid);
+	q.first().then(function(o){
+			promise.resolve(o);
+		},function(e){
+			promise.reject(e);
+		});
+	return promise;
 }
+
 
 function syntaxHighlight(json) {
     if (typeof json != 'string') {
@@ -276,7 +305,7 @@ function syntaxHighlight(json) {
 <div class="form-group">
   <label class="col-md-4 control-label" for=""></label>
   <div class="col-md-4">
-<button id="tt" class="btn btn-primary"  onClick="signUp();">註冊</button>
+<button id="tt" class="btn btn-primary"   onClick="signUp();">註冊</button>
   </div>
 </div>
 
@@ -298,29 +327,31 @@ function syntaxHighlight(json) {
 </div>
 <script>
 function FBinitDone (){
-				checkLoginStatus (); 
+	console.log("初始化完成，檢查確定是否登入中...");	
+	checkLoginStatus (false); 
 
 }
 function checkPassword() {
 	var Password = Parse.Object.extend("Password");
 	var password = new Password();
 	var q = new Parse.Query(Password);
+
 	q.equalTo("name","signup");
 	q.equalTo("password",$("#pwd").val());
 	q.first().then(function(r){
 	 var result = r.get("status");
 		if (result === "student"){
 			$("#step2").fadeIn();
-			checkLoginStatus ();
+			checkLoginStatus (true); 
 			//跑出FB登入頁面	
 		}else if (result === "teacher"){ 
 			$("#step2").fadeIn();
 			$("#fb_login_btn").fadeIn();
-			checkLoginStatus (); 
+			checkLoginStatus (true); 
 			//alert("Hello Teacher");
 			//跑出FB登入頁面	
 		}else if (result === "ta"){
-			checkLoginStatus (); 
+			checkLoginStatus (true); 
 			$("#step2").fadeIn();
 
 			alert ("Hello TA");

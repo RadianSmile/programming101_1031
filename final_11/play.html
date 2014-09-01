@@ -14,17 +14,22 @@
 
 <body>
 <div id="console">
+
 </div>
+<button onClick="resize();">我要變形</button>
 </body>
 </html>
 
 <script type="text/javascript">
 $(document).ready(function() {
 
-Processing.getInstanceById('pde').size(300, 167.2);
-Processing.getInstanceById('pde').scale(0.313);	
 });
 
+function resize(){
+	
+Processing.getInstanceById('pde').size(600, 325);
+Processing.getInstanceById('pde').scale(0.7);	
+}
 function properScaleUp(scaleUp)
 {
     if (scaleUp)

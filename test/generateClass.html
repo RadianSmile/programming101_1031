@@ -1,0 +1,104 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+
+<!-- Common links -->
+<!----><link rel="icon" type="image/png" href="/include/icon.png" />
+<!----><link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+<!----><script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<!----><script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<!----><script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.2.19.min.js"></script>
+<!----><link href="../css/all.css" rel="stylesheet" />
+<!----><!--script src="../js/all.js"></script-->
+<!---------------------->
+<style>
+</style>
+<script>
+</script>
+<title>Codedu</title>
+</head>
+<body>
+
+
+<script>
+		Parse.initialize("9eo5r1mHWoIPSTCzmrpdKa3lcHPjySx4y5D6q8Nq", "R8SWwYxpJcy73ogQKuSD43y7FigrlDGjBLcy1lzC");	
+
+
+var i = 0 ;
+var MAX = 60 ; 
+function createUserLoop(i){
+
+	var Test_User =  Parse.Object.extend("Test_User");
+	var user = new Test_User();
+	user.set("role","std");
+	user.set("ID",i);
+	user.save().then(function(o){
+		document.write(i +"\t");
+		if (i < MAX) {
+			createUserLoop(++i	);
+		}else {
+			return true ;
+		}	
+	},function(e){
+		return e.message ;
+	});
+}
+
+var e = function (e){
+	console.log (e.message);
+}
+
+var userArr = [];
+function queryUser(){
+	var promise = new Parse.Promise();
+	var q = new Parse.Query(Parse.Object.extend("Test_User"));
+	q.find().then(function(o){
+		console.log(o.length);
+		for (var i = 0 ; i < o.length ; i++){
+			//document.write(JSON.stringify(o[i])+"\n");
+			//console.log(o[i]);
+		}
+		promise.resolve(o) ;
+	},function (e){
+	//console.log (e.message);
+});
+return promise
+}
+
+queryUser().then(function(o){
+	if (confirm ("yes")){
+	createAssignLoop(i,o);}
+});
+
+
+i = 0 ;
+function createAssignLoop(i,users){
+	var Test_Assign =  Parse.Object.extend("Test_Assign");
+	var assign = new Test_Assign();
+	assign.set("url","http://radiansmile.github.io/CodeEDU/final_11/play.html");
+	assign.set("maker",users[i]);
+	assign.set("nth","1");
+	assign.save().then(function(o){
+		document.write(i +"\t");
+		if (i < MAX -1) {
+			createAssignLoop(++i	,users);
+		}else {
+			return true ;
+		}	
+	},function(e){
+		return e.message ;
+	});
+}
+
+
+//var t = createUserLoop(i);
+
+
+//document.write(t);
+
+
+
+</script>
+</body>
+</html>
