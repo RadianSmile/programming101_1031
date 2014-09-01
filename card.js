@@ -10,14 +10,14 @@ $(document).ready(function(){
         query.find({
             success: function(data){
             	    var ccontainer = "";
-                 var storagecard = new Array();
+                 var storagecard = [];
             	    for(var i = 0; i<data.length; i++){
             	        var card = data[i].get('card');
             	        console.log(card);
                     //catch cardid
                     if(typeof(Storage) !== "undefined"){
-                        storagecard.push([card.id]);
-                        localStorage.setItem("cardarray" , storagecard);
+                        storagecard.push(card.id);
+                        localStorage["cardarray"] = JSON.stringify(storagecard);
                     }
                     else{
                         alert("Can't store to localstorage!");
