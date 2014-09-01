@@ -11,10 +11,10 @@ $(document).ready(function(){
         query.equalTo('user', current_user);
         query.find({
         	success: function(data){
-        	    console.log(data);
         	    var ccontainer = "";
         	    for(var i = 0; i<data.length; i++){
         	        var carddata = data[i].get('card');
+        	        console.log(carddata);
         	        try{
         	            if(carddata == cardid){
         	            var s = getElementStringByowncard(carddata.get('name'), carddata.get('imagesrc'), carddata.get('shortdes'));
