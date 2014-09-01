@@ -14,7 +14,8 @@ $(document).ready(function(){
         	    var ccontainer = "";
         	    for(var i = 0; i<data.length; i++){
         	        var carddata = data[i].get('card');
-        	        console.log(carddata);
+        	        var carddataid = cardata.id;
+        	        console.log(carddataid);
         	        try{
         	            if(carddata == cardid){
         	            var s = getElementStringByowncard(carddata.get('name'), carddata.get('imagesrc'), carddata.get('shortdes'));
