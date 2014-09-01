@@ -17,7 +17,7 @@ $(document).ready(function(){
                     var storagecard = new Array();
                     storagecard.push(card.id);
                     if(typeof(Storage) !== "undefined"){
-                        localStorage.setItem("cardid" , storagecard);
+                        localStorage.setItem("cardarray" , storagecard);
                     }
                     else{
                         alert("Can't store to localstorage!");
