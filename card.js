@@ -14,8 +14,10 @@ $(document).ready(function(){
             	        var card = data[i].get('card');
             	        console.log(card);
                     //catch cardid
+                    var storagecard = [];
+                    storagecard.append(card.id);
                     if(typeof(Storage) !== "undefined"){
-                        localStorage.setItem("cardid" , card.id);
+                        localStorage.setItem("cardid" , storagecard);
                     }
                     else{
                         alert("Can't store to localstorage!");
