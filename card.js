@@ -34,14 +34,6 @@ $(document).ready(function(){
             	        	$('div.cardbox').append(string);
             	        	ccontainer = "";
             	        }
-                    $('#card'+i +'').click(function(){
-                        if(typeof(Storage) !== "undefined"){
-                            localStorage.setItem("num", i);
-                        }
-                        else{
-                            alert('error!');
-                        }
-                    })
             	    }
             }
         })
@@ -197,3 +189,48 @@ function cardSteal(user, target){
 function onemoreCard(){
     window.location.assign("card_drawing.html");
 };
+
+$('#card0').click(function(){
+    if(typeof(Storage) !== "undefined"){
+        localStorage.setItem("num", 0);
+    }
+    else{
+        alert('error!');
+    }
+})
+
+$('#card1').click(function(){
+    if(typeof(Storage) !== "undefined"){
+        localStorage.setItem("num", 1);
+    }
+    else{
+        alert('error!');
+    }
+})
+
+$('#card2').click(function(){
+    if(typeof(Storage) !== "undefined"){
+        localStorage.setItem("num", 2);
+    }
+    else{
+        alert('error!');
+    }
+})
+
+$('#card3').click(function(){
+    if(typeof(Storage) !== "undefined"){
+        localStorage.setItem("num", 3);
+    }
+    else{
+        alert('error!');
+    }
+})
+
+$('#card4').click(function(){
+    if(typeof(Storage) !== "undefined"){
+        localStorage.setItem("num", 4);
+    }
+    else{
+        alert('error!');
+    }
+})
