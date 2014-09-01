@@ -10,11 +10,11 @@ $(document).ready(function(){
         query.find({
             success: function(data){
             	    var ccontainer = "";
+                 var storagecard = new Array();
             	    for(var i = 0; i<data.length; i++){
             	        var card = data[i].get('card');
             	        console.log(card);
                     //catch cardid
-                    var storagecard = new Array();
                     if(typeof(Storage) !== "undefined"){
                         storagecard.push(card.id);
                         localStorage.setItem("cardarray" , storagecard);
