@@ -57,6 +57,33 @@ function use_notification(user, target){
 
 };
 
+//usecard
+$('#card0').click(function(){
+    if(current_user){
+        var ownCard = Parse.Object.extend('Owncard');
+        var query = new Parse.Query(ownCard);
+        query.include('card');
+        query.equalTo('user', current_user);
+        query.find({
+            success: function(data){
+                var ccontainer = "";
+                var getcardid = localStorage.getItem('cardarray');
+                var cardid = getcardid[0];
+                var carddata = data[i].get('card');
+                if(carddata == cardid){
+                    var s = getElementStringByowncard(carddata.get('name'), carddata.get('imagesrc'), carddata.get('shortdes'));
+                    ccontainer += s;
+                    var string = "<div class = 'cards'>" + ccontainer + "</div>";
+                    $('div.cardbox').append(string);
+                }
+                else{
+                    alert("Your data is broken!!!");
+                }
+            }
+        })
+    }
+});
+
 //cardUsed
 function cardUsed(){
     user = Parse.User.current();
