@@ -13,7 +13,6 @@ $(document).ready(function(){
                  var storagecard = [];
             	    for(var i = 0; i<data.length; i++){
             	        var card = data[i].get('card');
-            	        console.log(card);
                     //catch cardid
                     if(typeof(Storage) !== "undefined"){
                         storagecard.push(card.id);
