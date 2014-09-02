@@ -31,7 +31,7 @@ $(document).ready(function(){
                               var id = $(this).attr('id');
                               console.log(id);
                               localStorage['owncardId'] = id;
-                              window.location('carddes.html');
+                              window.location.assign("http://radiansmile.github.io/CodeEDU/carddes.html");
                           })
             	        }
             	        else if(i == data.length - 1){
