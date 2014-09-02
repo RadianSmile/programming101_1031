@@ -21,7 +21,7 @@ $(document).ready(function(){
                     else{
                         alert("Can't store to localstorage!");
                     }
-            	        var s = getElementStringByowncard(card.get('name'), card.get('imagesrc'), i);
+            	        var s = getElementStringByowncard(card.get('name'), card.get('imagesrc'), data[i].id);
             	        ccontainer += s;
             	        if((i+1) % 5 == 0){
             	        	var string = "div class='cards' " + ccontainer + "</div>";
@@ -51,9 +51,9 @@ $(document).ready(function(){
     return s;
 };*/
 
-function getElementStringByowncard(name, imagesrc, i){
+function getElementStringByowncard(name, imagesrc, id){
     var s0 = "<h2>" + name + "</h2>";
-    var s1 = "<a href= carddes.html><img class = 'owncard'"+'id=card'+i +" src='" + imagesrc + "'</a>";
+    var s1 = "<a href= carddes.html><img class = 'owncard'"+'id='+id+" src='" + imagesrc + "'</a>";
     var s = "<div class='card'>" + s0 + s1 + "</div>";
 
     return s;
