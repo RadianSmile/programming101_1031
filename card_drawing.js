@@ -138,7 +138,7 @@ function remainCard(){
 function setRemainCard(){
     var card = Parse.Object.extend("Card_info");
     var query = new Parse.Query(card);
-    query.ascending("card_no");
+    query.ascending("cardno");
     query.find({
         success: function(data){
             var no = [1,9,20,15,10,5,15,10,5,1,30,3,15,5,10,5,3,10,5,3];
