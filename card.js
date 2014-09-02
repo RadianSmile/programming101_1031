@@ -14,13 +14,13 @@ $(document).ready(function(){
             	    for(var i = 0; i<data.length; i++){
             	        var card = data[i].get('Card_info');
                     //catch cardid
-                    if(typeof(Storage) !== "undefined"){
+                    /*if(typeof(Storage) !== "undefined"){
                         storagecard.push(card.id);
                         localStorage["cardarray"] = JSON.stringify(storagecard);
                     }
                     else{
                         alert("Can't store to localstorage!");
-                    }
+                    }*/
             	        var s = getElementStringByowncard(card.get('name'), card.get('imagesrc'), data[i].id);
             	        ccontainer += s;
             	        if((i+1) % 5 == 0){
