@@ -147,7 +147,6 @@ function setRemainCard(){
                 var n = new num();
                 
                 n.set('objectId',element.id);
-                n.set('remain',0);
                 n.save(null,{
                     success: function(n){
                         n.set('remain', no[index]);
