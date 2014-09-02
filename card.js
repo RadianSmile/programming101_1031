@@ -198,7 +198,7 @@ function onemoreCard(){
 };
 
 $('img').each(function () {
-    $(this).submit(function () {
+    $(this).click(function () {
         var id = $(this).attr('id');
         localStorage['owncardId'] = id;
     });
