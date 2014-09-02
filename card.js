@@ -201,4 +201,5 @@ $('div.card').each(function(){
     $(this).click(function(){
         var id = $(this).attr('id');
         localStorage['owncardId'] = id;
+    });
 });
