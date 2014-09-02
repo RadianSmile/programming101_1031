@@ -22,12 +22,12 @@ function randomNum(){
     }
 
     if(vac == 'a'){
-        num = 1;
+        num = Math.floor(Math.random() * 2 + 1);
         var no = vac + num;
         return(no);
     }
     else if(vac == 'b'){
-        num = Math.floor(Math.random() * 4 + 1);
+        num = Math.floor(Math.random() * 8 + 1);
         var no = vac + num;
         return(no);
     }
@@ -41,19 +41,13 @@ function randomNum(){
 var current_user = Parse.User.current();
 if(current_user){
     function getData(){
-    var card = Parse.Object.extend("card");
+    var card = Parse.Object.extend("Card_info");
     var query = new Parse.Query(card);
     var No = randomNum();
     query.equalTo("cardno", No);
     query.first({
         success: function(results){
             var object = results;
-            if(typeof(Storage) !== "undefined"){
-                  localStorage.setItem("cardid", object.id);
-            }
-            else{
-                  alert("Can't store to localstorage!");
-            }
             Shortdescription = object.get('shortdes');
             Title = object.get('name');
             Imagesrc = object.get('imagesrc');
@@ -67,8 +61,8 @@ if(current_user){
             var owncard = Parse.Object.extend("Owncard");
             var own = new owncard();
 
-            own.set("user", current_user);
-            own.set("card", object);
+            own.set('user', current_user);
+            own.set('Card_info', object);
             own.save(null, {
                 success: function(){
 
