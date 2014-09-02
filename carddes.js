@@ -8,39 +8,19 @@ $(document).ready(function(){
         query.include('Card_info');
         query.equalTo('user', current_user);
         query.equalTo('objectId', owncardid);
-        query.first({
+        query.find({
         	success: function(data){
+                console.log(data);
         	    var ccontainer = "";
                 var carddata = data.get('Card_info');
                 var s = getElementStringByowncard(carddata.get('name'), carddata.get('imagesrc'), carddata.get('shortdes'));
                 ccontainer += s;
                 var string = "<div class = 'cards'>" + ccontainer + "</div>";
                 $('div.cardbox').append(string);
-        	    /*for(var i = 0; i<data.length; i++){
-                    var owncardid1 = data[i].id;
-        	        var carddata = data[i].get('Card_info');
-        	        var carddataid = carddata.id;
-        	        try{
-        	            if(owncardid == owncardid1){
-                            var carddata = data[i].get('Card_info');
-        	                var s = getElementStringByowncard(carddata.get('name'), carddata.get('imagesrc'), carddata.get('shortdes'));
-        	                ccontainer += s;
-        	                var string = "<div class = 'cards'>" + ccontainer + "</div>";
-        	                $('div.cardbox').append(string);
-        	            }
-        	        }
-        	        catch(e){
-
-        	        }
-        	    }*/
         	}
         })
     }
 })
-
-
-    
-
 
 function getElementStringByowncard(name, imagesrc, shortdes){
     var s0 = "<h2>" + name + "</h2>";
