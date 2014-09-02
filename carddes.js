@@ -18,7 +18,7 @@ $(document).ready(function(){
                 var string = "<div class = 'cards'>" + ccontainer + "</div>";
                 $('div.cardbox').append(string);
         	}
-        })
+        });
     }
 })
 
