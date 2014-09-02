@@ -63,6 +63,7 @@ function getData(){
             $('#image2').attr("src", Imagesrc)
             $('#image3').attr("src", Imagesrc)
 
+            substractCardNum(results.id);
             var owncard = Parse.Object.extend("Owncard");
             var own = new owncard();
 
@@ -156,6 +157,30 @@ function setRemainCard(){
             });
         },
         error: function(error){
+        }
+    });
+}
+
+function substractCardNum(id){
+    var  card = Parse.Object.extend('Card_info');
+    var query = new Parse.Query(card);
+    query.equalTo('objectId',id);
+    query.first({
+        success: function(data) {
+            var c = new card();
+            var no = data.get('remain');
+            c.set('objectId',data.id);
+            c.set('remain',no);
+
+            c.save(null,{
+                success: function(data){
+                    c.set('remain',--no);
+                    c.save();
+                }
+            });
+        },
+        error: function (error) {
+            console.log(error.toString());
         }
     });
 }
