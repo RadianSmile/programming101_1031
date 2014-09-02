@@ -5,14 +5,14 @@ $(document).ready(function(){
     if(current_user){
         var ownCard = Parse.Object.extend('Owncard');
         var query = new Parse.Query(ownCard);
-        query.include('card');
+        query.include('Card_info');
         query.equalTo('user', current_user);
         query.find({
             success: function(data){
             	    var ccontainer = "";
                  var storagecard = [];
             	    for(var i = 0; i<data.length; i++){
-            	        var card = data[i].get('card');
+            	        var card = data[i].get('Card_info');
                     //catch cardid
                     if(typeof(Storage) !== "undefined"){
                         storagecard.push(card.id);
