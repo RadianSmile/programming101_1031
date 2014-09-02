@@ -38,9 +38,7 @@ function randomNum(){
     }
 }
 
-var current_user = Parse.User.current();
-if(current_user){
-    function getData(){
+function getData(){
     var card = Parse.Object.extend("Card_info");
     var query = new Parse.Query(card);
     var No = randomNum();
@@ -79,6 +77,12 @@ if(current_user){
         }
     });
 }
+
+function draw_card(){
+    var current_user = Parse.User.current();
+    if(current_user){
+        remainCard();
+    }
 }
 
 //getNotification
@@ -116,3 +120,45 @@ function changeClass3(){
         document.getElementById("block").className = "block";
         getData();
     };
+
+function remainCard(){
+    var card = Parse.Object.extend("Card_info");
+    var query = new Parse.Query(card);
+    query.greaterThan("remain",0);
+    query.count({
+        success: function(count){
+            if(count==0)
+                setRemainCard();
+        },
+        error: function(error){
+        }
+    });
+}
+
+function setRemainCard(){
+    var card = Parse.Object.extend("Card_info");
+    var query = new Parse.Query(card);
+    query.ascending("card_no");
+    query.find({
+        success: function(data){
+            var no = [1,9,20,15,10,5,15,10,5,1,30,3,15,5,10,5,3,10,5,3];
+            data.forEach(function (element, index, array){
+                var num = Parse.Object.extend('Card_info');
+                var n = new num();
+                
+                n.set('objectId',element.get('objectId'));
+                
+                n.save(null,{
+                    success: function(n){
+                        n.set('remain', no[index]);
+                        n.save();
+                    }
+                });
+            });
+        },
+        error: function(error){
+        }
+    });
+}
+
+    $(document).ready(draw_card);
