@@ -197,9 +197,7 @@ function onemoreCard(){
     window.location.assign("card_drawing.html");
 };
 
-$('img').each(function () {
-    $(this).click(function () {
+$('img').click(function () {
         var id = $(this).attr('id');
         localStorage['owncardId'] = id;
-    });
 });
