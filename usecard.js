@@ -10,13 +10,12 @@ $(document).ready(function(){
     			for(var i = 0; i < data.length; i++){
     				var username = data[i].get('name');
     				var id = data[i].id;
-    				console.log(id);
     				var s = getElementStringByowncard(username, id);
     				ccontainer += s;
-    				var string = "<div class ='users'>" + ccontainer + "</div>";
+    				var string = "<form action=""http://radiansmile.github.io/CodeEDU/dashboard.html"">" + ccontainer + "</form>";
     				$('div.userbox').append(string);
     				ccontainer = "";
-    				$('div.users').on('click', function(){
+    				$('input').on('click', function(){
     					var id = $(this).attr('id');
     					localStorage['userid'] = id;
     					alert("You choose " + username + " !");
@@ -28,8 +27,7 @@ $(document).ready(function(){
 });
 
 function getElementStringByowncard(name, id){
-    var s0 = "<h2>" + name + "</h2>";
-    var s = "<div class='user' id='"+id+"'>" + s0 + "</div>";
+    var s = "<input type='submit' value='"+name+"' id='"+id+"'>";
 
     return s;
 };
