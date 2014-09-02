@@ -199,8 +199,8 @@ function onemoreCard(){
 
 
 $('img').on("click", function(){
-
-    var id = $(this).attr('id');
+    alet('abc');
+    /*var id = $(this).attr('id');
     console.log(id);
-    localStorage['owncardId'] = id;
+    localStorage['owncardId'] = id;*/
 })
