@@ -201,6 +201,6 @@ $('div.card').each(function(){
     $(this).click(function(){
         var id = $(this).attr('id');
         if(typeof(Storage)!=='undefined')
-            localStorage.setItem('owncardId',id);
+            localStorage['owncardId'] = id;
     });
 });
