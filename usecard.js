@@ -12,13 +12,15 @@ $(document).ready(function(){
     				var id = data[i].id;
     				var s = getElementStringByowncard(username, id);
     				ccontainer += s;
-    				var string = "<form action='http://radiansmile.github.io/CodeEDU/dashboard.html'>" + ccontainer + "</form>";
+    				var string = "<form>" + ccontainer + "</form>";
+    				//var string = "<form action='http://radiansmile.github.io/CodeEDU/dashboard.html'>" + ccontainer + "</form>";
     				$('div.userbox').append(string);
     				ccontainer = "";
     				$('input').on('click', function(){
     					var id = $(this).attr('id');
     					localStorage['userid'] = id;
     					alert("You choose " + username + " !");
+    					window.location.assign("http://radiansmile.github.io/CodeEDU/dashboard.html");
     				})
     			}
     		}
