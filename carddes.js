@@ -7,10 +7,16 @@ $(document).ready(function(){
         var query = new Parse.Query(ownCard);
         query.include('Card_info');
         query.equalTo('user', current_user);
-        query.find({
+        query.equalTo('objectId', owncardid);
+        query.first({
         	success: function(data){
         	    var ccontainer = "";
-        	    for(var i = 0; i<data.length; i++){
+                var carddata = data.get('Card_info');
+                var s = getElementStringByowncard(carddata.get('name'), carddata.get('imagesrc'), carddata.get('shortdes'));
+                ccontainer += s;
+                var string = "<div class = 'cards'>" + ccontainer + "</div>";
+                $('div.cardbox').append(string);
+        	    /*for(var i = 0; i<data.length; i++){
                     var owncardid1 = data[i].id;
         	        var carddata = data[i].get('Card_info');
         	        var carddataid = carddata.id;
@@ -26,7 +32,7 @@ $(document).ready(function(){
         	        catch(e){
 
         	        }
-        	    }
+        	    }*/
         	}
         })
     }
