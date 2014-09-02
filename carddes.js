@@ -1,4 +1,4 @@
-$(document).ready(function(){
+/*$(document).ready(function(){
     Parse.initialize("9eo5r1mHWoIPSTCzmrpdKa3lcHPjySx4y5D6q8Nq", "R8SWwYxpJcy73ogQKuSD43y7FigrlDGjBLcy1lzC");
     var current_user = Parse.User.current();
     if(current_user){
@@ -44,4 +44,4 @@ function getElementStringByowncard(name, imagesrc, shortdes){
     var s = "<div class='card' id = 'card'>" + s0 + s1 + s2 + "</div>";
 
     return s;
-};
+};*/
