@@ -9,7 +9,8 @@ $(document).ready(function(){
     			var ccontainer = "";
     			for(var i = 0; i < data.length; i++){
     				var username = data[i].get('name');
-    				var id = data[i].get('objectId');
+    				var id = data[i].id;
+    				console.log(id);
     				var s = getElementStringByowncard(username, id);
     				ccontainer += s;
     				var string = "<div class ='users'>" + ccontainer + "</div>";
