@@ -3,6 +3,7 @@ $(document).ready(function(){
     var current_user = Parse.User.current();
     if(current_user){
         var owncardid = localStorage.getItem('owncardid');
+        console.log(owncardid);
         var ownCard = Parse.Object.extend('Owncard');
         var query = new Parse.Query(ownCard);
         query.equalTo('objectId', owncardid);
