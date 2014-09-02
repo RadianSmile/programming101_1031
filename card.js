@@ -53,7 +53,7 @@ $(document).ready(function(){
 
 function getElementStringByowncard(name, imagesrc, id){
     var s0 = "<h2>" + name + "</h2>";
-    var s1 = "<input type='image' id='"+id+"' src='" + imagesrc + "'>";
+    var s1 = "<form action='carddes.html'><input type='image' id='"+id+"' src='" + imagesrc + "'></form>";
     var s = "<div class='card'>" + s0 + s1 + "</div>";
 
     return s;
@@ -201,6 +201,5 @@ $('input').each(function () {
     $(this).submit(function () {
         var id = $(this).attr('id');
         localStorage['owncardId'] = id;
-        window.location = 'carddes.html';
     });
 });
