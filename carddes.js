@@ -5,8 +5,8 @@ $(document).ready(function(){
         var owncardid = localStorage.getItem('owncardid');
         var ownCard = Parse.Object.extend('Owncard');
         var query = new Parse.Query(ownCard);
-        query.equalTo('user', current_user);
         query.equalTo('objectId', owncardid);
+        query.equalTo('user', current_user);
         query.include('Card_info');
         query.find({
         	success: function(data){
