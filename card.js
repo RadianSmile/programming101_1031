@@ -53,7 +53,7 @@ $(document).ready(function(){
 
 function getElementStringByowncard(name, imagesrc, id){
     var s0 = "<h2>" + name + "</h2>";
-    var s1 = "<a href= carddes.html><img class = 'owncard'"+" src='" + imagesrc + "'</a>";
+    var s1 = "<a href= carddes.html><img class = 'owncard'"+" src='" + imagesrc + "'></a>";
     var s = "<div class='card' id='"+id+"'>" + s0 + s1 + "</div>";
 
     return s;
