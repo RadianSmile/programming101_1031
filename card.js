@@ -31,6 +31,7 @@ $(document).ready(function(){
                               var id = $(this).attr('id');
                               console.log(id);
                               localStorage['owncardId'] = id;
+                              window.location('cardes.html');
                           })
             	        }
             	        else if(i == data.length - 1){
