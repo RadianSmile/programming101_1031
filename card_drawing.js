@@ -1,5 +1,5 @@
 Parse.initialize("9eo5r1mHWoIPSTCzmrpdKa3lcHPjySx4y5D6q8Nq", "R8SWwYxpJcy73ogQKuSD43y7FigrlDGjBLcy1lzC");
-$(document).ready(draw_card);
+$(document).ready(draw_card());
 
 
 //Drawing card function
@@ -80,7 +80,7 @@ function getData(){
     });
 }
 
-var draw_card= function(){
+var draw_card =  function (){
     var current_user = Parse.User.current();
     if(current_user){
         remainCard();
