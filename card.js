@@ -53,8 +53,8 @@ $(document).ready(function(){
 
 function getElementStringByowncard(name, imagesrc, id){
     var s0 = "<h2>" + name + "</h2>";
-    var s1 = "<a href= carddes.html><img class = 'owncard'"+'id='+id+" src='" + imagesrc + "'</a>";
-    var s = "<div class='card'>" + s0 + s1 + "</div>";
+    var s1 = "<a href= carddes.html><img class = 'owncard'"+" src='" + imagesrc + "'</a>";
+    var s = "<div class='card'+id='"+id"'>" + s0 + s1 + "</div>";
 
     return s;
 };
@@ -197,47 +197,10 @@ function onemoreCard(){
     window.location.assign("card_drawing.html");
 };
 
-$('#card0').click(function(){
-    if(typeof(Storage) !== "undefined"){
-        localStorage.setItem("num", 0);
-    }
-    else{
-        alert('error!');
-    }
-})
-
-$('#card1').click(function(){
-    if(typeof(Storage) !== "undefined"){
-        localStorage.setItem("num", 1);
-    }
-    else{
-        alert('error!');
-    }
-})
-
-$('#card2').click(function(){
-    if(typeof(Storage) !== "undefined"){
-        localStorage.setItem("num", 2);
-    }
-    else{
-        alert('error!');
-    }
-})
-
-$('#card3').click(function(){
-    if(typeof(Storage) !== "undefined"){
-        localStorage.setItem("num", 3);
-    }
-    else{
-        alert('error!');
-    }
-})
-
-$('#card4').click(function(){
-    if(typeof(Storage) !== "undefined"){
-        localStorage.setItem("num", 4);
-    }
-    else{
-        alert('error!');
-    }
-})
+$('div.card').each(function(){
+    $(this).click(function(){
+        var id = $(this).attr('id');
+        if(typeof(Storage)!=='undefined')
+            localStorage.setItem('owncardId',id);
+    });
+});
