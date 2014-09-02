@@ -28,11 +28,10 @@ $(document).ready(function(){
             	        	$('div.cardbox').append(string);
             	        	ccontainer = "";
                           $('img').on('click', function(){
-                                alert('abc');
-    /*var id = $(this).attr('id');
-    console.log(id);
-    localStorage['owncardId'] = id;*/
-})
+                              var id = $(this).attr('id');
+                              console.log(id);
+                              localStorage['owncardId'] = id;
+                          })
             	        }
             	        else if(i == data.length - 1){
             	        	var string = "<div class = 'cards'>" + ccontainer + "</div>";
