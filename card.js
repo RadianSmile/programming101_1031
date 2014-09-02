@@ -201,4 +201,4 @@ function click(){
         var id = $(this).attr('id');
         localStorage['owncardId'] = id;
         windows.location = 'carddes.html';
-});
+}
