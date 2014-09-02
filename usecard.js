@@ -12,6 +12,7 @@ $(document).ready(function(){
     				var id = data[i].get('id');
     				var s = getElementStringByowncard(username, id);
     				ccontainer += s;
+    				var string = "<div class ='users'>" + ccontainer + "</div>";
     				$('div.userbox').append(string);
     				ccontainer = "";
     				$('div.user').on('click', function(){

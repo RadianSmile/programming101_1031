@@ -15,7 +15,7 @@ $(document).ready(function(){
             	        var s = getElementStringByowncard(card.get('name'), card.get('imagesrc'), data[i].id);
             	        ccontainer += s;
             	        if((i+1) % 5 == 0){
-            	        	var string = "div class='cards' " + ccontainer + "</div>";
+            	        	var string = "<div class='cards'> " + ccontainer + "</div>";
             	        	$('div.cardbox').append(string);
             	        	ccontainer = "";
                             $('img').on('click', function(){
