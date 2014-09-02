@@ -146,8 +146,8 @@ function setRemainCard(){
                 var num = Parse.Object.extend('Card_info');
                 var n = new num();
                 
-                n.set('objectId',element.get('objectId'));
-                
+                n.set('objectId',element.id);
+                n.set('remain',0);
                 n.save(null,{
                     success: function(n){
                         n.set('remain', no[index]);
