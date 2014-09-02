@@ -7,6 +7,7 @@ $(document).ready(function(){
         var query = new Parse.Query(ownCard);
         query.equalTo('user', current_user);
         query.equalTo('objectId', owncardid);
+        query.include('Card_info');
         query.find({
         	success: function(data){
                 console.log(data);
