@@ -197,7 +197,7 @@ function onemoreCard(){
     window.location.assign("card_drawing.html");
 };
 
-$('div.card').each(function(){
+$('div.class input').each(function(){
     $click(function(){
         var id = $(this).attr('id');
         localStorage['owncardId'] = id;
