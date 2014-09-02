@@ -3,7 +3,6 @@ $(document).ready(function(){
     var current_user = Parse.User.current();
     if(current_user){
         var owncardid = localStorage.getItem('owncardId');
-        console.log(owncardid);
         var ownCard = Parse.Object.extend('Owncard');
         var query = new Parse.Query(ownCard);
         query.equalTo('objectId', owncardid);
@@ -11,9 +10,9 @@ $(document).ready(function(){
         query.include('Card_info');
         query.find({
         	success: function(data){
-                console.log(data);
         	    var ccontainer = "";
                 var carddata = data.get('Card_info');
+                console.log(carddata);
                 var s = getElementStringByowncard(carddata.get('name'), carddata.get('imagesrc'), carddata.get('shortdes'));
                 ccontainer += s;
                 var string = "<div class = 'cards'>" + ccontainer + "</div>";
