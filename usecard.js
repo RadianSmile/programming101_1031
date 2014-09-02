@@ -4,6 +4,7 @@ $(document).ready(function(){
     if(current_user){
         var getcardid = JSON.parse(localStorage["cardarray"]);
         var cardnum = localStorage.getItem('num');
+        console.log(cardnum);
         var cardid = getcardid[cardnum];
         var ownCard = Parse.Object.extend('Owncard');
         var query = new Parse.Query(ownCard);
