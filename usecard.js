@@ -230,6 +230,7 @@ function addXP70(user, targetuser){
             var c_user = new currentuser();
             var xp = data.get('XP');
             c_user.set('XP', xp+=70);
+            c_user.save();
             /*c_user.save(null, {
                 success:function(data){
                     c_user.set('XP', xp+=70);
