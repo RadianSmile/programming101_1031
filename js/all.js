@@ -53,7 +53,7 @@ FB.getLoginStatus(function(response) {
 
 $(document).on("click",".toTop",function(e){
 	var scroll_pos=(0);          
-   $('html, body').animate({scrollTop:(scroll_pos)}, '2000');
+   $('html, body').animate({scrollTop:(scroll_pos)}, '1000');
 	
 });
 

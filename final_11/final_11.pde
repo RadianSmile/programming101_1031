@@ -83,7 +83,7 @@ boolean isClick = false ;
 boolean fromWin = false ; 
 void setup() {
    enter = loadImage("enter.jpg");
-  size(957, 500);
+  size(600, 400);
   //music
   minim = new Minim(this);
   popo= minim.loadFile("popo.mp3");

@@ -52,7 +52,7 @@ html {
 	left: 0;
 	right: 0;
 }
-.tab-pane{
+.showPane{
 	height:600px;
 	height:-webkit-calc(100vh - 54px); 
 	position:relative;
@@ -116,12 +116,7 @@ html {
 
 </head>
 
-<body>
-<div class="row">
-	<div class="container-fluid">
-	</div>
-</div>
-<div class="row">
+<body>	
 <div class=" container-fluid">
 <!-- Nav tabs -->
 <div class="row" style="position:relative;">
@@ -138,10 +133,18 @@ html {
 	<button id="review-submit" class="btn btn-primary btn-lg" onClick="submitReview();">確認繳交</button>
 </div>
 </div>
+</div>
 <!-- Tab panes -->
-<div class="tab-content ">
-  <div  class="tab-pane fade row  in active" id="assign0">
-		<div class="play col-xs-7"></div><div class="editor-container col-xs-5"><div class="editor"></div></div><div></div>
+
+<div class="tab-content container-fluid ">
+	<!--- next tab --->
+  <div  class="tab-pane fade in active" id="assign0">
+		<div class="row showPane">
+			<div class="play col-xs-7"></div>
+			<div class="editor-container col-xs-5">
+				<div class="editor"></div>
+			</div>
+		</div>
 		<div class="grading-pane">
 			<select class=" grade grade-select form-control input-md" >
 				<option>-</option>
@@ -156,11 +159,36 @@ html {
 				</label>
 			</div>
 
-			<button class="btn btn-danger togglebug" >顯示霸個</button>
+			<button type="button" class="btn btn-danger togglebug" >顯示霸個</button>
+		</div>
+		
+		<div class="bug-pane">
+		<div class="row bug-list">
+		</div>
+		<form class="add-bug-form" >
+			<div class="row add-bug ">
+				<div class="bug-reviewer col-md-1"></div>
+				<div class="add-bug-img col-md-2">
+					<input type="file" class="add-img-input" />	
+				</div>
+				<div class="add-bug-des col-md-5">
+				 	<textarea  class="add-des-input" ></textarea>
+				</div>		
+			</div>
+			<div class="row">
+				<button type="button" class="submit-bug btn btn-danger col-md-offset-6 col-md-1" >呈交霸個</button>
+			</div>
+		</form>
 		</div>
 	</div>
-  <div class="tab-pane fade row" id="assign1">
-		<div class="play col-xs-7"></div><div class="editor-container col-xs-5"><div class="editor"></div></div><div></div>
+	<!--- next tab --->
+  <div  class="tab-pane fade in " id="assign1">
+		<div class="row showPane">
+			<div class="play col-xs-7"></div>
+			<div class="editor-container col-xs-5">
+				<div class="editor"></div>
+			</div>
+		</div>
 		<div class="grading-pane">
 			<select class=" grade grade-select form-control input-md" >
 				<option>-</option>
@@ -175,16 +203,39 @@ html {
 				</label>
 			</div>
 
+			<button type="button" class="btn btn-danger togglebug" >顯示霸個</button>
+		</div>
+		
+		<div class="bug-pane">
+		<div class="row bug-list">
+		</div>
+		<form class="add-bug-form" >
+			<div class="row add-bug ">
+				<div class="bug-reviewer col-md-1"></div>
 
-			<button class="btn btn-danger togglebug" >顯示霸個</button>
-
-
+				<div class="add-bug-img col-md-2">
+					<input type="file" class="add-img-input" />	
+				</div>
+				<div class="add-bug-des col-md-5">
+				 	<textarea  class="add-des-input" ></textarea>
+				</div>		
+			</div>
+			<div class="row">
+				<button type="button" class="submit-bug btn btn-danger col-md-offset-6 col-md-1" >呈交霸個</button>
+			</div>
+		</form>
+		</div>
 	</div>
-	</div>
-  <div class="tab-pane fade row" id="assign2">
-		<div class="play col-xs-7"></div><div class="editor-container col-xs-5"><div class="editor"></div></div><div></div>
+	<!--- next tab --->
+  <div  class="tab-pane fade in " id="assign2">
+		<div class="row showPane">
+			<div class="play col-xs-7"></div>
+			<div class="editor-container col-xs-5">
+				<div class="editor"></div>
+			</div>
+		</div>
 		<div class="grading-pane">
-			<select class="grade grade-select form-control input-md" >
+			<select class=" grade grade-select form-control input-md" >
 				<option>-</option>
 				<option>O</option>
 				<option>C</option>
@@ -192,54 +243,126 @@ html {
 				<option>A</option>
 			</select>
 			<div class="checkbox">
-				<label>
-					<input class="grade star" type="checkbox">是否為最佳解
-				</label>
-			</div>		
-			<button class="btn btn-danger togglebug" >顯示霸個</button>
-	</div>
-	</div>
-  <div class="tab-pane fade row" id="assign3">
-		<div class="play col-xs-7"></div><div class="editor-container col-xs-5"><div class="editor"></div></div><div></div>
-		<div class="grading-pane">
-			<select class="grade grade-select form-control input-md" >
-				<option>-</option>
-				<option>O</option>
-				<option>C</option>
-				<option>B</option>
-				<option>A</option>
-			</select>
-			<div class="checkbox">
-				<label>
-					<input class="grade star" type="checkbox">是否為最佳解
-				</label>
-			</div>			
-			<button class="btn btn-danger togglebug" >顯示霸個</button>
-	</div>
-	</div>
-  <div class="tab-pane fade row" id="assign4">
-		<div class="play col-xs-7"></div><div class="editor-container col-xs-5"><div class="editor"></div></div><div></div>
-		<div class="grading-pane">
-			<select class="grade grade-select form-control input-md" >
-				<option>-</option>
-				<option>O</option>
-				<option>C</option>
-				<option>B</option>
-				<option>A</option>
-			</select>
-			<div class="grade checkbox">
 				<label>
 					<input class="grade star" type="checkbox">是否為最佳解
 				</label>
 			</div>
-			<button class="btn btn-danger togglebug" >顯示霸個</button>
-	
+
+			<button type="button" class="btn btn-danger togglebug" >顯示霸個</button>
+		</div>
+		
+		<div class="bug-pane">
+		<div class="row bug-list">
+		</div>
+		<form class="add-bug-form" >
+			<div class="row add-bug ">
+				<div class="bug-reviewer col-md-1"></div>
+
+				<div class="add-bug-img col-md-2">
+					<input type="file" class="add-img-input" />	
+				</div>
+				<div class="add-bug-des col-md-5">
+				 	<textarea  class="add-des-input" ></textarea>
+				</div>		
+			</div>
+			<div class="row">
+				<button type="button" class="submit-bug btn btn-danger col-md-offset-6 col-md-1" >呈交霸個</button>
+			</div>
+		</form>
+		</div>
 	</div>
-</div>
+	<!--- next tab --->
+  <div  class="tab-pane fade in " id="assign3">
+		<div class="row showPane">
+			<div class="play col-xs-7"></div>
+			<div class="editor-container col-xs-5">
+				<div class="editor"></div>
+			</div>
+		</div>
+		<div class="grading-pane">
+			<select class=" grade grade-select form-control input-md" >
+				<option>-</option>
+				<option>O</option>
+				<option>C</option>
+				<option>B</option>
+				<option>A</option>
+			</select>
+			<div class="checkbox">
+				<label>
+					<input class="grade star" type="checkbox">是否為最佳解
+				</label>
+			</div>
 
-</div>
+			<button type="button" class="btn btn-danger togglebug" >顯示霸個</button>
+		</div>
+		
+		<div class="bug-pane">
+		<div class="row bug-list">
+		</div>
+		<form class="add-bug-form" >
+			<div class="row add-bug ">
+				<div class="bug-reviewer col-md-1"></div>
 
-</div>
+				<div class="add-bug-img col-md-2">
+					<input type="file" class="add-img-input" />	
+				</div>
+				<div class="add-bug-des col-md-5">
+				 	<textarea  class="add-des-input" ></textarea>
+				</div>		
+			</div>
+			<div class="row">
+				<button type="button" class="submit-bug btn btn-danger col-md-offset-6 col-md-1" >呈交霸個</button>
+			</div>
+		</form>
+		</div>
+	</div>
+	<!--- next tab --->
+  <div  class="tab-pane fade in " id="assign4">
+		<div class="row showPane">
+			<div class="play col-xs-7"></div>
+			<div class="editor-container col-xs-5">
+				<div class="editor"></div>
+			</div>
+		</div>
+		<div class="grading-pane">
+			<select class=" grade grade-select form-control input-md" >
+				<option>-</option>
+				<option>O</option>
+				<option>C</option>
+				<option>B</option>
+				<option>A</option>
+			</select>
+			<div class="checkbox">
+				<label>
+					<input class="grade star" type="checkbox">是否為最佳解
+				</label>
+			</div>
+
+			<button type="button" class="btn btn-danger togglebug" >顯示霸個</button>
+		</div>
+		
+		<div class="bug-pane">
+		<div class="row bug-list">
+		</div>
+		<form class="add-bug-form" >
+			<div class="row add-bug ">
+				<div class="bug-reviewer col-md-1"></div>
+				<div class="add-bug-img col-md-2">
+					<input type="file" class="add-img-input" />	
+				</div>
+				<div class="add-bug-des col-md-5">
+				 	<textarea  class="add-des-input" ></textarea>
+				</div>		
+			</div>
+			<div class="row">
+				<button type="button" class="submit-bug btn btn-danger col-md-offset-6 col-md-1" >呈交霸個</button>
+			</div>
+		</form>
+		</div>
+	</div>
+
+
+ </div>
 <style>
 .bug-img  {
 	min-height:150px;
@@ -266,10 +389,7 @@ html {
 	background-repeat:no-repeat;
 }
 </style>
-<div class="bug-list container-fluid">
- <div style="height:100vh; width:100%;">
- </div>
-</div>
+<div class="bug-list container-fluid"></div>
 
 
 
@@ -320,11 +440,18 @@ var assignToReview = "1";
 var User  = Parse.Object.extend("Test_User");
 var qqq = new Parse.Query (User);
 qqq.get("x4bNlnkioW").then (function(o){
-	currentUser =  o
+	currentUser =  o;
 	console.log(o);
-	showAssign ();
-	
+	showAssignAndBug ();
+	init(o);
 });
+function init (o){
+	$(".add-bug").append("<img src='"+ o.id+"'>");
+	localStorage ;
+	$(".bug-pane").css("display","none");
+}
+
+
 ///**Rn  end**/
 
 
@@ -333,12 +460,13 @@ qqq.get("x4bNlnkioW").then (function(o){
 
 
 
-
+var AssignArr = [] ;
 
 var QueryAssigns = function (){
 var promise = new Parse.Promise();
 var Assign = Parse.Object.extend("Test_Review_Record");
 var assign = new Assign();
+
 var q = new Parse.Query(Assign);
 console.log(currentUser);
 q.equalTo("reviewer",currentUser);
@@ -347,6 +475,7 @@ q.equalTo("nth",assignToReview);
 q.ascending("createdAt");
 q.include("assign");
 q.find().then(function(r){
+	AssignArr = r ;
 	promise.resolve(r);
 	//console.log("Parse Done, Querying Data..");
 
@@ -358,13 +487,16 @@ q.find().then(function(r){
 	return promise ;
 }
 
-function showAssign(){
+function showAssignAndBug(){
 	QueryAssigns().then (function(r){
 	for (var i = 0 ; i < r.length ; i++){
 		console.log(r[i].get("assign").get("url"));
-		isInTime(	r[i].get("assign").get("url"),"assign"+i);	
+		isInTime(	r[i].get("assign").get("url"),i);	
+		QueryBug(i);
 	}
 	},function (e){console.log (e);});
+	
+	
 }
 function submitReview (e) {
 	//checkResult ; /**************************************/
@@ -373,8 +505,8 @@ function submitReview (e) {
 	QueryAssigns().then (function(r){	
 		for (var i = 0 ; i < r.length ; i++){
 			var g  = gradeArr [i];
-			r[i].set("grade",g[0]);
-			r[i].set("star",g[1]);
+			r[i].set("grade",g[1]);
+			r[i].set("star",g[2]);
 		}
 		Parse.Object.saveAll(r).then (function (re){
 			console.log ("SaveResult",re);
@@ -385,7 +517,7 @@ function submitReview (e) {
 }
 
 
-function isInTime(url,id){
+function isInTime(url,i){
 	console.log("Check Last Modified...");
 		$.ajax({
 			url : "lastModify.php",
@@ -395,12 +527,12 @@ function isInTime(url,id){
 			dataType : 'text', //explicitly requesting the xml as text, rather than an xml document
 			success : function (data, status, xhr) {	
 				console.log (data);
-				getCode(url,id);
+				getCode(url,i); ///
 				var play = document.createElement("iframe");
 				play.style.width = "600px";
 				play.style.height = "400px";
 				play.setAttribute("src",url);
-				$("#" + id).find(".play").first().html(play);
+				$($(".tab-pane")[i]).find(".play").first().html(play);
 			}
 		});
 }
@@ -411,7 +543,7 @@ function isInTime(url,id){
 
 var gradeArr = [];
 for (var i = 0 ; i < 5 ; i++){
-	var arr = ["-",false];
+	var arr = ["","-",false];
 	gradeArr.push(arr);
 }
 
@@ -423,10 +555,10 @@ for (var i = 0 ; i < 5 ; i++){
 		if ($this.hasClass("grade-select")){
 			var g = $this.val();	
 			console.log($($(".tab").get(i)).find(".grade-preview").first().text(g));
-			gradeArr[i][0] = g ;
+			gradeArr[i][1] = g ;
 		}else if ($this.hasClass("star")){
 			var g = $(this).is(":checked") ;
-			gradeArr[i][1] = g ;
+			gradeArr[i][2] = g ;
 			console.log ("g",g);
 			if (g){
 				$(".star").each(function(j, e) {
@@ -435,14 +567,14 @@ for (var i = 0 ; i < 5 ; i++){
 						$($(".tab").get(i)).find(".grade-preview").first().addClass("star-graded");			
 						return true;
 					}else{
-						gradeArr[j][1] = false ;
+						gradeArr[j][2] = false ;
 						$(e).prop('checked', false);
 						var $pp = $(e).closest(".tab-pane") ;
 						var ii = $pp.index();
 						$($(".tab").get(ii)).find(".grade-preview").first().removeClass("star-graded");
 						$(e).val(false);
 					}
-				});	
+				});
 			}else {
 				$($(".tab").get(i)).find(".grade-preview").first().removeClass("star-graded");
 			}
@@ -454,7 +586,7 @@ for (var i = 0 ; i < 5 ; i++){
 
 <script data-file="這是程式預覽" >
 
-function getCode (url,id){
+function getCode (url,i){
 		console.log("Ajaxing");
 		$.ajax({
 			url : "/getcode.php",
@@ -464,9 +596,8 @@ function getCode (url,id){
 			dataType : 'text', //explicitly requesting the xml as text, rather than an xml document
 			success : function (data, status, xhr) {		
 				if (status == 'success') {
-					var tabEditor = $("#"+id).find(".editor").first().get(0);
+					var tabEditor =  $($(".tab-pane")[i]).find(".editor").first().get(0);
 					console.log(tabEditor);
-					
 					var editor = ace.edit( tabEditor );
 					editor.setTheme("ace/theme/twilight");
 					editor.getSession().setUseWrapMode(true);
@@ -485,44 +616,90 @@ function getCode (url,id){
 <script data-file="Bug">
 
 $(document).on('click',".togglebug",function(){	
-	$bugArea = $(".bug-list") ;
-	console.log($bugArea.is(":hidden"));
+	$bugArea = $(".tab-content .active .bug-pane");
 	if ($bugArea.is(":hidden")) {
-		$bugArea.toggle( "blind" );
+		$bugArea.toggle("blind");
 		$('html, body').animate({
-     scrollTop: $(".bug-list").offset().top
-    }, 1000);
+     scrollTop: $bugArea.offset().top
+    }, 400);
 	}else {
 		$(".toTop").trigger("click");
 		$bugArea.toggle( "blind" );
 	}
-	
-	
-	
 });
 
- var a = '<div class="row bug">
-		<div class=" bug-img col-md-2">		
-		</div>
-		<div class="bug-des col-md-5">
-		</div>
-	</div>
-	
-	<div class="row add-bug ">
-		<div class="add-bug-img col-md-2">		
-		</div>
-		<div class="add-bug-des col-md-5">
-		</div>		
-	</div>
-	<div class="row">
-		<button id="submit-bug"></button>
-	</div>'
+ /**var a = '<div class="row bug">
+**/
 
+function QueryBug (i){
+var BugRecord = Parse.Object.extend("Test_Bug_Record");
+var q = new Parse.Query (BugRecord);
+q.equalTo("assign",AssignArr[i]);
+q.include("reviewer");
+q.descending("createdAt");
+q.find().then(function(r){
+	for ( var j = 0 ; j < r.length ; j++ ){
+		var b = r[j] ;
+		ppdBug(i,b);		
+	}
+	},function(e){console.log(e);
+	
+});
+function ppdBug(i,b){
+		var reviewer = b.get("reviewer");
+		var des = b.get("des");
+		var imgUrl = b.get("img").url();
+		var time = b.createdAt;
+		var html =	'<div class="bug container-fluid">\
+				<div class="bug-reviewer col-md-1">'+reviewer.get("name")+'</div>\
+				<div class="bug-img col-md-2" style="background-image:url('+imgUrl+');">'+'</div>\
+				<div class="bug-des col-md-5">'+des+'</div>\
+				<div class="bug-time">'+time+'</div>\
+			</div>';
+		$($(".tab-pane")[i]).find(".bug-list").prepend(html);
+}
+
+
+}
 
 </script>
 
 <script data-file="pull-Bug">
 
+
+
+$(document).on('click',".submit-bug",function (e){
+	e.preventDefault();
+	console.log ("true");
+var BugRecord = Parse.Object.extend("Test_Bug_Record");
+var bugRecord = new BugRecord();
+
+
+var $p = $(this).closest(".tab-pane") ;
+var i = $p.index();
+var $img = $p.find(".add-img-input").first();
+console.log($img);
+var des = $p.find(".add-des-input").first().val();
+
+var fileUploadControl = $img[0];
+if (fileUploadControl.files.length > 0) {
+  var file = fileUploadControl.files[0];
+  var name = file.name;
+  var bugImg = new Parse.File("Bug",file);
+	bugImg.save().then(function(img){
+		console.log(img);
+		bugRecord.set("reviewer",currentUser);
+		bugRecord.set("assign",AssignArr[i]);
+		bugRecord.set("img",img);
+		bugRecord.set("des",des);
+		return bugRecord.save();
+	}).then (function(bugRecord){
+		console.log(bugRecord);
+		ppdBug (i,bugRecord);
+	},function(e){console.log(e);});
+	}
+	return false ;
+});
 </script>
 
 
