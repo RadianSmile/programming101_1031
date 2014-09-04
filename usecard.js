@@ -96,7 +96,7 @@ $(document).ready(function(){
                                                                         console.log(error.toString());
                                                                     }
                                                                  })
-    					window.location.href("http://radiansmile.github.io/CodeEDU/dashboard.html");
+    					//window.location.href("http://radiansmile.github.io/CodeEDU/dashboard.html");
     				})
     			}
     		}
