@@ -39,8 +39,9 @@ $(document).ready(function(){
                                                                             addXP50(current_user, targetuser);
                                                                         }
                                                                         else if(cardid == "wxTLT53ZZX"){
-                                                                            console.log('abc');
+
                                                                             addXP70(current_user, targetuser);
+                                                                            console.log('abc');
                                                                         }
                                                                         else if(cardid == "zLHR3S0hlb"){
                                                                             addHP10(current_user, targetuser);
@@ -218,6 +219,7 @@ function addXP50(user, targetuser){
 };
 
 function addXP70(user, targetuser){
+    alert();
     var currentuser = Parse.Object.extend('User');
     var query = new Parse.Query(currentuser);
     query.equalTo('objectId', targetuser);
