@@ -636,7 +636,7 @@ function stealcard(user, targetuser){
 function addHP(cardid, target){
     var hpPlus = 0;
     if(cardid="UDfyCM4Pyb") //+full
-        hpPlus = /*max health value*/;
+        hpPlus = 100;
     else if(cardid="cbACuxTVY1") //+50
         hpPlus = 50;
     else if(cardid="7mn5hYmEWH") //+30
