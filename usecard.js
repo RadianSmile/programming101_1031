@@ -650,7 +650,7 @@ function addHP(cardid, target){
         success: function(data){
             var udata = Parse.Object.extend('User_status');
             var query = new Parse.Query(udata);
-            query.equalTo('user',data); 
+            query.equalTo('User',data); 
             query.first({
                 success: function(result){
                     var hp = result.get('HP');
@@ -690,7 +690,7 @@ function minusHP(cardid, target){
         success: function(data){
             var udata = Parse.Object.extend('User_status');
             var query = new Parse.Query(udata);
-            query.equalTo('user',data); 
+            query.equalTo('User',data); 
             query.first({
                 success: function(result){
                     var hp = result.get('HP');
