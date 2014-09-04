@@ -25,7 +25,7 @@ $(document).ready(function(){
                                                                  var query = new Parse.Query(owncard);
                                                                  query.equalTo('objectId', owncardid);
                                                                  console.log(query);
-                                                                 query.find({
+                                                                 query.first({
                                                                     success:function(data){
                                                                         console.log('query success!');
                                                                         console.log(data);
