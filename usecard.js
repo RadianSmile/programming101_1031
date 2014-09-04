@@ -28,9 +28,7 @@ $(document).ready(function(){
                             success:function(data){
                                 var card = data.get('Card_info');
                                 var cardid = card.id;
-                                console.log("cardid= "+ cardid);
                                 var targetuser = localStorage.getItem('userid');
-                                console.log("targetuser= " + targetuser);
                                 if(cardid == "OSRGBnKpaP"){
                                     addXP(cardid, targetuser);
                                 }
@@ -77,13 +75,13 @@ $(document).ready(function(){
                                     minusHP(cardid, targetuser);
                                 }
                                 else if(cardid == "Byw6APXDGu"){
-                                    stealHP10(current_user, targetuser);
+                                    stealHP(cardid, current_user, targetuser);
                                 }
                                 else if(cardid == "jqxvogKdXQ"){
-                                    stealHP30(current_user, targetuser);
+                                    stealHP(cardid, current_user, targetuser);
                                 }
                                 else if(cardid == "8x7C6LFRhH"){
-                                    stealHP50(current_user, targetuser);
+                                    stealHP(cardid, current_user, targetuser);
                                 }
                                 else if(cardid == "1PF6Z8XISA"){
                                     stealcard(current_user, targetuser);
@@ -514,18 +512,18 @@ function addXP(cardid, target){
 function stealHP(cardid, user, target){
     var getHpId = '';
     var lossHpId = '';
-    if(cardid = ''){ //steal 70
-        getHpId = ''; //+70 card id
-        lossHpId = ''; //-70 card id
+    if(cardid = '8x7C6LFRhH'){ //steal 50
+        getHpId = 'cbACuxTVY1'; //+50 card id
+        lossHpId = '4kJkiyYROw'; //-50 card id
     }
-    else if(cardid = ''){ // steal 50
-        getHpId = ''; //+50 card id
-        lossHpId = ''; //-50 card id
+    else if(cardid = 'jqxvogKdXQ'){ // steal 30
+        getHpId = '7mn5hYmEWH'; //+30 card id
+        lossHpId = 'ZLZIS7XbfQ'; //-30 card id
     }
-    else if(cardid = ''){ // steal 30
-        getHpId = ''; //+30 card id
-        lossHpId = ''; //-30 card id
+    else if(cardid = 'Byw6APXDGu'){ // steal 10
+        getHpId = 'zLHR3S0hlb'; //+10 card id
+        lossHpId = 'y0pZ66Wl4X'; //-10 card id
     }
-    lossHP(lossHpId, target);
-    getHP(getHpId, user);
+    minusHP(lossHpId, target);
+    addHP(getHpId, user);
 }
