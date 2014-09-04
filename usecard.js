@@ -23,7 +23,7 @@ $(document).ready(function(){
                                                                  var owncard = Parse.Object.extend('Owncard');
                                                                  var query = new Parse.Query(owncard);
                                                                  query.equalTo('objectId', owncardid);
-                                                                 query.first({
+                                                                 query.find({
                                                                     success:function(data){
                                                                         console.log('query success!');
                                                                         var cardid = data.get('Card_info');
