@@ -30,7 +30,6 @@ $(document).ready(function(){
                                 var cardid = card.id;
                                 console.log(cardid);
                                 var targetuser = localStorage.getItem('userid');
-                                console.log(targetuser);
                                 if(cardid == "OSRGBnKpaP"){
                                     addXP10(current_user, targetuser);
                                 }
@@ -220,9 +219,10 @@ function addXP50(user, targetuser){
 };
 
 function addXP70(user, targetuser){
-    var currentuser = Parse.Object.extend('User');
+    var currentuser = Parse.Object.extend('User_status');
     var query = new Parse.Query(currentuser);
-    query.equalTo('objectId', targetuser);
+    query.equalTo('User', targetuser);
+    query.include('User');
     query.first({
         success: function(data){
             console.log(data);
