@@ -25,7 +25,9 @@ $(document).ready(function(){
                                                                  query.equalTo('objectId', owncardid);
                                                                  query.first({
                                                                     success:function(data){
+                                                                        console.log('query success!');
                                                                         var cardid = data.get('Card_info');
+                                                                        console.log(cardid);
                                                                         var targetuser = localStorage.getItem('userid');
                                                                         if(cardid == "OSRGBnKpaP"){
                                                                             addXP10(current_user, targetuser);
@@ -85,8 +87,11 @@ $(document).ready(function(){
                                                                             stealcard(current_user, targetuser);
                                                                         }
                                                                         else{
-                                                                            
+
                                                                         }
+                                                                    }
+                                                                    error:function(){
+                                                                        console.log("error!");
                                                                     }
                                                                  })
     					window.location.assign("http://radiansmile.github.io/CodeEDU/dashboard.html");
