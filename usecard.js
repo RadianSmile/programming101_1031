@@ -88,7 +88,7 @@ $(document).ready(function(){
                                                                         else{
 
                                                                         }
-                                                                    }
+                                                                    },
                                                                     error: function(error){
                                                                         console.log(error.toString());
                                                                     }
