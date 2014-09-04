@@ -28,6 +28,7 @@ $(document).ready(function(){
                                                                  query.find({
                                                                     success:function(data){
                                                                         console.log('query success!');
+                                                                        console.log(data);
                                                                         var cardid = data.get('Card_info');
                                                                         console.log(cardid);
                                                                         var targetuser = localStorage.getItem('userid');
