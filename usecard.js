@@ -83,16 +83,15 @@ $(document).ready(function(){
                                                                         else if(cardid == "jqxvogKdXQ"){
                                                                             stealHP30(current_user, targetuser);
                                                                         }
-                                                                        else if(carid == "8x7C6LFRhH"){
+                                                                        else if(cardid == "8x7C6LFRhH"){
                                                                             stealHP50(current_user, targetuser);
                                                                         }
-                                                                        else if(carid == "1PF6Z8XISA"){
+                                                                        else if(cardid == "1PF6Z8XISA"){
                                                                             stealcard(current_user, targetuser);
                                                                         }
                                                                         else{
 
                                                                         }
-                                                                        return false;
                                                                     },
                                                                     error: function(error){
                                                                         console.log(error.toString());
