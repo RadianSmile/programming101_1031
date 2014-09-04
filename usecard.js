@@ -31,63 +31,82 @@ $(document).ready(function(){
                                 var targetuser = localStorage.getItem('userid');
                                 if(cardid == "OSRGBnKpaP"){
                                     addXP(cardid, targetuser);
+                                    deletecard();
                                 }
                                 else if(cardid == "4c3uX1rZ1K"){
                                     addXP(cardid, targetuser);
+                                    deletecard();
                                 }
                                 else if(cardid == "Zm3TV6UaEP"){
                                     addXP(cardid, targetuser);
+                                    deletecard();
                                 }
                                 else if(cardid == "wxTLT53ZZX"){
                                     addXP(cardid, targetuser);
+                                    deletecard();
                                 }
                                 else if(cardid == "zLHR3S0hlb"){
                                     addHP(cardid, targetuser);
+                                    deletecard();
                                 }
                                 else if(cardid == "7mn5hYmEWH"){
                                     addHP(cardid, targetuser);
+                                    deletecard();
                                 }
                                 else if(cardid == "cbACuxTVY1"){
                                     addHP(cardid, targetuser);
+                                    deletecard();
                                 }
                                 else if(cardid == "UDfyCM4Pyb"){
                                     addHP(cardid, targetuser);
+                                    deletecard();
                                 }
                                 else if(cardid == "aJONHaxQtM"){
                                     addLife(cardid, targetuser);
+                                    deletecard();
                                 }
                                 else if(cardid == "10ypku2oZk"){
                                     donateHP(cardid, current_user, targetuser);
+                                    deletecard();
                                 }
                                 else if(cardid == "ysYpQz4TW0"){
                                     donateHP(cardid, current_user, targetuser);
+                                    deletecard();
                                 }
                                 else if(cardid == "ic6YE4frVp"){
                                     donateHP(cardid, current_user, targetuser);
+                                    deletecard();
                                 }
                                 else if(cardid == "y0pZ66Wl4X"){
                                     minusHP(cardid, targetuser);
+                                    deletecard();
                                 }
                                 else if(cardid == "ZLZIS7XbfQ"){
                                     minusHP(cardid, targetuser);
+                                    deletecard();
                                 }
                                 else if(cardid == "4kJkiyYROw"){
                                     minusHP(cardid, targetuser);
+                                    deletecard();
                                 }
                                 else if(cardid == "Byw6APXDGu"){
                                     stealHP(cardid, current_user, targetuser);
+                                    deletecard();
                                 }
                                 else if(cardid == "jqxvogKdXQ"){
                                     stealHP(cardid, current_user, targetuser);
+                                    deletecard();
                                 }
                                 else if(cardid == "8x7C6LFRhH"){
                                     stealHP(cardid, current_user, targetuser);
+                                    deletecard();
                                 }
                                 else if(cardid == "1PF6Z8XISA"){
                                     stealCard(targetuser);
+                                    deletecard();
                                 }
                                 else{
-
+                                    //再抽一張
                                 }
                             },
                             error: function(error){
@@ -110,7 +129,7 @@ function getElementStringByowncard(name, id){
 };
 
 //Delete used card
-function deletecard(owncardid){
+function deletecard(){
     var owncard = localStorage.getItem('owncardId');
     var ownCard = Parse.Object.extend('Owncard');
     var query = new Parse.Query(ownCard);
