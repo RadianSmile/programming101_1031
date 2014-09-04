@@ -231,7 +231,7 @@ function addXP70(user, targetuser){
             c_user.save(null,{
                 success:function(data){
                     console.log("success!");
-                }
+                },
                 error:function(error){
                     console.log(error.toString());
                 }
