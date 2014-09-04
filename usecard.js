@@ -28,8 +28,9 @@ $(document).ready(function(){
                             success:function(data){
                                 var card = data.get('Card_info');
                                 var cardid = card.id;
-                                console.log(cardid);
+                                console.log("cardid= "+ cardid);
                                 var targetuser = localStorage.getItem('userid');
+                                console.log("targetuser= " + targetuser);
                                 if(cardid == "OSRGBnKpaP"){
                                     addXP10(current_user, targetuser);
                                 }
@@ -222,7 +223,6 @@ function addXP70(user, targetuser){
     var currentuser = Parse.Object.extend('User_status');
     var query = new Parse.Query(currentuser);
     query.equalTo('User', targetuser);
-    query.include('User');
     query.first({
         success: function(data){
             console.log(data);
