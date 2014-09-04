@@ -29,6 +29,7 @@ $(document).ready(function(){
                                                                         var cardid = card.id;
                                                                         console.log(cardid);
                                                                         var targetuser = localStorage.getItem('userid');
+                                                                        console.log(targetuser);
                                                                         if(cardid == "OSRGBnKpaP"){
                                                                             addXP10(current_user, targetuser);
                                                                         }
