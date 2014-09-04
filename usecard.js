@@ -75,13 +75,13 @@ $(document).ready(function(){
                                     minusHP(cardid, targetuser);
                                 }
                                 else if(cardid == "Byw6APXDGu"){
-                                    stealHP(cardid, current_user, targetuser);
+                                    stealHP(cardid, Parse.User.current(), targetuser);
                                 }
                                 else if(cardid == "jqxvogKdXQ"){
-                                    stealHP(cardid, current_user, targetuser);
+                                    stealHP(cardid, Parse.User.current(), targetuser);
                                 }
                                 else if(cardid == "8x7C6LFRhH"){
-                                    stealHP(cardid, current_user, targetuser);
+                                    stealHP(cardid, Parse.User.current(), targetuser);
                                 }
                                 else if(cardid == "1PF6Z8XISA"){
                                     stealcard(current_user, targetuser);
@@ -217,108 +217,6 @@ function donateHP50(user, targetuser){
                     var targethp = data[1].get('HP');
                     data[1].set('HP', targethp +=50);
                     data[1].save();
-                }
-            }
-            else{
-                alert("You don't have enough HP to donate!!");
-            }
-        },
-        error:function(error){
-            console.log(error.toString());
-        }
-    });
-};
-
-function stealHP10(user, targetuser){
-    var userquery = Parse.Object.extend('User');
-    var query1 = new Parse.Query(userquery);
-    query1.equalTo('objectId', user);
-    var query2 = new Parse.Query(userquery);
-    query2.equalTo('objectId', targetuser);
-    var query = Parse.Query.or(query1, query2);
-    query.find({
-        success:function(data){
-            if(data[1].get('HP')>=10){
-                var targethp = data[1].get('HP');
-                data[1].set('HP', targethp-=10);
-                data[1].save();
-                if(data[0].get('HP')>90){
-                    var userhp = data[0].get('HP');
-                    data[0].set('HP', userhp =100);
-                    data[0].save();
-                }
-                else{
-                    var userhp = data[0].get('HP');
-                    data[0].set('HP', userhp +=10);
-                    data[0].save();
-                }
-            }
-            else{
-                alert("You don't have enough HP to donate!!");
-            }
-        },
-        error:function(error){
-            console.log(error.toString());
-        }
-    });
-};
-
-function stealHP30(user, targetuser){
-    var userquery = Parse.Object.extend('User');
-    var query1 = new Parse.Query(userquery);
-    query1.equalTo('objectId', user);
-    var query2 = new Parse.Query(userquery);
-    query2.equalTo('objectId', targetuser);
-    var query = Parse.Query.or(query1, query2);
-    query.find({
-        success:function(data){
-            if(data[1].get('HP')>=30){
-                var targethp = data[1].get('HP');
-                data[1].set('HP', targethp-=30);
-                data[1].save();
-                if(data[0].get('HP')>70){
-                    var userhp = data[0].get('HP');
-                    data[0].set('HP', userhp =100);
-                    data[0].save();
-                }
-                else{
-                    var userhp = data[0].get('HP');
-                    data[0].set('HP', userhp +=30);
-                    data[0].save();
-                }
-            }
-            else{
-                alert("You don't have enough HP to donate!!");
-            }
-        },
-        error:function(error){
-            console.log(error.toString());
-        }
-    });
-};
-
-function stealHP50(user, targetuser){
-    var userquery = Parse.Object.extend('User');
-    var query1 = new Parse.Query(userquery);
-    query1.equalTo('objectId', user);
-    var query2 = new Parse.Query(userquery);
-    query2.equalTo('objectId', targetuser);
-    var query = Parse.Query.or(query1, query2);
-    query.find({
-        success:function(data){
-            if(data[1].get('HP')>=50){
-                var targethp = data[1].get('HP');
-                data[1].set('HP', targethp-=50);
-                data[1].save();
-                if(data[0].get('HP')>50){
-                    var userhp = data[0].get('HP');
-                    data[0].set('HP', userhp =100);
-                    data[0].save();
-                }
-                else{
-                    var userhp = data[0].get('HP');
-                    data[0].set('HP', userhp +=50);
-                    data[0].save();
                 }
             }
             else{
