@@ -39,6 +39,7 @@ $(document).ready(function(){
                                                                             addXP50(current_user, targetuser);
                                                                         }
                                                                         else if(cardid == "wxTLT53ZZX"){
+                                                                            console.log('abc');
                                                                             addXP70(current_user, targetuser);
                                                                         }
                                                                         else if(cardid == "zLHR3S0hlb"){
