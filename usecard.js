@@ -20,6 +20,7 @@ $(document).ready(function(){
     					var id = $(this).attr('id');
     					localStorage['userid'] = id;
                                                                  var owncardid = localStorage.getItem('owncardId');
+                                                                 console.log(owncardid);
                                                                  var owncard = Parse.Object.extend('Owncard');
                                                                  var query = new Parse.Query(owncard);
                                                                  query.equalTo('objectId', owncardid);
