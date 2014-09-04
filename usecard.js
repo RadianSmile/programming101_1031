@@ -45,16 +45,16 @@ $(document).ready(function(){
                                     console.log('abc');
                                 }
                                 else if(cardid == "zLHR3S0hlb"){
-                                    addHP10(current_user, targetuser);
+                                    addHP(cardid, targetuser);
                                 }
                                 else if(cardid == "7mn5hYmEWH"){
-                                    addHP30(current_user, targetuser);
+                                    addHP(cardid, targetuser);
                                 }
                                 else if(cardid == "cbACuxTVY1"){
-                                    addHP50(current_user, targetuser);
+                                    addHP(cardid, targetuser);
                                 }
                                 else if(cardid == "UDfyCM4Pyb"){
-                                    fullHP(current_user, targetuser);
+                                    addHP(cardid, targetuser);
                                 }
                                 else if(cardid == "aJONHaxQtM"){
                                     addLife(current_user);
@@ -69,13 +69,13 @@ $(document).ready(function(){
                                     donateHP50(current_user, targetuser);
                                 }
                                 else if(cardid == "y0pZ66Wl4X"){
-                                    minusHP10(current_user, targetuser);
+                                    minusHP(cardid, targetuser);
                                 }
                                 else if(cardid == "ZLZIS7XbfQ"){
-                                    minusHP30(current_user, targetuser);
+                                    minusHP(cardid, targetuser);
                                 }
                                 else if(cardid == "4kJkiyYROw"){
-                                    minusHP50(current_user, targetuser);
+                                    minusHP(cardid, targetuser);
                                 }
                                 else if(cardid == "Byw6APXDGu"){
                                     stealHP10(current_user, targetuser);
@@ -252,7 +252,7 @@ function addXP70(user, targetuser){
     });
 };
 
-function addHP10(user, targetuser){
+/*function addHP10(user, targetuser){
     var currentuser = Parse.Object.extend('User');
     var query = new Parse.Query(currentuser);
     query.equalTo('objectId', targetuser);
@@ -316,7 +316,7 @@ function addHP50(user, targetuser){
             console.log(error.toString());
         }
     });
-};
+};*/
 
 function minusHP10(user, targetuser){
     var currentuser = Parse.Object.extend('User');
@@ -384,7 +384,7 @@ function minusHP50(user, targetuser){
     });
 };
 
-function fullHP(user, targetuser){
+/*function fullHP(user, targetuser){
     var currentuser = Parse.Object.extend('User');
     var query = new Parse.Query(currentuser);
     query.equalTo('objectId', targetuser);
@@ -404,7 +404,7 @@ function fullHP(user, targetuser){
             console.log(error.toString());
         }
     });
-};
+};*/
 
 function donateHP10(user, targetuser){
     var userquery = Parse.Object.extend('User');
@@ -632,3 +632,85 @@ function stealcard(user, targetuser){
         }
     });
 };
+
+function addHP(cardid, target){
+    var hpPlus = 0;
+    if(cardid="UDfyCM4Pyb") //+full
+        hpPlus = /*max health value*/;
+    else if(cardid="cbACuxTVY1") //+50
+        hpPlus = 50;
+    else if(cardid="7mn5hYmEWH") //+30
+        hpPlus = 30;
+    else if(cardid="zLHR3S0hlb") //+10
+        hpPlus = 10;
+    var user = Parse.Object.extend('User');
+    var query = Parse.Query(user);
+    query.equalTo('objectId',target);
+    query.first({
+        success: function(data){
+            var udata = Parse.Object.extend('User_status');
+            var query = Parse.Query(udata);
+            query.equalTo('user',data); 
+            query.first({
+                success: function(result){
+                    var hp = result.get('HP');
+                    var udata2 = new udata();
+                    udata2.set('objectId',result.id);
+                    udata2.save(null,{
+                        success: function(udata2){
+                            hp += hpPlus
+                            udata2.set('HP', hp);
+                            udata2.save();
+                        }
+                    });
+                },
+                error: function(error){
+                    console.log(error);
+                }
+            });
+        },
+        error: function(error){
+            console.log(error);
+        }
+    });
+}
+
+function minusHP(cardid, target){
+    var hpMinus = 0;
+    if(cardid="50") //-50
+        hpMinus = 50;
+    else if(cardid="30") //-30
+        hpMinus = 30;
+    else if(cardid="10") //-10
+        hpMinus = 10;
+    var user = Parse.Object.extend('User');
+    var query = Parse.Query(user);
+    query.equalTo('objectId',target);
+    query.first({
+        success: function(data){
+            var udata = Parse.Object.extend('User_status');
+            var query = Parse.Query(udata);
+            query.equalTo('user',data); 
+            query.first({
+                success: function(result){
+                    var hp = result.get('HP');
+                    var udata2 = new udata();
+                    udata2.set('objectId',result.id);
+                    udata2.save(null,{
+                        success: function(udata2){
+                            hp -= hpPlus
+                            udata2.set('HP', hp);
+                            udata2.save();
+                        }
+                    });
+                },
+                error: function(error){
+                    console.log(error);
+                }
+            });
+        },
+        error: function(error){
+            console.log(error);
+        }
+    });
+}
