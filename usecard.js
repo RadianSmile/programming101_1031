@@ -643,8 +643,8 @@ function addHP(cardid, target){
         hpPlus = 30;
     else if(cardid="zLHR3S0hlb") //+10
         hpPlus = 10;
-    var user = Parse.Object.extend('_User');
-    var query = Parse.Query(user);
+    var user = Parse.Object.extend('User');
+    var query = new Parse.Query(user);
     query.equalTo('objectId',target);
     query.first({
         success: function(data){
