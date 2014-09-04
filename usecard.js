@@ -32,17 +32,16 @@ $(document).ready(function(){
                                 var targetuser = localStorage.getItem('userid');
                                 console.log("targetuser= " + targetuser);
                                 if(cardid == "OSRGBnKpaP"){
-                                    addXP10(current_user, targetuser);
+                                    addXP(cardid, targetuser);
                                 }
                                 else if(cardid == "4c3uX1rZ1K"){
-                                    addXP30(current_user, targetuser);
+                                    addXP(cardid, targetuser);
                                 }
                                 else if(cardid == "Zm3TV6UaEP"){
-                                    addXP50(current_user, targetuser);
+                                    addXP(cardid, targetuser);
                                 }
                                 else if(cardid == "wxTLT53ZZX"){
-                                    addXP70(current_user, targetuser);
-                                    console.log('abc');
+                                    addXP(cardid, targetuser);
                                 }
                                 else if(cardid == "zLHR3S0hlb"){
                                     addHP(cardid, targetuser);
@@ -152,259 +151,6 @@ function addLife(user){
         }
     });
 };
-
-function addXP10(user, targetuser){
-    var currentuser = Parse.Object.extend('User');
-    var query = new Parse.Query(currentuser);
-    query.equalTo('objectId', targetuser);
-    query.first({
-        success: function(data){
-            var c_user = new currentuser();
-            var xp = data.get('XP');
-            c_user.set('XP', xp);
-            c_user.save(null, {
-                success:function(data){
-                    c_user.set('XP', xp+=10);
-                    c_user.save();
-                }
-            });
-        },
-        error:function(error){
-            console.log(error.toString());
-        }
-    });
-};
-
-function addXP30(user, targetuser){
-    var currentuser = Parse.Object.extend('User');
-    var query = new Parse.Query(currentuser);
-    query.equalTo('objectId', targetuser);
-    query.first({
-        success: function(data){
-            var c_user = new currentuser();
-            var xp = data.get('XP');
-            c_user.set('XP', xp);
-            c_user.save(null, {
-                success:function(data){
-                    c_user.set('XP', xp+=30);
-                    c_user.save();
-                }
-            });
-        },
-        error:function(error){
-            console.log(error.toString());
-        }
-    });
-};
-
-function addXP50(user, targetuser){
-    var currentuser = Parse.Object.extend('User');
-    var query = new Parse.Query(currentuser);
-    query.equalTo('objectId', targetuser);
-    query.first({
-        success: function(data){
-            var c_user = new currentuser();
-            var xp = data.get('XP');
-            c_user.set('XP', xp);
-            c_user.save(null, {
-                success:function(data){
-                    c_user.set('XP', xp+=50);
-                    c_user.save();
-                }
-            });
-        },
-        error:function(error){
-            console.log(error.toString());
-        }
-    });
-};
-
-function addXP70(user, targetuser){
-    var currentuser = Parse.Object.extend('User_status');
-    var query = new Parse.Query(currentuser);
-    query.equalTo('User', targetuser);
-    query.first({
-        success: function(data){
-            console.log(data);
-            var c_user = new currentuser();
-            var xp = data.get('XP');
-            c_user.set('objectId', data.id);
-            c_user.set('XP', xp);
-            c_user.save(null,{
-                success:function(data){
-                    c_user.set('XP', xp+=70);
-                    c_user.save();
-                },
-                error:function(error){
-                    console.log(error.toString());
-                }
-            });
-            /*c_user.save(null, {
-                success:function(data){
-                    c_user.set('XP', xp+=70);
-                    c_user.save();
-                }
-            });*/
-        },
-        error:function(error){
-            console.log(error.toString());
-        }
-    });
-};
-
-/*function addHP10(user, targetuser){
-    var currentuser = Parse.Object.extend('User');
-    var query = new Parse.Query(currentuser);
-    query.equalTo('objectId', targetuser);
-    query.first({
-        success:function(data){
-            var c_user = new currentuser();
-            var hp = data.get('HP');
-            c_user.set('HP', hp);
-            c_user.save(null,{
-                success:function(data){
-                    c_user.set('HP', hp+=10);
-                    c_user.save();
-                }
-            });
-        },
-        error:function(error){
-            console.log(error.toString());
-        }
-    });
-};
-
-function addHP30(user, targetuser){
-    var currentuser = Parse.Object.extend('User');
-    var query = new Parse.Query(currentuser);
-    query.equalTo('objectId', targetuser);
-    query.first({
-        success:function(data){
-            var c_user = new currentuser();
-            var hp = data.get('HP');
-            c_user.set('HP', hp);
-            c_user.save(null,{
-                success:function(data){
-                    c_user.set('HP', hp+=30);
-                    c_user.save();
-                }
-            });
-        },
-        error:function(error){
-            console.log(error.toString());
-        }
-    });
-};
-
-function addHP50(user, targetuser){
-    var currentuser = Parse.Object.extend('User');
-    var query = new Parse.Query(currentuser);
-    query.equalTo('objectId', targetuser);
-    query.first({
-        success:function(data){
-            var c_user = new currentuser();
-            var hp = data.get('HP');
-            c_user.set('HP', hp);
-            c_user.save(null,{
-                success:function(data){
-                    c_user.set('HP', hp+=50);
-                    c_user.save();
-                }
-            });
-        },
-        error:function(error){
-            console.log(error.toString());
-        }
-    });
-};*/
-
-function minusHP10(user, targetuser){
-    var currentuser = Parse.Object.extend('User');
-    var query = new Parse.Query(currentuser);
-    query.equalTo('objectId', targetuser);
-    query.first({
-        success:function(data){
-            var c_user = new currentuser();
-            var hp = data.get('HP');
-            c_user.set('HP', hp);
-            c_user.save(null,{
-                success:function(data){
-                    c_user.set('HP', hp-=10);
-                    c_user.save();
-                }
-            });
-        },
-        error:function(error){
-            console.log(error.toString());
-        }
-    });
-};
-
-function minusHP30(user, targetuser){
-    var currentuser = Parse.Object.extend('User');
-    var query = new Parse.Query(currentuser);
-    query.equalTo('objectId', targetuser);
-    query.first({
-        success:function(data){
-            var c_user = new currentuser();
-            var hp = data.get('HP');
-            c_user.set('HP', hp);
-            c_user.save(null,{
-                success:function(data){
-                    c_user.set('HP', hp-=30);
-                    c_user.save();
-                }
-            });
-        },
-        error:function(error){
-            console.log(error.toString());
-        }
-    });
-};
-
-function minusHP50(user, targetuser){
-    var currentuser = Parse.Object.extend('User');
-    var query = new Parse.Query(currentuser);
-    query.equalTo('objectId', targetuser);
-    query.first({
-        success:function(data){
-            var c_user = new currentuser();
-            var hp = data.get('HP');
-            c_user.set('HP', hp);
-            c_user.save(null,{
-                success:function(data){
-                    c_user.set('HP', hp-=50);
-                    c_user.save();
-                }
-            });
-        },
-        error:function(error){
-            console.log(error.toString());
-        }
-    });
-};
-
-/*function fullHP(user, targetuser){
-    var currentuser = Parse.Object.extend('User');
-    var query = new Parse.Query(currentuser);
-    query.equalTo('objectId', targetuser);
-    query.first({
-        success:function(data){
-            var c_user = new currentuser();
-            var hp = data.get('HP');
-            c_user.set('HP', hp);
-            c_user.save(null,{
-                success:function(data){
-                    c_user.set('HP', hp=100);
-                    c_user.save();
-                }
-            });
-        },
-        error:function(error){
-            console.log(error.toString());
-        }
-    });
-};*/
 
 function donateHP10(user, targetuser){
     var userquery = Parse.Object.extend('User');
@@ -658,9 +404,17 @@ function addHP(cardid, target){
                     udata2.set('objectId',result.id);
                     udata2.save(null,{
                         success: function(udata2){
-                            hp += hpPlus
-                            udata2.set('HP', hp);
-                            udata2.save();
+                            if(hpPlus == 100){
+                                hp = 100;
+                                udata2.set('HP', hp);
+                                udata2.save();
+                            }
+                            else{
+                                hp += hpPlus;
+                                udata2.set('HP', hp);
+                                udata2.save();
+                            }
+                            
                         }
                     });
                 },
@@ -677,11 +431,11 @@ function addHP(cardid, target){
 
 function minusHP(cardid, target){
     var hpMinus = 0;
-    if(cardid="50") //-50
+    if(cardid="4kJkiyYROw") //-50
         hpMinus = 50;
-    else if(cardid="30") //-30
+    else if(cardid="ZLZIS7XbfQ") //-30
         hpMinus = 30;
-    else if(cardid="10") //-10
+    else if(cardid="y0pZ66Wl4X") //-10
         hpMinus = 10;
     var user = Parse.Object.extend('User');
     var query = new Parse.Query(user);
@@ -713,4 +467,65 @@ function minusHP(cardid, target){
             console.log(error);
         }
     });
+}
+
+function addXP(cardid, target){
+    var xpPlus = 0;
+    if(cardid="wxTLT53ZZX") //+70
+        xpPlus = 70;
+    else if(cardid="Zm3TV6UaEP") //+50
+        xpPlus = 50;
+    else if(cardid="4c3uX1rZ1K") //+30
+        xpPlus = 30;
+    else if(cardid="OSRGBnKpaP") //+10
+        xpPlus = 10;
+    var user = Parse.Object.extend('User');
+    var query = new Parse.Query(user);
+    query.equalTo('objectId',target);
+    query.first({
+        success: function(data){
+            var udata = Parse.Object.extend('User_status');
+            var query = new Parse.Query(udata);
+            query.equalTo('User',data); 
+            query.first({
+                success: function(result){
+                    var xp = result.get('XP');
+                    var udata2 = new udata();
+                    udata2.set('objectId',result.id);
+                    udata2.save(null,{
+                        success: function(udata2){
+                                xp += xpPlus;
+                                udata2.set('XP', xp);
+                                udata2.save();
+                        }
+                    });
+                },
+                error: function(error){
+                    console.log(error);
+                }
+            });
+        },
+        error: function(error){
+            console.log(error);
+        }
+    });
+}
+
+function stealHP(cardid, user, target){
+    var getHpId = '';
+    var lossHpId = '';
+    if(cardid = ''){ //steal 70
+        getHpId = ''; //+70 card id
+        lossHpId = ''; //-70 card id
+    }
+    else if(cardid = ''){ // steal 50
+        getHpId = ''; //+50 card id
+        lossHpId = ''; //-50 card id
+    }
+    else if(cardid = ''){ // steal 30
+        getHpId = ''; //+30 card id
+        lossHpId = ''; //-30 card id
+    }
+    lossHP(lossHpId, target);
+    getHP(getHpId, user);
 }
