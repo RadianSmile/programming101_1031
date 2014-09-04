@@ -90,6 +90,7 @@ $(document).ready(function(){
                                                                         else{
 
                                                                         }
+                                                                        return false;
                                                                     },
                                                                     error: function(error){
                                                                         console.log(error.toString());
