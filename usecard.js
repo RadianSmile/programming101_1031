@@ -90,9 +90,6 @@ $(document).ready(function(){
 
                                                                         }
                                                                     }
-                                                                    error:function(){
-                                                                        console.log("error!");
-                                                                    }
                                                                  })
     					window.location.assign("http://radiansmile.github.io/CodeEDU/dashboard.html");
     				})
