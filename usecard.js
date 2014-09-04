@@ -107,7 +107,7 @@ $(document).ready(function(){
 
 function getElementStringByowncard(name, id){
     //var s = "<input type='submit' value='"+name+"' id='"+id+"'>";
-    var s = "<div  value='"+name+"' class='in' id='"+id+"'>'"+name+"'</div>";
+    var s = "<div  value='"+name+"' class='in' id='"+id+"'>"+name+"</div>";
 
     return s;
 };
