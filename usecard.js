@@ -22,6 +22,7 @@ $(document).ready(function(){
                         var owncardid = localStorage.getItem('owncardId');
                         var owncard = Parse.Object.extend('Owncard');
                         var query = new Parse.Query(owncard);
+                        query.include('Card_info');
                         query.equalTo('objectId', owncardid);
                         query.first({
                             success:function(data){
