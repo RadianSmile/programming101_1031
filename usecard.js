@@ -24,11 +24,8 @@ $(document).ready(function(){
                                                                  var owncard = Parse.Object.extend('Owncard');
                                                                  var query = new Parse.Query(owncard);
                                                                  query.equalTo('objectId', owncardid);
-                                                                 console.log(query);
                                                                  query.first({
                                                                     success:function(data){
-                                                                        console.log('query success!');
-                                                                        console.log(data);
                                                                         var cardid = data.get('Card_info');
                                                                         console.log(cardid);
                                                                         var targetuser = localStorage.getItem('userid');
