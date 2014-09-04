@@ -226,6 +226,7 @@ function addXP70(user, targetuser){
     query.equalTo('objectId', targetuser);
     query.first({
         success: function(data){
+            console.log(data);
             var c_user = new currentuser();
             var xp = data.get('XP');
             c_user.set('XP', xp);
