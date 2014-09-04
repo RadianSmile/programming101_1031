@@ -17,7 +17,6 @@ $(document).ready(function(){
     				$('div.userbox').append(string);
     				ccontainer = "";
     				$('input').on('click', function(){
-                                                                 console.log('clicked!');
     					var id = $(this).attr('id');
     					localStorage['userid'] = id;
                                                                  var owncardid = localStorage.getItem('owncardId');
@@ -28,7 +27,6 @@ $(document).ready(function(){
                                                                     success:function(data){
                                                                         console.log('query success!');
                                                                         var cardid = data.get('Card_info');
-                                                                        console.log(cardid);
                                                                         var targetuser = localStorage.getItem('userid');
                                                                         if(cardid == "OSRGBnKpaP"){
                                                                             addXP10(current_user, targetuser);
@@ -91,6 +89,9 @@ $(document).ready(function(){
 
                                                                         }
                                                                     }
+                                                                    error: function(error){
+                                                                        console.log(error.toString());
+                                                                    }
                                                                  })
     					window.location.assign("http://radiansmile.github.io/CodeEDU/dashboard.html");
     				})
@@ -106,6 +107,24 @@ function getElementStringByowncard(name, id){
     return s;
 };
 
+//Delete used card
+function deletecard(owncardid){
+    var owncard = localStorage.getItem('owncardId');
+    var ownCard = Parse.Object.extend('Owncard');
+    var query = new Parse.Query(ownCard);
+    query.equalTo('objectId', owncard);
+    query.first({
+        success:function(data){
+            data.destroy({
+                success: function(data){
+                    console.log("Delete used card success!!");
+                }
+            })
+        }
+    })
+};
+
+//Card function
 function addLife(user){
     var currentuser = Parse.Object.extend('User');
     var query = new Parse.Query(currentuser);
