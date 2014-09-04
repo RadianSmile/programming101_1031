@@ -54,7 +54,7 @@ $(document).ready(function(){
                                     addHP(cardid, targetuser);
                                 }
                                 else if(cardid == "aJONHaxQtM"){
-                                    addLife(current_user);
+                                    addLife(cardid, targetuser);
                                 }
                                 else if(cardid == "10ypku2oZk"){
                                     donateHP10(current_user, targetuser);
@@ -127,29 +127,6 @@ function deletecard(owncardid){
 };
 
 //Card function
-function addLife(user){
-    var currentuser = Parse.Object.extend('User');
-    var query = new Parse.Query(currentuser);
-    query.equalTo('objectId', user);
-    query.first({
-        success: function(data){
-            var c_user = new currentuser();
-            var life = data.get('Life');
-            c_user.set('Life', life);
-            c_user.save(null, {
-                success: function(data){
-                    c_user.set('Life', ++life);
-                    c_user.save();
-                }
-
-            });
-        },
-        error: function(error){
-            console.log(error.toString());
-        }
-    });
-};
-
 function donateHP10(user, targetuser){
     var userquery = Parse.Object.extend('User');
     var query1 = new Parse.Query(userquery);
@@ -532,4 +509,40 @@ function stealHP(cardid, user, target){
     }
     minusHP(lossHpId, target);
     addHP(getHpId, user);
+}
+
+function addLife(cardid, target){
+    var lifePlus = 0;
+    if(cardid="wxTLT53ZZX") //+1
+        lifePlus = 1;
+    var user = Parse.Object.extend('User');
+    var query = new Parse.Query(user);
+    query.equalTo('objectId',target);
+    query.first({
+        success: function(data){
+            var udata = Parse.Object.extend('User_status');
+            var query = new Parse.Query(udata);
+            query.equalTo('User',data); 
+            query.first({
+                success: function(result){
+                    var life = result.get('Life');
+                    var udata2 = new udata();
+                    udata2.set('objectId',result.id);
+                    udata2.save(null,{
+                        success: function(udata2){
+                                life += lifePlus;
+                                udata2.set('Life', life);
+                                udata2.save();
+                        }
+                    });
+                },
+                error: function(error){
+                    console.log(error);
+                }
+            });
+        },
+        error: function(error){
+            console.log(error);
+        }
+    });
 }
