@@ -226,10 +226,11 @@ function addXP70(user, targetuser){
     query.first({
         success: function(data){
             console.log(data);
+            var c_user = new currentuser();
             var xp = data.get('XP');
-            data.set('objectId', data.id);
-            data.set('XP', xp+=70);
-            data.save(null,{
+            c_user.set('objectId', data.id);
+            c_user.set('XP', xp+=70);
+            c_user.save(null,{
                 success:function(data){
                     console.log("success!");
                 },
