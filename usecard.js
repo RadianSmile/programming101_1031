@@ -17,6 +17,7 @@ $(document).ready(function(){
     				$('div.userbox').append(string);
     				ccontainer = "";
     				$('input').on('click', function(){
+                                                                 console.log('clicked!');
     					var id = $(this).attr('id');
     					localStorage['userid'] = id;
                                                                  var owncardid = localStorage.getItem('owncardId');
