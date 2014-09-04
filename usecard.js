@@ -57,13 +57,13 @@ $(document).ready(function(){
                                     addLife(cardid, targetuser);
                                 }
                                 else if(cardid == "10ypku2oZk"){
-                                    donateHP10(current_user, targetuser);
+                                    donateHP(cardid, current_user, targetuser);
                                 }
                                 else if(cardid == "ysYpQz4TW0"){
-                                    donateHP30(current_user, targetuser);
+                                    donateHP(cardid, current_user, targetuser);
                                 }
                                 else if(cardid == "ic6YE4frVp"){
-                                    donateHP50(current_user, targetuser);
+                                    donateHP(cardid, current_user, targetuser);
                                 }
                                 else if(cardid == "y0pZ66Wl4X"){
                                     minusHP(cardid, targetuser);
@@ -75,16 +75,16 @@ $(document).ready(function(){
                                     minusHP(cardid, targetuser);
                                 }
                                 else if(cardid == "Byw6APXDGu"){
-                                    stealHP(cardid, Parse.User.current(), targetuser);
+                                    stealHP(cardid, current_user, targetuser);
                                 }
                                 else if(cardid == "jqxvogKdXQ"){
-                                    stealHP(cardid, Parse.User.current(), targetuser);
+                                    stealHP(cardid, current_user, targetuser);
                                 }
                                 else if(cardid == "8x7C6LFRhH"){
-                                    stealHP(cardid, Parse.User.current(), targetuser);
+                                    stealHP(cardid, current_user, targetuser);
                                 }
                                 else if(cardid == "1PF6Z8XISA"){
-                                    stealcard(current_user, targetuser);
+                                    stealCard(targetuser);
                                 }
                                 else{
 
@@ -127,131 +127,6 @@ function deletecard(owncardid){
 };
 
 //Card function
-function donateHP10(user, targetuser){
-    var userquery = Parse.Object.extend('User');
-    var query1 = new Parse.Query(userquery);
-    query1.equalTo('objectId', user);
-    var query2 = new Parse.Query(userquery);
-    query2.equalTo('objectId', targetuser);
-    var query = Parse.Query.or(query1, query2);
-    query.find({
-        success:function(data){
-            if(data[0].get('HP')>=10){
-                var userhp = data[0].get('HP');
-                data[0].set('HP', userhp-=10);
-                data[0].save();
-                if(data[1].get('HP')>90){
-                    var targethp = data[1].get('HP');
-                    data[1].set('HP', targethp =100);
-                    data[1].save();
-                }
-                else{
-                    var targethp = data[1].get('HP');
-                    data[1].set('HP', targethp +=10);
-                    data[1].save();
-                }
-            }
-            else{
-                alert("You don't have enough HP to donate!!");
-            }
-        },
-        error:function(error){
-            console.log(error.toString());
-        }
-    });
-};
-
-function donateHP30(user, targetuser){
-    var userquery = Parse.Object.extend('User');
-    var query1 = new Parse.Query(userquery);
-    query1.equalTo('objectId', user);
-    var query2 = new Parse.Query(userquery);
-    query2.equalTo('objectId', targetuser);
-    var query = Parse.Query.or(query1, query2);
-    query.find({
-        success:function(data){
-            if(data[0].get('HP')>=30){
-                var userhp = data[0].get('HP');
-                data[0].set('HP', userhp-=30);
-                data[0].save();
-                if(data[1].get('HP')>70){
-                    var targethp = data[1].get('HP');
-                    data[1].set('HP', targethp =100);
-                    data[1].save();
-                }
-                else{
-                    var targethp = data[1].get('HP');
-                    data[1].set('HP', targethp +=30);
-                    data[1].save();
-                }
-            }
-            else{
-                alert("You don't have enough HP to donate!!");
-            }
-        },
-        error:function(error){
-            console.log(error.toString());
-        }
-    });
-};
-
-function donateHP50(user, targetuser){
-    var userquery = Parse.Object.extend('User');
-    var query1 = new Parse.Query(userquery);
-    query1.equalTo('objectId', user);
-    var query2 = new Parse.Query(userquery);
-    query2.equalTo('objectId', targetuser);
-    var query = Parse.Query.or(query1, query2);
-    query.find({
-        success:function(data){
-            if(data[0].get('HP')>=50){
-                var userhp = data[0].get('HP');
-                data[0].set('HP', userhp-=50);
-                data[0].save();
-                if(data[1].get('HP')>50){
-                    var targethp = data[1].get('HP');
-                    data[1].set('HP', targethp =100);
-                    data[1].save();
-                }
-                else{
-                    var targethp = data[1].get('HP');
-                    data[1].set('HP', targethp +=50);
-                    data[1].save();
-                }
-            }
-            else{
-                alert("You don't have enough HP to donate!!");
-            }
-        },
-        error:function(error){
-            console.log(error.toString());
-        }
-    });
-};
-
-function stealcard(user, targetuser){
-    var userquery = Parse.Object.extend('Owncard');
-    var query = new Parse.Query(userquery);
-    query.equalTo('user', targetuser);
-    query.find({
-        success: function(data){
-            var card = data[1].get('Card_info');
-            var user = new userquery();
-            user.set('user', Parse.User.current());
-            user.set('Card_info', card);
-            user.save(null, {
-                success: function(data){
-                    data[1].destroy({
-                        success: function(data){
-                            console.log(data[1] + " is destroyed!");
-                        }
-                    })
-                }
-            });
-        }
-    });
-};
-
 function addHP(cardid, target){
     var hpPlus = 0;
     if(cardid="UDfyCM4Pyb") //+full
@@ -409,6 +284,31 @@ function stealHP(cardid, user, target){
     addHP(getHpId, user);
 }
 
+function donateHP(cardid, user, target){
+    var getHpId = '';
+    var lossHpId = '';
+    if(cardid = 'ic6YE4frVp'){ //donate 50
+        getHpId = 'cbACuxTVY1'; //+50 card id
+        lossHpId = '4kJkiyYROw'; //-50 card id
+        hpPlus = 50;
+        hpMinus = 50;
+    }
+    else if(cardid = 'ysYpQz4TW0'){ // donate 30
+        getHpId = '7mn5hYmEWH'; //+30 card id
+        lossHpId = 'ZLZIS7XbfQ'; //-30 card id
+        hpPlus = 30;
+        hpMinus = 30;
+    }
+    else if(cardid = '10ypku2oZk'){ // donate 10
+        getHpId = 'zLHR3S0hlb'; //+10 card id
+        lossHpId = 'y0pZ66Wl4X'; //-10 card id
+        hpPlus = 10;
+        hpMinus = 10;
+    }
+    minusHP(lossHpId, user);
+    addHP(getHpId, target);
+}
+
 function addLife(cardid, target){
     var lifePlus = 0;
     if(cardid="wxTLT53ZZX") //+1
@@ -441,6 +341,40 @@ function addLife(cardid, target){
         },
         error: function(error){
             console.log(error);
+        }
+    });
+}
+
+function stealCard(targetId){
+    var user = Parse.User.current();
+    var target1 = Parse.Object.extend('User');
+    var query1 = new Parse.Query();
+    query1.equalTo('objectId',targetId);
+    query.first({
+        success: function(data){
+            var owncard = Parse.Object.extend('Owncard');
+            var query2 = new Parse.Query(owncard);
+            query2.equalTo('user',data);
+            query2.include('user');
+            query2.include('Card_info');
+            query2.find({
+                success: function(data2){
+                    var random = Math.floor(Math.random() * data2.length);
+                    var own = new owncard();
+                    own.set('objectId',data2[random].id);
+                    own.save(null,{
+                        success: function(own){
+                            own.set('user',user);
+                            own.save();
+                        }
+                    });
+                },
+                error: function(error){
+                    console.log(error);
+                }
+            });
+        },
+        error: function(error){
         }
     });
 }
