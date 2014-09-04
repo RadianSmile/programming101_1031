@@ -227,6 +227,7 @@ function addXP70(user, targetuser){
         success: function(data){
             console.log(data);
             var xp = data.get('XP');
+            data.set('objectId', data.id);
             data.set('XP', xp+=70);
             data.save(null,{
                 success:function(data){
