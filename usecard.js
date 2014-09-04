@@ -19,84 +19,83 @@ $(document).ready(function(){
     				$('.in').on('click', function(){
     					var id = $(this).attr('id');
     					localStorage['userid'] = id;
-                                                                 var owncardid = localStorage.getItem('owncardId');
-                                                                 var owncard = Parse.Object.extend('Owncard');
-                                                                 var query = new Parse.Query(owncard);
-                                                                 query.equalTo('objectId', owncardid);
-                                                                 query.first({
-                                                                    success:function(data){
-                                                                        var card = data.get('Card_info');
-                                                                        var cardid = card.id;
-                                                                        console.log(cardid);
-                                                                        var targetuser = localStorage.getItem('userid');
-                                                                        console.log(targetuser);
-                                                                        if(cardid == "OSRGBnKpaP"){
-                                                                            addXP10(current_user, targetuser);
-                                                                        }
-                                                                        else if(cardid == "4c3uX1rZ1K"){
-                                                                            addXP30(current_user, targetuser);
-                                                                        }
-                                                                        else if(cardid == "Zm3TV6UaEP"){
-                                                                            addXP50(current_user, targetuser);
-                                                                        }
-                                                                        else if(cardid == "wxTLT53ZZX"){
+                        var owncardid = localStorage.getItem('owncardId');
+                        var owncard = Parse.Object.extend('Owncard');
+                        var query = new Parse.Query(owncard);
+                        query.equalTo('objectId', owncardid);
+                        query.first({
+                            success:function(data){
+                                var card = data.get('Card_info');
+                                var cardid = card.id;
+                                console.log(cardid);
+                                var targetuser = localStorage.getItem('userid');
+                                console.log(targetuser);
+                                if(cardid == "OSRGBnKpaP"){
+                                    addXP10(current_user, targetuser);
+                                }
+                                else if(cardid == "4c3uX1rZ1K"){
+                                    addXP30(current_user, targetuser);
+                                }
+                                else if(cardid == "Zm3TV6UaEP"){
+                                    addXP50(current_user, targetuser);
+                                }
+                                else if(cardid == "wxTLT53ZZX"){
+                                    addXP70(current_user, targetuser);
+                                    console.log('abc');
+                                }
+                                else if(cardid == "zLHR3S0hlb"){
+                                    addHP10(current_user, targetuser);
+                                }
+                                else if(cardid == "7mn5hYmEWH"){
+                                    addHP30(current_user, targetuser);
+                                }
+                                else if(cardid == "cbACuxTVY1"){
+                                    addHP50(current_user, targetuser);
+                                }
+                                else if(cardid == "UDfyCM4Pyb"){
+                                    fullHP(current_user, targetuser);
+                                }
+                                else if(cardid == "aJONHaxQtM"){
+                                    addLife(current_user);
+                                }
+                                else if(cardid == "10ypku2oZk"){
+                                    donateHP10(current_user, targetuser);
+                                }
+                                else if(cardid == "ysYpQz4TW0"){
+                                    donateHP30(current_user, targetuser);
+                                }
+                                else if(cardid == "ic6YE4frVp"){
+                                    donateHP50(current_user, targetuser);
+                                }
+                                else if(cardid == "y0pZ66Wl4X"){
+                                    minusHP10(current_user, targetuser);
+                                }
+                                else if(cardid == "ZLZIS7XbfQ"){
+                                    minusHP30(current_user, targetuser);
+                                }
+                                else if(cardid == "4kJkiyYROw"){
+                                    minusHP50(current_user, targetuser);
+                                }
+                                else if(cardid == "Byw6APXDGu"){
+                                    stealHP10(current_user, targetuser);
+                                }
+                                else if(cardid == "jqxvogKdXQ"){
+                                    stealHP30(current_user, targetuser);
+                                }
+                                else if(cardid == "8x7C6LFRhH"){
+                                    stealHP50(current_user, targetuser);
+                                }
+                                else if(cardid == "1PF6Z8XISA"){
+                                    stealcard(current_user, targetuser);
+                                }
+                                else{
 
-                                                                            addXP70(current_user, targetuser);
-                                                                            console.log('abc');
-                                                                        }
-                                                                        else if(cardid == "zLHR3S0hlb"){
-                                                                            addHP10(current_user, targetuser);
-                                                                        }
-                                                                        else if(cardid == "7mn5hYmEWH"){
-                                                                            addHP30(current_user, targetuser);
-                                                                        }
-                                                                        else if(cardid == "cbACuxTVY1"){
-                                                                            addHP50(current_user, targetuser);
-                                                                        }
-                                                                        else if(cardid == "UDfyCM4Pyb"){
-                                                                            fullHP(current_user, targetuser);
-                                                                        }
-                                                                        else if(cardid == "aJONHaxQtM"){
-                                                                            addLife(current_user);
-                                                                        }
-                                                                        else if(cardid == "10ypku2oZk"){
-                                                                            donateHP10(current_user, targetuser);
-                                                                        }
-                                                                        else if(cardid == "ysYpQz4TW0"){
-                                                                            donateHP30(current_user, targetuser);
-                                                                        }
-                                                                        else if(cardid == "ic6YE4frVp"){
-                                                                            donateHP50(current_user, targetuser);
-                                                                        }
-                                                                        else if(cardid == "y0pZ66Wl4X"){
-                                                                            minusHP10(current_user, targetuser);
-                                                                        }
-                                                                        else if(cardid == "ZLZIS7XbfQ"){
-                                                                            minusHP30(current_user, targetuser);
-                                                                        }
-                                                                        else if(cardid == "4kJkiyYROw"){
-                                                                            minusHP50(current_user, targetuser);
-                                                                        }
-                                                                        else if(cardid == "Byw6APXDGu"){
-                                                                            stealHP10(current_user, targetuser);
-                                                                        }
-                                                                        else if(cardid == "jqxvogKdXQ"){
-                                                                            stealHP30(current_user, targetuser);
-                                                                        }
-                                                                        else if(cardid == "8x7C6LFRhH"){
-                                                                            stealHP50(current_user, targetuser);
-                                                                        }
-                                                                        else if(cardid == "1PF6Z8XISA"){
-                                                                            stealcard(current_user, targetuser);
-                                                                        }
-                                                                        else{
-
-                                                                        }
-                                                                    },
-                                                                    error: function(error){
-                                                                        console.log(error.toString());
-                                                                    }
-                                                                 })
+                                }
+                            },
+                            error: function(error){
+                                console.log(error.toString());
+                            }
+                        })
     					//window.location.href("http://radiansmile.github.io/CodeEDU/dashboard.html");
     				})
     			}
@@ -220,7 +219,6 @@ function addXP50(user, targetuser){
 };
 
 function addXP70(user, targetuser){
-    alert();
     var currentuser = Parse.Object.extend('User');
     var query = new Parse.Query(currentuser);
     query.equalTo('objectId', targetuser);
@@ -230,7 +228,14 @@ function addXP70(user, targetuser){
             var c_user = new currentuser();
             var xp = data.get('XP');
             c_user.set('XP', xp+=70);
-            c_user.save();
+            c_user.save(null,{
+                success:function(data){
+                    console.log("success!");
+                }
+                error:function(error){
+                    console.log(error.toString());
+                }
+            });
             /*c_user.save(null, {
                 success:function(data){
                     c_user.set('XP', xp+=70);
