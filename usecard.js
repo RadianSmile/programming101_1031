@@ -20,13 +20,13 @@ $(document).ready(function(){
     					var id = $(this).attr('id');
     					localStorage['userid'] = id;
                                                                  var owncardid = localStorage.getItem('owncardId');
-                                                                 console.log(owncardid);
                                                                  var owncard = Parse.Object.extend('Owncard');
                                                                  var query = new Parse.Query(owncard);
                                                                  query.equalTo('objectId', owncardid);
                                                                  query.first({
                                                                     success:function(data){
-                                                                        var cardid = data.get('Card_info');
+                                                                        var card = data.get('Card_info');
+                                                                        var cardid = card.id;
                                                                         console.log(cardid);
                                                                         var targetuser = localStorage.getItem('userid');
                                                                         if(cardid == "OSRGBnKpaP"){
