@@ -515,14 +515,20 @@ function stealHP(cardid, user, target){
     if(cardid = '8x7C6LFRhH'){ //steal 50
         getHpId = 'cbACuxTVY1'; //+50 card id
         lossHpId = '4kJkiyYROw'; //-50 card id
+        hpPlus = 50;
+        hpMinus = 50;
     }
     else if(cardid = 'jqxvogKdXQ'){ // steal 30
         getHpId = '7mn5hYmEWH'; //+30 card id
         lossHpId = 'ZLZIS7XbfQ'; //-30 card id
+        hpPlus = 30;
+        hpMinus = 30;
     }
     else if(cardid = 'Byw6APXDGu'){ // steal 10
         getHpId = 'zLHR3S0hlb'; //+10 card id
         lossHpId = 'y0pZ66Wl4X'; //-10 card id
+        hpPlus = 10;
+        hpMinus = 10;
     }
     minusHP(lossHpId, target);
     addHP(getHpId, user);
