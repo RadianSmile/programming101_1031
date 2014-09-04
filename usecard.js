@@ -16,7 +16,7 @@ $(document).ready(function(){
     				//var string = "<form action='http://radiansmile.github.io/CodeEDU/dashboard.html'>" + ccontainer + "</form>";
     				$('div.userbox').append(string);
     				ccontainer = "";
-    				$('input').on('click', function(){
+    				$('.in').on('click', function(){
     					var id = $(this).attr('id');
     					localStorage['userid'] = id;
                                                                  var owncardid = localStorage.getItem('owncardId');
@@ -106,7 +106,7 @@ $(document).ready(function(){
 
 function getElementStringByowncard(name, id){
     //var s = "<input type='submit' value='"+name+"' id='"+id+"'>";
-    var s = "<div  value='"+name+"' id='"+id+"'></div>";
+    var s = "<div  value='"+name+"' class='in' id='"+id+"'>abc</div>";
 
     return s;
 };
