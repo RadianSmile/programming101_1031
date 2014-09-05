@@ -252,7 +252,6 @@ function addXP(cardid, target){
                                 udata2.set('XP', xp);
                                 udata2.save();
                                 deletecard();
-                                window.location.assign("http://radiansmile.github.io/CodeEDU/dashboard.html");
                         }
                     });
                 },
