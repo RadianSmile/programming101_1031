@@ -53,9 +53,9 @@ function getData(){
         success: function(results){
             var object = results;
             var remain = object.get('remain');
-            Shortdescription = object[i].get('shortdes');
-            Title = object[i].get('name');
-            Imagesrc = object[i].get('imagesrc');
+            Shortdescription = object.get('shortdes');
+            Title = object.get('name');
+            Imagesrc = object.get('imagesrc');
 
             $('h2#title').html(Title);
 
