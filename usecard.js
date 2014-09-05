@@ -157,16 +157,49 @@ function addHP(cardid, target){
                                 udata2.set('HP', hp);
                                 udata2.save();
                                 deletecard();
-                                //window.location.assign("http://radiansmile.github.io/CodeEDU/dashboard.html");
                             }
-                            else{
-                                hp += hpPlus;
-                                udata2.set('HP', hp);
-                                udata2.save();
-                                deletecard();
-                                //window.location.assign("http://radiansmile.github.io/CodeEDU/dashboard.html");
+                            else if(hpPlus == 50){
+                                if(hp >= 50){
+                                    hp = 100;
+                                    udata2.set('HP', hp);
+                                    udata2.save();
+                                    deletecard();
+                                }
+                                else{
+                                    hp += hpPlus;
+                                    udata2.set('HP', hp);
+                                    udata2.save();
+                                    deletecard();
+                                }
                             }
-                            
+                            else if(hpPlus == 30){
+                                if(hp >= 70){
+                                    hp = 100;
+                                    udata2.set('HP', hp);
+                                    udata2.save();
+                                    deletecard();
+                                }
+                                else{
+                                    hp += hpPlus;
+                                    udata2.set('HP', hp);
+                                    udata2.save();
+                                    deletecard();
+                                }
+                            }
+                            else if(hpPlus == 10){
+                                if(hp >= 90){
+                                    hp = 100;
+                                    udata2.set('HP', hp);
+                                    udata2.save();
+                                    deletecard();
+                                }
+                                else{
+                                    hp += hpPlus;
+                                    udata2.set('HP', hp);
+                                    udata2.save();
+                                    deletecard();
+                                }
+                            }                           
                         }
                     });
                 },
@@ -341,7 +374,6 @@ function addLife(cardid, target){
                                 udata2.set('Life', life);
                                 udata2.save();
                                 deletecard();
-                                window.location.assign("http://radiansmile.github.io/CodeEDU/dashboard.html");
                         }
                     });
                 },
@@ -378,7 +410,6 @@ function stealCard(targetId){
                             own.set('user',user);
                             own.save();
                             deletecard();
-                            window.location.assign("http://radiansmile.github.io/CodeEDU/dashboard.html");
                         }
                     });
                 },
