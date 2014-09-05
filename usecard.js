@@ -296,29 +296,27 @@ function addXP(cardid, target){
     });
 }
 
-function stealHP(cardid, user, target){
-    var getHpId = '';
-    var lossHpId = '';
+function stealHP(cardid, user, target, addcardid, minuscardid){
     if(cardid = '8x7C6LFRhH'){ //steal 50
-        getHpId = 'cbACuxTVY1'; //+50 card id
-        lossHpId = '4kJkiyYROw'; //-50 card id
+        addcardid = 'cbACuxTVY1'; //+50 card id
+        minuscardid = '4kJkiyYROw'; //-50 card id
         console.log(minusHP(lossHpId, target));
-        minusHP(lossHpId, target);
-        addHP(getHpId, user);
+        minusHP(minuscardid, target);
+        addHP(addcardid, user);
         deletecard();
     }
     else if(cardid = 'jqxvogKdXQ'){ // steal 30
-        getHpId = '7mn5hYmEWH'; //+30 card id
-        lossHpId = 'ZLZIS7XbfQ'; //-30 card id
-        minusHP(lossHpId, target);
-        addHP(getHpId, user);
+        addcardid = '7mn5hYmEWH'; //+30 card id
+        minuscardid = 'ZLZIS7XbfQ'; //-30 card id
+        minusHP(minuscardid, target);
+        addHP(addcardid, user);
         deletecard();
     }
     else if(cardid = 'Byw6APXDGu'){ // steal 10
-        getHpId = 'zLHR3S0hlb'; //+10 card id
-        lossHpId = 'y0pZ66Wl4X'; //-10 card id
-        minusHP(lossHpId, target);
-        addHP(getHpId, user);
+        addcardid = 'zLHR3S0hlb'; //+10 card id
+        minuscardid = 'y0pZ66Wl4X'; //-10 card id
+        minusHP(minuscardid, target);
+        addHP(addcardid, user);
         deletecard();
     }
 }
