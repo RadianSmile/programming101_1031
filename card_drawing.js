@@ -59,9 +59,14 @@ function getData(){
                     i++;
                 }
                 else{
+                    console.log(object[i]);
                     Shortdescription = object[i].get('shortdes');
                     Title = object[i].get('name');
                     Imagesrc = object[i].get('imagesrc');
+
+                    console.log(Shortdescription);
+                    console.log(Title);
+                    console.log(Imagesrc);
 
                     $('h2#title').html(Title);
 
