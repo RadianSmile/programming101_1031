@@ -48,49 +48,35 @@ function randomNum(){
 function getData(){
     var card = Parse.Object.extend("Card_info");
     var query = new Parse.Query(card);
-    var No = randomNum();
-    query.equalTo("cardno", No);
-    query.find({
+    query.greaterThan("remain", 0);
+    query.first({
         success: function(results){
             var object = results;
-            for(var i = 0; i< object.length; i++){
-                var remain = object[i].get('remain');
-                if(remain == 0){
-                    i++;
+            var remain = object.get('remain');
+            Shortdescription = object[i].get('shortdes');
+            Title = object[i].get('name');
+            Imagesrc = object[i].get('imagesrc');
+
+            $('h2#title').html(Title);
+
+            $('#image1').attr("src", Imagesrc)
+            $('#image2').attr("src", Imagesrc)
+            $('#image3').attr("src", Imagesrc)
+
+            substractCardNum(object.id);
+            var owncard = Parse.Object.extend("Owncard");
+            var own = new owncard();
+
+            own.set('user', Parse.User.current());
+            own.set('Card_info', object[i]);
+            own.save(null, {
+                success: function(){
+
+                },
+                error: function(error){
+                    alert('Failed to create new object, with error code: ' + error.description);
                 }
-                else{
-                    console.log(object[i]);
-                    Shortdescription = object[i].get('shortdes');
-                    Title = object[i].get('name');
-                    Imagesrc = object[i].get('imagesrc');
-
-                    console.log(Shortdescription);
-                    console.log(Title);
-                    console.log(Imagesrc);
-
-                    $('h2#title').html(Title);
-
-                    $('#image1').attr("src", Imagesrc)
-                    $('#image2').attr("src", Imagesrc)
-                    $('#image3').attr("src", Imagesrc)
-
-                    substractCardNum(object[i].id);
-                    var owncard = Parse.Object.extend("Owncard");
-                    var own = new owncard();
-
-                    own.set('user', Parse.User.current());
-                    own.set('Card_info', object[i]);
-                    own.save(null, {
-                        success: function(){
-
-                        },
-                        error: function(error){
-                            alert('Failed to create new object, with error code: ' + error.description);
-                        }
-                    })
-                    break;
-                }
-            }
+            })
         },
         error: function(error){
             alert("Error: " + error.code + " " + error.message);
