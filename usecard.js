@@ -157,14 +157,14 @@ function addHP(cardid, target){
                                 udata2.set('HP', hp);
                                 udata2.save();
                                 deletecard();
-                                window.location.assign("http://radiansmile.github.io/CodeEDU/dashboard.html");
+                                //window.location.assign("http://radiansmile.github.io/CodeEDU/dashboard.html");
                             }
                             else{
                                 hp += hpPlus;
                                 udata2.set('HP', hp);
                                 udata2.save();
                                 deletecard();
-                                window.location.assign("http://radiansmile.github.io/CodeEDU/dashboard.html");
+                                //window.location.assign("http://radiansmile.github.io/CodeEDU/dashboard.html");
                             }
                             
                         }
@@ -208,7 +208,7 @@ function minusHP(cardid, target){
                             udata2.set('HP', hp);
                             udata2.save();
                             deletecard();
-                            window.location.assign("http://radiansmile.github.io/CodeEDU/dashboard.html");
+                            //window.location.assign("http://radiansmile.github.io/CodeEDU/dashboard.html");
                         }
                     });
                 },
