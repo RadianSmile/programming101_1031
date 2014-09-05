@@ -96,6 +96,7 @@ function getData(){
     query.greaterThan("remain", 0);
     query.find({
         success: function(results){
+            console.log(results);
             var randomno = randomNum(results.length);
             var object = results;
             console.log(object[randomno]);
