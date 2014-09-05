@@ -302,6 +302,7 @@ function stealHP(cardid, user, target){
     if(cardid = '8x7C6LFRhH'){ //steal 50
         getHpId = 'cbACuxTVY1'; //+50 card id
         lossHpId = '4kJkiyYROw'; //-50 card id
+        console.log(minusHP(lossHpId, target));
         minusHP(lossHpId, target);
         addHP(getHpId, user);
         deletecard();
