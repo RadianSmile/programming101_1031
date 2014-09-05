@@ -300,7 +300,7 @@ function stealHP(cardid, user, target, addcardid, minuscardid){
     if(cardid = '8x7C6LFRhH'){ //steal 50
         addcardid = 'cbACuxTVY1'; //+50 card id
         minuscardid = '4kJkiyYROw'; //-50 card id
-        console.log(minusHP(lossHpId, target));
+        console.log(minusHP(minuscardid, target));
         minusHP(minuscardid, target);
         addHP(addcardid, user);
         deletecard();
