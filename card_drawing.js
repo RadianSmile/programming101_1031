@@ -13,7 +13,7 @@ var Title;
 var Imagesrc;
 
 function randomNum(length){
-        num = Math.floor(Math.random() * (length) + 1);
+        num = Math.floor(Math.random() * (length));
         return(num);
 }
 
