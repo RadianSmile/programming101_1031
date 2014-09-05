@@ -125,7 +125,7 @@ function deletecard(){
 };
 
 //Card function
-/*function addHP(cardid, target){
+function addHP(cardid, target){
     var hpPlus = 0;
     if(cardid="UDfyCM4Pyb") //+full
         hpPlus = 100;
@@ -150,54 +150,12 @@ function deletecard(){
                     udata2.set('objectId',result.id);
                     udata2.save(null,{
                         success: function(udata2){
-                            if(hpPlus == 100){
+                            hp =+ hpPlus;
+                            if(hp > 100)
                                 hp = 100;
-                                udata2.set('HP', hp);
-                                udata2.save();
-                                deletecard();
-                            }
-                            else if(hpPlus == 50){
-                                if(hp >= 50){
-                                    hp = 100;
-                                    udata2.set('HP', hp);
-                                    udata2.save();
-                                    deletecard();
-                                }
-                                else{
-                                    hp += hpPlus;
-                                    udata2.set('HP', hp);
-                                    udata2.save();
-                                    deletecard();
-                                }
-                            }
-                            else if(hpPlus == 30){
-                                if(hp >= 70){
-                                    hp = 100;
-                                    udata2.set('HP', hp);
-                                    udata2.save();
-                                    deletecard();
-                                }
-                                else{
-                                    hp += hpPlus;
-                                    udata2.set('HP', hp);
-                                    udata2.save();
-                                    deletecard();
-                                }
-                            }
-                            else if(hpPlus == 10){
-                                if(hp >= 90){
-                                    hp = 100;
-                                    udata2.set('HP', hp);
-                                    udata2.save();
-                                    deletecard();
-                                }
-                                else{
-                                    hp += hpPlus;
-                                    udata2.set('HP', hp);
-                                    udata2.save();
-                                    deletecard();
-                                }
-                            }                           
+                            udata2.set('HP',hp);
+                            udata2.save();
+                            deletecard();
                         }
                     });
                 },
@@ -210,9 +168,9 @@ function deletecard(){
             console.log(error);
         }
     });
-}*/
+}
 
-/*function minusHP(cardid, target){
+function minusHP(cardid, target){
     var hpMinus = 0;
     if(cardid="4kJkiyYROw") //-50
         hpMinus = 50;
@@ -236,6 +194,8 @@ function deletecard(){
                     udata2.save(null,{
                         success: function(udata2){
                             hp -= hpPlus
+                            if(hp < 0)
+                                hp = 0;
                             udata2.set('HP', hp);
                             udata2.save();
                             deletecard();
@@ -251,7 +211,7 @@ function deletecard(){
             console.log(error);
         }
     });
-}*/
+}
 
 function addXP(cardid, target){
     var xpPlus = 0;
@@ -295,59 +255,6 @@ function addXP(cardid, target){
         }
     });
 }
-
-/*function stealHP(cardid, user, target){
-    var getHpId = '';
-    var lossHpId = '';
-    if(cardid = '8x7C6LFRhH'){ //steal 50
-        getHpId = 'cbACuxTVY1'; //+50 card id
-        lossHpId = '4kJkiyYROw'; //-50 card id
-        console.log(minusHP(lossHpId, target));
-        minusHP(lossHpId, target);
-        addHP(getHpId, user);
-        deletecard();
-    }
-    else if(cardid = 'jqxvogKdXQ'){ // steal 30
-        getHpId = '7mn5hYmEWH'; //+30 card id
-        lossHpId = 'ZLZIS7XbfQ'; //-30 card id
-        minusHP(lossHpId, target);
-        addHP(getHpId, user);
-        deletecard();
-    }
-    else if(cardid = 'Byw6APXDGu'){ // steal 10
-        getHpId = 'zLHR3S0hlb'; //+10 card id
-        lossHpId = 'y0pZ66Wl4X'; //-10 card id
-        minusHP(lossHpId, target);
-        addHP(getHpId, user);
-        deletecard();
-    }
-}*/
-
-/*function donateHP(cardid, user, target){
-    var getHpId = '';
-    var lossHpId = '';
-    if(cardid = 'ic6YE4frVp'){ //donate 50
-        getHpId = 'cbACuxTVY1'; //+50 card id
-        lossHpId = '4kJkiyYROw'; //-50 card id
-        minusHP(lossHpId, user);
-        addHP(getHpId, target);
-        deletecard();
-    }
-    else if(cardid = 'ysYpQz4TW0'){ // donate 30
-        getHpId = '7mn5hYmEWH'; //+30 card id
-        lossHpId = 'ZLZIS7XbfQ'; //-30 card id
-        minusHP(lossHpId, user);
-        addHP(getHpId, target);
-        deletecard();
-    }
-    else if(cardid = '10ypku2oZk'){ // donate 10
-        getHpId = 'zLHR3S0hlb'; //+10 card id
-        lossHpId = 'y0pZ66Wl4X'; //-10 card id
-        minusHP(lossHpId, user);
-        addHP(getHpId, target);
-        deletecard();
-    }
-}*/
 
 function addLife(cardid, target){
     var lifePlus = 0;
@@ -591,94 +498,6 @@ function donateHP(cardid, target){
                         });
                     }
                     deletecard();
-                },
-                error: function(error){
-                    console.log(error);
-                }
-            });
-        },
-        error: function(error){
-            console.log(error);
-        }
-    });
-}
-
-function addHP(cardid, target){
-    var hpPlus = 0;
-    if(cardid="UDfyCM4Pyb") //+full
-        hpPlus = 100;
-    else if(cardid="cbACuxTVY1") //+50
-        hpPlus = 50;
-    else if(cardid="7mn5hYmEWH") //+30
-        hpPlus = 30;
-    else if(cardid="zLHR3S0hlb") //+10
-        hpPlus = 10;
-    var user = Parse.Object.extend('User');
-    var query = new Parse.Query(user);
-    query.equalTo('objectId',target);
-    query.first({
-        success: function(data){
-            var udata = Parse.Object.extend('User_status');
-            var query = new Parse.Query(udata);
-            query.equalTo('User',data); 
-            query.first({
-                success: function(result){
-                    var hp = result.get('HP');
-                    var udata2 = new udata();
-                    udata2.set('objectId',result.id);
-                    udata2.save(null,{
-                        success: function(udata2){
-                            hp =+ hpPlus;
-                            if(hp > 100)
-                                hp = 100;
-                            udata2.set('HP',hp);
-                            udata2.save();
-                            deletecard();
-                        }
-                    });
-                },
-                error: function(error){
-                    console.log(error);
-                }
-            });
-        },
-        error: function(error){
-            console.log(error);
-        }
-    });
-}
-
-function minusHP(cardid, target){
-    var hpMinus = 0;
-    if(cardid="4kJkiyYROw") //-50
-        hpMinus = 50;
-    else if(cardid="ZLZIS7XbfQ") //-30
-        hpMinus = 30;
-    else if(cardid="y0pZ66Wl4X") //-10
-        hpMinus = 10;
-    var user = Parse.Object.extend('User');
-    var query = new Parse.Query(user);
-    query.equalTo('objectId',target);
-    query.first({
-        success: function(data){
-            var udata = Parse.Object.extend('User_status');
-            var query = new Parse.Query(udata);
-            query.equalTo('User',data); 
-            query.first({
-                success: function(result){
-                    var hp = result.get('HP');
-                    var udata2 = new udata();
-                    udata2.set('objectId',result.id);
-                    udata2.save(null,{
-                        success: function(udata2){
-                            hp -= hpPlus
-                            if(hp < 0)
-                                hp = 0;
-                            udata2.set('HP', hp);
-                            udata2.save();
-                            deletecard();
-                        }
-                    });
                 },
                 error: function(error){
                     console.log(error);
