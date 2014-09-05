@@ -68,7 +68,7 @@ function getData(){
             var own = new owncard();
 
             own.set('user', Parse.User.current());
-            own.set('Card_info', object[i]);
+            own.set('Card_info', object);
             own.save(null, {
                 success: function(){
 
