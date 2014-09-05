@@ -28,6 +28,11 @@ $(document).ready(function(){
             	        	var string = "<div class = 'cards'>" + ccontainer + "</div>";
             	        	$('div.cardbox').append(string);
             	        	ccontainer = "";
+                          $('img').on('click', function(){
+                                var id = $(this).attr('id');
+                                localStorage['owncardId'] = id;
+                                window.location.assign("http://radiansmile.github.io/CodeEDU/carddes.html");
+                            })
             	        }
             	    }
             }
