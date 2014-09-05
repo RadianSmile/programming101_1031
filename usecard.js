@@ -457,7 +457,7 @@ function stealHP(cardid, target){
                             }
                         });
                     }
-                    else if(results[0].get('User').id == target){
+                    if(results[0].get('User').id == target){
                         var udata1 = new udata();
                         var hp = results[0].get('HP');
                         udata1.set('objectId', results[0].id);
