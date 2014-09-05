@@ -13,7 +13,6 @@ $(document).ready(function(){
     				var s = getElementStringByowncard(username, id);
     				ccontainer += s;
     				var string = "<form>" + ccontainer + "</form>";
-    				//var string = "<form action='http://radiansmile.github.io/CodeEDU/dashboard.html'>" + ccontainer + "</form>";
     				$('div.userbox').append(string);
     				ccontainer = "";
     				$('.in').on('click', function(){
@@ -94,7 +93,6 @@ $(document).ready(function(){
                                 console.log(error.toString());
                             }
                         })
-    					//window.location.href("http://radiansmile.github.io/CodeEDU/dashboard.html");
     				})
     			}
     		}
@@ -241,7 +239,6 @@ function minusHP(cardid, target){
                             udata2.set('HP', hp);
                             udata2.save();
                             deletecard();
-                            //window.location.assign("http://radiansmile.github.io/CodeEDU/dashboard.html");
                         }
                     });
                 },
