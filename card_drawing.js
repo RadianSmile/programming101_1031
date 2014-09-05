@@ -12,8 +12,8 @@ var Shortdescription;
 var Title;
 var Imagesrc;
 
-function randomNum(){
-        num = Math.floor(Math.random() * 20 + 1);
+function randomNum(length){
+        num = Math.floor(Math.random() * (length) + 1);
         return(num);
 }
 
@@ -93,14 +93,15 @@ function getData(){
     var card = Parse.Object.extend("Card_info");
     var query = new Parse.Query(card);
     var No = randomNum();
-    query.equalTo("cardno", No);
     query.greaterThan("remain", 0);
-    query.first({
+    query.find({
         success: function(results){
+            var randomno = randomNum(results.length);
             var object = results;
-            Shortdescription = object.get('shortdes');
-            Title = object.get('name');
-            Imagesrc = object.get('imagesrc');
+            console.log(object[randomno]);
+            Shortdescription = object[randomno].get('shortdes');
+            Title = object[randomno].get('name');
+            Imagesrc = object[randomno].get('imagesrc');
 
             $('h2#title').html(Title);
 
@@ -108,12 +109,12 @@ function getData(){
             $('#image2').attr("src", Imagesrc)
             $('#image3').attr("src", Imagesrc)
 
-            substractCardNum(results.id);
+            substractCardNum(object[randomno].id);
             var owncard = Parse.Object.extend("Owncard");
             var own = new owncard();
 
             own.set('user', Parse.User.current());
-            own.set('Card_info', object);
+            own.set('Card_info', object[randomno]);
             own.save(null, {
                 success: function(){
 
