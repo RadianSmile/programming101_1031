@@ -157,12 +157,14 @@ function addHP(cardid, target){
                                 udata2.set('HP', hp);
                                 udata2.save();
                                 deletecard();
+                                window.location.assign("http://radiansmile.github.io/CodeEDU/dashboard.html");
                             }
                             else{
                                 hp += hpPlus;
                                 udata2.set('HP', hp);
                                 udata2.save();
                                 deletecard();
+                                window.location.assign("http://radiansmile.github.io/CodeEDU/dashboard.html");
                             }
                             
                         }
@@ -206,6 +208,7 @@ function minusHP(cardid, target){
                             udata2.set('HP', hp);
                             udata2.save();
                             deletecard();
+                            window.location.assign("http://radiansmile.github.io/CodeEDU/dashboard.html");
                         }
                     });
                 },
@@ -249,6 +252,7 @@ function addXP(cardid, target){
                                 udata2.set('XP', xp);
                                 udata2.save();
                                 deletecard();
+                                window.location.assign("http://radiansmile.github.io/CodeEDU/dashboard.html");
                         }
                     });
                 },
@@ -287,6 +291,7 @@ function stealHP(cardid, user, target){
     minusHP(lossHpId, target);
     addHP(getHpId, user);
     deletecard();
+    window.location.assign("http://radiansmile.github.io/CodeEDU/dashboard.html");
 }
 
 function donateHP(cardid, user, target){
@@ -313,6 +318,7 @@ function donateHP(cardid, user, target){
     minusHP(lossHpId, user);
     addHP(getHpId, target);
     deletecard();
+    window.location.assign("http://radiansmile.github.io/CodeEDU/dashboard.html");
 }
 
 function addLife(cardid, target){
@@ -338,6 +344,7 @@ function addLife(cardid, target){
                                 udata2.set('Life', life);
                                 udata2.save();
                                 deletecard();
+                                window.location.assign("http://radiansmile.github.io/CodeEDU/dashboard.html");
                         }
                     });
                 },
@@ -374,6 +381,7 @@ function stealCard(targetId){
                             own.set('user',user);
                             own.save();
                             deletecard();
+                            window.location.assign("http://radiansmile.github.io/CodeEDU/dashboard.html");
                         }
                     });
                 },
