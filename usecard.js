@@ -273,8 +273,6 @@ function stealHP(cardid, user, target){
     if(cardid = '8x7C6LFRhH'){ //steal 50
         getHpId = 'cbACuxTVY1'; //+50 card id
         lossHpId = '4kJkiyYROw'; //-50 card id
-        hpPlus = 50;
-        hpMinus = 50;
         minusHP(lossHpId, target);
         addHP(getHpId, user);
         deletecard();
@@ -282,8 +280,6 @@ function stealHP(cardid, user, target){
     else if(cardid = 'jqxvogKdXQ'){ // steal 30
         getHpId = '7mn5hYmEWH'; //+30 card id
         lossHpId = 'ZLZIS7XbfQ'; //-30 card id
-        hpPlus = 30;
-        hpMinus = 30;
         minusHP(lossHpId, target);
         addHP(getHpId, user);
         deletecard();
@@ -291,8 +287,6 @@ function stealHP(cardid, user, target){
     else if(cardid = 'Byw6APXDGu'){ // steal 10
         getHpId = 'zLHR3S0hlb'; //+10 card id
         lossHpId = 'y0pZ66Wl4X'; //-10 card id
-        hpPlus = 10;
-        hpMinus = 10;
         minusHP(lossHpId, target);
         addHP(getHpId, user);
         deletecard();
@@ -305,8 +299,6 @@ function donateHP(cardid, user, target){
     if(cardid = 'ic6YE4frVp'){ //donate 50
         getHpId = 'cbACuxTVY1'; //+50 card id
         lossHpId = '4kJkiyYROw'; //-50 card id
-        hpPlus = 50;
-        hpMinus = 50;
         minusHP(lossHpId, user);
         addHP(getHpId, target);
         deletecard();
@@ -314,8 +306,6 @@ function donateHP(cardid, user, target){
     else if(cardid = 'ysYpQz4TW0'){ // donate 30
         getHpId = '7mn5hYmEWH'; //+30 card id
         lossHpId = 'ZLZIS7XbfQ'; //-30 card id
-        hpPlus = 30;
-        hpMinus = 30;
         minusHP(lossHpId, user);
         addHP(getHpId, target);
         deletecard();
@@ -323,8 +313,6 @@ function donateHP(cardid, user, target){
     else if(cardid = '10ypku2oZk'){ // donate 10
         getHpId = 'zLHR3S0hlb'; //+10 card id
         lossHpId = 'y0pZ66Wl4X'; //-10 card id
-        hpPlus = 10;
-        hpMinus = 10;
         minusHP(lossHpId, user);
         addHP(getHpId, target);
         deletecard();
@@ -354,7 +342,7 @@ function addLife(cardid, target){
                                 udata2.set('Life', life);
                                 udata2.save();
                                 deletecard();
-                                //window.location.assign("http://radiansmile.github.io/CodeEDU/dashboard.html");
+                                window.location.assign("http://radiansmile.github.io/CodeEDU/dashboard.html");
                         }
                     });
                 },
