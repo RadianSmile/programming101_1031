@@ -193,7 +193,7 @@ function minusHP(cardid, target){
                     udata2.set('objectId',result.id);
                     udata2.save(null,{
                         success: function(udata2){
-                            hp -= hpPlus
+                            hp -= hpMinus
                             if(hp < 0)
                                 hp = 0;
                             udata2.set('HP', hp);
