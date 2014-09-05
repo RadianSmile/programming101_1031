@@ -13,6 +13,11 @@ var Title;
 var Imagesrc;
 
 function randomNum(){
+        num = Math.floor(Math.random() * 20 + 1);
+        return(num);
+}
+
+/*function randomNum(){
     var n = Math.floor(Math.random() * 2);
     var vac;
 
@@ -43,7 +48,7 @@ function randomNum(){
         var no = vac + num;
         return(no);
     }
-}
+}*/
 
 /*function getData(){
     var card = Parse.Object.extend("Card_info");
