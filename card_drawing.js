@@ -17,78 +17,6 @@ function randomNum(length){
         return(num);
 }
 
-/*function randomNum(){
-    var n = Math.floor(Math.random() * 2);
-    var vac;
-
-    switch(n){
-        case 0:
-            vac = 'a';
-            break;
-        case 1:
-            vac = 'b';
-            break;
-        case 2:
-            vac = 'c';
-            break;
-    }
-
-    if(vac == 'a'){
-        num = Math.floor(Math.random() * 2 + 1);
-        var no = vac + num;
-        return(no);
-    }
-    else if(vac == 'b'){
-        num = Math.floor(Math.random() * 8 + 1);
-        var no = vac + num;
-        return(no);
-    }
-    else{
-        num = Math.floor(Math.random() * 9 + 1);
-        var no = vac + num;
-        return(no);
-    }
-}*/
-
-/*function getData(){
-    var card = Parse.Object.extend("Card_info");
-    var query = new Parse.Query(card);
-    query.greaterThan("remain", 0);
-    query.first({
-        success: function(results){
-            var object = results;
-            var remain = object.get('remain');
-            Shortdescription = object.get('shortdes');
-            Title = object.get('name');
-            Imagesrc = object.get('imagesrc');
-
-            $('h2#title').html(Title);
-
-            $('#image1').attr("src", Imagesrc)
-            $('#image2').attr("src", Imagesrc)
-            $('#image3').attr("src", Imagesrc)
-
-            substractCardNum(object.id);
-            var owncard = Parse.Object.extend("Owncard");
-            var own = new owncard();
-
-            own.set('user', Parse.User.current());
-            own.set('Card_info', object);
-            own.save(null, {
-                success: function(){
-
-                },
-                error: function(error){
-                    alert('Failed to create new object, with error code: ' + error.description);
-                }
-            })
-        },
-        error: function(error){
-            alert("Error: " + error.code + " " + error.message);
-        }
-    });
-}*/
-
 function getData(){
     var card = Parse.Object.extend("Card_info");
     var query = new Parse.Query(card);
@@ -96,10 +24,8 @@ function getData(){
     query.greaterThan("remain", 0);
     query.find({
         success: function(results){
-            console.log(results);
             var randomno = randomNum(results.length);
             var object = results;
-            console.log(object[randomno]);
             Shortdescription = object[randomno].get('shortdes');
             Title = object[randomno].get('name');
             Imagesrc = object[randomno].get('imagesrc');
