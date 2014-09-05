@@ -297,10 +297,138 @@ function addXP(cardid, target){
 }
 
 function stealHP(cardid, user, target, addcardid, minuscardid){
+
+    function addHP(cardid, target){
+    var hpPlus = 0;
+    if(cardid="UDfyCM4Pyb") //+full
+        hpPlus = 100;
+    else if(cardid="cbACuxTVY1") //+50
+        hpPlus = 50;
+    else if(cardid="7mn5hYmEWH") //+30
+        hpPlus = 30;
+    else if(cardid="zLHR3S0hlb") //+10
+        hpPlus = 10;
+    var user = Parse.Object.extend('User');
+    var query = new Parse.Query(user);
+    query.equalTo('objectId',target);
+    query.first({
+        success: function(data){
+            var udata = Parse.Object.extend('User_status');
+            var query = new Parse.Query(udata);
+            query.equalTo('User',data); 
+            query.first({
+                success: function(result){
+                    var hp = result.get('HP');
+                    var udata2 = new udata();
+                    udata2.set('objectId',result.id);
+                    udata2.save(null,{
+                        success: function(udata2){
+                            if(hpPlus == 100){
+                                hp = 100;
+                                udata2.set('HP', hp);
+                                udata2.save();
+                                deletecard();
+                            }
+                            else if(hpPlus == 50){
+                                if(hp >= 50){
+                                    hp = 100;
+                                    udata2.set('HP', hp);
+                                    udata2.save();
+                                    deletecard();
+                                }
+                                else{
+                                    hp += hpPlus;
+                                    udata2.set('HP', hp);
+                                    udata2.save();
+                                    deletecard();
+                                }
+                            }
+                            else if(hpPlus == 30){
+                                if(hp >= 70){
+                                    hp = 100;
+                                    udata2.set('HP', hp);
+                                    udata2.save();
+                                    deletecard();
+                                }
+                                else{
+                                    hp += hpPlus;
+                                    udata2.set('HP', hp);
+                                    udata2.save();
+                                    deletecard();
+                                }
+                            }
+                            else if(hpPlus == 10){
+                                if(hp >= 90){
+                                    hp = 100;
+                                    udata2.set('HP', hp);
+                                    udata2.save();
+                                    deletecard();
+                                }
+                                else{
+                                    hp += hpPlus;
+                                    udata2.set('HP', hp);
+                                    udata2.save();
+                                    deletecard();
+                                }
+                            }                           
+                        }
+                    });
+                },
+                error: function(error){
+                    console.log(error);
+                }
+            });
+        },
+        error: function(error){
+            console.log(error);
+        }
+    });
+}
+
+function minusHP(cardid, target){
+    var hpMinus = 0;
+    if(cardid="4kJkiyYROw") //-50
+        hpMinus = 50;
+    else if(cardid="ZLZIS7XbfQ") //-30
+        hpMinus = 30;
+    else if(cardid="y0pZ66Wl4X") //-10
+        hpMinus = 10;
+    var user = Parse.Object.extend('User');
+    var query = new Parse.Query(user);
+    query.equalTo('objectId',target);
+    query.first({
+        success: function(data){
+            var udata = Parse.Object.extend('User_status');
+            var query = new Parse.Query(udata);
+            query.equalTo('User',data); 
+            query.first({
+                success: function(result){
+                    var hp = result.get('HP');
+                    var udata2 = new udata();
+                    udata2.set('objectId',result.id);
+                    udata2.save(null,{
+                        success: function(udata2){
+                            hp -= hpPlus
+                            udata2.set('HP', hp);
+                            udata2.save();
+                            deletecard();
+                        }
+                    });
+                },
+                error: function(error){
+                    console.log(error);
+                }
+            });
+        },
+        error: function(error){
+            console.log(error);
+        }
+    });
+}
+
     if(cardid = '8x7C6LFRhH'){ //steal 50
         addcardid = 'cbACuxTVY1'; //+50 card id
         minuscardid = '4kJkiyYROw'; //-50 card id
-        console.log(minusHP(minuscardid, target));
         minusHP(minuscardid, target);
         addHP(addcardid, user);
         deletecard();
