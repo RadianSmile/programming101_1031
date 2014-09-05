@@ -56,13 +56,13 @@ $(document).ready(function(){
                                     addLife(cardid, targetuser);
                                 }
                                 else if(cardid == "10ypku2oZk"){
-                                    donateHP(cardid, current_user, targetuser);
+                                    donateHP(cardid, targetuser);
                                 }
                                 else if(cardid == "ysYpQz4TW0"){
-                                    donateHP(cardid, current_user, targetuser);
+                                    donateHP(cardid, targetuser);
                                 }
                                 else if(cardid == "ic6YE4frVp"){
-                                    donateHP(cardid, current_user, targetuser);
+                                    donateHP(cardid, targetuser);
                                 }
                                 else if(cardid == "y0pZ66Wl4X"){
                                     minusHP(cardid, targetuser);
@@ -74,13 +74,13 @@ $(document).ready(function(){
                                     minusHP(cardid, targetuser);
                                 }
                                 else if(cardid == "Byw6APXDGu"){
-                                    stealHP(cardid, current_user, targetuser);
+                                    stealHP(cardid, targetuser);
                                 }
                                 else if(cardid == "jqxvogKdXQ"){
-                                    stealHP(cardid, current_user, targetuser);
+                                    stealHP(cardid, targetuser);
                                 }
                                 else if(cardid == "8x7C6LFRhH"){
-                                    stealHP(cardid, current_user, targetuser);
+                                    stealHP(cardid, targetuser);
                                 }
                                 else if(cardid == "1PF6Z8XISA"){
                                     stealCard(targetuser);
@@ -125,7 +125,7 @@ function deletecard(){
 };
 
 //Card function
-function addHP(cardid, target){
+/*function addHP(cardid, target){
     var hpPlus = 0;
     if(cardid="UDfyCM4Pyb") //+full
         hpPlus = 100;
@@ -210,9 +210,9 @@ function addHP(cardid, target){
             console.log(error);
         }
     });
-}
+}*/
 
-function minusHP(cardid, target){
+/*function minusHP(cardid, target){
     var hpMinus = 0;
     if(cardid="4kJkiyYROw") //-50
         hpMinus = 50;
@@ -251,7 +251,7 @@ function minusHP(cardid, target){
             console.log(error);
         }
     });
-}
+}*/
 
 function addXP(cardid, target){
     var xpPlus = 0;
@@ -296,7 +296,7 @@ function addXP(cardid, target){
     });
 }
 
-function stealHP(cardid, user, target){
+/*function stealHP(cardid, user, target){
     var getHpId = '';
     var lossHpId = '';
     if(cardid = '8x7C6LFRhH'){ //steal 50
@@ -321,9 +321,9 @@ function stealHP(cardid, user, target){
         addHP(getHpId, user);
         deletecard();
     }
-}
+}*/
 
-function donateHP(cardid, user, target){
+/*function donateHP(cardid, user, target){
     var getHpId = '';
     var lossHpId = '';
     if(cardid = 'ic6YE4frVp'){ //donate 50
@@ -347,7 +347,7 @@ function donateHP(cardid, user, target){
         addHP(getHpId, target);
         deletecard();
     }
-}
+}*/
 
 function addLife(cardid, target){
     var lifePlus = 0;
@@ -417,6 +417,220 @@ function stealCard(targetId){
             });
         },
         error: function(error){
+        }
+    });
+}
+
+function stealHP(cardid, target){
+    var hpSteal = 0;
+    if(cardid = '8x7C6LFRhH') //steal 50
+        hpSteal = 50;
+    else if(cardid = 'jqxvogKdXQ') // steal 30
+        hpSteal = 30;
+    else if(cardid = 'Byw6APXDGu') // steal 10
+        hpSteal = 10;
+        
+    var u = Parse.Object.extend('User');
+    var query = new Parse.Query(u);
+    query.equalTo('objectId',target);
+    query.first({
+        success: function(data){
+            var udata = Parse.Object.extend('User_status');
+            var query1 = new Parse.Query(udata);
+            query.equalTo('User',data); 
+            var query2 = new Parse.Query(udata);
+            query.equalTo('User',Parse.User.current());
+            var query = Parse.Query.or(query1, query2);
+            query.find({
+                success: function(results){
+                    if(results[0].id == Parse.User.current().id){
+                        var udata1 = new udata();
+                        var hp = results[0].get('HP');
+                        udata1.set('objectId', results[0].id);
+                        udata1.save(null,{
+                            success: function(udata1){
+                                hp += hpSteal;
+                                if(hp > 100)
+                                    hp = 100;
+                                udata1.set('HP',hp);
+                                udata1.save();
+                            }
+                        });
+                    }
+                    else if(results[0].id == target){
+                        var udata1 = new udata();
+                        var hp = results[0].get('HP');
+                        udata1.set('objectId', results[0].id);
+                        udata1.save(null,{
+                            success: function(udata1){
+                                hp -= hpSteal;
+                                if(hp < 0)
+                                    hp = 0;
+                                udata1.set('HP',hp);
+                                udata1.save();
+                            }
+                        });
+                    }
+                    deletecard();
+                },
+                error: function(error){
+                    console.log(error);
+                }
+            });
+        },
+        error: function(error){
+            console.log(error);
+        }
+    });
+}
+
+function donateHP(cardid, target){
+    var hpDonate = 0;
+    if(cardid = '8x7C6LFRhH') //steal 50
+        hpDonate = 50;
+    else if(cardid = 'jqxvogKdXQ') // steal 30
+        hpDonate = 30;
+    else if(cardid = 'Byw6APXDGu') // steal 10
+        hpDonate = 10;
+        
+    var u = Parse.Object.extend('User');
+    var query = new Parse.Query(u);
+    query.equalTo('objectId',target);
+    query.first({
+        success: function(data){
+            var udata = Parse.Object.extend('User_status');
+            var query1 = new Parse.Query(udata);
+            query.equalTo('User',data); 
+            var query2 = new Parse.Query(udata);
+            query.equalTo('User',Parse.User.current());
+            var query = Parse.Query.or(query1, query2);
+            query.find({
+                success: function(results){
+                    if(results[0].id == Parse.User.current().id){
+                        var udata1 = new udata();
+                        var hp = results[0].get('HP');
+                        udata1.set('objectId', results[0].id);
+                        udata1.save(null,{
+                            success: function(udata1){
+                                hp -= hpDonate;
+                                if(hp < 0)
+                                    hp = 0;
+                                udata1.set('HP',hp);
+                                udata1.save();
+                            }
+                        });
+                    }
+                    else if(results[0].id == target){
+                        var udata1 = new udata();
+                        var hp = results[0].get('HP');
+                        udata1.set('objectId', results[0].id);
+                        udata1.save(null,{
+                            success: function(udata1){
+                                hp += hpDonate;
+                                if(hp > 100)
+                                    hp = 100;
+                                udata1.set('HP',hp);
+                                udata1.save();
+                            }
+                        });
+                    }
+                    deletecard();
+                },
+                error: function(error){
+                    console.log(error);
+                }
+            });
+        },
+        error: function(error){
+            console.log(error);
+        }
+    });
+}
+
+function addHP(cardid, target){
+    var hpPlus = 0;
+    if(cardid="UDfyCM4Pyb") //+full
+        hpPlus = 100;
+    else if(cardid="cbACuxTVY1") //+50
+        hpPlus = 50;
+    else if(cardid="7mn5hYmEWH") //+30
+        hpPlus = 30;
+    else if(cardid="zLHR3S0hlb") //+10
+        hpPlus = 10;
+    var user = Parse.Object.extend('User');
+    var query = new Parse.Query(user);
+    query.equalTo('objectId',target);
+    query.first({
+        success: function(data){
+            var udata = Parse.Object.extend('User_status');
+            var query = new Parse.Query(udata);
+            query.equalTo('User',data); 
+            query.first({
+                success: function(result){
+                    var hp = result.get('HP');
+                    var udata2 = new udata();
+                    udata2.set('objectId',result.id);
+                    udata2.save(null,{
+                        success: function(udata2){
+                            hp += hpPlus;
+                            if(hp > 100)
+                                hp = 100;
+                            udata2.set('HP',hp);
+                            udata2.save();
+                            deletecard();
+                        }
+                    });
+                },
+                error: function(error){
+                    console.log(error);
+                }
+            });
+        },
+        error: function(error){
+            console.log(error);
+        }
+    });
+}
+
+function minusHP(cardid, target){
+    var hpMinus = 0;
+    if(cardid="4kJkiyYROw") //-50
+        hpMinus = 50;
+    else if(cardid="ZLZIS7XbfQ") //-30
+        hpMinus = 30;
+    else if(cardid="y0pZ66Wl4X") //-10
+        hpMinus = 10;
+    var user = Parse.Object.extend('User');
+    var query = new Parse.Query(user);
+    query.equalTo('objectId',target);
+    query.first({
+        success: function(data){
+            var udata = Parse.Object.extend('User_status');
+            var query = new Parse.Query(udata);
+            query.equalTo('User',data); 
+            query.first({
+                success: function(result){
+                    var hp = result.get('HP');
+                    var udata2 = new udata();
+                    udata2.set('objectId',result.id);
+                    udata2.save(null,{
+                        success: function(udata2){
+                            hp -= hpPlus
+                            if(hp < 0)
+                                hp = 0;
+                            udata2.set('HP', hp);
+                            udata2.save();
+                            deletecard();
+                        }
+                    });
+                },
+                error: function(error){
+                    console.log(error);
+                }
+            });
+        },
+        error: function(error){
+            console.log(error);
         }
     });
 }
