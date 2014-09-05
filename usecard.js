@@ -275,23 +275,31 @@ function stealHP(cardid, user, target){
         lossHpId = '4kJkiyYROw'; //-50 card id
         hpPlus = 50;
         hpMinus = 50;
+        minusHP(lossHpId, target);
+        addHP(getHpId, user);
+        deletecard();
+        window.location.assign("http://radiansmile.github.io/CodeEDU/dashboard.html");
     }
     else if(cardid = 'jqxvogKdXQ'){ // steal 30
         getHpId = '7mn5hYmEWH'; //+30 card id
         lossHpId = 'ZLZIS7XbfQ'; //-30 card id
         hpPlus = 30;
         hpMinus = 30;
+        minusHP(lossHpId, target);
+        addHP(getHpId, user);
+        deletecard();
+        window.location.assign("http://radiansmile.github.io/CodeEDU/dashboard.html");
     }
     else if(cardid = 'Byw6APXDGu'){ // steal 10
         getHpId = 'zLHR3S0hlb'; //+10 card id
         lossHpId = 'y0pZ66Wl4X'; //-10 card id
         hpPlus = 10;
         hpMinus = 10;
+        minusHP(lossHpId, target);
+        addHP(getHpId, user);
+        deletecard();
+        window.location.assign("http://radiansmile.github.io/CodeEDU/dashboard.html");
     }
-    minusHP(lossHpId, target);
-    addHP(getHpId, user);
-    deletecard();
-    window.location.assign("http://radiansmile.github.io/CodeEDU/dashboard.html");
 }
 
 function donateHP(cardid, user, target){
@@ -302,23 +310,31 @@ function donateHP(cardid, user, target){
         lossHpId = '4kJkiyYROw'; //-50 card id
         hpPlus = 50;
         hpMinus = 50;
+        minusHP(lossHpId, user);
+        addHP(getHpId, target);
+        deletecard();
+        window.location.assign("http://radiansmile.github.io/CodeEDU/dashboard.html");
     }
     else if(cardid = 'ysYpQz4TW0'){ // donate 30
         getHpId = '7mn5hYmEWH'; //+30 card id
         lossHpId = 'ZLZIS7XbfQ'; //-30 card id
         hpPlus = 30;
         hpMinus = 30;
+        minusHP(lossHpId, user);
+        addHP(getHpId, target);
+        deletecard();
+        window.location.assign("http://radiansmile.github.io/CodeEDU/dashboard.html");
     }
     else if(cardid = '10ypku2oZk'){ // donate 10
         getHpId = 'zLHR3S0hlb'; //+10 card id
         lossHpId = 'y0pZ66Wl4X'; //-10 card id
         hpPlus = 10;
         hpMinus = 10;
+        minusHP(lossHpId, user);
+        addHP(getHpId, target);
+        deletecard();
+        window.location.assign("http://radiansmile.github.io/CodeEDU/dashboard.html");
     }
-    minusHP(lossHpId, user);
-    addHP(getHpId, target);
-    deletecard();
-    window.location.assign("http://radiansmile.github.io/CodeEDU/dashboard.html");
 }
 
 function addLife(cardid, target){
