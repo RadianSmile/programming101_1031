@@ -437,15 +437,13 @@ function stealHP(cardid, target){
         success: function(data){
             var udata = Parse.Object.extend('User_status');
             var query1 = new Parse.Query(udata);
-            query1.equalTo('User',data); 
+            query.equalTo('User',data); 
             var query2 = new Parse.Query(udata);
-            query2.equalTo('User',Parse.User.current());
+            query.equalTo('User',Parse.User.current());
             var query = Parse.Query.or(query1, query2);
-            console.log(query);
             query.find({
                 success: function(results){
-                    if(results[0].id == Parse.User.current().id){
-                        console.log(results);
+                    if(results[0].get('User').id == Parse.User.current().id){
                         var udata1 = new udata();
                         var hp = results[0].get('HP');
                         udata1.set('objectId', results[0].id);
@@ -459,7 +457,7 @@ function stealHP(cardid, target){
                             }
                         });
                     }
-                    else if(results[0].id == target){
+                    else if(results[0].get('User').id == target){
                         var udata1 = new udata();
                         var hp = results[0].get('HP');
                         udata1.set('objectId', results[0].id);
@@ -508,7 +506,7 @@ function donateHP(cardid, target){
             var query = Parse.Query.or(query1, query2);
             query.find({
                 success: function(results){
-                    if(results[0].id == Parse.User.current().id){
+                    if(results[0].get('User').id == Parse.User.current().id){
                         var udata1 = new udata();
                         var hp = results[0].get('HP');
                         udata1.set('objectId', results[0].id);
@@ -522,7 +520,7 @@ function donateHP(cardid, target){
                             }
                         });
                     }
-                    else if(results[0].id == target){
+                    else if(results[0].get('User').id == target){
                         var udata1 = new udata();
                         var hp = results[0].get('HP');
                         udata1.set('objectId', results[0].id);
@@ -574,7 +572,7 @@ function addHP(cardid, target){
                     udata2.set('objectId',result.id);
                     udata2.save(null,{
                         success: function(udata2){
-                            hp += hpPlus;
+                            hp =+ hpPlus;
                             if(hp > 100)
                                 hp = 100;
                             udata2.set('HP',hp);
