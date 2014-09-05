@@ -441,6 +441,7 @@ function stealHP(cardid, target){
             var query2 = new Parse.Query(udata);
             query2.equalTo('User',Parse.User.current());
             var query = Parse.Query.or(query1, query2);
+            console.log(query);
             query.find({
                 success: function(results){
                     if(results[0].id == Parse.User.current().id){
