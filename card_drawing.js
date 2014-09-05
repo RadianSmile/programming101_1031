@@ -26,6 +26,10 @@ function getData(){
         success: function(results){
             var randomno = randomNum(results.length);
             var object = results;
+
+            var carddrawingid = object[randomno].id;
+            localStorage['carddrawingid'] = carddrawingid;
+
             Shortdescription = object[randomno].get('shortdes');
             Title = object[randomno].get('name');
             Imagesrc = object[randomno].get('imagesrc');
