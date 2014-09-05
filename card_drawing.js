@@ -45,7 +45,7 @@ function randomNum(){
     }
 }
 
-function getData(){
+/*function getData(){
     var card = Parse.Object.extend("Card_info");
     var query = new Parse.Query(card);
     query.greaterThan("remain", 0);
@@ -82,13 +82,14 @@ function getData(){
             alert("Error: " + error.code + " " + error.message);
         }
     });
-}
+}*/
 
-/*function getData(){
+function getData(){
     var card = Parse.Object.extend("Card_info");
     var query = new Parse.Query(card);
     var No = randomNum();
     query.equalTo("cardno", No);
+    query.greaterThan("remain", 0);
     query.first({
         success: function(results){
             var object = results;
@@ -123,7 +124,7 @@ function getData(){
             alert("Error: " + error.code + " " + error.message);
         }
     });
-}*/
+}
 
 function changeClass1(){
     if(document.getElementById("block1").className == "block"){
