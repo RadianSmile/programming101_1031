@@ -444,6 +444,7 @@ function stealHP(cardid, target){
             query.find({
                 success: function(results){
                     if(results[0].id == Parse.User.current().id){
+                        console.log(results);
                         var udata1 = new udata();
                         var hp = results[0].get('HP');
                         udata1.set('objectId', results[0].id);
