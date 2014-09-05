@@ -444,30 +444,58 @@ function stealHP(cardid, target){
             query.find({
                 success: function(results){
                     if(results[0].get('User').id == Parse.User.current().id){
+                        //+ user hp
                         var udata1 = new udata();
                         var hp = results[0].get('HP');
                         udata1.set('objectId', results[0].id);
                         udata1.save(null,{
                             success: function(udata1){
-                                hp += hpSteal;
-                                if(hp > 100)
-                                    hp = 100;
-                                udata1.set('HP',hp);
+                                var hpAfter = hp + hpSteal;
+                                if(hpAfter > 100)
+                                    hpAfter = 100;
+                                udata1.set('HP',hpAfter);
                                 udata1.save();
+                            }
+                        });
+                        //- target hp
+                        var udata2 = new udata();
+                        var hp2 = results[1].get('HP');
+                        udata2.set('objectId', results[1].id);
+                        udata2.save(null,{
+                            success: function(udata2){
+                                var hpAfter = hp2 - hpSteal;
+                                if(hpAfter < 0)
+                                    hpAfter = 0;
+                                udata2.set('HP',hpAfter);
+                                udata2.save();
                             }
                         });
                     }
                     if(results[0].get('User').id == target){
+                        //- target hp
                         var udata1 = new udata();
                         var hp = results[0].get('HP');
                         udata1.set('objectId', results[0].id);
                         udata1.save(null,{
                             success: function(udata1){
-                                hp -= hpSteal;
-                                if(hp < 0)
-                                    hp = 0;
-                                udata1.set('HP',hp);
+                                var hpAfter = hp - hpSteal;
+                                if(hpAfter < 0)
+                                    hpAfter = 0;
+                                udata1.set('HP',hpAfter);
                                 udata1.save();
+                            }
+                        });
+                        //+ user hp
+                        var udata2 = new udata();
+                        var hp2 = results[1].get('HP');
+                        udata2.set('objectId', results[1].id);
+                        udata2.save(null,{
+                            success: function(udata2){
+                                var hpAfter = hp2 + hpSteal;
+                                if(hpAfter > 100)
+                                    hpAfter = 100;
+                                udata2.set('HP',hpAfter);
+                                udata2.save();
                             }
                         });
                     }
@@ -507,30 +535,58 @@ function donateHP(cardid, target){
             query.find({
                 success: function(results){
                     if(results[0].get('User').id == Parse.User.current().id){
+                        //- user hp
                         var udata1 = new udata();
                         var hp = results[0].get('HP');
                         udata1.set('objectId', results[0].id);
                         udata1.save(null,{
                             success: function(udata1){
-                                hp -= hpDonate;
-                                if(hp < 0)
-                                    hp = 0;
-                                udata1.set('HP',hp);
+                                var hpAfter = hp - hpSteal;
+                                if(hpAfter < 0)
+                                    hpAfter = 0;
+                                udata1.set('HP',hpAfter);
                                 udata1.save();
                             }
                         });
+                        //+ target hp
+                        var udata2 = new udata();
+                        var hp2 = results[1].get('HP');
+                        udata2.set('objectId', results[1].id);
+                        udata2.save(null,{
+                            success: function(udata2){
+                                var hpAfter = hp2 + hpSteal;
+                                if(hpAfter > 100)
+                                    hpAfter = 100;
+                                udata2.set('HP',hpAfter);
+                                udata2.save();
+                            }
+                        });
                     }
-                    else if(results[0].get('User').id == target){
+                    if(results[0].get('User').id == target){
+                        //+ target hp
                         var udata1 = new udata();
                         var hp = results[0].get('HP');
                         udata1.set('objectId', results[0].id);
                         udata1.save(null,{
                             success: function(udata1){
-                                hp += hpDonate;
-                                if(hp > 100)
-                                    hp = 100;
-                                udata1.set('HP',hp);
+                                var hpAfter = hp + hpSteal;
+                                if(hpAfter > 100)
+                                    hpAfter = 100;
+                                udata1.set('HP',hpAfter);
                                 udata1.save();
+                            }
+                        });
+                        //- user hp
+                        var udata2 = new udata();
+                        var hp2 = results[1].get('HP');
+                        udata2.set('objectId', results[1].id);
+                        udata2.save(null,{
+                            success: function(udata2){
+                                var hpAfter = hp2 - hpSteal;
+                                if(hpAfter < 0)
+                                    hpAfter = 0;
+                                udata2.set('HP',hpAfter);
+                                udata2.save();
                             }
                         });
                     }
