@@ -437,9 +437,9 @@ function stealHP(cardid, target){
         success: function(data){
             var udata = Parse.Object.extend('User_status');
             var query1 = new Parse.Query(udata);
-            query.equalTo('User',data); 
+            query1.equalTo('User',data); 
             var query2 = new Parse.Query(udata);
-            query.equalTo('User',Parse.User.current());
+            query2.equalTo('User',Parse.User.current());
             var query = Parse.Query.or(query1, query2);
             query.find({
                 success: function(results){
