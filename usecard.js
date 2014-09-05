@@ -354,7 +354,7 @@ function addLife(cardid, target){
                                 udata2.set('Life', life);
                                 udata2.save();
                                 deletecard();
-                                window.location.assign("http://radiansmile.github.io/CodeEDU/dashboard.html");
+                                //window.location.assign("http://radiansmile.github.io/CodeEDU/dashboard.html");
                         }
                     });
                 },
