@@ -390,7 +390,7 @@ function stealCard(targetId){
     var target1 = Parse.Object.extend('User');
     var query1 = new Parse.Query(target1);
     query1.equalTo('objectId',targetId);
-    query.first({
+    query1.first({
         success: function(data){
             var owncard = Parse.Object.extend('Owncard');
             var query2 = new Parse.Query(owncard);
