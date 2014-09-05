@@ -388,7 +388,7 @@ function addLife(cardid, target){
 function stealCard(targetId){
     var user = Parse.User.current();
     var target1 = Parse.Object.extend('User');
-    var query1 = new Parse.Query();
+    var query1 = new Parse.Query(target1);
     query1.equalTo('objectId',targetId);
     query.first({
         success: function(data){
