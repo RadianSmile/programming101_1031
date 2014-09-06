@@ -54,6 +54,7 @@ function recordToString(data, id){
     var useeName = data.get('User').get('name');
     var useeId = data.get('User').id;
     var cardName = data.get('Card_info').get('name');
+    var useId = data.get('user').id;
     
     var s = "";
     if(type == 'get'){
@@ -84,7 +85,7 @@ function berecordToString(data){
         if(useeId == UserId){
             s="";
         }
-        else{
+        else if(useeId != UserId){
             s = "<h2>你被某人使用了" + cardName + "。</h2>";
         }
         return s;
