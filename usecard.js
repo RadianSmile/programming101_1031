@@ -174,7 +174,7 @@ function addHP(cardid, target){
                     udata2.set('objectId',result.id);
                     udata2.save(null,{
                         success: function(udata2){
-                            hp =+ hpPlus;
+                            hp += hpPlus;
                             if(hp > 100)
                                 hp = 100;
                             udata2.set('HP',hp);

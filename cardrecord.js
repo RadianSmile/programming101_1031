@@ -30,7 +30,6 @@ $(document).ready(function(){
 function recordToString(data, id){
     var type = data.get('type');
     var useeName = data.get('User').get('name');
-    console.log(useeName);
     var useeId = data.get('User').id;
     var cardName = data.get('Card_info').get('name');
     
