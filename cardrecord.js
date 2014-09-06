@@ -26,7 +26,6 @@ $(document).ready(function(){
     }
 })
 
-//get the data in parse.com and turn that into HTML DOM string
 function recordToString(data, id){
     var type = data.get('type');
     var useeName = data.get('User').get('name');
