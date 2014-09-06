@@ -121,10 +121,9 @@ $(document).ready(function(){
                                         success:function(data){
                                             var card = Parse.Object.extend("Card_info");
                                             var query1 = new Parse.Query(card);
-                                            query.equalTo('name', "再抽一張卡");
-                                            query.first({
+                                            query1.equalTo('name', "再抽一張卡");
+                                            query1.first({
                                                 success:function(data1){
-                                                    console.log(data1);
                                                     var Cardrecord = Parse.Object.extend("Card_record");
                                                     var cardrecord = new Cardrecord();
                                                     cardrecord.set('user', Parse.User.current());
