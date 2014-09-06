@@ -82,7 +82,7 @@ function berecordToString(data){
 
     if(type == 'use'){
         if(useeId == UserId){
-
+            s="";
         }
         else{
             s = "<h2>你被某人使用了" + cardName + "。</h2>";
