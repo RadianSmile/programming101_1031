@@ -47,5 +47,8 @@ function recordToString(data, id){
             s = "<h2>你被" + userId + "使用了" + cardName + "。</h2>";
         }
     }
+    else if(type == 'draw'){
+        s = "<h2>你有一次抽卡機會！</h2>";
+    }
     return s;
 }

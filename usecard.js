@@ -124,6 +124,7 @@ $(document).ready(function(){
                                             query.equalTo('name', "再抽一張卡");
                                             query.first({
                                                 success:function(data1){
+                                                    console.log(data1);
                                                     var Cardrecord = Parse.Object.extend("Card_record");
                                                     var cardrecord = new Cardrecord();
                                                     cardrecord.set('user', Parse.User.current());
