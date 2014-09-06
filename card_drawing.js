@@ -63,6 +63,25 @@ function getData(){
     });
 }
 
+function cardDrawingrecord(){
+    var Cardrecord = Parse.Object.extend("Card_record");
+    var cardrecord = new Cardrecord();
+    var carddrawingid = localStorage.getItem('carddrawingid');
+
+    cardrecord.set('user', Parse.User.current().id);
+    cardrecord.set('Card_info', carddrawingid);
+    cardrecord.set('target_user', null);
+    cardrecord.set('type', "get");
+    cardrecord.save(null,{
+        success:function(data){
+            console.log("Card drawing record success!");
+        },
+        error:function(error){
+            console.log(error.toString());
+        }
+    })
+}
+
 function changeClass1(){
     if(document.getElementById("block1").className == "block"){
         document.getElementById("block1").className += " rotated";
@@ -71,6 +90,7 @@ function changeClass1(){
     }
     else
         document.getElementById("block").className = "block";
+        cardDrawingrecord();
         getData();
     };
 function changeClass2(){
@@ -81,6 +101,7 @@ function changeClass2(){
     }
     else
         document.getElementById("block").className = "block";
+        cardDrawingrecord();
         getData();  
     };      
 function changeClass3(){
@@ -91,6 +112,7 @@ function changeClass3(){
     }
     else
         document.getElementById("block").className = "block";
+        cardDrawingrecord();
         getData();
     };
 
