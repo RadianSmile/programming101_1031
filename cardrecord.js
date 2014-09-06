@@ -12,7 +12,7 @@ $(document).ready(function(){
         query.find({
             success:function(data){
                 for(var i = 0; i<data.length; i++){
-                    var s = recordToString(data[i], Parse.User.current('objectId'));
+                    var s = recordToString(data[i], data[i].get('target_user'));
                     strings += s;
                     var string = "<div class='cardnotification'>" + strings + "</div>";
                     $('div.notificationbox').append(string);
@@ -39,7 +39,7 @@ function recordToString(data, id){
         s = "<h2>你抽到了"+ cardName + "。</h2>";
     }
     else if(type == 'use'){
-        if(Parse.User.current().id == useeId){
+        if(useeId == Parse.User.current().id){
             s = "<h2>你對自己使用了" + cardName + "。</h2>";
         }
         else if(useeId = id){
