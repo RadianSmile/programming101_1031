@@ -14,10 +14,10 @@ $(document).ready(function(){
                 for(var i = 0; i<data.length; i++){
                     var s = recordToString(data[i], Parse.User.current('objectId'));
                     strings.push(s);
-                },
-                error:function(error){
-                    console.log(error.toString());
                 }
+            },
+            error:function(error){
+                console.log(error.toString());
             }
         });
         return strings;
