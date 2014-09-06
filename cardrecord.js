@@ -23,6 +23,29 @@ $(document).ready(function(){
                 console.log(error.toString());
             }
         });
+
+        var strings1 = "";
+        var notif1 = Parse.Object.extend("Card_record");
+        var query1 = new Parse.Query(notif1);
+        query1.equalTo('User', Parse.User.current());
+        query.include('Card_info');
+        query.include('User');
+        query.descending('date');
+        query.find({
+            success:function(data){
+                for(var i=0; i<data.length; i++){
+                    var s = berecordToString(data[i]);
+                    strings1 += s;
+                    var string = "<div class='cardnotification'>" + strings1 + "</div>";
+                    $('div.notificationbox').append(string);
+                    strings1 = "";
+                }
+            },
+            error:function(error){
+                console.log(error.toString());
+            }
+        });
+
     }
 })
 
@@ -43,12 +66,20 @@ function recordToString(data, id){
         else if(useeId == id){
             s = "<h2>你對" + useeName + "使用了" + cardName + "。</h2>";
         }
-        else if(useeId == id){
-            s = "<h2>你被" + userId + "使用了" + cardName + "。</h2>";
-        }
     }
     else if(type == 'draw'){
         s = "<h2>你有一次抽卡機會！</h2>";
+    }
+    return s;
+}
+
+function berecordToString(data){
+    var type = data.get('type');
+    var useeName = data.get('user').get('name');
+    var cardName = data.get('Card_info').get('name');
+
+    if(type == 'use'){
+        s = "<h2>你被" + useeName + "使用了" + cardName + "。</h2>";
     }
     return s;
 }
