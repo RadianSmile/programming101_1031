@@ -12,6 +12,7 @@ $(document).ready(function(){
     query.first({
         success:function(data){
             console.log(data);
+            localStorage['drawrecord'] = data.id;
             if(data != undefined){
                 alert("You can draw one card!");
             }
@@ -83,6 +84,23 @@ function getData(){
                 },
                 error: function(error){
                     alert('Failed to create new object, with error code: ' + error.description);
+                }
+            })
+
+            var drawrecordid = localStorage.get('drawrecord');
+            var cardrecord = Parse.Object.extend("Card_record");
+            var query = new Parse.Query(cardrecord);
+            query.equalTo('objectId', drawrecordid);
+            query.first({
+                success:function(data){
+                    data.destroy({
+                        success:function(data){
+                            console.log("Delete draw record success!");
+                        },
+                        error:function(error){
+                            console.log(error.toString());
+                        }
+                    })
                 }
             })
 
