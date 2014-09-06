@@ -12,7 +12,7 @@ $(document).ready(function(){
     query.first({
         success:function(data){
             console.log(data);
-            if(data != []){
+            if(data != "undefined"){
                 alert("You can draw one card!");
             }
             else{
@@ -21,7 +21,6 @@ $(document).ready(function(){
             }
         }
     })
-
 });
 
 //Drawing card function
