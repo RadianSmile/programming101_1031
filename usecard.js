@@ -133,6 +133,7 @@ $(document).ready(function(){
                                                     cardrecord.save(null,{
                                                         success:function(data){
                                                             console.log("Draw record success!");
+                                                            deletecard();
                                                         },
                                                         error:function(error){
                                                             console.log(error.toString());
