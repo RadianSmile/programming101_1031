@@ -59,10 +59,12 @@ div.cards{
 	background-image: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#eee));
 	
 	-webkit-backface-visibility: hidden;
+	-webkit-box-shadow: 0 2px 5px #ccc;
 }
 
 .front{
 	color: #fff;
+	background-color: black;
 	height: 147px;
 	width: 110px;
 
@@ -72,6 +74,7 @@ div.cards{
 .back{
 	display:block;
     position:abolute; 
+	background-color: black;
 	width: 463px;
 	height: 500px;
 	left:-200px;
