@@ -112,7 +112,7 @@ $(document).ready(function(){
                                     stealCard(targetuser);
                                 }
                                 else{
-                                    //再抽一張
+                                    onemorecard();
                                 }
                             },
                             error: function(error){
@@ -532,4 +532,30 @@ function donateHP(cardid, target){
             console.log(error);
         }
     });
+}
+
+function onemorecard(){
+    var card = Parse.Object.extend("Card_info");
+    var query = new Parse.Query(card);
+    query.equalTo('objectId', "5Tt7IjAOuw");
+    query.first({
+        success:function(data){
+            var currentuser = Parse.User.current();
+            var Cardrecord = Parse.Object.extend("Card_record");
+            var cardrecrod = new Cardrecord();
+
+            cardrecord.set('user', currentuser);
+            cardrecord.set('Card_info', data);
+            cardrecord.set('User', currentuser);
+            cardrecord.set('type', "draw");
+            cardrecord.save(null,{
+                success:function(data){
+                    console.log("Draw record success!");
+                },
+                error:function(error){
+                    console.log(error.toString());
+                }
+            })
+        }
+    })
 }
