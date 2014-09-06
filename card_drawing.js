@@ -5,6 +5,20 @@ $(document).ready(function(){
     if(current_user){
         remainCard();
     }
+    var notif = Parse.Object.extend("Card_record");
+    var query = new Parse.Query(notif);
+    query.equalTo('user', Parse.User.current());
+    query.equalTo('type', "draw");
+    query.find({
+        success:function(data){
+            alert("You can draw one card!");
+        },
+        error:function(error){
+            alert("You don't have the chance to draw the card! Back to dashboard!");
+            window.location.href="http://radiansmile.github.io/CodeEDU/dashboard.html";
+        }
+    })
+
 });
 
 //Drawing card function
