@@ -77,9 +77,16 @@ function berecordToString(data){
     var type = data.get('type');
     var useeName = data.get('user').get('name');
     var cardName = data.get('Card_info').get('name');
+    var useeId = data.get('user').id;
+    var UserId = data.get('User').id;
 
     if(type == 'use'){
-        s = "<h2>你被" + useeName + "使用了" + cardName + "。</h2>";
+        if(useeId == UserId){
+
+        }
+        else{
+            s = "<h2>你被某人使用了" + cardName + "。</h2>";
+        }
     }
     return s;
 }
