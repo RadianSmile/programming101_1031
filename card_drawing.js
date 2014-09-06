@@ -68,7 +68,10 @@ function cardDrawingrecord(){
     var cardrecord = new Cardrecord();
     var carddrawingid = localStorage.getItem('carddrawingid');
 
-    cardrecord.set('user', Parse.User.current().id);
+    console.log(Parse.User.current());
+    console.log(carddrawingid);
+
+    cardrecord.set('user', Parse.User.current());
     cardrecord.set('Card_info', carddrawingid);
     cardrecord.set('target_user', null);
     cardrecord.set('type', "get");
