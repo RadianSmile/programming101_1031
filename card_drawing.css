@@ -59,12 +59,10 @@ div.cards{
 	background-image: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#eee));
 	
 	-webkit-backface-visibility: hidden;
-	-webkit-box-shadow: 0 2px 5px #ccc;
 }
 
 .front{
 	color: #fff;
-	background-color: black;
 	height: 147px;
 	width: 110px;
 
@@ -93,49 +91,4 @@ top:250px;
 #block3{
 left:70%;
 top:250px;
-}
-.gone{
-position:absolute;
-left:1000px;
-top: 1000px;
-z-index: -10;
-
-}
-.share{
-	float:right;
-}
-
-.fb-share-button{
-	position:absolute;
-	right:220px;
-	top:30px;
-	margin-right: 20px;
-}
-
-#loginbtn{
-	position:absolute;
-	right:140px;
-	margin-right:20px;
-	width:10%;
-	height:10%;
-}
-.readmore{
-	position:absolute;
-	right:10px;
-	
-	
-}
-
-#level{
-	width:30%;
-	height:30%;
-}
-#levelpicture{
-	text-align:center; 
-}
-#levelpicture1{
-	text-align:center; 
-}
-#levelpicture2{
-	text-align:center; 
 }
