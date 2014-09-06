@@ -36,7 +36,7 @@ $(document).ready(function(){
                                     success:function(data1){
                                         var Cardrecord = Parse.Object.extend("Card_record");
                                         var cardrecord = new Cardrecord();
-                                        cardrecord.set('user', currentuser);
+                                        cardrecord.set('user', Parse.User.current());
                                         cardrecord.set('Card_info', cardid);
                                         cardrecord.set('target_user', data1);
                                         cardrecord.set('type', "use");
