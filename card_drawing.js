@@ -11,6 +11,7 @@ $(document).ready(function(){
     query.equalTo('type', "draw");
     query.find({
         success:function(data){
+            console.log(data);
             alert("You can draw one card!");
         },
         error:function(error){
