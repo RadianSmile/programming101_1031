@@ -11,6 +11,7 @@ $(document).ready(function(){
     query.equalTo('user', Parse.User.current());
     query.find({
         success:function(data){
+            console.log(data);
             if(data != []){
                 alert("You can draw one card!");
             }
