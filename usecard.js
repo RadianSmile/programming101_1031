@@ -151,13 +151,13 @@ function deletecard(){
 //Card function
 function addHP(cardid, target){
     var hpPlus = 0;
-    if(cardid== "UDfyCM4Pyb") //+full
+    if(cardid == "UDfyCM4Pyb") //+full
         hpPlus = 100;
-    else if(cardid== "cbACuxTVY1") //+50
+    else if(cardid == "cbACuxTVY1") //+50
         hpPlus = 50;
-    else if(cardid== "7mn5hYmEWH") //+30
+    else if(cardid == "7mn5hYmEWH") //+30
         hpPlus = 30;
-    else if(cardid== "zLHR3S0hlb") //+10
+    else if(cardid == "zLHR3S0hlb") //+10
         hpPlus = 10;
     var user = Parse.Object.extend('User');
     var query = new Parse.Query(user);
@@ -196,11 +196,11 @@ function addHP(cardid, target){
 
 function minusHP(cardid, target){
     var hpMinus = 0;
-    if(cardid== "4kJkiyYROw") //-50
+    if(cardid == "4kJkiyYROw") //-50
         hpMinus = 50;
-    else if(cardid== "ZLZIS7XbfQ") //-30
+    else if(cardid == "ZLZIS7XbfQ") //-30
         hpMinus = 30;
-    else if(cardid== "y0pZ66Wl4X") //-10
+    else if(cardid == "y0pZ66Wl4X") //-10
         hpMinus = 10;
     var user = Parse.Object.extend('User');
     var query = new Parse.Query(user);
@@ -239,13 +239,13 @@ function minusHP(cardid, target){
 
 function addXP(cardid, target){
     var xpPlus = 0;
-    if(cardid== "wxTLT53ZZX") //+70
+    if(cardid == "wxTLT53ZZX") //+70
         xpPlus = 70;
-    else if(cardid== "Zm3TV6UaEP") //+50
+    else if(cardid == "Zm3TV6UaEP") //+50
         xpPlus = 50;
-    else if(cardid== "4c3uX1rZ1K") //+30
+    else if(cardid == "4c3uX1rZ1K") //+30
         xpPlus = 30;
-    else if(cardid== "OSRGBnKpaP") //+10
+    else if(cardid == "OSRGBnKpaP") //+10
         xpPlus = 10;
     var user = Parse.Object.extend('User');
     var query = new Parse.Query(user);
@@ -354,11 +354,11 @@ function stealCard(targetId){
 
 function stealHP(cardid, target){
     var hpSteal = 0;
-    if(cardid = '8x7C6LFRhH') //steal 50
+    if(cardid == '8x7C6LFRhH') //steal 50
         hpSteal = 50;
-    else if(cardid = 'jqxvogKdXQ') // steal 30
+    else if(cardid == 'jqxvogKdXQ') // steal 30
         hpSteal = 30;
-    else if(cardid = 'Byw6APXDGu') // steal 10
+    else if(cardid == 'Byw6APXDGu') // steal 10
         hpSteal = 10;
         
     var u = Parse.Object.extend('User');
@@ -445,11 +445,11 @@ function stealHP(cardid, target){
 
 function donateHP(cardid, target){
     var hpDonate = 0;
-    if(cardid = '8x7C6LFRhH') //steal 50
+    if(cardid == '8x7C6LFRhH') //steal 50
         hpDonate = 50;
-    else if(cardid = 'jqxvogKdXQ') // steal 30
+    else if(cardid == 'jqxvogKdXQ') // steal 30
         hpDonate = 30;
-    else if(cardid = 'Byw6APXDGu') // steal 10
+    else if(cardid == 'Byw6APXDGu') // steal 10
         hpDonate = 10;
         
     var u = Parse.Object.extend('User');
