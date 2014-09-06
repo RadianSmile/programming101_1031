@@ -111,8 +111,37 @@ $(document).ready(function(){
                                 else if(cardid == "1PF6Z8XISA"){
                                     stealCard(targetuser);
                                 }
+                                //onemorecard
                                 else{
-                                    onemorecard();
+                                    var targetuser = localStorage.getItem('userid');
+                                    var user = Parse.Object.extend('User');
+                                    var query = new Parse.Query(user);
+                                    query.equalTo('objectId', targetuser);
+                                    query.first({
+                                        success:function(data){
+                                            var card = Parse.Object.extend("Card_info");
+                                            var query1 = new Parse.Query(card);
+                                            query.equalTo('objectId', "5Tt7IjAOuw");
+                                            query.first({
+                                                success:function(data1){
+                                                    var Cardrecord = Parse.Object.extend("Card_record");
+                                                    var cardrecord = new Cardrecord();
+                                                    cardrecord.set('user', Parse.User.current());
+                                                    cardrecord.set('Card_info', data1);
+                                                    cardrecord.set('User', data);
+                                                    cardrecord.set('type', "draw");
+                                                    cardrecord.save(null,{
+                                                        success:function(data){
+                                                            console.log("Draw record success!");
+                                                        },
+                                                        error:function(error){
+                                                            console.log(error.toString());
+                                                        }
+                                                    })
+                                                }
+                                            })
+                                        }
+                                    })
                                 }
                             },
                             error: function(error){
@@ -532,30 +561,4 @@ function donateHP(cardid, target){
             console.log(error);
         }
     });
-}
-
-function onemorecard(){
-    var card = Parse.Object.extend("Card_info");
-    var query = new Parse.Query(card);
-    query.equalTo('objectId', "5Tt7IjAOuw");
-    query.first({
-        success:function(data){
-            var currentuser = Parse.User.current();
-            var Cardrecord = Parse.Object.extend("Card_record");
-            var cardrecrod = new Cardrecord();
-
-            cardrecord.set('user', currentuser);
-            cardrecord.set('Card_info', data);
-            cardrecord.set('User', currentuser);
-            cardrecord.set('type', "draw");
-            cardrecord.save(null,{
-                success:function(data){
-                    console.log("Draw record success!");
-                },
-                error:function(error){
-                    console.log(error.toString());
-                }
-            })
-        }
-    })
 }
