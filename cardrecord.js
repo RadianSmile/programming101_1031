@@ -12,6 +12,7 @@ $(document).ready(function(){
         query.find({
             success:function(data){
                 for(var i = 0; i<data.length; i++){
+                    console.log(data[i].get('target_user'));
                     var s = recordToString(data[i], data[i].get('target_user'));
                     strings += s;
                     var string = "<div class='cardnotification'>" + strings + "</div>";
