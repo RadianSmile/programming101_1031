@@ -29,60 +29,79 @@ $(document).ready(function(){
                                 var cardid = card.id;
                                 var targetuser = localStorage.getItem('userid');
                                 if(cardid == "OSRGBnKpaP"){
+                                    cardusedrecord();
                                     addXP(cardid, targetuser);
                                 }
                                 else if(cardid == "4c3uX1rZ1K"){
+                                    cardusedrecord();
                                     addXP(cardid, targetuser);
                                 }
                                 else if(cardid == "Zm3TV6UaEP"){
+                                    cardusedrecord();
                                     addXP(cardid, targetuser);
                                 }
                                 else if(cardid == "wxTLT53ZZX"){
+                                    cardusedrecord();
                                     addXP(cardid, targetuser);
                                 }
                                 else if(cardid == "zLHR3S0hlb"){
+                                    cardusedrecord();
                                     addHP(cardid, targetuser);
                                 }
                                 else if(cardid == "7mn5hYmEWH"){
+                                    cardusedrecord();
                                     addHP(cardid, targetuser);
                                 }
                                 else if(cardid == "cbACuxTVY1"){
+                                    cardusedrecord();
                                     addHP(cardid, targetuser);
                                 }
                                 else if(cardid == "UDfyCM4Pyb"){
+                                    cardusedrecord();
                                     addHP(cardid, targetuser);
                                 }
                                 else if(cardid == "aJONHaxQtM"){
+                                    cardusedrecord();
                                     addLife(cardid, targetuser);
                                 }
                                 else if(cardid == "10ypku2oZk"){
+                                    cardusedrecord();
                                     donateHP(cardid, targetuser);
                                 }
                                 else if(cardid == "ysYpQz4TW0"){
+                                    cardusedrecord();
                                     donateHP(cardid, targetuser);
                                 }
                                 else if(cardid == "ic6YE4frVp"){
+                                    cardusedrecord();
                                     donateHP(cardid, targetuser);
                                 }
                                 else if(cardid == "y0pZ66Wl4X"){
+                                    cardusedrecord();
                                     minusHP(cardid, targetuser);
                                 }
                                 else if(cardid == "ZLZIS7XbfQ"){
+                                    cardusedrecord();
                                     minusHP(cardid, targetuser);
                                 }
                                 else if(cardid == "4kJkiyYROw"){
+                                    cardusedrecord();
                                     minusHP(cardid, targetuser);
                                 }
                                 else if(cardid == "Byw6APXDGu"){
+                                    cardusedrecord();
                                     stealHP(cardid, targetuser);
                                 }
                                 else if(cardid == "jqxvogKdXQ"){
+                                    cardusedrecord();
                                     stealHP(cardid, targetuser);
                                 }
                                 else if(cardid == "8x7C6LFRhH"){
+                                    cardusedrecord();
                                     stealHP(cardid, targetuser);
                                 }
                                 else if(cardid == "1PF6Z8XISA"){
+                                    cardusedrecord();
                                     stealCard(targetuser);
                                 }
                                 else{
@@ -101,11 +120,40 @@ $(document).ready(function(){
 });
 
 function getElementStringByowncard(name, id){
-    //var s = "<input type='submit' value='"+name+"' id='"+id+"'>";
     var s = "<div  value='"+name+"' class='in' id='"+id+"'>"+name+"</div>";
 
     return s;
 };
+
+function cardusedrecord(){
+    var currentuser = Parse.User.current();
+    var owncardid = localStorage.getItem('owncardId');
+    var owncard = Parse.Object.extend('Owncard');
+    var query = new Parse.Query(owncard);
+    query.include('Card_info');
+    query.equalTo('objectId', owncardid)
+    query.first({
+        success:function(data){
+        var Cardrecord = Parse.Object.extend("Card_record");
+        var cardrecord = new Cardrecord();
+        var cardid = data.get('Card_info');
+        var targetuser = localStorage.getItem('userid');
+
+        cardrecord.set('user', currentuser);
+        cardrecord.set('Card_info', cardid);
+        cardrecord.set('target_user', targetuser);
+        cardrecord.set('type', "use");
+        cardrecord.save(null,{
+            success:function(data){
+                console.log("Card used record success!");
+            },
+            error:function(error){
+                console.log(error.toString());
+            }
+        })
+        }
+    })
+}
 
 //Delete used card
 function deletecard(){
