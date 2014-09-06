@@ -29,10 +29,10 @@ $(document).ready(function(){
         var query1 = new Parse.Query(notif1);
         query1.equalTo('User', Parse.User.current());
         query.include('Card_info');
-        query.include('User');
         query.descending('date');
         query.find({
             success:function(data){
+                console.log(data);
                 for(var i=0; i<data.length; i++){
                     var s = berecordToString(data[i]);
                     strings1 += s;
