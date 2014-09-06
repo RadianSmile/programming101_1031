@@ -27,7 +27,7 @@ function getData(){
             var randomno = randomNum(results.length);
             var object = results;
 
-            var carddrawingid = object[randomno].id;
+            var carddrawingid = object[randomno];
             localStorage['carddrawingid'] = carddrawingid;
 
             Shortdescription = object[randomno].get('shortdes');
@@ -69,7 +69,7 @@ function cardDrawingrecord(){
     var Cardrecord = Parse.Object.extend("Card_record");
     var cardrecord = new Cardrecord();
 
-    cardrecord.set('user', currentuser.id);
+    cardrecord.set('user', currentuser);
     cardrecord.set('Card_info', carddrawingid);
     cardrecord.set('target_user', null);
     cardrecord.set('type', "get");
