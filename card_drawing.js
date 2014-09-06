@@ -27,12 +27,11 @@ function getData(){
             var randomno = randomNum(results.length);
             var object = results;
 
-            /*var carddrawingid = object[randomno].id;
-            localStorage['carddrawingid'] = carddrawingid;*/
             var currentuser = Parse.User.current();
             var Cardrecord = Parse.Object.extend("Card_record");
             var cardrecord = new Cardrecord();
 
+            //Card_record!
             cardrecord.set('user', currentuser);
             cardrecord.set('Card_info', object[randomno]);
             cardrecord.set('target_user', null);
@@ -60,7 +59,7 @@ function getData(){
             var owncard = Parse.Object.extend("Owncard");
             var own = new owncard();
 
-            own.set('user', Parse.User.current());
+            own.set('user', currentuser);
             own.set('Card_info', object[randomno]);
             own.save(null, {
                 success: function(){
@@ -78,26 +77,6 @@ function getData(){
         }
     });
 }
-
-/*function cardDrawingrecord(){
-    var currentuser = Parse.User.current();
-    var carddrawingid = localStorage.getItem('carddrawingid');
-    var Cardrecord = Parse.Object.extend("Card_record");
-    var cardrecord = new Cardrecord();
-
-    cardrecord.set('user', currentuser);
-    cardrecord.set('Card_info', carddrawingid);
-    cardrecord.set('target_user', null);
-    cardrecord.set('type', "get");
-    cardrecord.save(null,{
-        success:function(data){
-            console.log("Card drawing record success!");
-        },
-        error:function(error){
-            console.log(error.toString());
-        }
-    })
-}*/
 
 function changeClass1(){
     if(document.getElementById("block1").className == "block"){
