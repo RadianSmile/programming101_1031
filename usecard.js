@@ -134,23 +134,29 @@ function cardusedrecord(){
     query.equalTo('objectId', owncardid)
     query.first({
         success:function(data){
-        var Cardrecord = Parse.Object.extend("Card_record");
-        var cardrecord = new Cardrecord();
-        var cardid = data.get('Card_info');
-        var targetuser = localStorage.getItem('userid');
-
-        cardrecord.set('user', currentuser);
-        cardrecord.set('Card_info', cardid);
-        cardrecord.set('target_user', targetuser);
-        cardrecord.set('type', "use");
-        cardrecord.save(null,{
-            success:function(data){
-                console.log("Card used record success!");
-            },
-            error:function(error){
-                console.log(error.toString());
-            }
-        })
+            var targetuser = localStorage.getItem('userid');
+            var cardid = data.get('Card_info');
+            var user = Parse.Object.extend('User');
+            var query = new Parse.Query(user);
+            query.equalTo('objectId', targetuser);
+            query.first({
+                success:function(data1){
+                    var Cardrecord = Parse.Object.extend("Card_record");
+                    var cardrecord = new Cardrecord();
+                    cardrecord.set('user', currentuser);
+                    cardrecord.set('Card_info', cardid);
+                    cardrecord.set('target_user', data1);
+                    cardrecord.set('type', "use");
+                    cardrecord.save(null,{
+                        success:function(data){
+                            console.log("Card used record success!");
+                        },
+                        error:function(error){
+                            console.log(error.toString());
+                        }
+                    })
+                }
+            })
         }
     })
 }
