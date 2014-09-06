@@ -27,8 +27,24 @@ function getData(){
             var randomno = randomNum(results.length);
             var object = results;
 
-            var carddrawingid = object[randomno];
-            localStorage['carddrawingid'] = carddrawingid;
+            /*var carddrawingid = object[randomno].id;
+            localStorage['carddrawingid'] = carddrawingid;*/
+            var currentuser = Parse.User.current();
+            var Cardrecord = Parse.Object.extend("Card_record");
+            var cardrecord = new Cardrecord();
+
+            cardrecord.set('user', currentuser);
+            cardrecord.set('Card_info', object[randomno]);
+            cardrecord.set('target_user', null);
+            cardrecord.set('type', "get");
+            cardrecord.save(null,{
+                success:function(data){
+                    console.log("Card drawing record success!");
+                },
+                error:function(error){
+                    console.log(error.toString());
+                }
+            })
 
             Shortdescription = object[randomno].get('shortdes');
             Title = object[randomno].get('name');
@@ -63,7 +79,7 @@ function getData(){
     });
 }
 
-function cardDrawingrecord(){
+/*function cardDrawingrecord(){
     var currentuser = Parse.User.current();
     var carddrawingid = localStorage.getItem('carddrawingid');
     var Cardrecord = Parse.Object.extend("Card_record");
@@ -81,7 +97,7 @@ function cardDrawingrecord(){
             console.log(error.toString());
         }
     })
-}
+}*/
 
 function changeClass1(){
     if(document.getElementById("block1").className == "block"){
@@ -91,7 +107,6 @@ function changeClass1(){
     }
     else
         document.getElementById("block").className = "block";
-        cardDrawingrecord();
         getData();
     };
 function changeClass2(){
@@ -102,7 +117,6 @@ function changeClass2(){
     }
     else
         document.getElementById("block").className = "block";
-        cardDrawingrecord();
         getData();  
     };      
 function changeClass3(){
@@ -113,7 +127,6 @@ function changeClass3(){
     }
     else
         document.getElementById("block").className = "block";
-        cardDrawingrecord();
         getData();
     };
 
