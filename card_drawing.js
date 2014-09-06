@@ -11,8 +11,6 @@ $(document).ready(function(){
     query.equalTo('user', Parse.User.current());
     query.first({
         success:function(data){
-            console.log(data);
-            localStorage['drawrecord'] = data.id;
             if(data != undefined){
                 alert("You can draw one card!");
             }
@@ -20,6 +18,8 @@ $(document).ready(function(){
                 alert("You don't have the chance to draw the card! Back to dashboard!");
                 window.location.href="http://radiansmile.github.io/CodeEDU/dashboard.html";
             }
+            console.log(data);
+            localStorage['drawrecord'] = data.id;
         }
     })
 });
