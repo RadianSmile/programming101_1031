@@ -9,7 +9,7 @@ $(document).ready(function(){
     var query = new Parse.Query(notif);
     query.equalTo('type', "draw");
     query.equalTo('user', Parse.User.current());
-    query.find({
+    query.first({
         success:function(data){
             console.log(data);
             if(data != []){
