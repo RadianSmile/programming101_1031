@@ -121,7 +121,7 @@ $(document).ready(function(){
                                         success:function(data){
                                             var card = Parse.Object.extend("Card_info");
                                             var query1 = new Parse.Query(card);
-                                            query.equalTo('objectId', "5Tt7IjAOuw");
+                                            query.equalTo('name', "再抽一張卡");
                                             query.first({
                                                 success:function(data1){
                                                     var Cardrecord = Parse.Object.extend("Card_record");
