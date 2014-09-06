@@ -7,16 +7,17 @@ $(document).ready(function(){
     }
     var notif = Parse.Object.extend("Card_record");
     var query = new Parse.Query(notif);
-    query.equalTo('user', Parse.User.current());
     query.equalTo('type', "draw");
+    query.equalTo('user', Parse.User.current());
     query.find({
         success:function(data){
-            console.log(data);
-            alert("You can draw one card!");
-        },
-        error:function(error){
-            alert("You don't have the chance to draw the card! Back to dashboard!");
-            window.location.href="http://radiansmile.github.io/CodeEDU/dashboard.html";
+            if(data != []){
+                alert("You can draw one card!");
+            }
+            else{
+                alert("You don't have the chance to draw the card! Back to dashboard!");
+                window.location.href="http://radiansmile.github.io/CodeEDU/dashboard.html";
+            }
         }
     })
 
