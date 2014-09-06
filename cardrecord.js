@@ -32,7 +32,7 @@ function recordToString(data, id){
     var type = data.get('type');
     var userName = Parse.User.current().get('name');
     var useeName = data.get('target_user').get('name');
-    var useeId = data.get('target_user').get('objectId');
+    var useeId = data.get('target_user').id;
     var cardName = data.get('Card_info').get('name');
     
     var s = "";
@@ -43,7 +43,7 @@ function recordToString(data, id){
         if(useeId == Parse.User.current().id){
             s = "<h2>你對自己使用了" + cardName + "。</h2>";
         }
-        else if(useeId = id){
+        else if(useeId == id){
             s = "<h2>你對" + useeName + "使用了" + cardName + "。</h2>";
         }
         else if(useeId == id){
