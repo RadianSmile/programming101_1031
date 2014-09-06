@@ -29,7 +29,8 @@ $(document).ready(function(){
                                 var cardid = card.id;
                                 var targetuser = localStorage.getItem('userid');
 
-                                var user = Parse.Query(user);
+                                var user = Parse.Object.extend('User');
+                                var query = new Parse.Query(user);
                                 query.equalTo('objectId', targetuser);
                                 query.first({
                                     success:function(data1){
