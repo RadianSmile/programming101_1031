@@ -64,14 +64,12 @@ function getData(){
 }
 
 function cardDrawingrecord(){
+    var currentuser = Parse.User.current();
+    var carddrawingid = localStorage.getItem('carddrawingid');
     var Cardrecord = Parse.Object.extend("Card_record");
     var cardrecord = new Cardrecord();
-    var carddrawingid = localStorage.getItem('carddrawingid');
 
-    console.log(Parse.User.current());
-    console.log(carddrawingid);
-
-    cardrecord.set('user', Parse.User.current());
+    cardrecord.set('user', currentuser.id);
     cardrecord.set('Card_info', carddrawingid);
     cardrecord.set('target_user', null);
     cardrecord.set('type', "get");
