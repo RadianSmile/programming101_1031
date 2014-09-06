@@ -87,7 +87,7 @@ function getData(){
                 }
             })
 
-            var drawrecordid = localStorage.get('drawrecord');
+            var drawrecordid = localStorage.getItem('drawrecord');
             var cardrecord = Parse.Object.extend("Card_record");
             var query = new Parse.Query(cardrecord);
             query.equalTo('objectId', drawrecordid);
