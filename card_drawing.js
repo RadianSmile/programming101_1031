@@ -34,7 +34,7 @@ function getData(){
             //Card_record!
             cardrecord.set('user', currentuser);
             cardrecord.set('Card_info', object[randomno]);
-            cardrecord.set('target_user', currentuser);
+            cardrecord.set('User', currentuser);
             cardrecord.set('type', "get");
             cardrecord.save(null,{
                 success:function(data){

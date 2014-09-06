@@ -7,13 +7,12 @@ $(document).ready(function(){
         var query = new Parse.Query(notif);
         query.equalTo('user', Parse.User.current());
         query.include('Card_info');
-        query.include('user');
+        query.include('User');
         query.descending('date');
         query.find({
             success:function(data){
                 for(var i = 0; i<data.length; i++){
-                    console.log(data[i].get('target_user').id);
-                    var s = recordToString(data[i], data[i].get('target_user').id);
+                    var s = recordToString(data[i], data[i].get('User').id);
                     strings += s;
                     var string = "<div class='cardnotification'>" + strings + "</div>";
                     $('div.notificationbox').append(string);
@@ -30,9 +29,9 @@ $(document).ready(function(){
 //get the data in parse.com and turn that into HTML DOM string
 function recordToString(data, id){
     var type = data.get('type');
-    var userName = Parse.User.current().get('name');
-    var useeName = data.get('target_user').get('name');
-    var useeId = data.get('target_user').id;
+    var useeName = data.get('User').get('name');
+    console.log(useeName);
+    var useeId = data.get('User').id;
     var cardName = data.get('Card_info').get('name');
     
     var s = "";
