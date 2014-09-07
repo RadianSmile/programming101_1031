@@ -31,62 +31,123 @@ $(document).ready(function(){
                                 var cardid = card.id;
                                 var targetuser = localStorage.getItem('userid');
 
+                                //Record used card!
+                                var user = Parse.Object.extend('User');
+                                var query = new Parse.Query(user);
+                                query.equalTo('objectId', targetuser);
+                                query.first({
+                                    success:function(data1){
+                                        var Cardrecord = Parse.Object.extend("Card_record");
+                                        var cardrecord = new Cardrecord();
+                                        cardrecord.set('user', Parse.User.current());
+                                        cardrecord.set('Card_info', card);
+                                        cardrecord.set('User', data1);
+                                        cardrecord.set('type', "use");
+                                        cardrecord.save(null,{
+                                            success:function(data){
+                                                console.log("Card used record success!");
+                                            },
+                                            error:function(error){
+                                                console.log(error.toString());
+                                            }
+                                        })
+                                    }
+                                })
+
                                 if(cardid == "OSRGBnKpaP"){
                                     addXP(cardid, targetuser);
+                                    alert("卡片成功使用！返回dashboard!");
+                                    window.location.href = "http://radiansmile.github.io/CodeEDU/dashboard.html";
                                 }
                                 else if(cardid == "4c3uX1rZ1K"){
                                     addXP(cardid, targetuser);
+                                    alert("卡片成功使用！返回dashboard!");
+                                    window.location.href = "http://radiansmile.github.io/CodeEDU/dashboard.html";
                                 }
                                 else if(cardid == "Zm3TV6UaEP"){
                                     addXP(cardid, targetuser);
+                                    alert("卡片成功使用！返回dashboard!");
+                                    window.location.href = "http://radiansmile.github.io/CodeEDU/dashboard.html";
                                 }
                                 else if(cardid == "wxTLT53ZZX"){
                                     addXP(cardid, targetuser);
+                                    alert("卡片成功使用！返回dashboard!");
+                                    window.location.href = "http://radiansmile.github.io/CodeEDU/dashboard.html";
                                 }
                                 else if(cardid == "zLHR3S0hlb"){
                                     addHP(cardid, targetuser);
+                                    alert("卡片成功使用！返回dashboard!");
+                                    window.location.href = "http://radiansmile.github.io/CodeEDU/dashboard.html";
                                 }
                                 else if(cardid == "7mn5hYmEWH"){
                                     addHP(cardid, targetuser);
+                                    alert("卡片成功使用！返回dashboard!");
+                                    window.location.href = "http://radiansmile.github.io/CodeEDU/dashboard.html";
                                 }
                                 else if(cardid == "cbACuxTVY1"){
                                     addHP(cardid, targetuser);
+                                    alert("卡片成功使用！返回dashboard!");
+                                    window.location.href = "http://radiansmile.github.io/CodeEDU/dashboard.html";
                                 }
                                 else if(cardid == "UDfyCM4Pyb"){
                                     addHP(cardid, targetuser);
+                                    alert("卡片成功使用！返回dashboard!");
+                                    window.location.href = "http://radiansmile.github.io/CodeEDU/dashboard.html";
                                 }
                                 else if(cardid == "aJONHaxQtM"){
                                     addLife(cardid, targetuser);
+                                    alert("卡片成功使用！返回dashboard!");
+                                    window.location.href = "http://radiansmile.github.io/CodeEDU/dashboard.html";
                                 }
                                 else if(cardid == "10ypku2oZk"){
                                     donateHP(cardid, targetuser);
+                                    alert("卡片成功使用！返回dashboard!");
+                                    window.location.href = "http://radiansmile.github.io/CodeEDU/dashboard.html";
                                 }
                                 else if(cardid == "ysYpQz4TW0"){
                                     donateHP(cardid, targetuser);
+                                    alert("卡片成功使用！返回dashboard!");
+                                    window.location.href = "http://radiansmile.github.io/CodeEDU/dashboard.html";
                                 }
                                 else if(cardid == "ic6YE4frVp"){
                                     donateHP(cardid, targetuser);
+                                    alert("卡片成功使用！返回dashboard!");
+                                    window.location.href = "http://radiansmile.github.io/CodeEDU/dashboard.html";
                                 }
                                 else if(cardid == "y0pZ66Wl4X"){
                                     minusHP(cardid, targetuser);
+                                    alert("卡片成功使用！返回dashboard!");
+                                    window.location.href = "http://radiansmile.github.io/CodeEDU/dashboard.html";
                                 }
                                 else if(cardid == "ZLZIS7XbfQ"){
                                     minusHP(cardid, targetuser);
+                                    alert("卡片成功使用！返回dashboard!");
+                                    window.location.href = "http://radiansmile.github.io/CodeEDU/dashboard.html";
                                 }
                                 else if(cardid == "4kJkiyYROw"){
                                     minusHP(cardid, targetuser);
+                                    alert("卡片成功使用！返回dashboard!");
+                                    window.location.href = "http://radiansmile.github.io/CodeEDU/dashboard.html";
                                 }
                                 else if(cardid == "Byw6APXDGu"){
                                     stealHP(cardid, targetuser);
+                                    alert("卡片成功使用！返回dashboard!");
+                                    window.location.href = "http://radiansmile.github.io/CodeEDU/dashboard.html";
                                 }
                                 else if(cardid == "jqxvogKdXQ"){
                                     stealHP(cardid, targetuser);
+                                    alert("卡片成功使用！返回dashboard!");
+                                    window.location.href = "http://radiansmile.github.io/CodeEDU/dashboard.html";
                                 }
                                 else if(cardid == "8x7C6LFRhH"){
                                     stealHP(cardid, targetuser);
+                                    alert("卡片成功使用！返回dashboard!");
+                                    window.location.href = "http://radiansmile.github.io/CodeEDU/dashboard.html";
                                 }
                                 else if(cardid == "1PF6Z8XISA"){
                                     stealCard(targetuser);
+                                    alert("卡片成功使用！返回dashboard!");
+                                    window.location.href = "http://radiansmile.github.io/CodeEDU/dashboard.html";
                                 }
                                 //onemorecard
                                 else{
@@ -110,14 +171,10 @@ $(document).ready(function(){
                                                     cardrecord.set('type', "draw");
                                                     cardrecord.save(null,{
                                                         success:function(data){
-                                                            var r = confirm("你確定對"+targetusername+"使用再抽一張卡嗎？");
-                                                            if(r == true){
-                                                                console.log("Draw record success!");
-                                                                deletecard();
-                                                            }
-                                                            else{
-                                                                alert("確定人選時再說吧！");
-                                                            }
+                                                            console.log("Draw record success!");
+                                                            deletecard();
+                                                            alert("卡片成功使用！返回dashboard!");
+                                                            window.location.href = "http://radiansmile.github.io/CodeEDU/dashboard.html";
                                                         },
                                                         error:function(error){
                                                             console.log(error.toString());
@@ -128,29 +185,6 @@ $(document).ready(function(){
                                         }
                                     })
                                 }
-                                //Record used card!
-                                var user = Parse.Object.extend('User');
-                                var query = new Parse.Query(user);
-                                query.equalTo('objectId', targetuser);
-                                query.first({
-                                    success:function(data1){
-                                        var Cardrecord = Parse.Object.extend("Card_record");
-                                        var cardrecord = new Cardrecord();
-                                        cardrecord.set('user', Parse.User.current());
-                                        cardrecord.set('Card_info', card);
-                                        cardrecord.set('User', data1);
-                                        cardrecord.set('type', "use");
-                                        cardrecord.save(null,{
-                                            success:function(data){
-                                                console.log("Card used record success!");
-                                            },
-                                            error:function(error){
-                                                console.log(error.toString());
-                                            }
-                                        })
-                                    }
-                                })
-                                
                             },
                             error: function(error){
                                 console.log(error.toString());
