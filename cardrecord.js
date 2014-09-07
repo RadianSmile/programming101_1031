@@ -2,21 +2,21 @@ $(document).ready(function(){
     Parse.initialize("9eo5r1mHWoIPSTCzmrpdKa3lcHPjySx4y5D6q8Nq", "R8SWwYxpJcy73ogQKuSD43y7FigrlDGjBLcy1lzC");
     var current_user = Parse.User.current();
     if(current_user){
-        var strings = "";
+        var notification = "";
         var notif = Parse.Object.extend("Card_record");
         var query = new Parse.Query(notif);
-        query.equalTo('user', Parse.User.current());
+        query.equalTo('type', "use");
         query.include('Card_info');
         query.include('User');
-        query.descending('date');
+        query.ascending('date');
         query.find({
             success:function(data){
                 for(var i = 0; i<data.length; i++){
-                    var s = recordToString(data[i], data[i].get('User').id);
-                    strings += s;
-                    var string = "<div class='cardnotification'>" + strings + "</div>";
-                    $('div.notificationbox').append(string);
-                    strings = "";
+                    var s = useRecord(data[i]);
+                    notification += s;
+                    var strings = "<div class = 'cardnotification'>" + notification + "</div>";
+                    $('div.notificationbox').append(strings);
+                    notification = "";
                 }
             },
             error:function(error){
@@ -24,70 +24,58 @@ $(document).ready(function(){
             }
         });
 
-        var strings1 = "";
+        var notification1 = "";
         var notif1 = Parse.Object.extend("Card_record");
         var query1 = new Parse.Query(notif1);
-        query1.equalTo('User', Parse.User.current());
-        query.include('Card_info');
-        query.descending('date');
-        query.find({
+        query1.equalTo('type', "get");
+        query1.include('Card_info');
+        query1.include('User');
+        query1.ascending('date');
+        query1.find({
             success:function(data){
-                console.log(data);
-                for(var i=0; i<data.length; i++){
-                    var s = berecordToString(data[i]);
-                    strings1 += s;
-                    var string = "<div class='cardnotification'>" + strings1 + "</div>";
-                    $('div.notificationbox').append(string);
-                    strings1 = "";
+                for(var i = 0; i<data.length; i++){
+                    var s = getRecord(data[i]);
+                    notification1 += s;
+                    var strings = "<div class = 'cardnotification'>" + notification + "</div>";
+                    $('div.notificationbox').append(strings);
+                    notification = "";
                 }
             },
             error:function(error){
                 console.log(error.toString());
             }
         });
-
     }
 })
 
-function recordToString(data, id){
-    var type = data.get('type');
-    var useeName = data.get('User').get('name');
-    var useeId = data.get('User').id;
+function useRecord(data){
+    var targetName = data.get('User').get('name');
+    var targetId = data.get('User').id;
     var cardName = data.get('Card_info').get('name');
-    var useId = data.get('user').id;
+    var userId = data.get('user').id;
     
     var s = "";
-    if(type == 'get'){
-        s = "<h2>你抽到了"+ cardName + "。</h2>";
-    }
-    else if(type == 'use'){
-        if(useeId == Parse.User.current().id){
-            s = "<h2>你對自己使用了" + cardName + "。</h2>";
+        if(userId == Parse.User.current().id){
+            if(targetId == Parse.User.current().id){
+                s = "<h2>你對自己使用了" + cardName + "。</h2>";
+            }
+            else{
+                s = "<h2>你對" + targetName + "使用了" + cardName + "。</h2>";
+            }
         }
-        else if(useeId == id){
-            s = "<h2>你對" + useeName + "使用了" + cardName + "。</h2>";
+        else if(targetId == Parse.User.current().id){
+            s = "<h2>你被使用了" + cardName + "。</h2>";
         }
-    }
-    else if(type == 'draw'){
-        s = "<h2>你有一次抽卡機會！</h2>";
-    }
     return s;
 }
 
-function berecordToString(data){
-    var type = data.get('type');
-    var useeName = data.get('user').get('name');
+function getRecord(data){
+    var userId = data.get('user').id;
     var cardName = data.get('Card_info').get('name');
-    var useeId = data.get('user').id;
-    var UserId = data.get('User').id;
-
-    if(type == 'use'){
-        if(useeId == UserId){
-            s="";
+    
+    var s = "";
+        if(userId == Parse.User.current().id){
+            s = "<h2>你抽到了"+ cardName + "。</h2>";
         }
-        else{
-            s = "<h2>你被某人使用了" + cardName + "。</h2>";
-        }
-    }
     return s;
 }
