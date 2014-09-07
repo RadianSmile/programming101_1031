@@ -105,7 +105,7 @@ function getRecord(data){
 }
 
 function drawRecord(data){
-    var userId = data.get('user').id;
+    var userId = data.get('User').id;
     
     var s = "";
         if(userId == Parse.User.current().id){
