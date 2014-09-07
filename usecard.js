@@ -56,98 +56,60 @@ $(document).ready(function(){
 
                                 if(cardid == "OSRGBnKpaP"){
                                     addXP(cardid, targetuser);
-                                    alert("卡片成功使用！返回dashboard!");
-                                    window.location.href = "http://radiansmile.github.io/CodeEDU/dashboard.html";
                                 }
                                 else if(cardid == "4c3uX1rZ1K"){
                                     addXP(cardid, targetuser);
-                                    alert("卡片成功使用！返回dashboard!");
-                                    window.location.href = "http://radiansmile.github.io/CodeEDU/dashboard.html";
                                 }
                                 else if(cardid == "Zm3TV6UaEP"){
                                     addXP(cardid, targetuser);
-                                    alert("卡片成功使用！返回dashboard!");
-                                    window.location.href = "http://radiansmile.github.io/CodeEDU/dashboard.html";
                                 }
                                 else if(cardid == "wxTLT53ZZX"){
                                     addXP(cardid, targetuser);
-                                    alert("卡片成功使用！返回dashboard!");
-                                    window.location.href = "http://radiansmile.github.io/CodeEDU/dashboard.html";
                                 }
                                 else if(cardid == "zLHR3S0hlb"){
                                     addHP(cardid, targetuser);
-                                    alert("卡片成功使用！返回dashboard!");
-                                    window.location.href = "http://radiansmile.github.io/CodeEDU/dashboard.html";
                                 }
                                 else if(cardid == "7mn5hYmEWH"){
                                     addHP(cardid, targetuser);
-                                    alert("卡片成功使用！返回dashboard!");
-                                    window.location.href = "http://radiansmile.github.io/CodeEDU/dashboard.html";
                                 }
                                 else if(cardid == "cbACuxTVY1"){
                                     addHP(cardid, targetuser);
-                                    alert("卡片成功使用！返回dashboard!");
-                                    window.location.href = "http://radiansmile.github.io/CodeEDU/dashboard.html";
                                 }
                                 else if(cardid == "UDfyCM4Pyb"){
                                     addHP(cardid, targetuser);
-                                    alert("卡片成功使用！返回dashboard!");
-                                    window.location.href = "http://radiansmile.github.io/CodeEDU/dashboard.html";
                                 }
                                 else if(cardid == "aJONHaxQtM"){
                                     addLife(cardid, targetuser);
-                                    alert("卡片成功使用！返回dashboard!");
-                                    window.location.href = "http://radiansmile.github.io/CodeEDU/dashboard.html";
                                 }
                                 else if(cardid == "10ypku2oZk"){
                                     donateHP(cardid, targetuser);
-                                    alert("卡片成功使用！返回dashboard!");
-                                    window.location.href = "http://radiansmile.github.io/CodeEDU/dashboard.html";
                                 }
                                 else if(cardid == "ysYpQz4TW0"){
                                     donateHP(cardid, targetuser);
-                                    alert("卡片成功使用！返回dashboard!");
-                                    window.location.href = "http://radiansmile.github.io/CodeEDU/dashboard.html";
                                 }
                                 else if(cardid == "ic6YE4frVp"){
                                     donateHP(cardid, targetuser);
-                                    alert("卡片成功使用！返回dashboard!");
-                                    window.location.href = "http://radiansmile.github.io/CodeEDU/dashboard.html";
                                 }
                                 else if(cardid == "y0pZ66Wl4X"){
                                     minusHP(cardid, targetuser);
-                                    alert("卡片成功使用！返回dashboard!");
-                                    window.location.href = "http://radiansmile.github.io/CodeEDU/dashboard.html";
                                 }
                                 else if(cardid == "ZLZIS7XbfQ"){
                                     minusHP(cardid, targetuser);
-                                    alert("卡片成功使用！返回dashboard!");
-                                    window.location.href = "http://radiansmile.github.io/CodeEDU/dashboard.html";
                                 }
                                 else if(cardid == "4kJkiyYROw"){
                                     minusHP(cardid, targetuser);
-                                    alert("卡片成功使用！返回dashboard!");
-                                    window.location.href = "http://radiansmile.github.io/CodeEDU/dashboard.html";
                                 }
                                 else if(cardid == "Byw6APXDGu"){
                                     stealHP(cardid, targetuser);
-                                    alert("卡片成功使用！返回dashboard!");
-                                    window.location.href = "http://radiansmile.github.io/CodeEDU/dashboard.html";
                                 }
                                 else if(cardid == "jqxvogKdXQ"){
                                     stealHP(cardid, targetuser);
-                                    alert("卡片成功使用！返回dashboard!");
-                                    window.location.href = "http://radiansmile.github.io/CodeEDU/dashboard.html";
                                 }
                                 else if(cardid == "8x7C6LFRhH"){
                                     stealHP(cardid, targetuser);
-                                    alert("卡片成功使用！返回dashboard!");
-                                    window.location.href = "http://radiansmile.github.io/CodeEDU/dashboard.html";
                                 }
                                 else if(cardid == "1PF6Z8XISA"){
                                     stealCard(targetuser);
-                                    alert("卡片成功使用！返回dashboard!");
-                                    window.location.href = "http://radiansmile.github.io/CodeEDU/dashboard.html";
                                 }
                                 //onemorecard
                                 else{
@@ -252,6 +214,8 @@ function addHP(cardid, target){
                             udata2.set('HP',hp);
                             udata2.save();
                             deletecard();
+                            alert("卡片成功使用！返回dashboard!");
+                            window.location.href = "http://radiansmile.github.io/CodeEDU/dashboard.html";
                         }
                     });
                 },
@@ -295,6 +259,8 @@ function minusHP(cardid, target){
                             udata2.set('HP', hp);
                             udata2.save();
                             deletecard();
+                            alert("卡片成功使用！返回dashboard!");
+                            window.location.href = "http://radiansmile.github.io/CodeEDU/dashboard.html";
                         }
                     });
                 },
@@ -338,6 +304,8 @@ function addXP(cardid, target){
                                 udata2.set('XP', xp);
                                 udata2.save();
                                 deletecard();
+                                alert("卡片成功使用！返回dashboard!");
+                                window.location.href = "http://radiansmile.github.io/CodeEDU/dashboard.html";
                         }
                     });
                 },
@@ -375,6 +343,8 @@ function addLife(cardid, target){
                                 udata2.set('Life', life);
                                 udata2.save();
                                 deletecard();
+                                alert("卡片成功使用！返回dashboard!");
+                                window.location.href = "http://radiansmile.github.io/CodeEDU/dashboard.html";
                         }
                     });
                 },
@@ -411,6 +381,8 @@ function stealCard(targetId){
                             own.set('user',user);
                             own.save();
                             deletecard();
+                            alert("卡片成功使用！返回dashboard!");
+                            window.location.href = "http://radiansmile.github.io/CodeEDU/dashboard.html";
                         }
                     });
                 },
@@ -503,6 +475,8 @@ function stealHP(cardid, target){
                         });
                     }
                     deletecard();
+                    alert("卡片成功使用！返回dashboard!");
+                    window.location.href = "http://radiansmile.github.io/CodeEDU/dashboard.html";
                 },
                 error: function(error){
                     console.log(error);
@@ -594,6 +568,8 @@ function donateHP(cardid, target){
                         });
                     }
                     deletecard();
+                    alert("卡片成功使用！返回dashboard!");
+                    window.location.href = "http://radiansmile.github.io/CodeEDU/dashboard.html";
                 },
                 error: function(error){
                     console.log(error);
