@@ -135,8 +135,6 @@ $(document).ready(function(){
                                                         success:function(data){
                                                             console.log("Draw record success!");
                                                             deletecard();
-                                                            alert("卡片成功使用！返回dashboard!");
-                                                            window.location.href = "http://radiansmile.github.io/CodeEDU/dashboard.html";
                                                         },
                                                         error:function(error){
                                                             console.log(error.toString());
@@ -175,6 +173,8 @@ function deletecard(){
             data.destroy({
                 success: function(data){
                     console.log("Delete used card success!!");
+                    alert("卡片成功使用！返回dashboard!");
+                    window.location.href = "http://radiansmile.github.io/CodeEDU/dashboard.html";
                 }
             })
         }
@@ -214,8 +214,6 @@ function addHP(cardid, target){
                             udata2.set('HP',hp);
                             udata2.save();
                             deletecard();
-                            alert("卡片成功使用！返回dashboard!");
-                            window.location.href = "http://radiansmile.github.io/CodeEDU/dashboard.html";
                         }
                     });
                 },
@@ -259,8 +257,6 @@ function minusHP(cardid, target){
                             udata2.set('HP', hp);
                             udata2.save();
                             deletecard();
-                            alert("卡片成功使用！返回dashboard!");
-                            window.location.href = "http://radiansmile.github.io/CodeEDU/dashboard.html";
                         }
                     });
                 },
@@ -304,8 +300,6 @@ function addXP(cardid, target){
                                 udata2.set('XP', xp);
                                 udata2.save();
                                 deletecard();
-                                alert("卡片成功使用！返回dashboard!");
-                                window.location.href = "http://radiansmile.github.io/CodeEDU/dashboard.html";
                         }
                     });
                 },
@@ -343,8 +337,6 @@ function addLife(cardid, target){
                                 udata2.set('Life', life);
                                 udata2.save();
                                 deletecard();
-                                alert("卡片成功使用！返回dashboard!");
-                                window.location.href = "http://radiansmile.github.io/CodeEDU/dashboard.html";
                         }
                     });
                 },
@@ -381,8 +373,6 @@ function stealCard(targetId){
                             own.set('user',user);
                             own.save();
                             deletecard();
-                            alert("卡片成功使用！返回dashboard!");
-                            window.location.href = "http://radiansmile.github.io/CodeEDU/dashboard.html";
                         }
                     });
                 },
@@ -475,8 +465,6 @@ function stealHP(cardid, target){
                         });
                     }
                     deletecard();
-                    alert("卡片成功使用！返回dashboard!");
-                    window.location.href = "http://radiansmile.github.io/CodeEDU/dashboard.html";
                 },
                 error: function(error){
                     console.log(error);
@@ -568,8 +556,6 @@ function donateHP(cardid, target){
                         });
                     }
                     deletecard();
-                    alert("卡片成功使用！返回dashboard!");
-                    window.location.href = "http://radiansmile.github.io/CodeEDU/dashboard.html";
                 },
                 error: function(error){
                     console.log(error);
