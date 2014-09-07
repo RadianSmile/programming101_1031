@@ -8,7 +8,7 @@ $(document).ready(function(){
     var notif = Parse.Object.extend("Card_record");
     var query = new Parse.Query(notif);
     query.equalTo('type', "draw");
-    query.equalTo('user', Parse.User.current());
+    query.equalTo('User', Parse.User.current());
     query.first({
         success:function(data){
             if(data != undefined){
