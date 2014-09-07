@@ -36,9 +36,9 @@ $(document).ready(function(){
                 for(var i = 0; i<data.length; i++){
                     var s = getRecord(data[i]);
                     notification1 += s;
-                    var strings = "<div class = 'cardnotification'>" + notification + "</div>";
+                    var strings = "<div class = 'cardnotification'>" + notification1 + "</div>";
                     $('div.notificationbox').append(strings);
-                    notification = "";
+                    notification1 = "";
                 }
             },
             error:function(error){
