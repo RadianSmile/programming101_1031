@@ -163,7 +163,7 @@ function setRemainCard(){
     query.ascending("cardno");
     query.find({
         success: function(data){
-            var no = [1,9,20,15,10,5,15,10,5,1,30,15,5,10,5,3,10,5,3,3];
+            var no = [1,6,20,15,10,5,15,10,5,1,30,15,5,10,5,3,10,5,3,3];
             data.forEach(function (element, index, array){
                 var num = Parse.Object.extend('Card_info');
                 var n = new num();
