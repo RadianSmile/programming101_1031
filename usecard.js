@@ -119,6 +119,7 @@ $(document).ready(function(){
                                     query.equalTo('objectId', targetuser);
                                     query.first({
                                         success:function(data){
+                                            var targetusername = data.get('name');
                                             var card = Parse.Object.extend("Card_info");
                                             var query1 = new Parse.Query(card);
                                             query1.equalTo('name', "再抽一張卡");
@@ -132,8 +133,14 @@ $(document).ready(function(){
                                                     cardrecord.set('type', "draw");
                                                     cardrecord.save(null,{
                                                         success:function(data){
-                                                            console.log("Draw record success!");
-                                                            deletecard();
+                                                            var r = confirm("你確定對"+targetusername+"使用再抽一張卡嗎？");
+                                                            if(r == true){
+                                                                console.log("Draw record success!");
+                                                                deletecard();
+                                                            }
+                                                            else{
+                                                                alert("確定人選時再說吧！");
+                                                            }
                                                         },
                                                         error:function(error){
                                                             console.log(error.toString());
@@ -199,6 +206,7 @@ function addHP(cardid, target){
             query.equalTo('User',data); 
             query.first({
                 success: function(result){
+                    var targetusername = result.get('name');
                     var hp = result.get('HP');
                     var udata2 = new udata();
                     udata2.set('objectId',result.id);
