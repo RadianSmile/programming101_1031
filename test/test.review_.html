@@ -1,0 +1,248 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Untitled Document</title>
+</head>
+
+<body>
+<!----><script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.2.19.min.js"></script>
+<!----><script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+
+<script>
+
+// Give the man null Grade if 
+
+		Parse.initialize("9eo5r1mHWoIPSTCzmrpdKa3lcHPjySx4y5D6q8Nq", "R8SWwYxpJcy73ogQKuSD43y7FigrlDGjBLcy1lzC");
+
+var assignToReview = 1 ;
+var gradeToStrRef = [];
+gradeToStrRef[0] = "O";
+gradeToStrRef[1] = "C";
+gradeToStrRef[2] = "B";
+gradeToStrRef[3] = "A";
+
+
+function generateReviewGrade (){
+	console.log("querying");
+var promise = new Parse.Promise();
+var Assign = Parse.Object.extend("Test_Review_Record");
+var assign = new Assign();
+var q = new Parse.Query(Assign);
+q.limit(1000);
+q.equalTo("nth",assignToReview.toString());
+q.ascending("createdAt");
+q.find().then(function(r){
+	console.log(r);
+	for (var i = 0 ; i < r.length ; i++){
+		var a = randomBtw(0,3);
+		r[i].set("grade",gradeToStrRef[a]);
+		r[i].set("assign_id",r[i].get("assign").id);
+	}
+	return Parse.Object.saveAll(r);
+}).then(function(r){
+	console.log (r);
+	},function(e){
+	promise.reject(e.message);
+	console.log(e.message);
+});
+	return promise ;
+}
+
+//generateReviewGrade();
+
+
+
+//Rn
+function getRecordOrderAssign (){
+
+var Assign = Parse.Object.extend("Test_Review_Record");
+var assign = new Assign();
+var q = new Parse.Query(Assign);
+q.limit(1000);
+q.include("assign");
+q.equalTo("nth",assignToReview.toString());
+q.ascending("assign_id");
+return q.find();
+}
+
+
+
+
+var showGrade = function (r){ // r = Record ;
+	console.log (r); 
+	document.write( "assign_id"  + "\t" + "grade"  +"\t" +  "star"+"\t" +"reviewer" +"<br>");
+
+	for (var i = 0 ; i < r.length ; i++){
+	document.write( r[i].get("assign_id") + "\t" + r[i].get("grade") +"\t" +  r[i].get("star") +"\t" +r[i].get("reviewer").id +"<br>");
+	}
+}
+
+var e = function (e){console.log(e);}
+
+
+
+
+var gradeToNumRef = [];
+gradeToNumRef["O"] =0 ;
+gradeToNumRef["C"] =1 ;
+gradeToNumRef["B"] =2 ;
+gradeToNumRef["A"] =3 ;
+//getRecordOrderAssign();
+
+var doGrading = function (Assign){
+	for (var i = 0 ; i < Assign.length ; i++){
+		getRecordByAssign(Assign[i].id)
+		.then(singleGrading)
+		.then(function(a){
+			console.log(a.id,"grade",a.get("grade") );
+			
+		},function (r){console.log(r);},e);
+	}
+}
+
+
+var singleGrading = function(r){
+	var p = new Parse.Promise();
+	var star = 0 ;
+	var total = 0 ;
+	var count = 0 ;
+	for (var i = 0 ; i < r.length ; i++){
+		var g = r[i].get("grade") ;
+		if (typeof (g) !== 'undefined'){ 
+			total += gradeToNumRef[g];
+			count++;
+		}
+		console.log (r[i].get("star"));
+		r[i].get("star") ? star++ : star ;
+	}
+	var avg = Math.round(total/ count) ;
+	
+	for (i = 0 ; i < r.length ; i++){
+		var g = r[i].get("grade") ;
+		var d = gradeToNumRef[g] - avg ;
+		var note = "" ;
+		if (typeof g !== 'undefined'){
+			switch (d){
+				case 3 : note = "Extremely High!!" ; break ;
+				case -3 : note = "Extremely Low!!" ; break ; 
+				case 2 : note = "Too High!!" ; break ; 
+				case -2 : note = "Too Low!!";  break ; 
+				case 1 : note = "High" ; break ; 
+				case -1 : note = "Lower";  break ; 
+				default : note = "";
+			}
+		}else{
+			note = "Uncomplete!";
+		}
+		r[i].set("final", gradeToStrRef[avg]);
+		r[i].set("variaty", d );
+		r[i].set("note", note );
+	}
+		Parse.Object.saveAll(r).then(e,e);
+		var assign = r[0].get("assign");
+		assign.set("grade",gradeToStrRef[avg]);
+		assign.set("star",star);
+		return assign.save();
+	
+}
+
+function testAddStar(){
+	console.log ("testAddStar...");
+	getUser().then(function(User){
+	for (var i = 0 ; i < User.length ; i++){
+		getRecordByReviewer(User[i].id)
+		.then(function(r){
+			var s = randomBtw(0, r.length-1);
+			console.log(s);
+			for (var j = 0 ; j < r.length ; j++){
+				if (j === s ){
+					r[j].set("star",true);
+				}else {
+					r[j].set("star",false);
+				}
+			}
+		 Parse.Object.saveAll(r).then(e,e);
+		})
+	}
+	},e);
+}
+
+
+//Rn src = https://www.parse.com/questions/how-to-query-for-class-with-pointer-equal-to-a-string-value
+var getRecordByAssign = function  (assignId){
+	var ReviewRecord = Parse.Object.extend ("Test_Review_Record");
+	var q = new Parse.Query (ReviewRecord);
+	q.include("assign");
+	q.equalTo("assign", {
+		__type: "Pointer",
+		className: "Test_Assign",
+		objectId: assignId
+	});
+	return q.find();
+}
+var getRecordByReviewer = function (userId) {
+	var ReviewRecord = Parse.Object.extend ("Test_Review_Record");
+	var q = new Parse.Query (ReviewRecord);
+	q.include("reviewer");
+	q.equalTo("reviewer", {
+		__type: "Pointer",
+		className: "Test_User",
+		objectId: userId
+	});
+	return q.find();
+}
+
+	
+function getAssign(){
+	var Assign = Parse.Object.extend("Test_Assign");
+	var q = new Parse.Query (Assign);
+	return q.find();
+}
+function getUser(){
+	var User = Parse.Object.extend("Test_User");
+	var q = new Parse.Query (User);
+	return q.find();
+}
+
+	
+	function ttt (e){
+	
+	var ReviewRecord = Parse.Object.extend ("Test_Review_Record");
+	var reviewRecord = new ReviewRecord();
+	
+	
+	reviewRecord.set("final",1111);
+	reviewRecord.set("note","des");
+	
+	assign.set("grade",11111);
+		
+}
+
+
+
+function makeArrBtw (lowEnd , highEnd ){
+	var arr = [] ; 
+	for (var i = lowEnd; i < highEnd; i++) {
+		arr.push(i);
+	}
+	return arr ;
+}
+function randomBtw (Min,Max){
+	return  Math.floor(Math.random() * (Max+1)) + Min ;
+}
+
+
+</script>
+
+<script data-do="Do">
+//testAddStar();
+
+
+
+getAssign().then(doGrading);
+getRecordOrderAssign().then(showGrade,e);
+
+</script>
+</body>
+</html>
