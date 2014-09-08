@@ -316,7 +316,7 @@ function deletecard(){
                 success: function(data){
                     console.log("Delete used card success!!");
                     alert("卡片成功使用！返回dashboard!");
-                    //window.location.href = "http://radiansmile.github.io/CodeEDU/dashboard.html";
+                    window.location.href = "http://radiansmile.github.io/CodeEDU/dashboard.html";
                 }
             })
         }
