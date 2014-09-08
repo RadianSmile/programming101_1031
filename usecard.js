@@ -31,7 +31,6 @@ $(document).ready(function(){
                                 var cardid = card.id;
                                 var targetuser = localStorage.getItem('userid');
 
-                                //Record used card!
                                 var user = Parse.Object.extend('User');
                                 var query = new Parse.Query(user);
                                 query.equalTo('objectId', targetuser);
@@ -270,6 +269,7 @@ $(document).ready(function(){
                                                 }
                                             })
                                         }
+                                        //Record used card!
                                         var Cardrecord = Parse.Object.extend("Card_record");
                                         var cardrecord = new Cardrecord();
                                         cardrecord.set('user', Parse.User.current());
@@ -343,7 +343,7 @@ function addHP(cardid, target){
             query.equalTo('User',data); 
             query.first({
                 success: function(result){
-                    var targetusername = result.get('name');
+                    console.log(result);
                     var hp = result.get('HP');
                     var udata2 = new udata();
                     udata2.set('objectId',result.id);
