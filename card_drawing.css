@@ -26,6 +26,7 @@ div.cards{
 	height:600px;
 	margin:auto;
 	margin-top: 35px;
+	z-index: 40;
 }
 
 .block {
