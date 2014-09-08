@@ -338,6 +338,7 @@ function addHP(cardid, target){
     query.equalTo('objectId',target);
     query.first({
         success: function(data){
+            console.log(data);
             var udata = Parse.Object.extend('User_status');
             var query = new Parse.Query(udata);
             query.equalTo('User',data); 
