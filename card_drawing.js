@@ -96,6 +96,8 @@ function getData(){
                     data.destroy({
                         success:function(data){
                             console.log("Delete draw record success!");
+                            alert("You get a card! Back to dashboard!");
+                            window.location.href = "http://radiansmile.github.io/CodeEDU/dashboard.html";
                         },
                         error:function(error){
                             console.log(error.toString());
