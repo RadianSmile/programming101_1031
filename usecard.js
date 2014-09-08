@@ -45,7 +45,240 @@ $(document).ready(function(){
                                         cardrecord.set('type', "use");
                                         cardrecord.save(null,{
                                             success:function(data){
+                                                var targetusername = data1.get('name');
                                                 console.log("Card used record success!");
+                                                if(cardid == "OSRGBnKpaP"){
+                                                    if(data1 == Parse.User.current()){
+                                                        alert("你讓自己增加10XP!");
+                                                        addXP(cardid, targetuser);
+                                                    }
+                                                    else{
+                                                        alert("你讓" + targetusername + "增加10XP!");
+                                                        addXP(cardid, targetuser);
+                                                    }
+                                                }
+                                                else if(cardid == "4c3uX1rZ1K"){
+                                                    if(data1 == Parse.User.current()){
+                                                        alert("你讓自己增加30XP!");
+                                                        addXP(cardid, targetuser);
+                                                    }
+                                                    else{
+                                                        alert("你讓" + targetusername + "增加30XP!");
+                                                        addXP(cardid, targetuser);
+                                                    }
+                                                }
+                                                else if(cardid == "Zm3TV6UaEP"){
+                                                    if(data1 == Parse.User.current()){
+                                                        alert("你讓自己增加50XP!");
+                                                        addXP(cardid, targetuser);
+                                                    }
+                                                    else{
+                                                        alert("你讓" + targetusername + "增加50XP!");
+                                                        addXP(cardid, targetuser);
+                                                    }
+                                                }
+                                                else if(cardid == "wxTLT53ZZX"){
+                                                    if(data1 == Parse.User.current()){
+                                                        alert("你讓自己增加70XP!");
+                                                        addXP(cardid, targetuser);
+                                                    }
+                                                    else{
+                                                        alert("你讓" + targetusername + "增加70XP!");
+                                                        addXP(cardid, targetuser);
+                                                    }
+                                                }
+                                                else if(cardid == "zLHR3S0hlb"){
+                                                    if(data1 == Parse.User.current()){
+                                                        alert("你讓自己增加10HP!");
+                                                        addHP(cardid, targetuser);
+                                                    }
+                                                    else{
+                                                        alert("你讓" + targetusername + "增加10HP!");
+                                                        addHP(cardid, targetuser);
+                                                    }
+                                                }
+                                                else if(cardid == "7mn5hYmEWH"){
+                                                    if(data1 == Parse.User.current()){
+                                                        alert("你讓自己增加30HP!");
+                                                        addHP(cardid, targetuser);
+                                                    }
+                                                    else{
+                                                        alert("你讓" + targetusername + "增加30HP!");
+                                                        addHP(cardid, targetuser);
+                                                    }
+                                                }
+                                                else if(cardid == "cbACuxTVY1"){
+                                                    if(data1 == Parse.User.current()){
+                                                        alert("你讓自己增加50HP!");
+                                                        addHP(cardid, targetuser);
+                                                    }
+                                                    else{
+                                                        alert("你讓" + targetusername + "增加50HP!");
+                                                        addHP(cardid, targetuser);
+                                                    }
+                                                }
+                                                else if(cardid == "UDfyCM4Pyb"){
+                                                    if(data1 == Parse.User.current()){
+                                                        alert("你補滿自己的HP!");
+                                                        addHP(cardid, targetuser);
+                                                    }
+                                                    else{
+                                                        alert("你補滿了" + targetusername + "的HP!");
+                                                        addHP(cardid, targetuser);
+                                                    }
+                                                }
+                                                else if(cardid == "aJONHaxQtM"){
+                                                    if(data1 == Parse.User.current()){
+                                                        alert("你讓自己增加1條命!");
+                                                        addLife(cardid, targetuser);
+                                                    }
+                                                    else{
+                                                        alert("你讓" + targetusername + "增加1條命");
+                                                        addLife(cardid, targetuser);
+                                                    }
+                                                }
+                                                else if(cardid == "10ypku2oZk"){
+                                                    if(data1 == Parse.User.current()){
+                                                        alert("你對自己捐了10HP!等於沒捐!");
+                                                        donateHP(cardid, targetuser);
+                                                    }
+                                                    else{
+                                                        alert("你對" + targetusername + "捐了10HP!你自己扣了10HP!");
+                                                        donateHP(cardid, targetuser);
+                                                    }
+                                                }
+                                                else if(cardid == "ysYpQz4TW0"){
+                                                    if(data1 == Parse.User.current()){
+                                                        alert("你對自己捐了30HP!等於沒捐!");
+                                                        donateHP(cardid, targetuser);
+                                                    }
+                                                    else{
+                                                        alert("你對" + targetusername + "捐了30HP!你自己扣了30HP!");
+                                                        donateHP(cardid, targetuser);
+                                                    }
+                                                }
+                                                else if(cardid == "ic6YE4frVp"){
+                                                    if(data1 == Parse.User.current()){
+                                                        alert("你對自己捐了50HP!等於沒捐!");
+                                                        donateHP(cardid, targetuser);
+                                                    }
+                                                    else{
+                                                        alert("你對" + targetusername + "捐了50HP!你自己扣了50HP!");
+                                                        donateHP(cardid, targetuser);
+                                                    }
+                                                }
+                                                else if(cardid == "y0pZ66Wl4X"){
+                                                    if(data1 == Parse.User.current()){
+                                                        alert("你讓自己減少10HP!");
+                                                        minusHP(cardid, targetuser);
+                                                    }
+                                                    else{
+                                                        alert("你讓" + targetusername + "減少10HP!");
+                                                        minusHP(cardid, targetuser);
+                                                    }
+                                                }
+                                                else if(cardid == "ZLZIS7XbfQ"){
+                                                    if(data1 == Parse.User.current()){
+                                                        alert("你讓自己減少30HP!");
+                                                        minusHP(cardid, targetuser);
+                                                    }
+                                                    else{
+                                                        alert("你讓" + targetusername + "減少30HP!");
+                                                        minusHP(cardid, targetuser);
+                                                    }
+                                                }
+                                                else if(cardid == "4kJkiyYROw"){
+                                                    if(data1 == Parse.User.current()){
+                                                        alert("你讓自己減少50HP!");
+                                                        minusHP(cardid, targetuser);
+                                                    }
+                                                    else{
+                                                        alert("你讓" + targetusername + "減少50HP!");
+                                                        minusHP(cardid, targetuser);
+                                                    }
+                                                }
+                                                else if(cardid == "Byw6APXDGu"){
+                                                    if(data1 == Parse.User.current()){
+                                                        alert("你偷了自己10HP!等於沒偷!");
+                                                        stealHP(cardid, targetuser);
+                                                    }
+                                                    else{
+                                                        alert("你向" + targetusername + "偷了10HP!你自己增加10HP!");
+                                                        stealHP(cardid, targetuser);
+                                                    }
+                                                }
+                                                else if(cardid == "jqxvogKdXQ"){
+                                                    if(data1 == Parse.User.current()){
+                                                        alert("你偷了自己30HP!等於沒偷!");
+                                                        stealHP(cardid, targetuser);
+                                                    }
+                                                    else{
+                                                        alert("你向" + targetusername + "偷了30HP!你自己增加30HP!");
+                                                        stealHP(cardid, targetuser);
+                                                    }
+                                                }
+                                                else if(cardid == "8x7C6LFRhH"){
+                                                    if(data1 == Parse.User.current()){
+                                                        alert("你偷了自己50HP!等於沒偷!");
+                                                        stealHP(cardid, targetuser);
+                                                    }
+                                                    else{
+                                                        alert("你向" + targetusername + "偷了50HP!你自己增加50HP!");
+                                                        stealHP(cardid, targetuser);
+                                                    }
+                                                }
+                                                else if(cardid == "1PF6Z8XISA"){
+                                                    if(data1 == Parse.User.current()){
+                                                        alert("你偷了自己一張卡片!等於沒偷!");
+                                                        stealCard(cardid, targetuser);
+                                                    }
+                                                    else{
+                                                        alert("你向" + targetusername + "偷了一張卡!");
+                                                        stealCard(cardid, targetuser);
+                                                    }
+                                                }
+                                                //onemorecard
+                                                else{
+                                                    var targetuser = localStorage.getItem('userid');
+                                                    var user = Parse.Object.extend('User');
+                                                    var query = new Parse.Query(user);
+                                                    query.equalTo('objectId', targetuser);
+                                                    query.first({
+                                                        success:function(data){
+                                                            var targetusername = data.get('name');
+                                                            var card = Parse.Object.extend("Card_info");
+                                                            var query1 = new Parse.Query(card);
+                                                            query1.equalTo('name', "再抽一張卡");
+                                                            query1.first({
+                                                                success:function(data1){
+                                                                    var Cardrecord = Parse.Object.extend("Card_record");
+                                                                    var cardrecord = new Cardrecord();
+                                                                    cardrecord.set('user', Parse.User.current());
+                                                                    cardrecord.set('Card_info', data1);
+                                                                    cardrecord.set('User', data);
+                                                                    cardrecord.set('type', "draw");
+                                                                    cardrecord.save(null,{
+                                                                        success:function(data2){
+                                                                            if(data == Parse.User.current()){
+                                                                                alert("你自己多了一次抽卡機會!");
+                                                                                console.log("Draw record success!");
+                                                                                deletecard();
+                                                                            }
+                                                                            else{
+                                                                                alert("你讓"+targetusername+"多了一次抽卡機會!");
+                                                                                console.log("Draw record success!");
+                                                                                deletecard();
+                                                                            } 
+                                                                        },
+                                                                        error:function(error){
+                                                                            console.log(error.toString());
+                                                                        }
+                                                                    })
+                                                                }
+                                                            })
+                                                        }
+                                                    })
+                                                }
                                             },
                                             error:function(error){
                                                 console.log(error.toString());
@@ -53,98 +286,6 @@ $(document).ready(function(){
                                         })
                                     }
                                 })
-
-                                if(cardid == "OSRGBnKpaP"){
-                                    addXP(cardid, targetuser);
-                                }
-                                else if(cardid == "4c3uX1rZ1K"){
-                                    addXP(cardid, targetuser);
-                                }
-                                else if(cardid == "Zm3TV6UaEP"){
-                                    addXP(cardid, targetuser);
-                                }
-                                else if(cardid == "wxTLT53ZZX"){
-                                    addXP(cardid, targetuser);
-                                }
-                                else if(cardid == "zLHR3S0hlb"){
-                                    addHP(cardid, targetuser);
-                                }
-                                else if(cardid == "7mn5hYmEWH"){
-                                    addHP(cardid, targetuser);
-                                }
-                                else if(cardid == "cbACuxTVY1"){
-                                    addHP(cardid, targetuser);
-                                }
-                                else if(cardid == "UDfyCM4Pyb"){
-                                    addHP(cardid, targetuser);
-                                }
-                                else if(cardid == "aJONHaxQtM"){
-                                    addLife(cardid, targetuser);
-                                }
-                                else if(cardid == "10ypku2oZk"){
-                                    donateHP(cardid, targetuser);
-                                }
-                                else if(cardid == "ysYpQz4TW0"){
-                                    donateHP(cardid, targetuser);
-                                }
-                                else if(cardid == "ic6YE4frVp"){
-                                    donateHP(cardid, targetuser);
-                                }
-                                else if(cardid == "y0pZ66Wl4X"){
-                                    minusHP(cardid, targetuser);
-                                }
-                                else if(cardid == "ZLZIS7XbfQ"){
-                                    minusHP(cardid, targetuser);
-                                }
-                                else if(cardid == "4kJkiyYROw"){
-                                    minusHP(cardid, targetuser);
-                                }
-                                else if(cardid == "Byw6APXDGu"){
-                                    stealHP(cardid, targetuser);
-                                }
-                                else if(cardid == "jqxvogKdXQ"){
-                                    stealHP(cardid, targetuser);
-                                }
-                                else if(cardid == "8x7C6LFRhH"){
-                                    stealHP(cardid, targetuser);
-                                }
-                                else if(cardid == "1PF6Z8XISA"){
-                                    stealCard(targetuser);
-                                }
-                                //onemorecard
-                                else{
-                                    var targetuser = localStorage.getItem('userid');
-                                    var user = Parse.Object.extend('User');
-                                    var query = new Parse.Query(user);
-                                    query.equalTo('objectId', targetuser);
-                                    query.first({
-                                        success:function(data){
-                                            var targetusername = data.get('name');
-                                            var card = Parse.Object.extend("Card_info");
-                                            var query1 = new Parse.Query(card);
-                                            query1.equalTo('name', "再抽一張卡");
-                                            query1.first({
-                                                success:function(data1){
-                                                    var Cardrecord = Parse.Object.extend("Card_record");
-                                                    var cardrecord = new Cardrecord();
-                                                    cardrecord.set('user', Parse.User.current());
-                                                    cardrecord.set('Card_info', data1);
-                                                    cardrecord.set('User', data);
-                                                    cardrecord.set('type', "draw");
-                                                    cardrecord.save(null,{
-                                                        success:function(data){
-                                                            console.log("Draw record success!");
-                                                            deletecard();
-                                                        },
-                                                        error:function(error){
-                                                            console.log(error.toString());
-                                                        }
-                                                    })
-                                                }
-                                            })
-                                        }
-                                    })
-                                }
                             },
                             error: function(error){
                                 console.log(error.toString());
