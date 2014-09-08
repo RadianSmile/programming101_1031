@@ -647,7 +647,7 @@ function donateHP(cardid, target){
                         //- user hp
                         var udata1 = new udata();
                         var hp = results[0].get('HP');
-                        udata1.set('objectId', results[0].id);
+                        udata1.set('objectId', results[0]);
                         udata1.save(null,{
                             success: function(udata1){
                                 var hpAfter = hp - hpDonate;
@@ -660,7 +660,7 @@ function donateHP(cardid, target){
                         //+ target hp
                         var udata2 = new udata();
                         var hp2 = results[1].get('HP');
-                        udata2.set('objectId', results[1].id);
+                        udata2.set('objectId', results[1]);
                         udata2.save(null,{
                             success: function(udata2){
                                 var hpAfter = hp2 + hpDonate;
@@ -675,7 +675,7 @@ function donateHP(cardid, target){
                         //+ target hp
                         var udata1 = new udata();
                         var hp = results[0].get('HP');
-                        udata1.set('objectId', results[0].id);
+                        udata1.set('objectId', results[0]);
                         udata1.save(null,{
                             success: function(udata1){
                                 var hpAfter = hp + hpSteal;
@@ -688,7 +688,7 @@ function donateHP(cardid, target){
                         //- user hp
                         var udata2 = new udata();
                         var hp2 = results[1].get('HP');
-                        udata2.set('objectId', results[1].id);
+                        udata2.set('objectId', results[1]);
                         udata2.save(null,{
                             success: function(udata2){
                                 var hpAfter = hp2 - hpSteal;
