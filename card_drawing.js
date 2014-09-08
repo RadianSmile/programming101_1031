@@ -44,24 +44,6 @@ function getData(){
             var randomno = randomNum(results.length);
             var object = results;
 
-            var currentuser = Parse.User.current();
-            var Cardrecord = Parse.Object.extend("Card_record");
-            var cardrecord = new Cardrecord();
-
-            //Card_record!
-            cardrecord.set('user', currentuser);
-            cardrecord.set('Card_info', object[randomno]);
-            cardrecord.set('User', currentuser);
-            cardrecord.set('type', "get");
-            cardrecord.save(null,{
-                success:function(data){
-                    console.log("Card drawing record success!");
-                },
-                error:function(error){
-                    console.log(error.toString());
-                }
-            })
-
             Shortdescription = object[randomno].get('shortdes');
             Title = object[randomno].get('name');
             Imagesrc = object[randomno].get('imagesrc');
