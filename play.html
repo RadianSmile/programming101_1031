@@ -180,6 +180,7 @@
 </head>
 <body>
 <div class="container-fluid nav">
+	<div class="btn"></div>
 </div>
 <div class="container">
 
@@ -248,7 +249,7 @@ function qurAssigns ( nth ,descendBy) {
 	q.limit (5) ;
 	q.descending(descendBy);
 	q.ascending("grade")
-	q.include("Test_User");
+	q.include("maker");
 	return q.find() ;
 }
 function getCode (url,callback){
@@ -368,14 +369,15 @@ function FBinitDone(){
 }
 
 function showOther (other){
-	var n = other.get("maker").get("name"),
+	var n = other.get("maker").get("uid"),
 			p = other.get("maker").get("photo"),
 			g = other.get("grade"),
 			s = other.get("star"),
 			h = other.get("url"),
+			
 			$p = $(".others").first();
 	var html = 
-			'<a class="other" href="'+h+'">\
+			'<a class="other" href="play.html?asn='+other.id+'">\
 				<span class="other-head"><img src="'+p+'"></span>\
 				<span class="other-name">'+n+'</span>\
 				<span class="other-grade">'+g+'</span>\
