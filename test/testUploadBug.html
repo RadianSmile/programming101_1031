@@ -1,0 +1,80 @@
+<html>
+	<head>
+	<!----><script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+
+		<script type="text/javascript">
+				function getBase64Image(img) {
+					// Create an empty canvas element
+					var canvas = document.createElement("canvas");
+					canvas.width = img.width;
+					canvas.height = img.height;
+
+					// Copy the image contents to the canvas
+					var ctx = canvas.getContext("2d");
+					ctx.drawImage(img, 0, 0, img.width, img.height);
+
+					// Get the data-URL formatted image
+					var dataURL = canvas.toDataURL("image/jpeg");
+					return dataURL.replace("data:image/jpeg;base64,", "");
+				}
+				function dobase64(img)
+				{
+				    //Now convert image to base64 and display
+					var img_base64 = new Image();
+					img_base64.src="data:image/jpg;base64," + getBase64Image(img);
+					document.getElementById("image").appendChild(img_base64);
+				}
+				function setImage (path)
+				{
+					//Create the Image object from the picture that was just taken
+					var img = new Image();
+					img.src="file://" + path;
+					img.width=Math.round(150);
+					img.height=Math.round(150);
+					img.onLoad = dobase64(img);
+				}
+				function onCameraClosed() {}
+				function onError() {}
+				function takePicture()
+				{
+		   			var result = blackberry.media.camera.takePicture(setImage, onCameraClosed, onError);
+				}
+				
+
+		</script>
+	</head>
+	<body>
+				<input type="file" onClick="" />
+
+			<div id="image">
+			</div>
+			<script>
+			$('input[type=file]').change(function () {				
+				var reader =  new  FileReader ();
+				 reader.onload = function (e) {
+					 var i = new Image ();
+				      i.src = e.target.result ;
+					var finalWitdh = 800 ;
+					var finalHeight =  i.naturalHeight  /i.naturalWidth * finalWitdh   ;
+ 							$ ( i ). css ( 'width' , finalWitdh+'px' )	;		
+          //  $("body").append(i);
+					var cvs = document.createElement ( 'canvas' );
+					cvs.width = finalWitdh ;
+					cvs.height = finalHeight;
+				  var ctx = cvs.getContext( "2d" ).drawImage( i,0,0,finalWitdh,finalHeight);
+					var newImageData = cvs.toDataURL ( "image/jpeg" , .6 );
+					var result_image_obj =  new  Image ();
+             result_image_obj.src = newImageData ;
+         //   $("body").append(result_image_obj);
+					var base64 =  newImageData.replace("data:image/jpeg;base64,", "");
+						 console.log (base64);
+				 }
+						reader.readAsDataURL ( this.files[0] );			
+});
+
+
+
+			</script>
+	</body>
+</html>
+ 

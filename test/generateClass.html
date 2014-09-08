@@ -25,6 +25,33 @@
 		Parse.initialize("9eo5r1mHWoIPSTCzmrpdKa3lcHPjySx4y5D6q8Nq", "R8SWwYxpJcy73ogQKuSD43y7FigrlDGjBLcy1lzC");	
 
 
+function qurUsers (){
+	var User = Parse.Object.extend("Test_User");
+	var q = new Parse.Query(User);
+	return q.find();
+}
+
+function padLeft(str, len) {
+    str = '' + str;
+    return str.length >= len ? str : new Array(len - str.length + 1).join("0") + str;
+}
+
+(function start(){
+	qurUsers().then(function(users){
+		console.log ("!!");
+		for (var i = 0 ; i < users.length ; i++){
+			users[i].set("uid","1031020" + padLeft(i,2) );
+			users[i].set("photo","https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xfa1/v/t1.0-1/p50x50/1910007_813877938630807_6837016541930176142_n.jpg?oh=6d48016ada074412b0e88361496d5c4d&oe=5490D5A2&__gda__=1419276272_c1b32f697007f757e8d1aa37c8fb5ec1");
+		}
+		return Parse.Object.saveAll(users)
+	}).then(function (users){
+		console.log (users);
+	},function (e){console.log (e)});
+	
+})();
+
+
+/*
 var i = 0 ;
 var MAX = 60 ; 
 function createUserLoop(i){
@@ -91,7 +118,7 @@ function createAssignLoop(i,users){
 	});
 }
 
-
+*/
 //var t = createUserLoop(i);
 
 

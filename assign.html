@@ -1,0 +1,153 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+
+<!-- Common links -->
+<!----><link rel="icon" type="image/png" href="/include/icon.png" />
+<!----><link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+<!----><script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<!----><script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<!----><script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.2.19.min.js"></script>
+<!----><link href="/css/all.css" rel="stylesheet" />
+<!----><script src="/js/all.js"></script>
+<!---------------------->
+<style>
+.nav{
+height:50px;
+background:rgba(0,70,119,1.00);
+}
+.assignInfo {
+	padding:20px 0;
+	background:rgba(0,133,203,1.00);
+	color:white;
+}
+.left-wraper *{
+	float:right;
+}
+
+.img-head {
+	width:40px;
+	height:40px;
+	
+}
+
+tr:hover , tr:hover td {
+	cursor:pointer;
+	background:rgba(201,239,255,1.00) !important;
+}
+.star{
+	float:right;
+}
+</style>
+<script>
+</script>
+<title>Codedu</title>
+</head>
+<body>
+<div class="nav container-fluid">
+
+</div>
+
+<div class="assignInfo container-fluid">
+	<div class="row">
+		<div class="assignInfo-left col-md-5">
+			<div class="left-wraper">
+				<div class="photo">
+					<img src="http://2.bp.blogspot.com/-8QkfE536IEM/Ups0fGkA7vI/AAAAAAAAAEY/-EKx-37oxrQ/s1600/pacman.jpg" width="250" height="250">
+				</div>
+				<!--div class="links">
+					<div class="link-block">
+						<a class="link"></a>
+						<div class="note"></div>
+					</div>			
+				</div-->
+			</div>
+		</div>
+		<div class="assignInfo-right col-md-7">
+			<h1 class="name">Pack Man</h1>
+			<div class="des-block intro">
+				<h2>Introduction</h2>
+				<div class="des">...</div>				
+			</div>
+			<div class="des-block requirement">
+				<h2>Requirement</h2>
+				<div class="des">...</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="assigns container-fluid">
+	<table class="assigns-table table table-hover table-hover table-striped table-condensed ">
+		<thead>
+			<tr>
+				<th></th>
+				<th>學號</th>
+				<th></th>
+				<th>姓名</th>
+				<th>最佳解指數</th>
+				<th>等級</th>
+				<!--th>閱讀率</th-->
+			</tr>
+		</thead>
+		<tbody class="apdArea"> 
+			
+		</tbody>
+	</table>
+</div>
+
+<script>
+function qurAssigns ( nth ,descendBy) {
+	var Assign = Parse.Object.extend("Test_Assign");
+	var q = new Parse.Query(Assign);
+	q.equalTo("nth",nth);
+	q.ascending("grade	");
+	q.descending("isBest,star");
+	q.include("maker");
+	return q.find() ;
+}
+
+function showAssign (a){
+	
+	var maker = 	a.get("maker") , 
+			name = maker.get("name"),
+			id = maker.get("uid"),
+			head = maker.get("photo");
+	var	isBest = (a.get("isBest")) ? "<img class='star' src='http://www.clipartbest.com/cliparts/aiq/knn/aiqknnqiM.png' width='50' heigh='50'>" : "" ;
+			grade = a.get("grade") ;			
+			star = a.get("star");
+			view = a.get("viewTimes");
+	console.log(maker,id);
+	var html = '<tr data-assign="'+a.id+'">\
+		<td>'+isBest+'</td>\
+		<td>'+id+'</td>\
+		<td><img class="img-head" src="'+head+'"></td>\
+		<td>'+name+'</td>\
+		<td>'+star+'</td>\
+		<td>'+grade+'</td>\
+		</tr>';
+
+	$(".apdArea").append(html);
+}
+
+
+(function start (){
+	var srh = getQueryString ();
+	//srh.nth = paraCheck(srh.nth) ? srh.nth : "1" ;
+	srh.nth = "1";
+	qurAssigns(srh.nth).then(function(assigns){
+		each(assigns,showAssign);
+		
+	});
+})();
+
+
+$(document).on('click',".assigns tr",function(e){
+	var asnID = $(this).data('assign');
+	var win = window.open("play.html?asn="+asnID, '_blank');
+	win.focus();
+});
+</script>
+</body>
+</html>

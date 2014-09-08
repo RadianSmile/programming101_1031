@@ -138,27 +138,31 @@ function signUp () {
 		alert("名稱格式正確嗎?");
 		return false ;
 	}
-		  Parse.FacebookUtils.logIn(null, {
-   		 success: function(user) {
+	 FB.login(function(response) {
+		Parse.FacebookUtils.logIn(null, {
+		 success: function(user) {
 
-				user.set("uid",user.get("authData").facebook.id);
-				user.set("ID",$("#id").val());
-				user.set("name",$("#name").val());
-				user.save(null, {
-					success: function(user) {
-						alert(user.ID() +' 註冊成功! \n頁面即將跳轉至個人頁面');
-						document.location="dashboard.html";
-					},
-					error: function(userdata, error) {
-						alert('Failed to create new object, with error code: ' + error.message);
-					}
-				});
-			///$("#status").html(syntaxHighlight(user.get("authData")));
-    },  
-    error: function(user, error) {
-      alert(error.message);
-    }
-  });
+			user.set("uid",user.get("authData").facebook.id);
+			user.set("ID",$("#id").val());
+			user.set("name",$("#name").val());
+			user.set("photo",$("#pf_photo").find("img").first().attr("src"));
+			user.save(null, {
+				success: function(user) {
+					alert(user.ID() +' 註冊成功! \n頁面即將跳轉至個人頁面');
+					document.location="dashboard.html";
+				},
+				error: function(userdata, error) {
+					alert('Failed to create new object, with error code: ' + error.message);
+				}
+			});
+		///$("#status").html(syntaxHighlight(user.get("authData")));
+	},  
+	error: function(user, error) {
+		alert(error.message);
+	}
+});
+ });
+
 }
 
 /**Rn

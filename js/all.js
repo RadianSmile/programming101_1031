@@ -1,9 +1,9 @@
 // JavaScript Document
 
 $("title").append(" | 程式學習平台");
+		Parse.initialize("9eo5r1mHWoIPSTCzmrpdKa3lcHPjySx4y5D6q8Nq", "R8SWwYxpJcy73ogQKuSD43y7FigrlDGjBLcy1lzC");
 
   window.fbAsyncInit = function() {
-		Parse.initialize("9eo5r1mHWoIPSTCzmrpdKa3lcHPjySx4y5D6q8Nq", "R8SWwYxpJcy73ogQKuSD43y7FigrlDGjBLcy1lzC");
 		Parse.FacebookUtils.init({
 			appId      : '1452756891666119',
 			cookie     : true,  // enable cookies to allow the server to access 
@@ -66,4 +66,85 @@ $(document).on("scroll","window",function(e){
 	}
 	
 });
+
+
+
+
+
+
+
+
+
+
+
+
+function each (arr,func ){
+	console.log (arr.length);
+	for (var i = 0 ; i < arr.length ; i++){
+		func(arr[i]);
+	}
+}
+
+
+
+
+
+function pointer (objectID,className){
+	var c = (typeof(className) !== 'undefined') ? className : "Test_Assign";
+	console.log (c);
+  var pointer = new Parse.Object(c);
+  pointer.id = objectID;
+  return pointer;
+}
+
+//## search Querys 
+function getQueryString () {
+  // This function is anonymous, is executed immediately and 
+  // the return value is assigned to QueryString!
+  var query_string = {};
+  var query = window.location.search.substring(1);
+  var vars = query.split("&");
+  for (var i=0;i<vars.length;i++) {
+    var pair = vars[i].split("=");
+    	// If first entry with this name
+    if (typeof query_string[pair[0]] === "undefined") {
+      query_string[pair[0]] = pair[1];
+    	// If second entry with this name
+    } else if (typeof query_string[pair[0]] === "string") {
+      var arr = [ query_string[pair[0]], pair[1] ];
+      query_string[pair[0]] = arr;
+    	// If third or later entry with this name
+    } else {
+      query_string[pair[0]].push(pair[1]);
+    }
+  } 
+    return query_string;
+};
+
+//## handle error ;
+
+
+// Parse Error
+function handleError(e){
+	var Error = Parse.Object.extend ("Error");
+	var error = new Error();
+	error.set("location");
+	error.set("error",JSON.stringify(e));
+	error.set("msg",e.message);
+	error.save().then(function(){
+		alert (e.message +"\n 試著重新整理頁面在操作一次，\n錯誤訊息我們以經回報給系統了~")	;
+	});
+}
+// Hyperlink no parameter
+
+function paraCheck (para,msg){
+	if ( typeof(para) === "undefined"){
+		alert(msg);
+		return false ;
+	}else {
+		return true;
+	}
+}
+
+
 

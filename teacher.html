@@ -78,12 +78,65 @@
 				 $(ui.newPanel).focus();
 				 }else {// 當縮起來的時候
 				 }
-				 
 			},animate:200
     });
   });
 	
+function qurUsers(){
+	var q = new Parse.Query( Parse.Object.extend("Text_User"));
+	return q.find();
+}
+
+
+
+function makeAutofill (a){
+	var autoFillArr = new Array();
+	var idRefArr = new Object ();
+
+	var p = new Parse.Promise();
+	for (var i = 0 ; i < a.length ; i++)
+	{
+		var id = a[i].get("ID");
+		autoFillArr.push(id);
+		idRefArr[id] = a[i];
+	}
+	p.resolve([autoFillArr,idRefArr]);
+	return p ;
+}
+
+/*
+function qur (){
+	var Event_Record = Parse.Object.extend("Event_Record");
+	var record = new Event_Record();
+}*/
+function initAutofill (arr){
+	var autoFillArr = arr[0];
+	var idRefArr = arr[1];
+	
+	$(".input-area").autocomplete({
+		select: function( e, ui ) {
+			alert("test");
+		},
+		source:autoFillArr
+	});
+	
+}
+
+
+(function start(){
+	qurUsers()
+		.then(makeAutofill,handleError)
+		.then(initAutofill)
+})();
+
+
+	
+	
+	
+
 </script>
+
+
 
   <!--script type="text/javascript">
     window.addEventListener('DOMContentLoaded', function() {
