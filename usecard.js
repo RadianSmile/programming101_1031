@@ -36,9 +36,7 @@ $(document).ready(function(){
                                 query.equalTo('objectId', targetuser);
                                 query.first({
                                     success:function(data1){
-                                        console.log(data1);
                                         var targetuserid = data1.id;
-                                        console.log(targetuser);
                                         var targetusername = data1.get('name');
                                         if(cardid == "OSRGBnKpaP"){
                                             if(data1 == Parse.User.current()){
@@ -644,6 +642,7 @@ function donateHP(cardid, target){
             var query = Parse.Query.or(query1, query2);
             query.find({
                 success: function(results){
+                    console.log(results);
                     if(results[0].get('User').id == Parse.User.current().id){
                         //- user hp
                         var udata1 = new udata();
