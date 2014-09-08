@@ -29,13 +29,15 @@ $(document).ready(function(){
                             success:function(data){
                                 var card = data.get('Card_info');
                                 var cardid = card.id;
-                                var targetuser = localStorage.getItem('userid');
+                                //var targetuser = localStorage.getItem('userid');
 
                                 var user = Parse.Object.extend('User');
                                 var query = new Parse.Query(user);
                                 query.equalTo('objectId', targetuser);
                                 query.first({
                                     success:function(data1){
+                                        var targetuser = data1.id;
+                                        console.log(targetuser);
                                         var targetusername = data1.get('name');
                                         if(cardid == "OSRGBnKpaP"){
                                             if(data1 == Parse.User.current()){
