@@ -13,9 +13,16 @@ $(document).ready(function(){
                                                     var photo = data[i].get('photo');
     				var s = getElementStringByowncard(username, id, photo);
     				ccontainer += s;
-    				var string = "<div class='in' id='"+id+"'>" + ccontainer + "</div>";
-    				$('div.container-fluid').append(string);
-    				ccontainer = "";
+                                                    if((i+1) % 6 ==0){
+                                                        var string = "<div class='users'>" + ccontainer + "</div>";
+                                                        $('div.container-fluid').append(string);
+                                                        ccontainer = "";
+                                                    }
+                                                    else if(i==data.length -1){
+                                                        var string = "<div class='users'>" + ccontainer + "</div>";
+                                                        $('div.container-fluid').append(string);
+                                                        ccontainer = "";                                                        
+                                                    }
                                         }
 
     				$('.in').on('click', function(){
@@ -320,8 +327,9 @@ $(document).ready(function(){
 function getElementStringByowncard(name, id, photo){
     var s = "<div  value='"+name+"'>"+name+"</div>";
     var s1 = "<img src ='"+photo+"''>";
+    var all = "<div class = 'in'>"+ s + s1 + "</div>";
 
-    return s+s1;
+    return all;
 };
 
 //Delete used card
