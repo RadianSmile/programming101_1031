@@ -5,10 +5,10 @@ $(document).ready(function(){
     if(current_user){
         remainCard();
     }
-    var notif = Parse.Object.extend("Card_record");
-    var query = new Parse.Query(notif);
-    query.equalTo('type', "draw");
-    query.equalTo('User', Parse.User.current());
+    var owncard = Parse.Object.extend("Owncard");
+    var query = new Parse.Query(owncard);
+    query.equalTo('Card_info', undefined);
+    query.equalTo('user', Parse.User.current());
     query.first({
         success:function(data){
             if(data != undefined){
@@ -18,7 +18,6 @@ $(document).ready(function(){
                 alert("You don't have the chance to draw the card! Back to dashboard!");
                 window.location.href="http://radiansmile.github.io/CodeEDU/dashboard.html";
             }
-            console.log(data);
             localStorage['drawrecord'] = data.id;
         }
     })
@@ -55,40 +54,24 @@ function getData(){
             $('#image3').attr("src", Imagesrc)
 
             substractCardNum(object[randomno].id);
-            var owncard = Parse.Object.extend("Owncard");
-            var own = new owncard();
-
-            own.set('user', currentuser);
-            own.set('Card_info', object[randomno]);
-            own.save(null, {
-                success: function(){
-
-                },
-                error: function(error){
-                    alert('Failed to create new object, with error code: ' + error.description);
-                }
-            })
 
             var drawrecordid = localStorage.getItem('drawrecord');
-            var cardrecord = Parse.Object.extend("Card_record");
-            var query = new Parse.Query(cardrecord);
+            var owncard = Parse.Object.extend("Owncard");
+            var query = new Parse.Query(owncard);
             query.equalTo('objectId', drawrecordid);
             query.first({
                 success:function(data){
-                    data.destroy({
-                        success:function(data){
-                            console.log("Delete draw record success!");
-                            alert("You get a card! Back to dashboard!");
-                            window.location.href = "http://radiansmile.github.io/CodeEDU/dashboard.html";
+                    data.set('Card_info', object[randomno]);
+                    data.save(null, {
+                        success:function(){
+                            console.log("Save draw card success!");
                         },
-                        error:function(error){
-                            console.log(error.toString());
-                        }
+                        error: function(error){
+                            alert('Failed to create new object, with error code: ' + error.description);
+                        }        
                     })
                 }
             })
-
-
         },
         error: function(error){
             alert("Error: " + error.code + " " + error.message);

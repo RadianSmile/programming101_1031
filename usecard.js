@@ -236,35 +236,25 @@ $(document).ready(function(){
                                             query.equalTo('objectId', targetuser);
                                             query.first({
                                                 success:function(data){
-                                                    var targetusername = data.get('name');
-                                                    var card = Parse.Object.extend("Card_info");
-                                                    var query1 = new Parse.Query(card);
-                                                    query1.equalTo('name', "再抽一張卡");
-                                                    query1.first({
+                                                    var Owncard = Parse.Object.extend("Owncard");
+                                                    var owncard = new Owncard();
+													owncard.set('user', Parse.User.current());
+													owncard.set('Card_info', undefined);
+													owncard.save(null,{
                                                         success:function(data1){
-                                                            var Cardrecord = Parse.Object.extend("Card_record");
-                                                            var cardrecord = new Cardrecord();
-                                                            cardrecord.set('user', Parse.User.current());
-                                                            cardrecord.set('Card_info', data1);
-                                                            cardrecord.set('User', data);
-                                                            cardrecord.set('type', "draw");
-                                                            cardrecord.save(null,{
-                                                                success:function(data2){
-                                                                    if(data == Parse.User.current()){
-                                                                        alert("你自己多了一次抽卡機會!");
-                                                                        console.log("Draw record success!");
-                                                                        deletecard();
-                                                                    }
-                                                                    else{
-                                                                        alert("你讓"+targetusername+"多了一次抽卡機會!");
-                                                                        console.log("Draw record success!");
-                                                                        deletecard();
-                                                                        } 
-                                                                },
-                                                                error:function(error){
-                                                                    console.log(error.toString());
-                                                                }
-                                                            })
+                                                            if(data == Parse.User.current()){
+                                                                alert("你自己多了一次抽卡機會!");
+                                                                console.log("Draw record success!");
+                                                                deletecard();
+                                                            }
+                                                            else{
+                                                                alert("你讓"+targetusername+"多了一次抽卡機會!");
+                                                                console.log("Draw record success!");
+                                                                deletecard();
+                                                            }
+                                                        },
+                                                        error:function(error){
+                                                            console.log(error.toString());
                                                         }
                                                     })
                                                 }
