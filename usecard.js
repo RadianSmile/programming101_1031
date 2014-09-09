@@ -327,7 +327,7 @@ $(document).ready(function(){
 function getElementStringByowncard(name, id, photo){
     var s = "<div  value='"+name+"'>"+name+"</div>";
     var s1 = "<img src ='"+photo+"''>";
-    var all = "<div class = "+"in"+" id='"+id"'>"+ s + s1 + "</div>";
+    var all = "<div class ='in' id='"+id+"'>"+ s + s1 + "</div>";
 
     return all;
 };
