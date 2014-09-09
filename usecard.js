@@ -236,6 +236,7 @@ $(document).ready(function(){
                                             query.equalTo('objectId', targetuser);
                                             query.first({
                                                 success:function(data){
+                                                    console.log(data);
                                                     var Owncard = Parse.Object.extend("Owncard");
                                                     var owncard = new Owncard();
 													owncard.set('user', Parse.User.current());
