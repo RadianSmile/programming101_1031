@@ -40,9 +40,8 @@ li.tab > a {
 	border-color:transparent !important;
 }
 .tab.active > a  {
-		background:rgba(80,80,80,1.00) !important;
 
-	_background:rgba(70,70,70,1.00) !important;
+	background:rgba(50,50,50,1.00) !important;
 	color:rgba(225,225,225,1.00) !important;
 	border: solid 1px rgb(60,60,55) !important;
 	border-bottom-color: transparent;
@@ -57,7 +56,7 @@ li.tab > a {
 	border-bottom: solid 1px rgb(60,60,55);
 }
 .play {
-	background:rgba(80,80,80,1.00);
+	background:rgba(50,50,50,1.00);
 	height:100%;
 	padding:0;
 	position:relative;
@@ -286,24 +285,25 @@ input.star{
 				<button type="button" class="report-btn btn btn-default " data-toggle="modal" data-target="#report"><span class="glyphicon glyphicon-flag"></span></button>
 			</div> 
 		</div>
-		
-		<div class="bug-pane">
-		<div class="row bug-list">
-		</div>
-		<form class="add-bug-form" >
-			<div class="row add-bug ">
-				<div class="add-bug-img col-md-2" >
-				</div>
-				<input type="file" class="add-img-input hidden" />	
-				<div class="add-bug-des col-md-5">
-				 	<textarea  class="add-des-input" ></textarea>
-				</div>		
-			</div>
-			<div class="row">
-				<button type="button" class="submit-bug btn btn-danger col-md-offset-6 col-md-1" >呈交霸個</button>
-			</div>
-		</form>
-		</div>
+				<div class="contaienr">
+					<div class="bug-pane">
+					<div class="row bug-list">
+					</div>
+					<form class="add-bug-form" >
+						<div class="row add-bug ">
+							<div class="add-bug-img col-md-2" >
+							</div>
+							<input type="file" class="add-img-input hidden" />	
+							<div class="add-bug-des col-md-5">
+								<textarea  class="add-des-input" ></textarea>
+							</div>		
+						</div>
+						<div class="row">
+							<button type="button" class="submit-bug btn btn-danger col-md-offset-6 col-md-1" >呈交霸個</button>
+						</div>
+					</form>
+					</div>
+					</div>
 	</div>
 	<!--- next tab --->
   <div  class="tab-pane fade  " id="assign1">

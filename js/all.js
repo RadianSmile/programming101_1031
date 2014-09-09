@@ -81,13 +81,21 @@ $(document).on("scroll","window",function(e){
 function each (arr,func ){
 	console.log (arr.length);
 	for (var i = 0 ; i < arr.length ; i++){
-		func(arr[i]);
+		func(arr[i] , i);
 	}
 }
 
 
+function qurClass (name) {
+	var Class = Parse.Object.extend(name),
+			q = new Parse.Query (Class);
+	q.limit (20000);
+	return q.find ();
+}
 
-
+function Log(o){
+	console.log (o) ;
+}
 
 function pointer (objectID,className){
 	var c = (typeof(className) !== 'undefined') ? className : "Test_Assign";
@@ -144,6 +152,22 @@ function paraCheck (para,msg){
 	}else {
 		return true;
 	}
+}
+
+
+function renameClass (oldClass , newClass) {
+	qurClass("Event_List").then(function(a){
+		var newArr = [],
+				 			N = Parse.Object.extend(newClass);
+
+		each(a,function (r , i){
+					newArr[i]= new N ();
+			$.map(r.attributes,function (o,k){
+				newArr[i].set(k,o);
+			});
+		});
+		Parse.Object.saveAll(newArr).then(Log,Log);
+	},Log);
 }
 
 
