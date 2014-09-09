@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html>
 <head>
@@ -29,11 +30,38 @@ html {
   padding:0;
   overflow-x:hidden;
 }
+
+li.tab > a {
+	background-color:rgb(60,60,60);
+	color:rgb(140,156,156);
+}
+.tab > a:hover{
+	background:rgb(90,90,90) !important;
+	border-color:transparent !important;
+}
+.tab.active > a  {
+		background:rgba(80,80,80,1.00) !important;
+
+	_background:rgba(70,70,70,1.00) !important;
+	color:rgba(225,225,225,1.00) !important;
+	border: solid 1px rgb(60,60,55) !important;
+	border-bottom-color: transparent;
+	}
+	
+
+
+.nav-row {
+	background-color: rgb(23,24,20);
+}
+.nav-tabs {
+	border-bottom: solid 1px rgb(60,60,55);
+}
 .play {
-	background:rgba(88,88,88,1.00);
+	background:rgba(80,80,80,1.00);
 	height:100%;
 	padding:0;
 	position:relative;
+	
 }
 .play iframe {
 	position: absolute;
@@ -172,7 +200,7 @@ input.star{
 
 </head>
 
-<body>	
+<body>
 <div class="container-fluid">
 <div class="modal fade" id="report">
   <div class="modal-dialog">
@@ -193,27 +221,33 @@ input.star{
 </div><!-- /.modal -->
 </div>
 
-<div class="nav" style="height:50px; width:100%; background:rgba(71,176,213,1.00);">
+<style>
+.main-nav:hover {
+	height:50px !important;
+
+}
+</style>
+<div class="main-nav" style="  position:relative; height:5px; width:100%; background:rgba(71,176,213,1.00); transition:height .5s;">
 </div>
 <div class=" container-fluid">
 <!-- Nav tabs -->
-<div class="row" style="position:relative;">
+<div class="nav-row row" style="position:relative;">
 <ul id="review-tab" class="nav nav-tabs col-md-12" role="tablist">
   <li class="title disabled"><a>Assign</a></li>
 	<li class="tab active">
-			<a href="#assign0" role="tab" data-toggle="tab">#1 <div class="grade-preview"></div> <span class="glyphicon glyphicon-star preview hidden"></span></a></li>
-  <li class="tab"><a href="#assign1" role="tab" data-toggle="tab">#2 <div class="grade-preview"></div> <span class="glyphicon glyphicon-star preview hidden"></span></a></li>
-  <li class="tab"><a href="#assign2" role="tab" data-toggle="tab">#3 <div class="grade-preview"></div> <span class="glyphicon glyphicon-star preview hidden"></span></a></li>
-  <li class="tab"><a href="#assign3" role="tab" data-toggle="tab">#4 <div class="grade-preview"></div> <span class="glyphicon glyphicon-star preview hidden"></span></a></li>
-  <li class="tab"><a href="#assign4" role="tab" data-toggle="tab">#5 <div class="grade-preview"></div> <span class="glyphicon glyphicon-star preview hidden"></span></a></li>
+			<a href="#assign0" role="tab" data-toggle="tab">#1 <div class="badge grade-preview"></div> <span class="glyphicon glyphicon-star preview hidden"></span></a></li>
+  <li class="tab"><a href="#assign1" role="tab" data-toggle="tab">#2 <span class="badge grade-preview"></span> <span class="glyphicon glyphicon-star preview hidden"></span></a></li>
+  <li class="tab"><a href="#assign2" role="tab" data-toggle="tab">#3 <span class="badge grade-preview"></span> <span class="glyphicon glyphicon-star preview hidden"></span></a></li>
+  <li class="tab"><a href="#assign3" role="tab" data-toggle="tab">#4 <span class="badge grade-preview"></span> <span class="glyphicon glyphicon-star preview hidden"></span></a></li>
+  <li class="tab"><a href="#assign4" role="tab" data-toggle="tab">#5 <span class="badge grade-preview"></span> <span class="glyphicon glyphicon-star preview hidden"></span></a></li>
 </ul>
 <div class="control-area col-md-6">
 
-	<button id="requirement-btn" type="button" class="btn btn-info"><span class="glyphicon glyphicon-list"></span></button>
-	<button id="help-review-btn" type="button" class="btn"><span class="glyphicon glyphicon-question-sign"></span></button>
+	<div id="requirement-btn"  class="btn" style="color:rgba(212,211,211,1.00);">評分標準<!--span class="glyphicon glyphicon-list"></span--></div>
+	<div id="help-review-btn"  class="btn" style="color:rgba(212,211,211,1.00);">如何評分<!--span class="glyphicon glyphicon-question-sign"></span--></div>
 	<!--button id="save-grade-btn" type="button" class="btn btn-info"><span class="glyphicon glyphicon-save"></span></button-->
 
-	<button id="review-submit" type="button" class="btn btn-primary btn-lg" onClick="submitReview();"><span class="glyphicon glyphicon-send"></span> 繳交評分結果</button>
+	<button id="review-submit" type="button" class="btn btn-danger btn-lg" onClick="submitReview();"><span class="glyphicon glyphicon-send"></span> 繳交評分結果</button>
 
 </div>
 </div>
@@ -241,7 +275,7 @@ input.star{
 			</div>
 			<div class="checkbox" >
 				<label style="padding-left:0">
-					<button type="button" class="btn btn-default star-btn "><span class="glyphicon glyphicon-star"></span> 選為最佳解</button>
+					<button type="button" class="btn btn-default star-btn "><span class="glyphicon glyphicon-star"></span> </button>
 					<input class="grade star" type="radio" name="star"  />
 				</label>
 			</div>
@@ -272,7 +306,7 @@ input.star{
 		</div>
 	</div>
 	<!--- next tab --->
-  <div  class="tab-pane fade in " id="assign1">
+  <div  class="tab-pane fade  " id="assign1">
 		<div class="row showPane">
 			<div class="play col-xs-7"></div>
 			<div class="editor-container col-xs-5">
@@ -291,7 +325,7 @@ input.star{
 			</div>
 			<div class="checkbox" >
 				<label style="padding-left:0">
-					<button type="button" class="btn btn-default star-btn "><span class="glyphicon glyphicon-star"></span> 選為最佳解</button>
+					<button type="button" class="btn btn-default star-btn "><span class="glyphicon glyphicon-star"></span> </button>
 					<input class="grade star" type="radio" name="star"  />
 				</label>
 			</div>
@@ -319,7 +353,7 @@ input.star{
 		</div>
 	</div>
 	<!--- next tab --->
-  <div  class="tab-pane fade in " id="assign2">
+  <div  class="tab-pane fade  " id="assign2">
 		<div class="row showPane">
 			<div class="play col-xs-7"></div>
 			<div class="editor-container col-xs-5">
@@ -338,7 +372,7 @@ input.star{
 			</div>
 			<div class="checkbox" >
 				<label style="padding-left:0">
-					<button type="button" class="btn btn-default star-btn "><span class="glyphicon glyphicon-star"></span> 選為最佳解</button>
+					<button type="button" class="btn btn-default star-btn "><span class="glyphicon glyphicon-star"></span> </button>
 					<input class="grade star" type="radio" name="star"  />
 				</label>
 			</div>
@@ -366,7 +400,7 @@ input.star{
 		</div>
 	</div>
 	<!--- next tab --->
-  <div  class="tab-pane fade in " id="assign3">
+  <div  class="tab-pane fade  " id="assign3">
 		<div class="row showPane">
 			<div class="play col-xs-7"></div>
 			<div class="editor-container col-xs-5">
@@ -385,7 +419,7 @@ input.star{
 			</div>
 			<div class="checkbox" >
 				<label style="padding-left:0">
-					<button type="button" class="btn btn-default star-btn "><span class="glyphicon glyphicon-star"></span> 選為最佳解</button>
+					<button type="button" class="btn btn-default star-btn "><span class="glyphicon glyphicon-star"></span> </button>
 					<input class="grade star" type="radio" name="star"  />
 				</label>
 			</div>
@@ -413,7 +447,7 @@ input.star{
 		</div>
 	</div>
 	<!--- next tab --->
-  <div  class="tab-pane fade in " id="assign4">
+  <div  class="tab-pane fade  " id="assign4">
 		<div class="row showPane">
 			<div class="play col-xs-7"></div>
 			<div class="editor-container col-xs-5">
@@ -432,7 +466,7 @@ input.star{
 			</div>
 			<div class="checkbox" >
 				<label style="padding-left:0">
-					<button type="button" class="btn btn-default star-btn "><span class="glyphicon glyphicon-star"></span> 選為最佳解</button>
+					<button type="button" class="btn btn-default star-btn "><span class="glyphicon glyphicon-star"></span> </button>
 					<input class="grade star" type="radio" name="star"  />
 				</label>
 			</div>
@@ -685,6 +719,7 @@ function isInTime(url,i){
 				console.log ("t",t);
 				TimeArr[i] = data ;
 				var play = document.createElement("iframe");
+				play.frameBorder = 0 ;
 				play.style.width = "600px";
 				play.style.height = "400px";
 				play.setAttribute("src",url);
