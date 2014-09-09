@@ -258,7 +258,7 @@ $(document).ready(function(){
                                         var cardrecord = new Cardrecord();
                                         cardrecord.set('user', Parse.User.current());
                                         cardrecord.set('Card_info', card);
-                                        cardrecord.set('User', data1);
+                                        cardrecord.set('targetuser', data1);
                                         cardrecord.set('type', "use");
                                         cardrecord.save(null,{
                                             success:function(data){

@@ -28,8 +28,8 @@ $(document).ready(function(){
 })
 
 function useRecord(data){
-    var targetName = data.get('User').get('name');
-    var targetId = data.get('User').id;
+    var targetName = data.get('targetuser').get('name');
+    var targetId = data.get('targetuser').id;
     var cardName = data.get('Card_info').get('name');
     var userId = data.get('user').id;
     
