@@ -2,7 +2,8 @@
 	width:50px;
 	height:70px;
 	float:left;
-	margin:20px auto;
+	margin-left: 30%;
+	margin-top: 20%;
 	position:relative;
 }
 .container-fluid{
