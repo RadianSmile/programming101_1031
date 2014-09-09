@@ -13,8 +13,7 @@
 <!---------------------->
 <link href="https://code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css" rel="stylesheet">
 <script src="https://code.jquery.com/ui/1.11.1/jquery-ui.min.js"></script>
-
-
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
 .act {
 	width:100%; background:rgba(232,228,228,1.00);
@@ -46,12 +45,17 @@
 	margin-right:5px;
 	line-height:200%; 
 	overflow:hidden;
+	transition:all .5s;
 }.iTag .glyphicon {
 	margin:0 10px;
 	
 }
 .glyphicon-remove {
 	cursor:pointer;
+}
+
+.panel-clear {
+	float:right;
 }
 
 </style>
@@ -71,24 +75,31 @@
 
 <div id="std-reply" class="container con-add-std">
 	<div class="panel panel-default">
-		<div class="panel-heading">上課回答問題<input class="input-id input-sm form-control"></div>
+		<div class="panel-heading">上課問問題<input type="number" class="input-id input-sm form-control"><span class="panel-clear glyphicon glyphicon-remove"></span></div>
+		<div class="panel-body">
+		</div>
+	</div>
+	<div class="panel panel-default">
+		<div class="panel-heading">上課回答問題<input type="number" class="input-id input-sm form-control"><span class="panel-clear glyphicon glyphicon-remove"></span></div>
+		<div class="panel-body">
+		</div>
+	</div>
+	<div class="panel panel-default">
+		<div class="panel-heading">完成老師出題<input type="number" class="input-id input-sm form-control"><span class="panel-clear glyphicon glyphicon-remove"></span></div>
+		<div class="panel-body">
+		</div>
+	</div>
+	<div class="panel panel-default">
+		<div class="panel-heading">上課小組解題<input type="number" class="input-id input-sm form-control"><span class="panel-clear glyphicon glyphicon-remove"></span></div>
 		<div class="panel-body">
 		</div>
 	</div>
 
-	<div class="row add-std">
-			<div class="col-xs-8 ">
-			<input class="input-id input-sm form-control">
-			</div>
-			<button class="btn cancel col-xs-3"><span class="glyphicon glyphicon-remove"></span></button>
-			<button class="btn confirm col-xs-3 btn-primary">確認，並新增下一筆</button>
-	</div>
-	<div class="row">
-		<div class="col-xs-12">
-			<span class="iTag badge" >100102035 <span class="glyphicon glyphicon-remove"></span></span>
-		</div>
-	</div>
-	
+
+
+
+
+			<button class="btn  col-xs-12 btn-primary">確認送出</button>
 </div>
 
 
@@ -103,9 +114,9 @@
 	padding:10px;
 }
 </style>
-<div id="foot">
+<!--div id="foot">
 	<button class="btn btn-primary center-block" style="width:80%;">送出</button>
-</div>
+</div-->
 
 
 
@@ -117,21 +128,28 @@ $(document).on('click',".confirm",function(){
 	toggleRowButton($(this).closest(".add-std"));
 });
 $(document).on('click','.glyphicon-remove',function (){
-	$(this).closest('.iTag').remove();
+	$(this).closest('.iTag').fadeOut(function (){$(this).remove()});
+});
+$(document).on('click','.panel-clear',function(){
+	panelClear ($(this).closest('.panel'));
 });
 
+
+function panelClear($p){
+	$p.find(".panel-body").html("");
+}
 
 function qurUsers(){
 	var q = new Parse.Query( Parse.Object.extend("Test_User"));
 	return q.find();
 }
-
+/*
 function toggleRowButton (parent){
 	if(parent.find(".cancel").first().is(':hidden')){
 		parent.find(".confirm").first().hide();
 		parent.find(".cancel").first().show();
 	}
-}
+}*/
 
 
 
@@ -157,7 +175,7 @@ function qur (){
 }*/
 
 function apdAddStd (stdId,$parent){
-	var html = 	'<span class="iTag badge" data-std="'+stdId+'" >'+stdId+'<span class="glyphicon glyphicon-remove"></span></span> ';
+	var html = 	'<span class="iTag badge" data-std="'+stdId+'" >'+stdId+'<span class="stdRemove glyphicon glyphicon-remove"></span></span> ';
 	$parent.find(".panel-body").first().append(html);
 }
 
@@ -169,8 +187,8 @@ function initAutofill (arr){
 		select: function( e, ui ) {
 			var v = ui.item.value;
 			var t = e.target;
-			toggleRowButton ($(t).closest(".con-add-std"));
-			apdAddStd (v,$(t).closest(".con-add-std"));
+			//toggleRowButton ($(t).closest(".con-add-std"));
+			apdAddStd (v,$(t).closest(".panel"));
 						$(t).val('');
 return false;
 		},
