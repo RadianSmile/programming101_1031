@@ -318,10 +318,11 @@ $(document).ready(function(){
 });
 
 function getElementStringByowncard(name, id, photo){
-    var s = "<div  value='"+name+"' class='in' id='"+id+"'>"+name+"</div>";
+    var s = "<div  value='"+name+"' id='"+id+"'>"+name+"</div>";
     var s1 = "<img src ='"+photo+"''>";
+    var container = "<div class='in'>"+s + s1 + "</div>";
 
-    return s + s1;
+    return container;
 };
 
 //Delete used card
