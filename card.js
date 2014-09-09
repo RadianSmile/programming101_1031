@@ -13,7 +13,7 @@ $(document).ready(function(){
             	    for(var i = 0; i<data.length; i++){
             	        var card = data[i].get('Card_info');
                         if(card == undefined){
-                            alert("你有一次抽卡機會!");
+                            alert("你有一次抽卡機會!前往抽卡頁面!");
                             window.location.href="http://radiansmile.github.io/CodeEDU/card_drawing.html";
                         }
             	        var s = getElementStringByowncard(card.get('name'), card.get('imagesrc'), data[i].id);
