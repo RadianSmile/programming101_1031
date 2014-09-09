@@ -6,6 +6,9 @@
 	position:relative;
 	display: inline-block;
 }
+.in:hover{
+	cursor:pointer;
+}
 .container-fluid{
 	background-color:#FFFF99;
 }
