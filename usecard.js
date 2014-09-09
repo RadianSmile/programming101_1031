@@ -41,90 +41,108 @@ $(document).ready(function(){
                                         if(cardid == "OSRGBnKpaP"){
                                             if(data1.id == Parse.User.current().id){
                                                 alert("你讓自己增加10XP!");
+                                                cardUseRecord();
                                                 addXP(cardid, targetuserid);
                                             }
                                             else{
                                                 alert("你讓" + targetusername + "增加10XP!");
+                                                cardUseRecord();
                                                 addXP(cardid, targetuserid);
                                             }
                                         }
                                         else if(cardid == "4c3uX1rZ1K"){
                                             if(data1.id == Parse.User.current().id){
                                                 alert("你讓自己增加30XP!");
+                                                cardUseRecord();
                                                 addXP(cardid, targetuserid);
                                             }
                                             else{
                                                 alert("你讓" + targetusername + "增加30XP!");
+                                                cardUseRecord();
                                                 addXP(cardid, targetuserid);
                                             }
                                         }
                                         else if(cardid == "Zm3TV6UaEP"){
                                             if(data1.id == Parse.User.current().id){
                                                 alert("你讓自己增加50XP!");
+                                                cardUseRecord();
                                                 addXP(cardid, targetuserid);
                                             }
                                             else{
                                                 alert("你讓" + targetusername + "增加50XP!");
+                                                cardUseRecord();
                                                 addXP(cardid, targetuserid);
                                             }
                                         }
                                         else if(cardid == "wxTLT53ZZX"){
                                             if(data1.id == Parse.User.current().id){
                                                 alert("你讓自己增加70XP!");
+                                                cardUseRecord();
                                                 addXP(cardid, targetuserid);
                                             }
                                             else{
                                                 alert("你讓" + targetusername + "增加70XP!");
+                                                cardUseRecord();
                                                 addXP(cardid, targetuserid);
                                             }
                                         }
                                         else if(cardid == "zLHR3S0hlb"){
                                             if(data1.id == Parse.User.current().id){
                                                 alert("你讓自己增加10HP!");
+                                                cardUseRecord();
                                                 addHP(cardid, targetuserid);
                                             }
                                             else{
                                                 alert("你讓" + targetusername + "增加10HP!");
+                                                cardUseRecord();
                                                 addHP(cardid, targetuserid);
                                             }
                                         }
                                         else if(cardid == "7mn5hYmEWH"){
                                             if(data1.id == Parse.User.current().id){
                                                 alert("你讓自己增加30HP!");
+                                                cardUseRecord();
                                                 addHP(cardid, targetuserid);
                                             }
                                             else{
                                                 alert("你讓" + targetusername + "增加30HP!");
+                                                cardUseRecord();
                                                 addHP(cardid, targetuserid);
                                             }
                                         }
                                         else if(cardid == "cbACuxTVY1"){
                                             if(data1.id == Parse.User.current().id){
                                                 alert("你讓自己增加50HP!");
+                                                cardUseRecord();
                                                 addHP(cardid, targetuserid);
                                             }
                                             else{
                                                 alert("你讓" + targetusername + "增加50HP!");
+                                                cardUseRecord();
                                                 addHP(cardid, targetuserid);
                                             }
                                         }
                                         else if(cardid == "UDfyCM4Pyb"){
                                             if(data1.id == Parse.User.current().id){
                                                 alert("你補滿自己的HP!");
+                                                cardUseRecord();
                                                 addHP(cardid, targetuserid);
                                             }
                                             else{
                                                 alert("你補滿了" + targetusername + "的HP!");
+                                                cardUseRecord();
                                                 addHP(cardid, targetuserid);
                                             }
                                         }
                                         else if(cardid == "aJONHaxQtM"){
                                             if(data1.id == Parse.User.current().id){
                                                 alert("你讓自己增加1條命!");
+                                                cardUseRecord();
                                                 addLife(cardid, targetuserid);
                                             }
                                             else{
                                                 alert("你讓" + targetusername + "增加1條命");
+                                                cardUseRecord();
                                                 addLife(cardid, targetuserid);
                                             }
                                         }
@@ -134,6 +152,7 @@ $(document).ready(function(){
                                             }
                                             else{
                                                 alert("你對" + targetusername + "捐了10HP!你自己扣了10HP!");
+                                                cardUseRecord();
                                                 donateHP(cardid, targetuserid);
                                             }
                                         }
@@ -143,6 +162,7 @@ $(document).ready(function(){
                                             }
                                             else{
                                                 alert("你對" + targetusername + "捐了30HP!你自己扣了30HP!");
+                                                cardUseRecord();
                                                 donateHP(cardid, targetuserid);
                                             }
                                         }
@@ -152,36 +172,43 @@ $(document).ready(function(){
                                             }
                                             else{
                                                 alert("你對" + targetusername + "捐了50HP!你自己扣了50HP!");
+                                                cardUseRecord();
                                                 donateHP(cardid, targetuserid);
                                             }
                                         }
                                         else if(cardid == "y0pZ66Wl4X"){
                                             if(data1.id == Parse.User.current().id){
                                                 alert("你讓自己減少10HP!");
+                                                cardUseRecord();
                                                 minusHP(cardid, targetuserid);
                                             }
                                             else{
                                                 alert("你讓" + targetusername + "減少10HP!");
+                                                cardUseRecord();
                                                 minusHP(cardid, targetuserid);
                                             }
                                         }
                                         else if(cardid == "ZLZIS7XbfQ"){
                                             if(data1.id == Parse.User.current().id){
                                                 alert("你讓自己減少30HP!");
+                                                cardUseRecord();
                                                 minusHP(cardid, targetuserid);
                                             }
                                             else{
                                                 alert("你讓" + targetusername + "減少30HP!");
+                                                cardUseRecord();
                                                 minusHP(cardid, targetuserid);
                                             }
                                         }
                                         else if(cardid == "4kJkiyYROw"){
                                             if(data1.id == Parse.User.current().id){
                                                 alert("你讓自己減少50HP!");
+                                                cardUseRecord();
                                                 minusHP(cardid, targetuserid);
                                             }
                                             else{
                                                 alert("你讓" + targetusername + "減少50HP!");
+                                                cardUseRecord();
                                                 minusHP(cardid, targetuserid);
                                             }
                                         }
@@ -191,6 +218,7 @@ $(document).ready(function(){
                                             }
                                             else{
                                                 alert("你向" + targetusername + "偷了10HP!你自己增加10HP!");
+                                                cardUseRecord();
                                                 stealHP(cardid, targetuserid);
                                             }
                                         }
@@ -200,6 +228,7 @@ $(document).ready(function(){
                                             }
                                             else{
                                                 alert("你向" + targetusername + "偷了30HP!你自己增加30HP!");
+                                                cardUseRecord();
                                                 stealHP(cardid, targetuserid);
                                             }
                                         }
@@ -209,6 +238,7 @@ $(document).ready(function(){
                                             }
                                             else{
                                                 alert("你向" + targetusername + "偷了50HP!你自己增加50HP!");
+                                                cardUseRecord();
                                                 stealHP(cardid, targetuserid);
                                             }
                                         }
@@ -218,8 +248,9 @@ $(document).ready(function(){
                                             }
                                             else{
                                                 alert("你向" + targetusername + "偷了一張卡!");
+                                                cardUseRecord();
                                                 stealCard(cardid, targetuserid);
-                                                }
+                                            }
                                         }
                                         //onemorecard
                                         else{
@@ -238,11 +269,13 @@ $(document).ready(function(){
                                                             if(data.id == Parse.User.current().id){
                                                                 alert("你自己多了一次抽卡機會!");
                                                                 console.log("Draw record success!");
+                                                                cardUseRecord();
                                                                 deletecard();
                                                             }
                                                             else{
                                                                 alert("你讓"+targetusername+"多了一次抽卡機會!");
                                                                 console.log("Draw record success!");
+                                                                cardUseRecord();
                                                                 deletecard();
                                                             }
                                                         },
@@ -254,20 +287,22 @@ $(document).ready(function(){
                                             })
                                         }
                                         //Record used card!
-                                        var Cardrecord = Parse.Object.extend("Card_record");
-                                        var cardrecord = new Cardrecord();
-                                        cardrecord.set('user', Parse.User.current());
-                                        cardrecord.set('Card_info', card);
-                                        cardrecord.set('targetuser', data1);
-                                        cardrecord.set('type', "use");
-                                        cardrecord.save(null,{
-                                            success:function(data){
-                                                console.log("Card used record success!");
-                                            },
-                                            error:function(error){
-                                                console.log(error.toString());
-                                            }
-                                        })
+                                        function cardUseRecord(){
+                                            var Cardrecord = Parse.Object.extend("Card_record");
+                                            var cardrecord = new Cardrecord();
+                                            cardrecord.set('user', Parse.User.current());
+                                            cardrecord.set('Card_info', card);
+                                            cardrecord.set('targetuser', data1);
+                                            cardrecord.set('type', "use");
+                                            cardrecord.save(null,{
+                                                success:function(data){
+                                                    console.log("Card used record success!");
+                                                },
+                                                error:function(error){
+                                                    console.log(error.toString());
+                                                }
+                                            })
+                                        }
                                     }
                                 })
                             },
