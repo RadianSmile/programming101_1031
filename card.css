@@ -4,13 +4,8 @@
 	margin-left: 10%;
 	margin-top: 1%;
 	position:relative;
-	display:inline-block;
-	z-index: 30;
+	float:left;
 }
 .container-fluid{
 	background-color:#FFFF99;
-	z-index: 10;
-}
-.row-fluid{
-	z-index: 20;
 }
