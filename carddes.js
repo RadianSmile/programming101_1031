@@ -21,10 +21,10 @@ $(document).ready(function(){
 })
 
 function getElementStringByowncard(name, imagesrc, shortdes){
-    var s0 = "<h2 class="+"span4 offset2"+">" + name + "</h2>";
-    var s1 = "<img class = 'span4 offset2' src='" + imagesrc + "'/>";
-    var s2 = "<div  class = 'span4 offset2' id='shortdes'>" + shortdes + "</div>";
-    var s = "<div class='row-fluid' id = 'card'>" + s0 + s1 + s2 + "</div>";
+    var s0 = "<h2>" + name + "</h2>";
+    var s1 = "<img class = 'owncard' src='" + imagesrc + "'/>";
+    var s2 = "<div id='shortdes'>" + shortdes + "</div>";
+    var s = "<div class='card' id = 'card'>" + s0 + s1 + s2 + "</div>";
 
     return s;
 };

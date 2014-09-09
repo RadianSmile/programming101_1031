@@ -12,8 +12,8 @@ $(document).ready(function(){
     				var id = data[i].id;
     				var s = getElementStringByowncard(username, id);
     				ccontainer += s;
-    				var string = "<form>" + ccontainer + "</form>";
-    				$('div.userbox').append(string);
+    				var string = "<div>" + ccontainer + "</div>";
+    				$('div.container-fluid').append(string);
     				ccontainer = "";
                         }
 
