@@ -14,18 +14,18 @@ $(document).ready(function(){
     				var s = getElementStringByowncard(username, id, photo);
     				ccontainer += s;
                                                     if((i+1) % 6 ==0){
-                                                        var string = "<div class='users'>" + ccontainer + "</div>";
+                                                        var string = "<div class='row-fluid'>" + ccontainer + "</div>";
                                                         $('div.container-fluid').append(string);
                                                         ccontainer = "";
                                                     }
                                                     else if(i==data.length -1){
-                                                        var string = "<div class='users'>" + ccontainer + "</div>";
+                                                        var string = "<div class='row-fluid'>" + ccontainer + "</div>";
                                                         $('div.container-fluid').append(string);
                                                         ccontainer = "";                                                        
                                                     }
                                         }
 
-    				$('.in').on('click', function(){
+    				$('#in').on('click', function(){
     					var id = $(this).attr('id');
     					localStorage['userid'] = id;
                         var owncardid = localStorage.getItem('owncardId');
@@ -327,7 +327,7 @@ $(document).ready(function(){
 function getElementStringByowncard(name, id, photo){
     var s = "<div  value='"+name+"'>"+name+"</div>";
     var s1 = "<img src ='"+photo+"''>";
-    var all = "<div class = 'in'>"+ s + s1 + "</div>";
+    var all = "<div class = 'span2' id='in'>"+ s + s1 + "</div>";
 
     return all;
 };
