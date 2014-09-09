@@ -30,6 +30,8 @@ $(document).ready(function(){
 
 function useRecord(data){
     console.log(data);
+    console.log(data.get('targetuser'));
+    console.log(data.get('targetuser').get('name'));
     var targetName = data.get('targetuser').get('name');
     var targetId = data.get('targetuser').id;
     var cardName = data.get('Card_info').get('name');
