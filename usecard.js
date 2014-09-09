@@ -243,7 +243,7 @@ $(document).ready(function(){
 													owncard.set('Card_info', undefined);
 													owncard.save(null,{
                                                         success:function(data1){
-                                                            if(data == Parse.User.current()){
+                                                            if(data.id == Parse.User.current().id){
                                                                 alert("你自己多了一次抽卡機會!");
                                                                 console.log("Draw record success!");
                                                                 deletecard();
