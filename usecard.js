@@ -39,7 +39,7 @@ $(document).ready(function(){
                                         var targetuserid = data1.id;
                                         var targetusername = data1.get('name');
                                         if(cardid == "OSRGBnKpaP"){
-                                            if(data1 == Parse.User.current()){
+                                            if(data1.id == Parse.User.current().id){
                                                 alert("你讓自己增加10XP!");
                                                 addXP(cardid, targetuserid);
                                             }
@@ -49,7 +49,7 @@ $(document).ready(function(){
                                             }
                                         }
                                         else if(cardid == "4c3uX1rZ1K"){
-                                            if(data1 == Parse.User.current()){
+                                            if(data1.id == Parse.User.current().id){
                                                 alert("你讓自己增加30XP!");
                                                 addXP(cardid, targetuserid);
                                             }
@@ -59,7 +59,7 @@ $(document).ready(function(){
                                             }
                                         }
                                         else if(cardid == "Zm3TV6UaEP"){
-                                            if(data1 == Parse.User.current()){
+                                            if(data1.id == Parse.User.current().id){
                                                 alert("你讓自己增加50XP!");
                                                 addXP(cardid, targetuserid);
                                             }
@@ -69,7 +69,7 @@ $(document).ready(function(){
                                             }
                                         }
                                         else if(cardid == "wxTLT53ZZX"){
-                                            if(data1 == Parse.User.current()){
+                                            if(data1.id == Parse.User.current().id){
                                                 alert("你讓自己增加70XP!");
                                                 addXP(cardid, targetuserid);
                                             }
@@ -79,7 +79,7 @@ $(document).ready(function(){
                                             }
                                         }
                                         else if(cardid == "zLHR3S0hlb"){
-                                            if(data1 == Parse.User.current()){
+                                            if(data1.id == Parse.User.current().id){
                                                 alert("你讓自己增加10HP!");
                                                 addHP(cardid, targetuserid);
                                             }
@@ -89,7 +89,7 @@ $(document).ready(function(){
                                             }
                                         }
                                         else if(cardid == "7mn5hYmEWH"){
-                                            if(data1 == Parse.User.current()){
+                                            if(data1.id == Parse.User.current().id){
                                                 alert("你讓自己增加30HP!");
                                                 addHP(cardid, targetuserid);
                                             }
@@ -99,7 +99,7 @@ $(document).ready(function(){
                                             }
                                         }
                                         else if(cardid == "cbACuxTVY1"){
-                                            if(data1 == Parse.User.current()){
+                                            if(data1.id == Parse.User.current().id){
                                                 alert("你讓自己增加50HP!");
                                                 addHP(cardid, targetuserid);
                                             }
@@ -109,7 +109,7 @@ $(document).ready(function(){
                                             }
                                         }
                                         else if(cardid == "UDfyCM4Pyb"){
-                                            if(data1 == Parse.User.current()){
+                                            if(data1.id == Parse.User.current().id){
                                                 alert("你補滿自己的HP!");
                                                 addHP(cardid, targetuserid);
                                             }
@@ -119,7 +119,7 @@ $(document).ready(function(){
                                             }
                                         }
                                         else if(cardid == "aJONHaxQtM"){
-                                            if(data1 == Parse.User.current()){
+                                            if(data1.id == Parse.User.current().id){
                                                 alert("你讓自己增加1條命!");
                                                 addLife(cardid, targetuserid);
                                             }
@@ -129,7 +129,7 @@ $(document).ready(function(){
                                             }
                                         }
                                         else if(cardid == "10ypku2oZk"){
-                                            if(data1 == Parse.User.current()){
+                                            if(data1.id == Parse.User.current().id){
                                                 alert("你對自己捐了10HP!等於沒捐!請選擇其他使用者!");
                                             }
                                             else{
@@ -138,7 +138,7 @@ $(document).ready(function(){
                                             }
                                         }
                                         else if(cardid == "ysYpQz4TW0"){
-                                            if(data1 == Parse.User.current()){
+                                            if(data1.id == Parse.User.current().id){
                                                 alert("你對自己捐了30HP!等於沒捐!請選擇其他使用者!");
                                             }
                                             else{
@@ -147,7 +147,7 @@ $(document).ready(function(){
                                             }
                                         }
                                         else if(cardid == "ic6YE4frVp"){
-                                            if(data1 == Parse.User.current()){
+                                            if(data1.id == Parse.User.current().id){
                                                 alert("你對自己捐了50HP!等於沒捐!請選擇其他使用者!");
                                             }
                                             else{
@@ -156,7 +156,7 @@ $(document).ready(function(){
                                             }
                                         }
                                         else if(cardid == "y0pZ66Wl4X"){
-                                            if(data1 == Parse.User.current()){
+                                            if(data1.id == Parse.User.current().id){
                                                 alert("你讓自己減少10HP!");
                                                 minusHP(cardid, targetuserid);
                                             }
@@ -166,7 +166,7 @@ $(document).ready(function(){
                                             }
                                         }
                                         else if(cardid == "ZLZIS7XbfQ"){
-                                            if(data1 == Parse.User.current()){
+                                            if(data1.id == Parse.User.current().id){
                                                 alert("你讓自己減少30HP!");
                                                 minusHP(cardid, targetuserid);
                                             }
@@ -176,7 +176,7 @@ $(document).ready(function(){
                                             }
                                         }
                                         else if(cardid == "4kJkiyYROw"){
-                                            if(data1 == Parse.User.current()){
+                                            if(data1.id == Parse.User.current().id){
                                                 alert("你讓自己減少50HP!");
                                                 minusHP(cardid, targetuserid);
                                             }
@@ -186,7 +186,7 @@ $(document).ready(function(){
                                             }
                                         }
                                         else if(cardid == "Byw6APXDGu"){
-                                            if(data1 == Parse.User.current()){
+                                            if(data1.id == Parse.User.current().id){
                                                 alert("你偷了自己10HP!等於沒偷!請選擇其他使用者!");
                                             }
                                             else{
@@ -195,7 +195,7 @@ $(document).ready(function(){
                                             }
                                         }
                                         else if(cardid == "jqxvogKdXQ"){
-                                            if(data1 == Parse.User.current()){
+                                            if(data1.id == Parse.User.current().id){
                                                 alert("你偷了自己30HP!等於沒偷!請選擇其他使用者!");
                                             }
                                             else{
@@ -204,7 +204,7 @@ $(document).ready(function(){
                                             }
                                         }
                                         else if(cardid == "8x7C6LFRhH"){
-                                            if(data1 == Parse.User.current()){
+                                            if(data1.id == Parse.User.current().id){
                                                 alert("你偷了自己50HP!等於沒偷!請選擇其他使用者!");
                                             }
                                             else{
@@ -213,7 +213,7 @@ $(document).ready(function(){
                                             }
                                         }
                                         else if(cardid == "1PF6Z8XISA"){
-                                            if(data1 == Parse.User.current()){
+                                            if(data1.id == Parse.User.current().id){
                                                 alert("你偷了自己一張卡片!等於沒偷!請選擇其他使用者!");
                                             }
                                             else{
