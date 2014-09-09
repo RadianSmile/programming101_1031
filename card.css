@@ -5,7 +5,12 @@
 	margin-top: 1%;
 	position:relative;
 	display:inline-block;
+	z-index: 30;
 }
 .container-fluid{
 	background-color:#FFFF99;
+	z-index: 10;
+}
+.row-fluid{
+	z-index: 20;
 }
