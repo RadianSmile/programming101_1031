@@ -13,10 +13,17 @@ $(document).ready(function(){
                                                     var photo = data[i].get('photo');
     				var s = getElementStringByowncard(username, id, photo);
     				ccontainer += s;
-    				var string = "<div class='in' id='"+id+"'>" + ccontainer + "</div>";
-    				$('div.container-fluid').append(string);
-    				ccontainer = "";
-                        }
+                                                    if((i+1)%6 ==0){
+                                                        var string = "<div class='in' id='"+id+"'>" + ccontainer + "</div>";
+                                                        $('div.container-fluid').append(string);
+                                                        ccontainer = "";
+                                                    }
+                                                    else if(i == data.length -1){
+                                                        var string = "<div class='in' id='"+id+"'>" + ccontainer + "</div>";
+                                                        $('div.container-fluid').append(string);
+                                                        ccontainer = "";
+                                                    }
+                                        }
 
     				$('.in').on('click', function(){
     					var id = $(this).attr('id');
