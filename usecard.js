@@ -319,7 +319,7 @@ $(document).ready(function(){
 
 function getElementStringByowncard(name, id, photo){
     var s = "<div  value='"+name+"' id='"+id+"'>"+name+"</div>";
-    var s1 = "<img src ='"+photo+"''>";
+    var s1 = "<img id='"+id+ "' src ='"+photo+"''>";
 
     return s+s1;
 };
