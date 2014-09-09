@@ -8,7 +8,7 @@ $(document).ready(function(){
         var query = new Parse.Query(notif);
         query.equalTo('type', "use");
         query.include('Card_info');
-        query.include('User');
+        query.include('user');
         query.include('targetuser');
         query.descending('date');
         query.find({
