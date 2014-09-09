@@ -45,7 +45,7 @@ function useRecord(data){
             }
         }
         else if(targetId == Parse.User.current().id){
-            s = "<h2>你被"+userName+"使用了" + cardName + "。</h2>";
+            s = "<h2>"+userName+"對你使用了" + cardName + "。</h2>";
         }
     return s;
 }
