@@ -12,6 +12,10 @@ $(document).ready(function(){
             	    var ccontainer = "";
             	    for(var i = 0; i<data.length; i++){
             	        var card = data[i].get('Card_info');
+                        if(card == undefined){
+                            alert("你有一次抽卡機會!");
+                            window.location.href="http://radiansmile.github.io/CodeEDU/card_drawing.html";
+                        }
             	        var s = getElementStringByowncard(card.get('name'), card.get('imagesrc'), data[i].id);
             	        ccontainer += s;
             	        if((i+1) % 5 == 0){
