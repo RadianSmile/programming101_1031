@@ -19,7 +19,7 @@ $(document).ready(function(){
                                                         ccontainer = "";
                                                     }
                                                     else if(i==data.length -1){
-                                                        var string = "<div class='row-fluid'>" + ccontainer + "</div>";
+                                                        var string = "<div class="+"row-fluid"+">" + ccontainer + "</div>";
                                                         $('div.container-fluid').append(string);
                                                         ccontainer = "";                                                        
                                                     }
@@ -327,7 +327,7 @@ $(document).ready(function(){
 function getElementStringByowncard(name, id, photo){
     var s = "<div  value='"+name+"'>"+name+"</div>";
     var s1 = "<img src ='"+photo+"''>";
-    var all = "<div class = 'span2' id='in'>"+ s + s1 + "</div>";
+    var all = "<div class = "+"span2"+" id='in'>"+ s + s1 + "</div>";
 
     return all;
 };
