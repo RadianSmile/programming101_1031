@@ -14,7 +14,6 @@ $(document).ready(function(){
                 var s = getElementStringByowncard(carddata.get('name'), carddata.get('imagesrc'), carddata.get('shortdes'));
                 ccontainer += s;
                 var string = "<div class = 'cards'>" + ccontainer + "</div>";
-                $('div.cardbox').append(string);
         	}
         });
     }
