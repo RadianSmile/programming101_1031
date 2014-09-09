@@ -65,6 +65,8 @@ function getData(){
                     data.save(null, {
                         success:function(){
                             console.log("Save draw card success!");
+                            alert("你得到一張卡了!返回Dashboard~");
+                            window.location.href="http://radiansmile.github.io/CodeEDU/dashboard.html";
                         },
                         error: function(error){
                             alert('Failed to create new object, with error code: ' + error.description);
