@@ -13,7 +13,7 @@ $(document).ready(function(){
                                                     var photo = data[i].get('photo');
     				var s = getElementStringByowncard(username, id, photo);
     				ccontainer += s;
-    				var string = "<div>" + ccontainer + "</div>";
+    				var string = "<div class='in'>" + ccontainer + "</div>";
     				$('div.container-fluid').append(string);
     				ccontainer = "";
                         }
@@ -320,9 +320,8 @@ $(document).ready(function(){
 function getElementStringByowncard(name, id, photo){
     var s = "<div  value='"+name+"' id='"+id+"'>"+name+"</div>";
     var s1 = "<img src ='"+photo+"''>";
-    var container = "<div class='in'>"+s + s1 + "</div>";
 
-    return container;
+    return s+s1;
 };
 
 //Delete used card
