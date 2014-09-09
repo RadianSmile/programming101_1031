@@ -11,7 +11,6 @@ $(document).ready(function(){
         	success: function(data){
         	    var ccontainer = "";
                 var carddata = data.get('Card_info');
-                console.log(carddata);
                 var s = getElementStringByowncard(carddata.get('name'), carddata.get('imagesrc'), carddata.get('shortdes'));
                 ccontainer += s;
                 var string = "<div class = 'cards'>" + ccontainer + "</div>";
