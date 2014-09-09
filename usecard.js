@@ -13,7 +13,7 @@ $(document).ready(function(){
                                                     var photo = data[i].get('photo');
     				var s = getElementStringByowncard(username, id, photo);
     				ccontainer += s;
-    				var string = "<div class='in'>" + ccontainer + "</div>";
+    				var string = "<div class='in' id='"+id+"'>" + ccontainer + "</div>";
     				$('div.container-fluid').append(string);
     				ccontainer = "";
                         }
