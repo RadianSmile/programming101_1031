@@ -409,6 +409,7 @@ function minusHP(cardid, target){
             query.equalTo('User',data); 
             query.first({
                 success: function(result){
+                    console.log(result);
                     var hp = result.get('HP');
                     var udata2 = new udata();
                     udata2.set('objectId',result.id);
