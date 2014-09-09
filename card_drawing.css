@@ -12,6 +12,10 @@ width: 100px;
 
 }
 
+.front img:hover{
+	cursor: pointer;
+}
+
  img{
 	display:inline block;
 	width: 115px;
@@ -103,42 +107,4 @@ left:1000px;
 top: 1000px;
 z-index: -10;
 
-}
-.share{
-	float:right;
-}
-
-.fb-share-button{
-	position:absolute;
-	right:220px;
-	top:30px;
-	margin-right: 20px;
-}
-
-#loginbtn{
-	position:absolute;
-	right:140px;
-	margin-right:20px;
-	width:10%;
-	height:10%;
-}
-.readmore{
-	position:absolute;
-	right:10px;
-	
-	
-}
-
-#level{
-	width:30%;
-	height:30%;
-}
-#levelpicture{
-	text-align:center; 
-}
-#levelpicture1{
-	text-align:center; 
-}
-#levelpicture2{
-	text-align:center; 
 }
