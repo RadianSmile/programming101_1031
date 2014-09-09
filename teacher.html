@@ -57,6 +57,9 @@
 .panel-clear {
 	float:right;
 }
+.panel-clear:hover{
+	color:rgba(193,149,150,1.00);
+}
 
 </style>
 </head>
@@ -67,7 +70,7 @@
 <div class="container">
 	<div class="row">
 		<div class="col-xs-12">
-			<h1>老師加分頁面</h1>
+			<h1>try老師加分頁面</h1>
 		</div>
 	</div>
 </div>
@@ -124,13 +127,13 @@
 
 <script type="text/javascript">
 
-$(document).on('click',".confirm",function(){
+$(document).on('tap',".confirm",function(){
 	toggleRowButton($(this).closest(".add-std"));
 });
-$(document).on('click','.glyphicon-remove',function (){
+$(document).on('tap','.glyphicon-remove',function (){
 	$(this).closest('.iTag').fadeOut(function (){$(this).remove()});
 });
-$(document).on('click','.panel-clear',function(){
+$(document).on('tap','.panel-clear',function(){
 	panelClear ($(this).closest('.panel'));
 });
 
@@ -235,6 +238,7 @@ return false;
       button.addEventListener('touchstart', focus);
     }, false);
   </script-->
+<script src="http://code.jquery.com/mobile/1.4.3/jquery.mobile-1.4.3.js"></script>
 
 </body>
 </html> 
