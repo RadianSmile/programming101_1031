@@ -29,13 +29,11 @@ $(document).ready(function(){
 })
 
 function useRecord(data){
-    console.log(data);
-    console.log(data.get('targetuser'));
-    console.log(data.get('targetuser').get('name'));
     var targetName = data.get('targetuser').get('name');
     var targetId = data.get('targetuser').id;
     var cardName = data.get('Card_info').get('name');
     var userId = data.get('user').id;
+    var userName = data.get('user').get('name');
     
     var s = "";
         if(userId == Parse.User.current().id){
@@ -47,7 +45,7 @@ function useRecord(data){
             }
         }
         else if(targetId == Parse.User.current().id){
-            s = "<h2>你被使用了" + cardName + "。</h2>";
+            s = "<h2>你被"+userName+"使用了" + cardName + "。</h2>";
         }
     return s;
 }
