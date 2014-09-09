@@ -406,9 +406,9 @@ function minusHP(cardid, target){
         success: function(data){
             console.log(data);
             var udata = Parse.Object.extend('User_status');
-            var query = new Parse.Query(udata);
-            query.equalTo('User',data); 
-            query.first({
+            var query1 = new Parse.Query(udata);
+            query1.equalTo('User',data); 
+            query1.first({
                 success: function(result){
                     console.log(result);
                     var hp = result.get('HP');
