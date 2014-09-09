@@ -130,8 +130,7 @@ $(document).ready(function(){
                                         }
                                         else if(cardid == "10ypku2oZk"){
                                             if(data1 == Parse.User.current()){
-                                                alert("你對自己捐了10HP!等於沒捐!");
-                                                donateHP(cardid, targetuserid);
+                                                alert("你對自己捐了10HP!等於沒捐!請選擇其他使用者!");
                                             }
                                             else{
                                                 alert("你對" + targetusername + "捐了10HP!你自己扣了10HP!");
@@ -140,8 +139,7 @@ $(document).ready(function(){
                                         }
                                         else if(cardid == "ysYpQz4TW0"){
                                             if(data1 == Parse.User.current()){
-                                                alert("你對自己捐了30HP!等於沒捐!");
-                                                donateHP(cardid, targetuserid);
+                                                alert("你對自己捐了30HP!等於沒捐!請選擇其他使用者!");
                                             }
                                             else{
                                                 alert("你對" + targetusername + "捐了30HP!你自己扣了30HP!");
@@ -150,8 +148,7 @@ $(document).ready(function(){
                                         }
                                         else if(cardid == "ic6YE4frVp"){
                                             if(data1 == Parse.User.current()){
-                                                alert("你對自己捐了50HP!等於沒捐!");
-                                                donateHP(cardid, targetuserid);
+                                                alert("你對自己捐了50HP!等於沒捐!請選擇其他使用者!");
                                             }
                                             else{
                                                 alert("你對" + targetusername + "捐了50HP!你自己扣了50HP!");
@@ -190,8 +187,7 @@ $(document).ready(function(){
                                         }
                                         else if(cardid == "Byw6APXDGu"){
                                             if(data1 == Parse.User.current()){
-                                                alert("你偷了自己10HP!等於沒偷!");
-                                                stealHP(cardid, targetuserid);
+                                                alert("你偷了自己10HP!等於沒偷!請選擇其他使用者!");
                                             }
                                             else{
                                                 alert("你向" + targetusername + "偷了10HP!你自己增加10HP!");
@@ -200,8 +196,7 @@ $(document).ready(function(){
                                         }
                                         else if(cardid == "jqxvogKdXQ"){
                                             if(data1 == Parse.User.current()){
-                                                alert("你偷了自己30HP!等於沒偷!");
-                                                stealHP(cardid, targetuserid);
+                                                alert("你偷了自己30HP!等於沒偷!請選擇其他使用者!");
                                             }
                                             else{
                                                 alert("你向" + targetusername + "偷了30HP!你自己增加30HP!");
@@ -210,8 +205,7 @@ $(document).ready(function(){
                                         }
                                         else if(cardid == "8x7C6LFRhH"){
                                             if(data1 == Parse.User.current()){
-                                                alert("你偷了自己50HP!等於沒偷!");
-                                                stealHP(cardid, targetuserid);
+                                                alert("你偷了自己50HP!等於沒偷!請選擇其他使用者!");
                                             }
                                             else{
                                                 alert("你向" + targetusername + "偷了50HP!你自己增加50HP!");
@@ -220,8 +214,7 @@ $(document).ready(function(){
                                         }
                                         else if(cardid == "1PF6Z8XISA"){
                                             if(data1 == Parse.User.current()){
-                                                alert("你偷了自己一張卡片!等於沒偷!");
-                                                stealCard(cardid, targetuserid);
+                                                alert("你偷了自己一張卡片!等於沒偷!請選擇其他使用者!");
                                             }
                                             else{
                                                 alert("你向" + targetusername + "偷了一張卡!");
@@ -236,7 +229,6 @@ $(document).ready(function(){
                                             query.equalTo('objectId', targetuser);
                                             query.first({
                                                 success:function(data){
-                                                    console.log(data);
                                                     var Owncard = Parse.Object.extend("Owncard");
                                                     var owncard = new Owncard();
 													owncard.set('user', Parse.User.current());
