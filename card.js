@@ -6,8 +6,10 @@ $(document).ready(function(){
     var query = new Parse.Query(userStatus);
     query.equalTo('User', Parse.User.current());
     query.include('User');
+    query.include('_User');
     query.first({
         success:function(data){
+            console.log(data);
             var photo = data.get('photo');
             var hp = data.get('HP');
             var xp = data.get('XP');
