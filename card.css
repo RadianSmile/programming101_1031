@@ -31,7 +31,9 @@ td {
 }
 .userstatus{
 	background-color: #FFFF99;
+	height:300px;
 }
 #user{
+	margin-bottom:30px;
 	margin-left: 30%;
 }
