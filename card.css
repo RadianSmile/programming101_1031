@@ -16,7 +16,6 @@ table, tr, td {
         border: 2px solid;
      }
 td {
-        margin-left: 40%;
         width:30px;
         height:15px;
     }
@@ -29,7 +28,6 @@ td {
 #heart{
 	width:40px;
 	height:40px;
-	margin-left: 40%;
 }
 .userstatus{
 	background-color: #FFFF99;

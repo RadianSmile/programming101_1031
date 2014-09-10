@@ -8,7 +8,6 @@ $(document).ready(function(){
     query.include('User');
     query.first({
         success:function(data){
-            console.log(data);
             var photo = data.get('User').get('photo');
             var name = data.get('User').get('name');
             var level = data.get('Level');
