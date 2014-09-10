@@ -18,14 +18,10 @@ $(document).ready(function(){
             var hpblocks = parseInt(hp * 10 / 100);
             var xpblocks = parseInt(xp * 10 / 100);
             i = 0;
-            var s = "<img src=" + photo + ">";
-            $('div.userstatus').append(s);
-
-            var s1 = "<h1>" + name + "</h1>";
-            $('div.userstatus').append(s1);
-
-            var s2 = "<h2>Level" + level + "</h2>";
-            $('div.userstatus').append(s2);
+            
+            $('#bighead').attr("src", photo);
+            $('#name').append(name);
+            $('#level').append(level);
 
             $("#hp td:lt("+hpblocks+")").each(function(i){
                 var _this = this;
