@@ -36,7 +36,7 @@ $(document).ready(function(){
                 }, 200*i);
             })
             for(var i = 1; i<=life; i++){
-                var s = "<img id="+"heart"+"src="+"img/heart.png"+">";
+                var s = "<img id='heart' src='img/heart.png'>";
                 $('#life').append(s);
             }
         }
