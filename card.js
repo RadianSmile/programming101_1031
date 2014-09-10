@@ -18,10 +18,10 @@ $(document).ready(function(){
             var hpblocks = parseInt(hp * 10 / 100);
             var xpblocks = parseInt(xp * 10 / 100);
             i = 0;
-            
+
             $('#bighead').attr("src", photo);
             $('#name').append(name);
-            $('#level').append(level);
+            $('#level').append("Level "+level);
 
             $("#hp td:lt("+hpblocks+")").each(function(i){
                 var _this = this;
@@ -34,7 +34,11 @@ $(document).ready(function(){
                 setTimeout(function(){
                     $(_this).css('background-color', '#fff')
                 }, 200*i);
-            }) 
+            })
+            for(var i = 1; i<=life; i++){
+                var s = "<img id="+"heart"+"src="+"img/heart.png"+">";
+                $('#life').append(s);
+            }
         }
     });
     //back-end owncard
