@@ -13,8 +13,8 @@ $(document).ready(function(){
                 var carddata = data.get('Card_info');
                 var s = getElementStringByowncard(carddata.get('name'), carddata.get('imagesrc'), carddata.get('shortdes'));
                 ccontainer += s;
-                var string = "<div class = 'cards'>" + ccontainer + "</div>";
-                $('div.cardbox').append(string);
+                var string = "<div class = 'carddatas'>" + ccontainer + "</div>";
+                $('div.carddes').append(string);
         	}
         });
     }
@@ -24,7 +24,7 @@ function getElementStringByowncard(name, imagesrc, shortdes){
     var s0 = "<h2>" + name + "</h2>";
     var s1 = "<img class = 'owncard' src='" + imagesrc + "'/>";
     var s2 = "<div id='shortdes'>" + shortdes + "</div>";
-    var s = "<div class='card' id = 'card'>" + s0 + s1 + s2 + "</div>";
+    var s = "<div class='carddata' id = 'card'>" + s0 + s1 + s2 + "</div>";
 
     return s;
 };
