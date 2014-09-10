@@ -10,12 +10,23 @@ $(document).ready(function(){
         success:function(data){
             console.log(data);
             var photo = data.get('User').get('photo');
+            var name = data.get('User').get('name');
+            var level = data.get('Level');
             var hp = data.get('HP');
             var xp = data.get('XP');
             var life = data.get('Life');
             var hpblocks = parseInt(hp * 10 / 100);
             var xpblocks = parseInt(xp * 10 / 100);
             i = 0;
+            var s = "<img src=" + photo + ">";
+            $('div.userstatus').append(s);
+
+            var s1 = "<h1>" + name + "</h1>";
+            $('div.userstatus').append(s1);
+
+            var s2 = "<h2>Level" + level + "</h2>";
+            $('div.userstatus').append(s2);
+
             $("#hp td:lt("+hpblocks+")").each(function(i){
                 var _this = this;
                 setTimeout(function(){
@@ -28,8 +39,6 @@ $(document).ready(function(){
                     $(_this).css('background-color', '#fff')
                 }, 200*i);
             }) 
-            var s = "<img src=" + photo + ">";
-            $('div.userstatus').append(s);       
         }
     });
     //back-end owncard
