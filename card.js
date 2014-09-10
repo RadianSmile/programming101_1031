@@ -11,7 +11,7 @@ $(document).ready(function(){
             var xp = data.get('XP');
             var life = data.get('Life');
             var hpblocks = parseInt(hp * 10 / 100);
-            var xpblocks = parseInt(hp * 10 / 100);
+            var xpblocks = parseInt(xp * 10 / 100);
             i = 0;
             $("#hp td:lt("+hpblocks+")").each(function(i){
                 var _this = this;
