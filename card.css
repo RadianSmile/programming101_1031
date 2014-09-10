@@ -16,8 +16,8 @@ table, tr, td {
         border: 2px solid;
      }
 td {
-        width:20px;
-        height:10px;
+        width:30px;
+        height:30px;
     }
 
 #bighead{
@@ -28,4 +28,8 @@ td {
 #heart{
 	width:60px;
 	height:60px;
+}
+.userstatus{
+	height:500px;
+	margin-bottom: 20px;
 }
