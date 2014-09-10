@@ -10,14 +10,21 @@ $(document).ready(function(){
             var hp = data.get('HP');
             var xp = data.get('XP');
             var life = data.get('Life');
-            var blocks = parseInt(hp * 10 / 100);
+            var hpblocks = parseInt(hp * 10 / 100);
+            var xpblocks = parseInt(hp * 10 / 100);
             i = 0;
-            $("td:lt("+blocks+")").each(function(i){
+            $("td:lt("+hpblocks+")").each(function(i){
                 var _this = this;
                 setTimeout(function(){
                     $(_this).css('background-color', '#fff')
                 }, 200*i);
             })
+            $("td:lt("+xpblocks+")").each(function(i){
+                var _this = this;
+                setTimeout(function(){
+                    $(_this).css('background-color', '#fff')
+                }, 200*i);
+            })        
         }
     });
     //back-end owncard
