@@ -53,31 +53,33 @@ $(document).ready(function(){
             	    for(var i = 0; i<data.length; i++){
             	        var card = data[i].get('Card_info');
                         if(card == undefined){
-                            alert("你有一次抽卡機會!前往抽卡頁面!");
-                            window.location.href="http://radiansmile.github.io/CodeEDU/card_drawing.html";
+                            var backcard = "<a href='http://radiansmile.github.io/CodeEDU/card_drawing.html'><img src='img/choosecard/back.jpg'></a>";
+                            $('div.cardbox').append(backcard);
                         }
-            	        var s = getElementStringByowncard(card.get('name'), card.get('imagesrc'), data[i].id);
-            	        ccontainer += s;
-            	        if((i+1) % 6 == 0){
-            	        	var string = "<div class='cards'> " + ccontainer + "</div>";
-            	        	$('div.cardbox').append(string);
-            	        	ccontainer = "";
-                            $('img').on('click', function(){
-                                var id = $(this).attr('id');
-                                localStorage['owncardId'] = id;
-                                window.location.assign("http://radiansmile.github.io/CodeEDU/carddes.html");
-                            })
-            	        }
-            	        else if(i == data.length - 1){
-            	        	var string = "<div class = 'cards'>" + ccontainer + "</div>";
-            	        	$('div.cardbox').append(string);
-            	        	ccontainer = "";
-                          $('img').on('click', function(){
-                                var id = $(this).attr('id');
-                                localStorage['owncardId'] = id;
-                                window.location.assign("http://radiansmile.github.io/CodeEDU/carddes.html");
-                            })
-            	        }
+                        else{
+                            var s = getElementStringByowncard(card.get('name'), card.get('imagesrc'), data[i].id);
+                            ccontainer += s;
+                            if((i+1) % 6 == 0){
+                                var string = "<div class='cards'> " + ccontainer + "</div>";
+                                $('div.cardbox').append(string);
+                                ccontainer = "";
+                                $('img').on('click', function(){
+                                    var id = $(this).attr('id');
+                                    localStorage['owncardId'] = id;
+                                    window.location.assign("http://radiansmile.github.io/CodeEDU/carddes.html");
+                                })
+                            }
+                            else if(i == data.length - 1){
+                                var string = "<div class = 'cards'>" + ccontainer + "</div>";
+                                $('div.cardbox').append(string);
+                                ccontainer = "";
+                              $('img').on('click', function(){
+                                    var id = $(this).attr('id');
+                                    localStorage['owncardId'] = id;
+                                    window.location.assign("http://radiansmile.github.io/CodeEDU/carddes.html");
+                                })
+                            }
+                        }
             	    }
             }
         })
