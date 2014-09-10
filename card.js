@@ -20,9 +20,6 @@ $(document).ready(function(){
             i = 0;
 
             $('#bighead').attr("src", photo);
-            $('#bighead').on('click',function(){
-                alert("Hello!My name is " +name);
-            })
             $('#name').append(name);
             $('#level').append("Level "+level);
 

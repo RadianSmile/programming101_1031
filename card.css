@@ -37,3 +37,12 @@ td {
 	margin-bottom:30px;
 	margin-left: 25%;
 }
+.card{
+	margin-left: 10%;
+	margin-top: 1%;
+	position:relative;
+	display: inline-block;
+}
+.cardbox{
+	background-color: #FFFF99;
+}
