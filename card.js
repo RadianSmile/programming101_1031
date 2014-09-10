@@ -2,24 +2,13 @@
 $(document).ready(function(){
     Parse.initialize("9eo5r1mHWoIPSTCzmrpdKa3lcHPjySx4y5D6q8Nq", "R8SWwYxpJcy73ogQKuSD43y7FigrlDGjBLcy1lzC");
     //front-end user_status
-    var user = Parse.Object.extend('User');
-    var query = new Parse.Query(user);
-    query.equalTo('objectId', Parse.User.current());
+    var userStatus=Parse.Object.extend('User_status');
+    var query = new Parse.Query(userStatus);
+    query.equalTo('User', Parse.User.current());
+    query.include('User');
     query.first({
         success:function(data){
-            console.log(data);
-            var bighead = data.get('photo');
-            console.log(bighead);
-            var s = "<img src ="+bighead+">";
-            $('div.userstatus').append(s);
-        }
-    })
-
-    var userStatus=Parse.Object.extend('User_status');
-    var query1 = new Parse.Query(userStatus);
-    query1.equalTo('User', Parse.User.current());
-    query1.first({
-        success:function(data){
+            var photo = data.get('photo');
             var hp = data.get('HP');
             var xp = data.get('XP');
             var life = data.get('Life');
@@ -37,7 +26,9 @@ $(document).ready(function(){
                 setTimeout(function(){
                     $(_this).css('background-color', '#fff')
                 }, 200*i);
-            })        
+            }) 
+            var s = "<img src=" + photo + ">";
+            $('div.userstatus').append(s);       
         }
     });
     //back-end owncard
