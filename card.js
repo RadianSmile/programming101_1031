@@ -7,9 +7,11 @@ $(document).ready(function(){
     query.equalTo('objectId', Parse.User.current());
     query.first({
         success:function(data){
+            console.log(data);
             var bighead = data.get('photo');
+            console.log(bighead);
             var s = "<img src ="+bighead+">";
-            $('div#userstatus').append(s);
+            $('div.userstatus').append(s);
         }
     })
 
