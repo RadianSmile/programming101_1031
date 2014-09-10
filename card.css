@@ -14,6 +14,7 @@
 }
 table, tr, td {
         border: 2px solid;
+        margin-left: 40%;
      }
 td {
         width:30px;
@@ -29,6 +30,10 @@ td {
 	width:40px;
 	height:40px;
 }
+#name, #level, #hp, #xp, #life{
+	margin-left: 40%;
+}
+
 .userstatus{
 	background-color: #FFFF99;
 	height:300px;
@@ -51,8 +56,5 @@ td {
 	margin-left: 40%;
 }
 form{
-	margin-left: 40%;
-}
-h3, h4{
 	margin-left: 40%;
 }
