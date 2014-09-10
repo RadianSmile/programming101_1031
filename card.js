@@ -1,6 +1,26 @@
 //About Personal page owncard display
 $(document).ready(function(){
     Parse.initialize("9eo5r1mHWoIPSTCzmrpdKa3lcHPjySx4y5D6q8Nq", "R8SWwYxpJcy73ogQKuSD43y7FigrlDGjBLcy1lzC");
+    //front-end user_status
+    var userStatus=Parse.Object.extend('User_status');
+    var query = new Parse.Query(userStatus);
+    query.equalTo('User', Parse.User.current());
+    query.first({
+        success:function(data){
+            var hp = data.get('HP');
+            var xp = data.get('XP');
+            var life = data.get('Life');
+            var blocks = parseInt(hp * 10 / 100);
+            i = 0;
+            $("td:lt("+blocks+")").each(function(i){
+                var _this = this;
+                setTimeout(function(){
+                    $(_this).css('background-color', '#fff')
+                }, 200*i);
+            })
+        }
+    });
+    //back-end owncard
     var current_user = Parse.User.current();
     if(current_user){
         var ownCard = Parse.Object.extend('Owncard');

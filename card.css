@@ -12,3 +12,10 @@
 .container-fluid{
 	background-color:#FFFF99;
 }
+table, tr, td {
+        border: 2px solid;
+     }
+td {
+        width:20px;
+        height:10px;
+    }
