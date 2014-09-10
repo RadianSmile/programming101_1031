@@ -17,7 +17,7 @@ table, tr, td {
      }
 td {
         width:30px;
-        height:30px;
+        height:15px;
     }
 
 #bighead{
@@ -26,8 +26,8 @@ td {
 	height:300px;
 }
 #heart{
-	width:60px;
-	height:60px;
+	width:40px;
+	height:40px;
 }
 .userstatus{
 	height:500px;
