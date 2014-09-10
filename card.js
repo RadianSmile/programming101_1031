@@ -2,10 +2,21 @@
 $(document).ready(function(){
     Parse.initialize("9eo5r1mHWoIPSTCzmrpdKa3lcHPjySx4y5D6q8Nq", "R8SWwYxpJcy73ogQKuSD43y7FigrlDGjBLcy1lzC");
     //front-end user_status
-    var userStatus=Parse.Object.extend('User_status');
-    var query = new Parse.Query(userStatus);
-    query.equalTo('User', Parse.User.current());
+    var user = Parse.Object.extend('User');
+    var query = new Parse.Query(user);
+    query.equalTo('objectId', Parse.User.current());
     query.first({
+        success:function(data){
+            var bighead = data.get('photo');
+            var s = "<img src ="+bighead+">";
+            $('div#userstatus').append(s);
+        }
+    })
+
+    var userStatus=Parse.Object.extend('User_status');
+    var query1 = new Parse.Query(userStatus);
+    query1.equalTo('User', Parse.User.current());
+    query1.first({
         success:function(data){
             var hp = data.get('HP');
             var xp = data.get('XP');
