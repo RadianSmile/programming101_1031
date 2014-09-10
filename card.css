@@ -53,3 +53,9 @@ td {
 form{
 	margin-left: 40%;
 }
+h3, h4{
+	margin-left: 40%;
+}
+#hp, #xp, #life{
+	margin-left: 40%;
+}
