@@ -13,13 +13,13 @@ $(document).ready(function(){
             var hpblocks = parseInt(hp * 10 / 100);
             var xpblocks = parseInt(hp * 10 / 100);
             i = 0;
-            $("#hp.td:lt("+hpblocks+")").each(function(i){
+            $("#hp td:lt("+hpblocks+")").each(function(i){
                 var _this = this;
                 setTimeout(function(){
                     $(_this).css('background-color', '#fff')
                 }, 200*i);
             })
-            $("#xp.td:lt("+xpblocks+")").each(function(i){
+            $("#xp td:lt("+xpblocks+")").each(function(i){
                 var _this = this;
                 setTimeout(function(){
                     $(_this).css('background-color', '#fff')
