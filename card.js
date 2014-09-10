@@ -54,7 +54,7 @@ $(document).ready(function(){
             	        var card = data[i].get('Card_info');
                         if(card == undefined){
                             var backcard = "<a href='http://radiansmile.github.io/CodeEDU/card_drawing.html'><img src='img/choosecard/back.jpg'></a>";
-                            $('div.cardbox').append(backcard);
+                            $('div.cards').append(backcard);
                         }
                         else{
                             var s = getElementStringByowncard(card.get('name'), card.get('imagesrc'), data[i].id);
