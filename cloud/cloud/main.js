@@ -10,6 +10,13 @@ Parse.Cloud.define("hello", function(request, response) {
 	
 });*/
 
+Parse.Cloud.beforeSave(Parse.User,function(request,response){
+	console.log (request.object.id);
+	response.success();
+
+});
+
+
 Parse.Cloud.beforeSave("Test_User",function(request,response){
 	var obj = request.object ; 
 	var hp = obj.get("HP");

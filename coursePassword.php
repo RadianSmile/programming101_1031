@@ -8,7 +8,7 @@ if ( isset($_POST["pwd"] )){
 }
 
 if ($enterPwd == $stdPwd){
-	echo "true";
+	echo "student";
 }else if ($enterPwd == $teacherPwd ){
 	echo "teacher";
 	}else if ($enterPwd == $TAPwd ){
