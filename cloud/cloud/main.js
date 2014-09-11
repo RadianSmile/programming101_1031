@@ -5,13 +5,79 @@ Parse.Cloud.define("hello", function(request, response) {
   response.success("Hello world!");
 });
 
+
+/*Parse.Cloud.beforeSave("Event_Record",function(request){
+	
+});*/
+
+Parse.Cloud.beforeSave("Test_User",function(request,response){
+	var obj = request.object ; 
+	var hp = obj.get("HP");
+	console.log ("HP" + hp.toString());
+	if ( hp  > 100 ){
+		hp = 100 ;
+		obj.set("HP" ,100);
+		console.log ("hp Overflowed!! now hp set to 100");
+	}
+	response.success();
+});
+
+
+Parse.Cloud.afterSave("Event_Record",function(request){
+	var userOid = 	request.object.get("target_test").id,
+			User = Parse.Object.extend("Test_User"),
+			user = new User();
+	 user.id = userOid;
+
+	var eid = request.object.get("eid");
+			EI = Parse.Object.extend("Event_Info"),
+			q = new Parse.Query(EI);
+	
+	var OwnCard = Parse.Object.extend("Test_Owncard");
+	
+	q.equalTo("eid",eid.toString());
+	q.first().then(function (evt){
+		//console.log (JSON.stringify(evt));
+		var eft = evt.get("effect_target") ;
+		var dXP = parseInt(eft[0]);
+		var dHP = parseInt(eft[1]);
+		//console.log ((typeof (dXP)));
+		//console.log ( user.id);
+		user.increment("XP",dXP);
+		user.increment("HP",dHP);
+		user.save().then(function(s){
+			console.log ("add hp ")
+		},function (e){console.log (e.message)});
+		if (eft[2] > 0 ){
+			console.log ("Sending Cards... " + eft[2] );
+			var ownCardArr = new Array ();
+			for (var j = 0 ; j < eft[2] ; j++){
+				var ownCard = new OwnCard ();
+				ownCard.set("user",user);
+				ownCardArr.push(ownCard);
+			}
+			Parse.Object.saveAll(ownCardArr).then (function (r){
+				console.log ("Card sent.");
+			},function (e){
+				console.log ("Card send faild");
+			});
+		}
+	},function(e){
+		console.log (e.message);
+	});
+});
+
+
+
+
+
 Parse.Cloud.job("Random_review", function(rq, status) {
 	
 var ASSIGN_NTH = rq.params.assignNum	 ;	
 var STD_NUM = 0 ; //user(role=std).length
 var REVIEW_MAX = 5 ; 
 
-	
+
 
 function getReviewNumArr (){
 	var reviewList = [];

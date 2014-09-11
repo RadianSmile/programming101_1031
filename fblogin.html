@@ -15,7 +15,8 @@
 <script>
    function logout () {   
     FB.logout(function(response) {
-       console.log ("Logout")
+       console.log ("Logout");
+			 alert("已經成功登出囉~");
     });
 
     }
@@ -33,11 +34,11 @@ function fb_login () {
 						alert ("我幫你註冊了，但好像有哪裡不太對噢");
 						document.location="signup.html";
 					}else{
-							
+						alert("登入成功!");
 						document.location ="dashboard.html";	
 					}
 				}, error : function(){
-					alert("你拒絕登入，不然就是你尚未足夠授權。")
+					alert("你拒絕登入，不然就是你尚未授權。")
 					console.log(alert(error.message));
 				}});	
 					

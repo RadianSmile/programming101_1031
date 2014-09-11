@@ -1,13 +1,13 @@
 <?php
-$pwd = 'std';
-$teacherPwd = 'teacher' ; 
-$TAPwd = 'TA';
+$stdPwd = 'std781';
+$teacherPwd = 'm6s/6cl6781' ; 
+$TAPwd = 'ta-781';
 $enterPwd = "";
 if ( isset($_POST["pwd"] )){
 	$enterPwd = $_POST["pwd"] ;
 }
 
-if ($enterPwd == $pwd){
+if ($enterPwd == $stdPwd){
 	echo "true";
 }else if ($enterPwd == $teacherPwd ){
 	echo "teacher";

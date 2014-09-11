@@ -13,25 +13,10 @@
 <!----><script src="js/all.js"></script>
 <!---------------------->
 
-<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/jquery.validate.min.js"></script>
-<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/additional-methods.min.js"></script>
+<!--script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/jquery.validate.min.js"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/additional-methods.min.js"></script-->
 
 <script>
-$(document).ready(function () {
-
-    $('#step3').validate({ // initialize the plugin
-        rules: {
-            name: {
-                required: true,
-            },
-            id: {
-                required: true,
-                minlength: 5
-            }
-        }
-    });
-
-});
 </script>
 
 <style>
@@ -335,26 +320,30 @@ function FBinitDone (){
 	checkLoginStatus (false); 
 
 }
-function checkPassword() {
-	var Password = Parse.Object.extend("Password");
-	var password = new Password();
-	var q = new Parse.Query(Password);
 
-	q.equalTo("name","signup");
-	q.equalTo("password",$("#pwd").val());
-	q.first().then(function(r){
-	 var result = r.get("status");
-		if (result === "student"){
+
+function checkPassword() {
+	$.ajax({
+		type: "POST",
+		url: "coursePassword.php",
+		data: { pwd:$("#pwd").val()},
+		success: function (data,status,xhr){
+			showForms (data) ;
+		},
+	});
+}
+function showForms(data){ 
+		if (data === "student"){
 			$("#step2").fadeIn();
 			checkLoginStatus (true); 
 			//跑出FB登入頁面	
-		}else if (result === "teacher"){ 
+		}else if (data === "teacher"){ 
 			$("#step2").fadeIn();
 			$("#fb_login_btn").fadeIn();
 			checkLoginStatus (true); 
 			//alert("Hello Teacher");
 			//跑出FB登入頁面	
-		}else if (result === "ta"){
+		}else if (data === "ta"){
 			checkLoginStatus (true); 
 			$("#step2").fadeIn();
 
@@ -363,7 +352,6 @@ function checkPassword() {
 		}else {
 			alert ("The Password is wrong" ) ;
 		}
-	},function(e){alert(e.message);});
 }
 </script>
 <div id="fb-status">

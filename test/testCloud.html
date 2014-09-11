@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Untitled Document</title>
+<!-- Common links -->
+<!----><link rel="icon" type="image/png" href="/include/icon.png" />
+<!----><link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+<!----><script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<!----><script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<!----><script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.2.19.min.js"></script>
+<!----><link href="../css/all.css" rel="stylesheet" />
+<!----><script type="text/javascript" src="../js/all.js?1111"></script>
+<!---------------------->
+</head>
+<body>
+
+<script>
+Parse.initialize("9eo5r1mHWoIPSTCzmrpdKa3lcHPjySx4y5D6q8Nq", "R8SWwYxpJcy73ogQKuSD43y7FigrlDGjBLcy1lzC");
+
+
+var ER = Parse.Object.extend("Event_Record");
+var er = new ER ();
+var q = Parse.Query(ER);
+q.first().then(function(e){
+		var oid = q.get("Test_User").id ;
+		var eid = q.get("eid");
+		var EI = Parse.Object.extend("Event_Info");
+		var q2 = new Parse.Query(EI);
+		
+	},function(e){
+		
+	})
+var id = q.get("target_test").id;
+
+	q.get(eid).then(function (evt){
+		var eft = evt.get("effect_target") ;
+		var dXP = eft[0];
+		var dHP = eft[1];
+		
+		user.set("XP",dXP);
+		user.set("HP",dHP);
+		user.save().then(function(s){
+			console.log (s);
+		});
+		if (eft[2] > 0 ){
+				//要去處理發卡片
+		}
+	},function(e){
+		
+		//request.error(e.message);
+		
+	});
+});
+
+
+/** Did  **/
+//renameClass("Event_List","Event_Info");
+
+
+
+</script>
+
+</body>
+</html>

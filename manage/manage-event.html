@@ -16,34 +16,48 @@
 
 Parse.initialize("9eo5r1mHWoIPSTCzmrpdKa3lcHPjySx4y5D6q8Nq", "R8SWwYxpJcy73ogQKuSD43y7FigrlDGjBLcy1lzC");	
 	
-function init () {
-	var E = Parse.Object.extend("Event_List");
-var q = new Parse.Query(E);	
-q.find({
-  success: function(results) {
-for (var i = 0; i < results.length; i++) { 
-			show(results[i]);
-}}});
-}
+
 
 init ();
+function init () {
+	var E = Parse.Object.extend("Event_Info");
+	var q = new Parse.Query(E);	
+	q.find({
+ 	 success: function(results) {
+		for (var i = 0; i < results.length; i++) { 
+			show(results[i]);
+		}	
+	}
+	});
+}
+
+
+
 function show (e){
 	$("#add").after(	 "<tr class='result-row'> 	\
-	<td>"+e.get('type')+"</td> 		<td>"+e.get("ID")+"</td> 		<td>"+e.get("name")+"</td> 		<td>"+e.get("description")+"</td> 		<td>"+e.get("isNotification")+"</td> 		<td>"+e.get("effect_target")+"</td>  <td></td> 	</tr>");
+	<td>"+e.get('type')+"</td>\
+	<td>"+e.get("eid")+"</td>\
+	<td>"+e.get("name")+"</td>\
+	<td>"+e.get("description")+"</td>\
+	<td>"+e.get("isNotification")+"</td>\
+	<td>"+e.get("effect_target")+"</td>\
+	<td></td>\
+	</tr>");
 
 }
 		
 function Submit (){
-	var E = Parse.Object.extend("Event_List");
+	var E = Parse.Object.extend("Event_Info");
 	var e = new E();
 	e.set("type",$("#t").val());
-	e.set("ID",$("#i").val());
+	e.set("eid",$("#i").val());
 	e.set("name",$("#h").val());
 	e.set("description",$("#d").val());
 	e.set("isNotification",Boolean($("#n").val()));
-	e.set("effect_target",$("#e").val().split());
+	e.set("effect_target",numArr($("#e").val()));
 	e.save(null,{
 		success:function(e){
+			console.log (e.get("effect_target"));
 			$("#t").val("");
 			$("#i").val("");
 			$("#h").val("");
@@ -52,6 +66,13 @@ function Submit (){
 			$("#e").val("");
 			show(e);
 	}});
+}
+function numArr (v){
+	v = v.split(",");
+	for (var i = 0  ; i < v.length ; i++){
+		v[i] = parseInt (v[i]);
+	}
+	return v ;
 }
 
 </script>

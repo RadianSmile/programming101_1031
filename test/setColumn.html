@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Untitled Document</title>
+<!-- Common links -->
+<!----><link rel="icon" type="image/png" href="/include/icon.png" />
+<!----><link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+<!----><script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<!----><script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<!----><script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.2.19.min.js"></script>
+<!----><link href="../css/all.css" rel="stylesheet" />
+<!----><script type="text/javascript" src="../js/all.js?1111"></script>
+<!---------------------->
+</head>
+<body>
+
+<script>
+Parse.initialize("9eo5r1mHWoIPSTCzmrpdKa3lcHPjySx4y5D6q8Nq", "R8SWwYxpJcy73ogQKuSD43y7FigrlDGjBLcy1lzC");
+
+
+setColumn ("Test_User","XP", 0 );
+setColumn ("Test_User","HP", 90 );
+function setColumn  (className,colName,value){
+
+qurClass(className).then (function (e){
+	for (var i = 0 ; i < e.length ; i++){
+		e[i].set(colName,value);
+	}
+	return Parse.Object.saveAll(e);
+}).then (function(a){console.log (a)},Log);
+}
+
+</script>
+
+</body>
+</html>
