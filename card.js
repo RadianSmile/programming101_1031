@@ -63,7 +63,7 @@ $(document).ready(function(){
                                 var string = "<div class='cards'> " + ccontainer + "</div>";
                                 $('div.cardbox').append(string);
                                 ccontainer = "";
-                                $('img').on('click', function(){
+                                $('.card').on('click', function(){
                                     var id = $(this).attr('id');
                                     localStorage['owncardId'] = id;
                                     window.location.assign("http://radiansmile.github.io/CodeEDU/carddes.html");
@@ -73,7 +73,7 @@ $(document).ready(function(){
                                 var string = "<div class = 'cards'>" + ccontainer + "</div>";
                                 $('div.cardbox').append(string);
                                 ccontainer = "";
-                              $('img').on('click', function(){
+                              $('.card').on('click', function(){
                                     var id = $(this).attr('id');
                                     localStorage['owncardId'] = id;
                                     window.location.assign("http://radiansmile.github.io/CodeEDU/carddes.html");
@@ -92,8 +92,8 @@ $(document).ready(function(){
 
 function getElementStringByowncard(name, imagesrc, id){
     var s0 = "<h2>" + name + "</h2>";
-    var s1 = "<img id='"+id+"' src='" + imagesrc + "'>";
-    var s = "<div class='card'>" + s0 + s1 + "</div>";
+    var s1 = "<img src='" + imagesrc + "'>";
+    var s = "<div class='card' id='"+id"'>" + s0 + s1 + "</div>";
 
     return s;
 };
