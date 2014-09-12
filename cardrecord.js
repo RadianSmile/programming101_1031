@@ -13,6 +13,7 @@ $(document).ready(function(){
         query.descending('date');
         query.find({
             success:function(data){
+                console.log(data);
                 for(var i = 0; i<data.length; i++){
                     var s = useRecord(data[i]);
                     notification += s;
@@ -32,7 +33,7 @@ function useRecord(data){
     var targetName = data.get('targetuser').get('name');
     var targetId = data.get('targetuser').id;
     var cardName = data.get('Card_info').get('name');
-    var userId = data.id;
+    var userId = data.get('user').id;
     var userName = data.get('user').get('name');
     
     var s = "";
