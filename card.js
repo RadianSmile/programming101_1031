@@ -53,7 +53,7 @@ $(document).ready(function(){
             	    for(var i = 0; i<data.length; i++){
             	        var card = data[i].get('Card_info');
                         if(card == undefined){
-                            var backcard = "<a href='http://radiansmile.github.io/CodeEDU/card_drawing.html'><img id='backcard' src='img/choosecard/back.jpg'></a>";
+                            var backcard = "<a href='http://radiansmile.github.io/CodeEDU/card_drawing.html'><img id='backcard' src='img/choosecard/back.png'></a>";
                             $('div.cardbox').append(backcard);
                         }
                         else{
