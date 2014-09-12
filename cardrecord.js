@@ -32,7 +32,7 @@ function useRecord(data){
     var targetName = data.get('targetuser').get('name');
     var targetId = data.get('targetuser').id;
     var cardName = data.get('Card_info').get('name');
-    var userId = data.get('user').id;
+    var userId = data.id;
     var userName = data.get('user').get('name');
     
     var s = "";
