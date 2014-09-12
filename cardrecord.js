@@ -33,8 +33,11 @@ function useRecord(data){
     var targetName = data.get('targetuser').get('name');
     var targetId = data.get('targetuser').id;
     var cardName = data.get('Card_info').get('name');
+    console.log(data.get('user'));
     var userId = data.get('user').id;
+    console.log(userId);
     var userName = data.get('user').get('name');
+    console.log(userName);
     
     var s = "";
         if(userId == Parse.User.current().id){
