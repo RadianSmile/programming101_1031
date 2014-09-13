@@ -35,8 +35,6 @@ $(document).ready(function(){
     //back-end owncard
     var current_user = Parse.User.current();
     if(current_user){
-        localStorage.removeItem('owncardId');
-        $('.modal-content').html("");
         var ownCard = Parse.Object.extend('Owncard');
         var query = new Parse.Query(ownCard);
         query.include('Card_info');
@@ -91,6 +89,8 @@ $(document).ready(function(){
         });
     }
     $('#modalClose').on('click', function () {
+        localStorage.removeItem('owncardId');
+        $('.modal-content').html("");
         window.location.href="http://radiansmile.github.io/CodeEDU/dashboard.html";
     })
 });
