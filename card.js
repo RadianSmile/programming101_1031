@@ -88,8 +88,8 @@ $(document).ready(function(){
             }
         });
     }
-    $('#cardModal').on('hidden', function() {
-        $(this).removeData('modal');
+    $('#cardModal').on('hidden.bs.modal', function() {
+        $(this).removeData('bs.modal');
     });
 });
 
