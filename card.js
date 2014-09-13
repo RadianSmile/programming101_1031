@@ -46,7 +46,7 @@ $(document).ready(function(){
             	        var card = data[i].get('Card_info');
                         if(card == undefined){
                             var backcard = "<a href='card_drawing.html'><img id='backcard' src='img/choosecard/back.jpg'></a>"; // Rn
-                            $('div.cardbox').append(backcard);
+                            $('div.backcard').append(backcard);
                         }
                         else{
                             var s = getElementStringByowncard(card.get('name'), card.get('imagesrc'), data[i].id);
@@ -58,7 +58,6 @@ $(document).ready(function(){
                                 $('.card').on('click', function(){
                                     var id = $(this).attr('id');
                                     localStorage['owncardId'] = id;
-                                    window.location.assign("carddes.html");//Rn
                                 })
                             }
                             else if(i == data.length - 1){
@@ -68,23 +67,41 @@ $(document).ready(function(){
                               $('.card').on('click', function(){    // Rn  img to  .card
                                     var id = $(this).attr('id');
                                     localStorage['owncardId'] = id;
-                                    window.location.assign("carddes.html");// Rn
                                 })
                             }
                         }
             	    }
             }
         })
+        var owncardid = localStorage.getItem('owncardId');
+        var ownCard = Parse.Object.extend('Owncard');
+        var query = new Parse.Query(ownCard);
+        query.equalTo('objectId', owncardid);
+        query.include('Card_info');
+        query.first({
+            success: function(data){
+                var carddata = data.get('Card_info');
+                var cardtitle = carddata.get('name');
+                $('div#CardTitle').append(cardtitle);
+                var s = getUsecard(carddata.get('imagesrc'), carddata.get('shortdes'));
+                $('div#CardData').append(s);
+            }
+        });
     }
-    else{
-    	// alert("Please Login!");
-    	// window.location.assign("http://radiansmile.github.io/CodeEDU/fblogin.html");
-    }
+
 });
 
 function getElementStringByowncard(name, imagesrc, id){
     var s1 = "<img src='" + imagesrc + "'>";
-    var s = "<div class='card' id='"+id+"'>" + s1 + "</div>";
+    var s = "<a href='#' data-toggle='modal' data-target='#cardModal'><div class='card' id='"+id+"'>" + s1 + "</div></a>";
+
+    return s;
+};
+
+function getUsecard(imagesrc, shortdes){
+    var s1 = "<img class = 'owncard' src='" + imagesrc + "'/>";
+    var s2 = "<div id='shortdes'>" + shortdes + "</div>";
+    var s = "<div>" + s1 + s2 + "</dvi>";
 
     return s;
 };
