@@ -341,6 +341,7 @@ function deletecard(){
                 success: function(data){
                     console.log("Delete used card success!!");
                     alert("卡片成功使用！返回dashboard!");
+                    localStorage.removeItem('owncardId');
                     window.location.href = "http://radiansmile.github.io/CodeEDU/dashboard.html";
                 }
             })
