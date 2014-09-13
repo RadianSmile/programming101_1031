@@ -35,7 +35,6 @@ $(document).ready(function(){
     //back-end owncard
     var current_user = Parse.User.current();
     if(current_user){
-        localStorage.removeItem('owncardId');
         var ownCard = Parse.Object.extend('Owncard');
         var query = new Parse.Query(ownCard);
         query.include('Card_info');
