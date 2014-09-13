@@ -90,3 +90,11 @@ footer{
 	height:40px;
 	background:#426172;
 }
+
+.card{
+	margin-left: 10%;
+	margin-top: 1%;
+	position:relative;
+	display: inline-block;
+	cursor:pointer;
+}
