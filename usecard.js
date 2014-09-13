@@ -53,9 +53,7 @@ $(document).ready(function(){
                                                 addXP(cardid, targetuserid);
                                             }
                                             else{
-                                                alert("你讓" + targetusername + "增加10XP!");
-                                                cardUseRecord();
-                                                addXP(cardid, targetuserid);
+                                                alert("這張卡片只能使用在自己身上！請選擇自己！");
                                             }
                                         }
                                         else if(cardid == "4c3uX1rZ1K"){
@@ -65,9 +63,7 @@ $(document).ready(function(){
                                                 addXP(cardid, targetuserid);
                                             }
                                             else{
-                                                alert("你讓" + targetusername + "增加30XP!");
-                                                cardUseRecord();
-                                                addXP(cardid, targetuserid);
+                                                alert("這張卡片只能使用在自己身上！請選擇自己！");
                                             }
                                         }
                                         else if(cardid == "Zm3TV6UaEP"){
@@ -77,9 +73,7 @@ $(document).ready(function(){
                                                 addXP(cardid, targetuserid);
                                             }
                                             else{
-                                                alert("你讓" + targetusername + "增加50XP!");
-                                                cardUseRecord();
-                                                addXP(cardid, targetuserid);
+                                                alert("這張卡片只能使用在自己身上！請選擇自己！");
                                             }
                                         }
                                         else if(cardid == "wxTLT53ZZX"){
@@ -89,9 +83,7 @@ $(document).ready(function(){
                                                 addXP(cardid, targetuserid);
                                             }
                                             else{
-                                                alert("你讓" + targetusername + "增加70XP!");
-                                                cardUseRecord();
-                                                addXP(cardid, targetuserid);
+                                                alert("這張卡片只能使用在自己身上！請選擇自己！");
                                             }
                                         }
                                         else if(cardid == "zLHR3S0hlb"){
@@ -137,9 +129,7 @@ $(document).ready(function(){
                                                 addHP(cardid, targetuserid);
                                             }
                                             else{
-                                                alert("你補滿了" + targetusername + "的HP!");
-                                                cardUseRecord();
-                                                addHP(cardid, targetuserid);
+                                                alert("這張卡片只能使用在自己身上！請選擇自己！");
                                             }
                                         }
                                         else if(cardid == "aJONHaxQtM"){
@@ -149,9 +139,7 @@ $(document).ready(function(){
                                                 addLife(cardid, targetuserid);
                                             }
                                             else{
-                                                alert("你讓" + targetusername + "增加1條命");
-                                                cardUseRecord();
-                                                addLife(cardid, targetuserid);
+                                                alert("這張卡片只能使用在自己身上！請選擇自己！");
                                             }
                                         }
                                         else if(cardid == "10ypku2oZk"){
@@ -186,9 +174,7 @@ $(document).ready(function(){
                                         }
                                         else if(cardid == "y0pZ66Wl4X"){
                                             if(data1.id == Parse.User.current().id){
-                                                alert("你讓自己減少10HP!");
-                                                cardUseRecord();
-                                                minusHP(cardid, targetuserid);
+                                                alert("這張卡片只能使用在其他人！請選擇其他使用者！");
                                             }
                                             else{
                                                 alert("你讓" + targetusername + "減少10HP!");
@@ -198,9 +184,7 @@ $(document).ready(function(){
                                         }
                                         else if(cardid == "ZLZIS7XbfQ"){
                                             if(data1.id == Parse.User.current().id){
-                                                alert("你讓自己減少30HP!");
-                                                cardUseRecord();
-                                                minusHP(cardid, targetuserid);
+                                                alert("這張卡片只能使用在其他人！請選擇其他使用者！");
                                             }
                                             else{
                                                 alert("你讓" + targetusername + "減少30HP!");
@@ -210,9 +194,7 @@ $(document).ready(function(){
                                         }
                                         else if(cardid == "4kJkiyYROw"){
                                             if(data1.id == Parse.User.current().id){
-                                                alert("你讓自己減少50HP!");
-                                                cardUseRecord();
-                                                minusHP(cardid, targetuserid);
+                                                alert("這張卡片只能使用在其他人！請選擇其他使用者！");
                                             }
                                             else{
                                                 alert("你讓" + targetusername + "減少50HP!");
@@ -281,7 +263,7 @@ $(document).ready(function(){
                                                                 deletecard();
                                                             }
                                                             else{
-                                                                alert("這張卡片只能使用在自己身上！");
+                                                                alert("這張卡片只能使用在自己身上！請選擇自己！");
                                                             }
                                                         },
                                                         error:function(error){
