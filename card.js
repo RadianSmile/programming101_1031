@@ -88,7 +88,7 @@ $(document).ready(function(){
             }
         });
     }
-    $('#cardModal').on('hidden', function () {
+    $('#modelClose').on('click', function () {
         $('.modal-content').html('');
     })
 });
