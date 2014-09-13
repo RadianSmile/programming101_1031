@@ -88,7 +88,7 @@ $(document).ready(function(){
             }
         });
     }
-    $('#modelClose').on('click', function () {
+    $('#modalClose').on('click', function () {
         $('.modal-content').html('');
     })
 });
