@@ -534,6 +534,7 @@ function stealCard(targetId){
             query2.include('Card_info');
             query2.find({
                 success: function(data2){
+                    console.log(data2);
                     if(data2 != undefined){
                         var random = Math.floor(Math.random() * data2.length);
                         var own = new owncard();
