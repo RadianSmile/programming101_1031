@@ -88,10 +88,12 @@ $(document).ready(function(){
             }
         });
     }
-    $('#modalClose').on('click', function () {
-        localStorage.removeItem('owncardId');
+    $('#cardModal').on('hidden', function () {
+      $('.modal-content').html("");
     })
-    $('.modal-content').html('');
+    /*$('#modalClose').on('click', function () {
+        localStorage.removeItem('owncardId');
+    })*/
 });
 
 function getElementStringByowncard(name, imagesrc, id){
