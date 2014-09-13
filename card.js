@@ -88,9 +88,9 @@ $(document).ready(function(){
             }
         });
     }
-    $('#cardModal').on('hidden.bs.modal', function() {
-        $(this).removeData('bs.modal');
-    });
+    $('modalClose').on('click',function(){
+        $('#cardModal').removeData();
+    })
 });
 
 function getElementStringByowncard(name, imagesrc, id){
