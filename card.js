@@ -9,29 +9,29 @@ $(document).ready(function(){
     query.first({
         success:function(data){
             var photo = data.get('User').get('photo');
-			var name = data.get('User').get('name');
-			var level = data.get('Level');
+            var name = data.get('User').get('name');
+            var level = data.get('Level');
             var hp = data.get('HP');
             var xp = data.get('XP');
              var life = data.get('Life');
          var hpblocks = 100;//parseInt(hp)|100;
          var xpblocks = 100;//parseInt(xp)|100;
-			$('#individual-name').append(name);
-			$('#individual-level').append('Level:'+level);
-			
-			$(".bighead").attr("src",photo);  // Rn
-			$(".bighead").attr("width","100%"); // Rn
-			// Rn : 這裡是 animation 如果要調整%數或其他的，可以從這裡調整變數
-			$('#individual-hp').animate({
-				width:hp+'%'
-			},1000);        // Rn
-			$('#individual-exp').animate({
-				width:xp+'%'	 
-			},2000);         // Rn
+            $('#individual-name').append(name);
+            $('#individual-level').append('Level:'+level);
+            
+            $(".bighead").attr("src",photo);  // Rn
+            $(".bighead").attr("width","100%"); // Rn
+            // Rn : 這裡是 animation 如果要調整%數或其他的，可以從這裡調整變數
+            $('#individual-hp').animate({
+                width:hp+'%'
+            },1000);        // Rn
+            $('#individual-exp').animate({
+                width:xp+'%'     
+            },2000);         // Rn
 
           }
     });
-	
+    
     //back-end owncard
     var current_user = Parse.User.current();
     if(current_user){
@@ -41,9 +41,9 @@ $(document).ready(function(){
         query.equalTo('user', current_user);
         query.find({
             success: function(data){
-            	    var ccontainer = "";
-            	    for(var i = 0; i<data.length; i++){
-            	        var card = data[i].get('Card_info');
+                    var ccontainer = "";
+                    for(var i = 0; i<data.length; i++){
+                        var card = data[i].get('Card_info');
                         if(card == undefined){
                             var backcard = "<a href='card_drawing.html'><img id='backcard' src='img/choosecard/back.jpg'></a>"; // Rn
                             $('div.backcard').append(backcard);
@@ -70,7 +70,7 @@ $(document).ready(function(){
                                 })
                             }
                         }
-            	    }
+                    }
             }
         })
         var owncardid = localStorage.getItem('owncardId');
@@ -88,8 +88,8 @@ $(document).ready(function(){
             }
         });
     }
-    $('modalClose').on('click',function(){
-        $('#cardModal').removeData();
+    $('#cardModal').on('hidden', function () {
+        $('.modal-content').html('');
     })
 });
 
