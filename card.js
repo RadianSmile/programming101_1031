@@ -89,7 +89,8 @@ $(document).ready(function(){
         });
     }
     $('#cardModal').on('hidden', function () {
-      $('.modal-content').html("");
+        localStorage.removeItem('owncardId');
+        $('.modal-content').html("");
     })
     /*$('#modalClose').on('click', function () {
         localStorage.removeItem('owncardId');
