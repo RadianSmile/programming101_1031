@@ -82,7 +82,7 @@ $(document).ready(function(){
             success: function(data){
                 var carddata = data.get('Card_info');
                 var cardtitle = carddata.get('name');
-                $('div#CardTitle').append(cardtitle);
+                $('h4#CardTitle').append(cardtitle);
                 var s = getUsecard(carddata.get('imagesrc'), carddata.get('shortdes'));
                 $('div#CardData').append(s);
             }
