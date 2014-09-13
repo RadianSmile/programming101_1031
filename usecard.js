@@ -535,7 +535,7 @@ function stealCard(targetId){
             query2.find({
                 success: function(data2){
                     console.log(data2);
-                    if(data2 != []){
+                    if(data2 != null){
                         var random = Math.floor(Math.random() * data2.length);
                         var own = new owncard();
                         own.set('objectId',data2[random].id);
