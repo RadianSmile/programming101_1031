@@ -281,10 +281,7 @@ $(document).ready(function(){
                                                                 deletecard();
                                                             }
                                                             else{
-                                                                alert("你讓"+targetusername+"多了一次抽卡機會!");
-                                                                console.log("Draw record success!");
-                                                                cardUseRecord();
-                                                                deletecard();
+                                                                alert("這張卡片只能使用在自己身上！");
                                                             }
                                                         },
                                                         error:function(error){

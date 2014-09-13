@@ -11,10 +11,7 @@ $(document).ready(function(){
     query.equalTo('user', Parse.User.current());
     query.first({
         success:function(data){
-            if(data != undefined){
-                alert("You can draw one card!");
-            }
-            else{
+            if(data == undefined){
                 alert("You don't have the chance to draw the card! Back to dashboard!");
                 window.location.href="http://radiansmile.github.io/CodeEDU/dashboard.html";
             }
@@ -42,6 +39,24 @@ function getData(){
         success: function(results){
             var randomno = randomNum(results.length);
             var object = results;
+
+            var currentuser = Parse.User.current();
+            var Cardrecord = Parse.Object.extend("Card_record");
+            var cardrecord = new Cardrecord();
+
+            //Card_record!
+            cardrecord.set('user', currentuser);
+            cardrecord.set('Card_info', object[randomno]);
+            cardrecord.set('User', currentuser);
+            cardrecord.set('type', "get");
+            cardrecord.save(null,{
+                success:function(data){
+                    console.log("Card drawing record success!");
+                },
+                error:function(error){
+                    console.log(error.toString());
+                }
+            })
 
             Shortdescription = object[randomno].get('shortdes');
             Title = object[randomno].get('name');
