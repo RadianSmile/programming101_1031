@@ -1,5 +1,5 @@
 .assign-info-outer {
-	padding:0 20px;
+	padding:0 40px 40px 40px;
 	background:rgba(0,133,203,1.00);
 }
 .assignInfo {
@@ -19,4 +19,9 @@
 .assignInfo-link {
 	margin-top:10px;
 	width:100%;
+}
+.game {
+	cursor:pointer;
+}
+	
 }

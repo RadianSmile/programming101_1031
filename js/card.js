@@ -8,26 +8,25 @@ $(document).ready(function(){
     query.include('User');
     query.first({
         success:function(data){
-            var photo = data.get('User').get('photo');
-			var name = data.get('User').get('name');
-			var level = data.get('Level');
-            var hp = data.get('HP');
-            var xp = data.get('XP');
-             var life = data.get('Life');
+			var usrname="Dick";
+			var level=255;
+            // var photo = data.get('User').get('photo');
+            // var name = data.get('User').get('name');
+            // var level = data.get('Level');
+            var hp =100; //data.get('HP');
+            var xp =100; //data.get('XP');
+            // var life = data.get('Life');
          var hpblocks = 100;//parseInt(hp)|100;
          var xpblocks = 100;//parseInt(xp)|100;
-			$('#individual-name').append(name);
+            // i = 0;
+			$('#individual-name').append(usrname);
 			$('#individual-level').append('Level:'+level);
-			
-			$(".bighead").attr("src",photo);  // Rn
-			$(".bighead").attr("width","100%"); // Rn
-			// Rn : 這裡是 animation 如果要調整%數或其他的，可以從這裡調整變數
 			$('#individual-hp').animate({
-				width:hp+'%'
-			},1000);        // Rn
+				width:'100%'
+			});
 			$('#individual-exp').animate({
-				width:xp+'%'	 
-			},2000);         // Rn
+				width:'100%'	
+			});
 
           }
     });

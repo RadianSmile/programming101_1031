@@ -9,29 +9,42 @@ $(document).ready(function(){
     query.first({
         success:function(data){
             var photo = data.get('User').get('photo');
-			var name = data.get('User').get('name');
-			var level = data.get('Level');
+            var name = data.get('User').get('name');
+            var level = data.get('Level');
             var hp = data.get('HP');
             var xp = data.get('XP');
-             var life = data.get('Life');
-         var hpblocks = 100;//parseInt(hp)|100;
-         var xpblocks = 100;//parseInt(xp)|100;
-			$('#individual-name').append(name);
-			$('#individual-level').append('Level:'+level);
-			
-			$(".bighead").attr("src",photo);  // Rn
-			$(".bighead").attr("width","100%"); // Rn
-			// Rn : 這裡是 animation 如果要調整%數或其他的，可以從這裡調整變數
-			$('#individual-hp').animate({
-				width:hp+'%'
-			},1000);        // Rn
-			$('#individual-exp').animate({
-				width:xp+'%'	 
-			},2000);         // Rn
+            var life = data.get('Life');
+   //  Rn       var hpblocks = parseInt(hp); 
+     //  Rn     var xpblocks = parseInt(xp);
+            i = 0;
 
-          }
+            $('.bighead').attr("src", photo);
+            $('#name').append(name);
+            $('.level').append("Level "+level);
+
+
+						 // $(".xp").css("width",hp+"xp");
+						 // $(".hp").css("width",hp+"hp");
+        /** Rn   $("#hp td:lt("+hpblocks+")").each(function(i){
+                var $this = $(this);
+                setTimeout(function(){
+                    $this.css('background-color', '#fff')
+                }, 200*i);
+            })
+            $("#xp td:lt("+xpblocks+")").each(function(i){
+                var $this = $(this);
+                setTimeout(function(){
+                    $this.css('background-color', '#fff')
+                }, 200*i);
+            })   **/
+            
+							
+							for(var i = 1; i<=life; i++){
+                var s = "<img class='card' width='10' id='heart' src='img/heart.png'>";
+                $('#life').append(s);
+            }
+        }
     });
-	
     //back-end owncard
     var current_user = Parse.User.current();
     if(current_user){
@@ -77,8 +90,8 @@ $(document).ready(function(){
         })
     }
     else{
-    	// alert("Please Login!");
-    	// window.location.assign("http://radiansmile.github.io/CodeEDU/fblogin.html");
+    	alert("Please Login!");
+    	window.location.assign("fblogin.html");// Rn
     }
 });
 
