@@ -90,9 +90,7 @@ $(document).ready(function(){
         });
     }
     $('#modalClose').on('click',function(){
-        $('#cardModal').on('hidden', function() {
             $(this).data('cardModal').$element.removeData();
-        })
     })
 
 });
