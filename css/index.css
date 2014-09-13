@@ -1,0 +1,121 @@
+@charset "utf-8";
+/* CSS Document */
+#indexNavbar{
+	background-color:rgb(66,98,113);
+	border-color:rgb(66,98,113);
+}
+#indexNavbar div{
+	color:rgb(203,227,239);
+	padding-left:20px;
+	padding-top:5px;
+}
+body{
+	color:rgb(61,94,109);
+	background-color:rgb(129,170,188);
+}
+.storyPic{
+	-moz-box-shadow:2px 2px 1px rgba(20%,20%,40%,0.5);
+	-webkit-box-shadow:2px 2px 1px rgba(20%,20%,40%,0.5);
+	position:relative;
+}
+.rotationA{
+	-moz-transform-origin:left top;
+	-moz-transform:rotate(-3deg);
+	-webkit-transform-origin:left top;
+	-webkit-transform:rotate(-3deg);
+	-o-transform-origin:left top;
+	-o-transform:rotate(-3deg);
+	-ms-transform-origin:left top;
+	-ms-transform:rotate(-23deg);
+	margin-top:-3px;
+}
+.rotationB{
+	-moz-transform:rotate(1deg);
+	-webkit-transform:rotate(1deg);
+	-o-transform:rotate(1deg);
+	-ms-transform:rotate(1deg);
+}
+.rotationC{
+	-moz-transform-origin:right top;
+	-moz-transform:rotate(3deg);
+	-webkit-transform-origin:right top;
+	-webkit-transform:rotate(3deg);
+	-o-transform-origin:right top;
+	-o-transform:rotate(3deg);
+	-ms-transform-origin:right top;
+	-ms-transform:rotate(3deg);
+	margin-top:-5px;
+}
+.rotationD{
+	-moz-transform-origin:left top;
+	-moz-transform:rotate(-2deg);
+	-webkit-transform-origin:left top;
+	-webkit-transform:rotate(-2deg);
+	-o-transform-origin:left top;
+	-o-transform:rotate(-2deg);
+	-ms-transform-origin:left top;
+	-ms-transform:rotate(-2deg);
+}
+.indentA{
+	margin-top:20px;
+}
+.indentB{
+	margin-top:40px;
+}
+.indentC{
+	margin-top:80px;
+}
+.indentD{
+	margin-top:100px;
+}
+#bottomBar{
+	background-color:rgb(66,98,113);
+	position:relative;
+	margin-top:-90px;
+	height:200px;
+	border-color:rgb(66,98,113);
+	z-index:-100;
+}
+.machineBoxs{
+	width:-webkit-calc (100% - 15px);
+}
+
+.machineBox{
+	width:16.66%;
+	text-align:center;
+	display:inline-block;
+	float:left;
+}
+.machineBox > img {
+	width:85%;
+	display:inline-block;
+	text-align:center;
+}
+
+.genreWord{
+	background-color:rgb(129,170,188);
+	padding-left:25px;
+	padding-right:25px;
+	padding-top:2px;
+	display:inline-block;
+	margin-left:39%;
+	margin-right:28%;
+	position:relative;
+	font-size:24px;
+}
+.linePointL{
+	display:inline-block;
+	background-color:rgb(129,170,188);
+	float:left;
+}
+.linePointR{
+	display:inline-block;
+	background-color:rgb(129,170,188);
+	float:right;
+}
+.line{
+	background-image:url(../img/games/line1.png);
+	background-repeat:repeat-x;
+	padding-left:0px;
+	padding-right:0px;
+}

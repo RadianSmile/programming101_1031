@@ -71,7 +71,7 @@
 
 <script type="text/javascript">
 $("#submit").on('click',function(){
-    toSubmit($('#link').val());
+    toSubmit($('.submit-asnUrl').val());
 		var play = document.createElement("iframe");
 		play.setAttribute("src",$('#link').val());
 		$("#play").append(play);

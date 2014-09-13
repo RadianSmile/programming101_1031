@@ -28,6 +28,10 @@
 <body>
 <div id="fb-root"></div>
 <script>
+
+
+var a = "";
+
   // This is called with the results from from FB.getLoginStatus().
   function statusChangeCallback(response) {
     console.log('statusChangeCallback');
@@ -86,9 +90,9 @@ function fb_login () {
 function fb_getInfo (goStep3) {
 	FB.api("/me/picture",{
 		"redirect": false,
-		"height": "50",
+		"height": "200",
 		"type": "normal",
-		"width": "50"
+		"width": "200"
 	},function (response) {
 		if (response && !response.error) {
 			console.log(response);
@@ -126,6 +130,7 @@ function signUp () {
 	 FB.login(function(response) {
 		Parse.FacebookUtils.logIn(null, {
 		 success: function(user) {
+			 alert(a);
 			user.set("rolePwd",a);
 			user.set("uid",user.get("authData").facebook.id);
 			user.set("ID",$("#id").val());
@@ -133,7 +138,7 @@ function signUp () {
 			user.set("photo",$("#pf_photo").find("img").first().attr("src"));
 			user.save(null, {
 				success: function(user) {
-					alert(user.ID() +' 註冊成功! \n頁面即將跳轉至個人頁面');
+					alert(user.ID() +' 註冊成功!\n頁面即將跳轉至個人頁面');
 					document.location="dashboard.html";
 				},
 				error: function(userdata, error) {
@@ -222,7 +227,9 @@ function syntaxHighlight(json) {
 <div class="form-group">
   <label class="col-md-4 control-label" for="checkPwdBtn"></label>
   <div class="col-md-4">
-    <button id="checkPwdBtn" name="checkPwdBtn" class="btn btn-info"  onClick="checkPassword();">驗證密碼</button>
+    <button id="checkPwdBtn" name="checkPwdBtn" class="btn btn-info"  onClick="checkPassword();">驗證密碼</button><br>
+	<div class="hint" style="margin-top:10px;">如果忘記密碼，請<a href="mailto:100102035@nccu.edu.tw">寄信給助教</a></div>
+
   </div>
 </div>
 
@@ -320,40 +327,47 @@ function FBinitDone (){
 	checkLoginStatus (false); 
 
 }
-var a = "";
 
 function checkPassword() {
-	a = $("#pwd").val()
+	a = $("#pwd").val();
 	$.ajax({
 		type: "POST",
 		url: "coursePassword.php",
 		data: { pwd:a},
 		success: function (data,status,xhr){
 			//alert("success");
-			
+
 			showForms (data) ;
 		},
 	});
 }
 function showForms(data){ 
+		var role = "" ;
 		if (data === "student"){
 			$("#step2").fadeIn();
 			checkLoginStatus (true); 
+			role = "學生";
+			$("#pwd").attr("disabled","disabled");
 			//跑出FB登入頁面	
 		}else if (data === "teacher"){ 
 			$("#step2").fadeIn();
 			$("#fb_login_btn").fadeIn();
 			checkLoginStatus (true); 
-			//alert("Hello Teacher");
+			$("#pwd").attr("disabled","disabled");
+
+			role = "老師";			
 			//跑出FB登入頁面	
 		}else if (data === "ta"){
 			checkLoginStatus (true); 
 			$("#step2").fadeIn();
+			$("#pwd").attr("disabled","disabled");
 
-			alert ("Hello TA");
+			role = "助教";					
+			//alert ("Hello TA");
 			//跑出FB登入頁面	
 		}else {
 			alert ("The Password is wrong" ) ;
+			$("#pwd").select();
 		}
 }
 </script>

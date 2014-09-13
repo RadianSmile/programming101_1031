@@ -1,0 +1,116 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Untitled Document</title>
+<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+
+<link rel="stylesheet" href="../pkgs/bootstrap/css/bootstrap.min.css">
+<script src="../pkgs/bootstrap/js/bootstrap.min.js"></script>
+<style>
+.modall {
+	background:rgba(100,95,95,1.00);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  pointer-events: none;
+  opacity: 0;
+
+  will-change: transform, opacity;
+
+}
+.modall {
+  -webkit-transform: scale(1.15);
+  transform: scale(1.15);
+
+  -webkit-transition:
+    -webkit-transform 0.1s cubic-bezier(0.465, 0.183, 0.153, 0.946),
+    opacity 0.1s cubic-bezier(0.465, 0.183, 0.153, 0.946);
+
+  transition:
+    transform 0.1s cubic-bezier(0.465, 0.183, 0.153, 0.946),
+    opacity 0.1s cubic-bezier(0.465, 0.183, 0.153, 0.946);
+
+}
+
+.modall.visible {
+  pointer-events: auto;
+  opacity: .8;
+}
+
+.modall.visible {
+
+  -webkit-transform: scale(1);
+  transform: scale(1);
+
+  -webkit-transition:
+    -webkit-transform 0.3s cubic-bezier(0.465, 0.183, 0.153, 0.946),
+    opacity 0.3s cubic-bezier(0.465, 0.183, 0.153, 0.946);
+
+  transition:
+    transform 0.3s cubic-bezier(0.465, 0.183, 0.153, 0.946),
+    opacity 0.3s cubic-bezier(0.465, 0.183, 0.153, 0.946);
+
+}
+.view {
+	background:rgba(224,224,224,1.00);
+	border-radius: 5px;
+	width:30%;
+	height:30%;
+	position:absolute;
+	top:50%;
+	left:50%;
+	
+	padding:25px;
+	
+	
+	-webkit-transform: scale(1.5);
+  transform: scale(1);
+
+  -webkit-transition:
+    -webkit-transform 0.3s cubic-bezier(0.465, 0.183, 0.153, 0.946),
+    opacity 0.3s cubic-bezier(0.465, 0.183, 0.153, 0.946);
+
+  transition:
+    transform 0.3s cubic-bezier(0.465, 0.183, 0.153, 0.946),
+    opacity 0.3s cubic-bezier(0.465, 0.183, 0.153, 0.946);
+-webkit-transform:translate(-50%,-50%);
+}
+</style>
+
+</head>
+
+<body>
+<div class="row">
+<div class="container">
+<div id="theBtn" class="btn btn-primary">
+跑出Modal View
+</div>
+</div>
+</div>
+
+<div class="modall" id="modall">
+
+
+<div class="view">
+12345
+<div id="close" class="btn btn-primary" style="padding:20px;">
+	Close
+</div>
+</div>
+
+<script>
+$("#theBtn").click(function(){
+	$("#modall").addClass('visible');
+})
+
+$("#close").click(function(){
+		$("#modall").removeClass('visible');
+})
+
+</script>
+</body>
+</html>

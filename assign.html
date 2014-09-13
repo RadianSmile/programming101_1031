@@ -135,7 +135,7 @@ function showAssign (a){
 (function start (){
 	var srh = getQueryString ();
 	//srh.nth = paraCheck(srh.nth) ? srh.nth : "1" ;
-	srh.nth = "1";
+	//srh.nth = "1";
 	qurAssigns(srh.nth).then(function(assigns){
 		each(assigns,showAssign);
 		

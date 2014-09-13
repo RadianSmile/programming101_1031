@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Untitled Document</title>
+<!----><script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.2.19.min.js"></script>
+<!----><script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+</head>
+
+<body>
+
+
+
+
+<script>
+Parse.initialize("9eo5r1mHWoIPSTCzmrpdKa3lcHPjySx4y5D6q8Nq", "R8SWwYxpJcy73ogQKuSD43y7FigrlDGjBLcy1lzC");
+
+function date(y,mo,d,h,mi,s) {
+	
+	return new Date(y, mo-1, d, h?h:0, mi?mi:0, s?s:0);
+}
+
+var startDate = date (2014,9,29);
+
+var AssignInfo = Parse.Object.extend("Assign_Info");
+var asnInfo = new AssignInfo ();
+asnInfo.set("img","http://www.books.com.tw/img/N00/029/53/N000295364_t_01.jpg");
+asnInfo.set("intro","情醫究雜容定電的些交公是源他不、類發起遠日己，到他廣實腦不特……道有嚴決不：說離據知利政慢來看確客使，人回那越？信來無重工……有人始道方林裡來。平待天有議無三戲有一聞你使自不因門開如片他導作行一依；華個解作經！與之自不到個合土會道南關建的者工的現報少風，說怎上裝了取證行，想收故單查、收子外區中無作道企來、感在比銀旅倒比己作海心孩生個完之盡意了成因日論：個安天感管位的於放轉，界一還意一業的的問以裡主奇險同的續，省話響重以，月際明陽生公同死中變林國題頭的理廣我在以。"); 
+asnInfo.set("req","情醫究雜容定電的些交公是源他不、類發起遠日己，到他廣實腦不特……道有嚴決不：說離據知利政慢來看確客使，人回那越？信來無重工……有人始道方林裡來。平待天有議無三戲有一聞你使自不因門開如片他導作行一依；華個解作經！與之自不到個合土會道南關建的者工的現報少風，說怎上裝了取證行，想收故單查、收子外區中無作道企來、感在比銀旅倒比己作海心孩生個完之盡意了成因日論：個安天感管位的於放轉，界一還意一業的的問以裡主奇險同的續，省話響重以，月際明陽生公同死中變林國題頭的理廣我在以。");
+asnInfo.set("nth","1");
+asnInfo.set("submitDate",date(2014,9,29));
+asnInfo.set("reviewDate",date(2014,10,6));
+asnInfo.set("reviewDue",date(2014,10,13));
+asnInfo.save().then(function(s){console.log (s); alert("Done")})
+
+
+</script>
+</body>
+</html>

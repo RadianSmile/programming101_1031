@@ -137,14 +137,15 @@ $(document).on('click',".submit-Event",function (){
 			var uid = $(e).data("uid") ;
 			var er = new EventRecord ();
 			er.set("eid",eid);
-			er.set("target_test",idRefArr[uid]);
+			er.set("target",idRefArr[uid]);
 			saveArr.push(er);
 		});
 		Parse.Object.saveAll(saveArr).then(function (s){
 			console.log (s); 
-			alert("Evvent Sent");
 			if (s.length > 0 ){
 				$(".input-id").val("");//document.write("success : " + s[0].get("target_test").id +"\n");
+				alert("Evvent Sent");
+	
 				$(".panel-body").html('');
 			}
 		
@@ -171,7 +172,7 @@ function panelClear($p){
 }
 
 function qurUsers(){
-	var q = new Parse.Query( Parse.Object.extend("Test_User"));
+	var q = new Parse.Query(Parse.User);
 	return q.find();
 }
 /*
@@ -189,8 +190,11 @@ function makeAutofill (a){
 	var p = new Parse.Promise();
 	for (var i = 0 ; i < a.length ; i++)
 	{
-		var id = a[i].get("uid");
-		autoFillArr.push(id);
+		
+		var id = a[i].get("ID");
+		var name = a[i].get("name");
+		if(typeof (id) === 'undefined'){continue;}
+		autoFillArr.push({ label: id+" "+name , value: id });
 		idRefArr[id] = a[i];
 	}
 	p.resolve([autoFillArr,idRefArr]);
@@ -203,8 +207,8 @@ function qur (){
 	var record = new Event_Record();
 }*/
 
-function apdAddStd (stdId,$parent){
-	var html = 	'<span class="iTag badge" data-uid="'+stdId+'" >'+stdId+'<span class="stdRemove glyphicon glyphicon-remove"></span></span> ';
+function apdAddStd (stdId,idName,$parent){
+	var html = 	'<span class="iTag badge" data-uid="'+stdId+'" >'+idName+ '<span class="stdRemove glyphicon glyphicon-remove"></span></span> ';
 	$parent.find(".panel-body").first().append(html);
 }
 
@@ -215,9 +219,10 @@ function initAutofill (arr){
 	$(".input-id").autocomplete({
 		select: function( e, ui ) {
 			var v = ui.item.value;
+			var l = ui.item.label;
 			var t = e.target;
 			//toggleRowButton ($(t).closest(".con-add-std"));
-			apdAddStd (v,$(t).closest(".panel"));
+			apdAddStd (v,l,$(t).closest(".panel"));
 						$(t).val('');
 return false;
 		},

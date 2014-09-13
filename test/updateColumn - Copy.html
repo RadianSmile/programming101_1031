@@ -18,19 +18,41 @@
 <script>
 Parse.initialize("9eo5r1mHWoIPSTCzmrpdKa3lcHPjySx4y5D6q8Nq", "R8SWwYxpJcy73ogQKuSD43y7FigrlDGjBLcy1lzC");
 
-Parse.Cloud.run("getRole").then(function (r){
-	r.getUsers().add()
-	
-},Log);
+
+updateColumn ("Event_Info","effect_target",strToArray);
+
+function updateColumn (className,columnName,func){
+	qurClass(className).then(function(r){
+		each(r,function(rr,i){
+			r[i].set(columnName,func(rr.get(columnName)));
+			console.log (r[i]);
+		});
+			console.log (r);
+
+		if (confirm ("save?") )Parse.Object.saveAll(r).then(function (r){
+			console.log (r);
+			
+		});
+	},Log);
+}
+function strToArray (a){
+	var str = a[0];
+	console.log (str);
+	var arr = str.split (",");
+	each(arr,function(a,i){
+		arr[i] = parseInt(a);
+	})
+	return arr ;
+}
 
 
-/*
-(function (){
-	var q = new Parse.Query(Parse.Role);
-	//q.equalTo("name","Admin");
-	q.find().then(Log,Log);
-	
-})()*/
+/*qurClass("Event_Info").then (function(r){
+	each (r,function (a){console.log (a.get("effect_target")[0])})
+	})*/
+
+
+/** Did  **/
+//renameClass("Event_List","Event_Info");
 
 
 

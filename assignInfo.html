@@ -1,129 +1,39 @@
-<!doctype html>
-<html>
-<head>
-<meta charset="UTF-8">
 
-<!-- Common links -->
-<!----><link rel="icon" type="image/png" href="/include/icon.png" />
-<!----><link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
-<!----><script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-<!----><script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-<!----><script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.2.19.min.js"></script>
-<!----><link href="css/all.css" rel="stylesheet" />
-<!----><script src="js/all.js"></script>
-<!---------------------->
-<script src="pkgs/tablesorter/js/jquery.tablesorter.min.js"></script>
-<style>
-.assignInfo {
-	background:rgba(0,133,203,1.00);
-	color:white;
-	padding:20px 0 ;
-}
-.left-wraper{
-	float:right;
-}
-.photo {
-	margin-top:20px;
-}
-.link {
-	margin-top:10px;
-	width:100%;
-}
-.nav{
-height:50px;
-background:rgba(0,70,119,1.00);
-}
-
-
-</style>
-<script>
-</script>
-<title>Codedu</title>
-</head>
-<body>
-
-
-<!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-			
-    </div> <!-- modal-content --> 
-  </div>
+<div id="assignInfoInnerApd">
 </div>
-<!-- Button trigger modal -->
-
-<div class="nav container-fluid">
-
-</div>
+<!-- Assign info Modal 的狀態  
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="assignInfo">
-	<div class="row">
-		<div class="assignInfo-left col-md-5">
-			<div class="left-wraper">
-				<div class="photo">
-					<img src="http://2.bp.blogspot.com/-8QkfE536IEM/Ups0fGkA7vI/AAAAAAAAAEY/-EKx-37oxrQ/s1600/pacman.jpg" width="250" height="250">
+<div class="assign-info-outer">
+	<div class="assignInfo container-fluid">
+		<div class="row">
+				<div class="col-xs-4 ">
+					<div class="assignInfo-photo">
+						<img src="http://2.bp.blogspot.com/-8QkfE536IEM/Ups0fGkA7vI/AAAAAAAAAEY/-EKx-37oxrQ/s1600/pacman.jpg" width="100%" >
+					</div>
+					<div class="links">
+						<div class="link-block">	
+							<a class="btn btn-default assignInfo-link" href="assign.html?nth=1">所有人遊戲</a>
+							<div class="note">
+								<input class=" form-control input-md" type="url">
+								<a class="btn btn-default assignInfo-link" href="assign">上傳遊戲</a>
+							</div>
+						</div>			
+					</div>
 				</div>
-				<div class="links">
-					<div class="link-block">
-						<a class="btn btn-default link" href="assign.html">檢視遊戲</a>
-						<div class="note">
-						<a class="btn btn-default link" href="assign.html">上傳遊戲</a>
-						
-						</div>
-					</div>			
+			<div class=" col-xs-8">
+				<h1 class="name">Pack Man</h1>
+				<div class="des-block intro">
+					<h2>Introduction</h2>
+					<div class="des">閆一庣眽軦誆乜僨懆仂，镺屮柎娹筌腡乜豩爿庀。夬恝芚婛拰禶搤碏厊邛瓬坁弤牬沏楻丌狔酺翜。淊一洐釹揵歆乇蝁縟尐，琌屮郅牻閍筴屮墇丮氶。蚾一迠啢揓遒乜摲鋻卬，敓丌砒埭渹粲兀誙夃宄。赻一炴脧鄅蜄屮漃閿夃，婝兀紃莈嵧楙兀硾夬圣。巿貤抮琋侻蠵毻碄妀邔耇汩佮狋杈貄乇怊禈楂。丮晟杶桾癹雥暋耡屼伔訇沎邳迍抌痭乇怜墇滏。觚妽仱篥黽麮汌一媄堎栠迕汃砒乜，裲棤乜坲赲彀泏氻屮岭僝垗亓佫。殳宭竻剬恮靇祽塨朾扦洠卣枅芛沚僆兀怞鋮滃。</div>				
 				</div>
-			</div>
-		</div>
-		<div class="assignInfo-right col-md-6">
-			<h1 class="name">Pack Man</h1>
-			<div class="des-block intro">
-				<h2>Introduction</h2>
-				<div class="des">閆一庣眽軦誆乜僨懆仂，镺屮柎娹筌腡乜豩爿庀。夬恝芚婛拰禶搤碏厊邛瓬坁弤牬沏楻丌狔酺翜。淊一洐釹揵歆乇蝁縟尐，琌屮郅牻閍筴屮墇丮氶。蚾一迠啢揓遒乜摲鋻卬，敓丌砒埭渹粲兀誙夃宄。赻一炴脧鄅蜄屮漃閿夃，婝兀紃莈嵧楙兀硾夬圣。巿貤抮琋侻蠵毻碄妀邔耇汩佮狋杈貄乇怊禈楂。丮晟杶桾癹雥暋耡屼伔訇沎邳迍抌痭乇怜墇滏。觚妽仱篥黽麮汌一媄堎栠迕汃砒乜，裲棤乜坲赲彀泏氻屮岭僝垗亓佫。殳宭竻剬恮靇祽塨朾扦洠卣枅芛沚僆兀怞鋮滃。</div>				
-			</div>
-			<div class="des-block requirement">
-				<h2>Requirement</h2>
-				<div class="des">巿烜匼祡娀鼞徭覅夼劦珅妗刵坵汻骭乜泭榵腢。丱涑炅惛柼鸉裼艀圴匢彖劮呦呯疕塝兀厔僓麀。仉栔拊悊洴艭楋瑔彴刐弮坌刱抮呏腧乜昉慡鉰。雃戔伓魼鉣錟彴一愋硅眛呦庀瓮兀，楀湱乇岵洀谼芞圣兀彽褌俇勼岵。巿眒芮脭姞躟煰跴扦朸秖吜呣邲冹裱亍呡銕酮。堳芺汌犝葐褧艸一缿欷氥泭戉侳屮，壾鄀兀呫胈鉬玤玊屮狌榿虴厹虭。冇髟妴蚼洳攭暋鉣邘吇胏忮侔芩邟趐兀抾槙僋。菥昋伓樨楑嶨异一犉焆凊攽仝洺屮，葇傒丌佮迣萺迋氿乇昃嘌垗气炔。</div>
+				<div class="des-block requirement">
+					<h2>Requirement</h2>
+					<div class="des">巿烜匼祡娀鼞徭覅夼劦珅妗刵坵汻骭乜泭榵腢。丱涑炅惛柼鸉裼艀圴匢彖劮呦呯疕塝兀厔僓麀。仉栔拊悊洴艭楋瑔彴刐弮坌刱抮呏腧乜昉慡鉰。雃戔伓魼鉣錟彴一愋硅眛呦庀瓮兀，楀湱乇岵洀谼芞圣兀彽褌俇勼岵。巿眒芮脭姞躟煰跴扦朸秖吜呣邲冹裱亍呡銕酮。堳芺汌犝葐褧艸一缿欷氥泭戉侳屮，壾鄀兀呫胈鉬玤玊屮狌榿虴厹虭。冇髟妴蚼洳攭暋鉣邘吇胏忮侔芩邟趐兀抾槙僋。菥昋伓樨楑嶨异一犉焆凊攽仝洺屮，葇傒丌佮迣萺迋氿乇昃嘌垗气炔。</div>
+				</div>
 			</div>
 		</div>
 	</div>
-
 </div>
+<!-- Modal // -->
 
-
-
-
-<a data-toggle="modal" href="play.html" data-target="#myModal">測試打開頁面</a>
-
-<script>
-
-//** Table Sorter
-$(document).ready(function(){
-	$(function(){
-		$("#mytable").tablesorter({
-			  theme : 'blue'
-			});
-	});
-});
-
-
-
-
-</script>
-</body>
-</html>

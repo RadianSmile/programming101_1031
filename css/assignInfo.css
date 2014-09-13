@@ -1,0 +1,22 @@
+.assign-info-outer {
+	padding:0 20px;
+	background:rgba(0,133,203,1.00);
+}
+.assignInfo {
+	color:white;
+	padding:20px 0 ;
+}
+
+.assignInfo-photo {
+	margin-top:20px;
+	text-align:center;
+}
+.assignInfo-photo > img{
+	width:80%;
+	display:inline-block;
+	text-align:center;
+}
+.assignInfo-link {
+	margin-top:10px;
+	width:100%;
+}

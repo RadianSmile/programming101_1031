@@ -14,28 +14,33 @@ $(document).ready(function(){
             var hp = data.get('HP');
             var xp = data.get('XP');
             var life = data.get('Life');
-            var hpblocks = parseInt(hp * 10 / 100);
-            var xpblocks = parseInt(xp * 10 / 100);
+   //  Rn       var hpblocks = parseInt(hp); 
+     //  Rn     var xpblocks = parseInt(xp);
             i = 0;
 
-            $('#bighead').attr("src", photo);
+            $('.bighead').attr("src", photo);
             $('#name').append(name);
-            $('#level').append("Level "+level);
+            $('.level').append("Level "+level);
 
-            $("#hp td:lt("+hpblocks+")").each(function(i){
-                var _this = this;
+
+						 // $(".xp").css("width",hp+"xp");
+						 // $(".hp").css("width",hp+"hp");
+        /** Rn   $("#hp td:lt("+hpblocks+")").each(function(i){
+                var $this = $(this);
                 setTimeout(function(){
-                    $(_this).css('background-color', '#fff')
+                    $this.css('background-color', '#fff')
                 }, 200*i);
             })
             $("#xp td:lt("+xpblocks+")").each(function(i){
-                var _this = this;
+                var $this = $(this);
                 setTimeout(function(){
-                    $(_this).css('background-color', '#fff')
+                    $this.css('background-color', '#fff')
                 }, 200*i);
-            })
-            for(var i = 1; i<=life; i++){
-                var s = "<img id='heart' src='img/heart.png'>";
+            })   **/
+            
+							
+							for(var i = 1; i<=life; i++){
+                var s = "<img class='card' width='10' id='heart' src='img/heart.png'>";
                 $('#life').append(s);
             }
         }
@@ -53,7 +58,7 @@ $(document).ready(function(){
             	    for(var i = 0; i<data.length; i++){
             	        var card = data[i].get('Card_info');
                         if(card == undefined){
-                            var backcard = "<a href='http://radiansmile.github.io/CodeEDU/card_drawing.html'><img id='backcard' src='img/choosecard/back.jpg'></a>";
+                            var backcard = "<a href='card_drawing.html'><img id='backcard' src='img/choosecard/back.jpg'></a>"; // Rn
                             $('div.cardbox').append(backcard);
                         }
                         else{
@@ -66,17 +71,17 @@ $(document).ready(function(){
                                 $('img').on('click', function(){
                                     var id = $(this).attr('id');
                                     localStorage['owncardId'] = id;
-                                    window.location.assign("http://radiansmile.github.io/CodeEDU/carddes.html");
+                                    window.location.assign("carddes.html");//Rn
                                 })
                             }
                             else if(i == data.length - 1){
                                 var string = "<div class = 'cards'>" + ccontainer + "</div>";
                                 $('div.cardbox').append(string);
                                 ccontainer = "";
-                              $('img').on('click', function(){
+                              $('.card').on('click', function(){    // Rn  img to  .card
                                     var id = $(this).attr('id');
                                     localStorage['owncardId'] = id;
-                                    window.location.assign("http://radiansmile.github.io/CodeEDU/carddes.html");
+                                    window.location.assign("carddes.html");// Rn
                                 })
                             }
                         }

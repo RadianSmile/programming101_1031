@@ -172,3 +172,20 @@ function renameClass (oldClass , newClass) {
 
 
 
+Array.prototype.getIndexByAttr = function (attr, value) {
+    for (var i = 0; i < this.length; i++) {
+        if (this[i]['attributes'][attr] == value) {
+            return i;
+        }
+    }
+		return -1
+}
+Array.prototype.getIndexById = function (value) {
+    for (var i = 0; i < this.length; i++) {
+        if (this[i].id == value) {
+            return i;
+        }
+    }
+		return -1
+}
+

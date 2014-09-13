@@ -1,7 +1,7 @@
 <?php
 $stdPwd = 'std781';
-$teacherPwd = 'm6s/6cl6781' ; 
-$TAPwd = 'ta-781';
+$teacherPwd = 'm6s/6cl6781!' ; 
+$TAPwd = 'ta-781!';
 $enterPwd = "";
 if ( isset($_POST["pwd"] )){
 	$enterPwd = $_POST["pwd"] ;

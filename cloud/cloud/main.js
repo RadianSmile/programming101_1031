@@ -4,6 +4,13 @@
 Parse.Cloud.define("hello", function(request, response) {
   response.success("Hello world!");
 });
+Parse.Cloud.define("getRole",function(rq,rp){
+	Parse.Cloud.useMasterKey();
+	
+	var q = new Parse.Query(Parse.Role);
+	q.find().then(rp.success,rp.error);
+	
+})
 
 
 /*Parse.Cloud.beforeSave("Event_Record",function(request){
@@ -11,13 +18,107 @@ Parse.Cloud.define("hello", function(request, response) {
 });*/
 
 Parse.Cloud.beforeSave(Parse.User,function(request,response){
-	console.log (request.object.id);
-	response.success();
+	Parse.Cloud.useMasterKey();
+	var obj = request.object;
+	console.log ("----------------------------------------------" + obj.get("rolePwd"));
+	if (typeof (obj.get("rolePwd")) === 'undefined' ){ // 這時候代表不是註冊或是已經處理完了，完全不用處理
+		console.log ("已經註冊過/或是新增FB資料中~沒有事情發生");
+		response.success();
+	}else { // 這時候代表剛註冊完///
+		console.log ("Obj.id = "+obj.id) ;
+		if (typeof(obj.id) === 'undefined'){response.success();}
+		var q = new Parse.Query (Parse.User);
+		q.get(obj.id).then(JudgeRole,noAction)
+		.then(addRoleToUser)  //新增角色
+		 // 東西都完成了，密碼可以解除，之後就不會再進來initialize了
+		.then(sucs,error); // 
+	} // end if 
+	
+	function sucs (s){
+		obj.unset("rolePwd");
+		console.log ("有成功做到最後一步！")
+		response.success();
+	}
+	function error (e){
+		console.log (e.message);	
+		response.error(e.message);
+	}
+	function statusRowExist(e){
+		console.log ("使用者狀態已經存在，是否出錯了？");
+		error(e);
+	}
+	
+	function JudgeRole (pwd){
+		console.log ("正在判斷使用者");
+		var pwd = obj.get("rolePwd"); 
+		var q = new Parse.Query(Parse.Role);
 
+		if (pwd === "std781"){
+			q.equalTo("name","Student");
+			return q.first();
+		}else if (pwd === "m6s/6cl6781!") {
+			q.equalTo("name","Teacher");
+			return q.first()
+		}else if (pwd === "ta-781!"){
+			q.equalTo("name","Assistant");
+			return q.first()
+		}else { //密碼錯誤
+			console.log ("! the wrong pwd");
+			response.error("密碼有誤，請重新整理頁面再操作一次！");
+		}
+	}
+	
+	function noAction(e){// 這時候代表，我還沒存進系統，暫時不處理。
+		console.log ("! Adding FB ~ will Add role next step");			
+		response.success("Fb Add Done");
+	}
+	function addRoleToUser (role){
+		console.log ("把使用者塞進角色");
+		role.getUsers().add(obj);
+		return role.save();
+	}
+	function error (e) {
+		//console.log ("! "+e.message);
+		response.error (e);
+	}
+});
+Parse.Cloud.afterSave(Parse.User,function(rq){
+	Parse.Cloud.useMasterKey();
+	var Status = Parse.Object.extend("User_status");
+	var obj = rq.object;
+	firstStatusRow()
+		.then(addStatusRow)
+		.then(function(s){
+			//console.log ("Status Row 新增成功！！！");			
+		},function(e){console.log (e.message);})
+	
+	function firstStatusRow (){
+		console.log ("正在抓取status");
+		var q = new Parse.Query(Status);
+		q.equalTo("User",obj);
+		return q.first();
+	}
+	function addStatusRow (s){ // 再次確認他有沒有 status
+		//console.log ("first的長度 "+typeof(s));
+		if (typeof(s)=== 'undefined'){ // 代表這時候還沒有任何 status///
+		 console.log ("這時候還沒有任何的status row");
+			var status = new Status ();		
+			status.set("User",obj);
+			status.set("HP",90);
+			status.set("XP",0);
+			status.set("Life",3);
+			status.set("Level",1);
+			return status.save();
+		}else{
+			console.log ("已經有UserStatus了") ;
+		}		
+	}
 });
 
 
-Parse.Cloud.beforeSave("Test_User",function(request,response){
+
+
+Parse.Cloud.beforeSave("User_status",function(request,response){
 	var obj = request.object ; 
 	var hp = obj.get("HP");
 	console.log ("HP" + hp.toString());
@@ -31,16 +132,26 @@ Parse.Cloud.beforeSave("Test_User",function(request,response){
 
 
 Parse.Cloud.afterSave("Event_Record",function(request){
-	var userOid = 	request.object.get("target_test").id,
-			User = Parse.Object.extend("Test_User"),
-			user = new User();
-	 user.id = userOid;
+	var user = new Parse.User();
+	var userOid = 	request.object.get("target").id;
+	user.id = userOid;
+
+
+			
+	function qurStatus (){
+		var UserStatus = Parse.Object.extend("User_status");
+		var q = new Parse.Query(UserStatus);	
+		q.equalTo("User",user);
+		return q.first();
+	}
+
+
 
 	var eid = request.object.get("eid");
 			EI = Parse.Object.extend("Event_Info"),
 			q = new Parse.Query(EI);
 	
-	var OwnCard = Parse.Object.extend("Test_Owncard");
+	var OwnCard = Parse.Object.extend("Owncard");
 	
 	q.equalTo("eid",eid.toString());
 	q.first().then(function (evt){
@@ -50,11 +161,16 @@ Parse.Cloud.afterSave("Event_Record",function(request){
 		var dHP = parseInt(eft[1]);
 		//console.log ((typeof (dXP)));
 		//console.log ( user.id);
-		user.increment("XP",dXP);
-		user.increment("HP",dHP);
-		user.save().then(function(s){
-			console.log ("add hp ")
-		},function (e){console.log (e.message)});
+		qurStatus().then(function(status){
+			status.increment("XP",dXP);
+			status.increment("HP",dHP);
+			status.save().then(function(s){
+				console.log ("add XP "+dXP );
+				console.log ("add HP "+dHP );
+			},function (e){console.log (e.message)});
+			
+		});
+
 		if (eft[2] > 0 ){
 			console.log ("Sending Cards... " + eft[2] );
 			var ownCardArr = new Array ();
