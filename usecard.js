@@ -534,16 +534,21 @@ function stealCard(targetId){
             query2.include('Card_info');
             query2.find({
                 success: function(data2){
-                    var random = Math.floor(Math.random() * data2.length);
-                    var own = new owncard();
-                    own.set('objectId',data2[random].id);
-                    own.save(null,{
-                        success: function(own){
-                            own.set('user',user);
-                            own.save();
-                            deletecard();
-                        }
-                    });
+                    if(data2 != undefined){
+                        var random = Math.floor(Math.random() * data2.length);
+                        var own = new owncard();
+                        own.set('objectId',data2[random].id);
+                        own.save(null,{
+                            success: function(own){
+                                own.set('user',user);
+                                own.save();
+                                deletecard();
+                            }
+                        });
+                    }
+                    else{
+                        alert("你點選的使用者並沒有卡片可以給你偷！請選擇其他使用者！");
+                    }
                 },
                 error: function(error){
                     console.log(error);
