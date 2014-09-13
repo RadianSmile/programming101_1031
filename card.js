@@ -89,10 +89,9 @@ $(document).ready(function(){
         });
     }
     $('#modalClose').on('click', function () {
-        $('.modal-content').html('');
         localStorage.removeItem('owncardId');
-        window.location.href="http://radiansmile.github.io/CodeEDU/dashboard.html";
     })
+    $('.modal-content').html('');
 });
 
 function getElementStringByowncard(name, imagesrc, id){
