@@ -35,6 +35,8 @@ $(document).ready(function(){
     //back-end owncard
     var current_user = Parse.User.current();
     if(current_user){
+        localStorage.removeItem('owncardId');
+        $('.modal-content').html("");
         var ownCard = Parse.Object.extend('Owncard');
         var query = new Parse.Query(ownCard);
         query.include('Card_info');
@@ -88,13 +90,9 @@ $(document).ready(function(){
             }
         });
     }
-    $('#cardModal').on('hidden', function () {
-        localStorage.removeItem('owncardId');
-        $('.modal-content').html("");
+    $('#modalClose').on('click', function () {
+        window.location.href="http://radiansmile.github.io/CodeEDU/dashboard.html";
     })
-    /*$('#modalClose').on('click', function () {
-        localStorage.removeItem('owncardId');
-    })*/
 });
 
 function getElementStringByowncard(name, imagesrc, id){
