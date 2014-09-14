@@ -85,8 +85,8 @@ div.cards{
 	display:block;
     position:abolute; 
 	background-color: black;
-	width: 240px;
-	height: 188px;
+	width: 188px;
+	height: 240px;
 	
 	-webkit-transform: rotateY(180deg);
 }
