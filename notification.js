@@ -58,21 +58,21 @@ function useRecord(data){
     var cardName = data.get('Card_info').get('name');
     var userId = data.get('user').id;
     var userName = data.get('user').get('name');
-    var createTime = data.get('createdAt');
+    var createTime = data.createdAt;
     
     var s = "";
         if(userId == Parse.User.current().id){
             if(targetId == Parse.User.current().id){
-                s = "<h2>你對自己使用了" + cardName + "。</h2>";
+                s = "你對自己使用了" + cardName + "。";
                 container = "<div class = 'time-gray-color'>"+createTime+"</div><span class = 'glyphicon-thumbs-down' style = 'white-space: nowrap;'>"+ s +"</span></div>";
             }
             else{
-                s = "<h2>你對" + targetName + "使用了" + cardName + "。</h2>";
+                s = "你對" + targetName + "使用了" + cardName + "。";
                 container = "<div class = 'time-gray-color'>"+createTime+"</div><span class = 'glyphicon-thumbs-down' style = 'white-space: nowrap;'>"+ s +"</span></div>";
             }
         }
         else if(targetId == Parse.User.current().id){
-            s = "<h2>"+userName+"對你使用了" + cardName + "。</h2>";
+            s = userName+"對你使用了" + cardName + "。";
             container = "<div class = 'time-gray-color'>"+createTime+"</div><span class = 'glyphicon-thumbs-down' style = 'white-space: nowrap;'>"+ s +"</span></div>";
         }
     return container;
@@ -84,7 +84,7 @@ function getRecord(data){
     
     var s = "";
         if(userId == Parse.User.current().id){
-            s = "<h2>你抽到了"+ cardName + "。</h2>";
+            s = "你抽到了"+ cardName + "。";
             container = "<div class = 'time-gray-color'>"+createTime+"</div><span class = 'glyphicon-thumbs-down' style = 'white-space: nowrap;'>"+ s +"</span></div>";
         }
     return container;
