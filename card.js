@@ -87,13 +87,13 @@ $(document).ready(function(){
                 $('div#CardData').append(s);
             }
         });
-        $('#cardModal').on('hidden', function() {
+        /*$('#cardModal').on('hidden', function() {
             localStorage.removeItem('owncardId');
-        })    
+        })*/    
         $('#modalClose').on('click', function () {
             localStorage.removeItem('owncardId');
-            $('.modal-content').html("");
-            window.location.href="http://radiansmile.github.io/CodeEDU/dashboard.html";
+            $('#CardTitle').html("");
+            $('#CardData').html("");
         })
     }
 });
