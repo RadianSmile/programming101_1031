@@ -40,7 +40,7 @@ $(document).ready(function(){
                     var s = getRecord(data[i]);
                     notification1 += s;
                     var strings = "<div class = 'notification-info'>" + notification1 + "</div>";
-                    $('div.notificationrows').append(strings);
+                    $('div#notificationrows').append(strings);
                     notification1 = "";
                 }
             },
