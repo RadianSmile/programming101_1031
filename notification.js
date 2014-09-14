@@ -2,6 +2,39 @@ $(document).ready(function(){
     Parse.initialize("9eo5r1mHWoIPSTCzmrpdKa3lcHPjySx4y5D6q8Nq", "R8SWwYxpJcy73ogQKuSD43y7FigrlDGjBLcy1lzC");
     var current_user = Parse.User.current();
     if(current_user){
+        //eventnotification
+        var eventnotification = "";
+        var eventrecord = Parse.Object.extend("Event_Record");
+        var query3 = new Parse.Query(eventrecord);
+        query3.equalTo('target', Parse.User.current());
+        query3.find({
+            success:function(data){
+                for(var i = 0; i<data.length; i++){
+                    data[i].set('isNoti', true);
+                    data[i].save(null,{
+                        success:function(data1){
+                            console.log("IsNoti change to true!");
+                        },
+                        error:function(error){
+                            console.log(error.toString());
+                        }
+                    })
+                    var eid = data[i].get('eid');
+                    var eventinfo = Parse.Object.extend("Event_Info");
+                    var query4 = new Parse.Query(eventinfo);
+                    query4.equalTo('eid', eid);
+                    query4.first({
+                        success:function(data2){
+                            var s = eventRecord(data[i], data2);
+                            eventnotification += s;
+                            var strings = "<div class = 'notification-info'>" + eventnotification + "</div>";
+                            $('div#notificationrows').append(strings);
+                            eventnotification = "";
+                        }
+                    })
+                }
+            }
+        })
         //Card use
         var notification = "";
         var notif = Parse.Object.extend("Card_record");
@@ -97,5 +130,18 @@ function getRecord(data){
             s = "你抽到了"+ cardName + "。";
             container = "<div class = 'time-gray-color'>"+createTime+"</div><span class = 'glyphicon glyphicon-thumbs-down' style = 'white-space: nowrap;'>"+ s +"</span></div>";
         }
+    return container;
+}
+
+function eventRecord(data, data1){
+    var eventdes = data1.get('description');
+    var createTime = data.createdAt;
+    var result = data1.get('effect_target');
+    var xp = result[0];
+    var hp = result[1];
+    var life = result[2];
+    var s = "";
+    s = "因為" + eventdes + "，所以造成你的XP變動" + xp +"、你的HP變動" + hp + "、你的Life變動" + life + "。";
+    container = "<div class = 'time-gray-color'>"+createTime+"</div><span class = 'glyphicon glyphicon-thumbs-down' style = 'white-space: nowrap;'>"+ s +"</span></div>";
     return container;
 }
