@@ -235,6 +235,7 @@ $(document).ready(function(){
                                             cardrecord.set('Card_info', card);
                                             cardrecord.set('targetuser', data1);
                                             cardrecord.set('type', "use");
+                                            cardrecord.set('isNotif', false);
                                             cardrecord.save(null,{
                                                 success:function(data){
                                                     console.log("Card used record success!");
