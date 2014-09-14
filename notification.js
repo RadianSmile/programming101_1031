@@ -40,8 +40,13 @@ $(document).ready(function(){
         //Card use
         var notification = "";
         var notif = Parse.Object.extend("Card_record");
-        var query = new Parse.Query(notif);
-        query.equalTo('type', "use");
+        var query1 = new Parse.Query(notif);
+        query1.equalTo('type', "use");
+        var query2 = new Parse.Query(notif);
+        query2.equalTo('user', Parse.User.current());
+        var query3 = new Parse.Query(notif);
+        query3.equalTo('targetuser', Parse.User.current());
+        var query = Parse.Query.or(query1, query2, query3);
         query.include('Card_info');
         query.include('user');
         query.include('targetuser');
@@ -76,6 +81,7 @@ $(document).ready(function(){
         var notif1 = Parse.Object.extend("Card_record");
         var query1 = new Parse.Query(notif1);
         query1.equalTo('type', "get");
+        query1.equalTo('user', Parse.User.current());
         query1.include('Card_info');
         query1.include('User');
         query1.ascending('createdAt');
