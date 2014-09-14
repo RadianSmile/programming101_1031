@@ -90,6 +90,7 @@ $(document).ready(function(){
         query1.equalTo('isNoti',false)
         query1.first({
             success:function(data){
+                console.log(data);
                 $("#bell").css("background-color", "red");
             },
             error:function(error){
@@ -104,6 +105,7 @@ $(document).ready(function(){
         query2.include('targetuser');
         query2.first({
             success:function(data){
+                console.log(data);
                 $("#bell").css("background-color", "red");
             },
             error:function(error){
