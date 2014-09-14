@@ -102,7 +102,11 @@ $(document).ready(function(){
                         }
                     }
             }
-        })   
+        })
+        $('#cardModal').modal({
+            backdrop: 'static',
+            keyboard: false
+        })    
         $('#modalClose').on('click', function () {
             localStorage.removeItem('owncardId');
             $('#CardTitle').html("");
