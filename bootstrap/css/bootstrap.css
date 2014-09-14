@@ -3770,7 +3770,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   position: relative;
   min-height: 50px;
   margin-bottom: 20px;
-  border: 1px solid transparent;
+  border: 0px solid transparent;
 }
 @media (min-width: 768px) {
   .navbar {
@@ -4708,8 +4708,9 @@ a.thumbnail.active {
   }
 }
 .progress {
-  height: 20px;
-  margin-bottom: 20px;
+  height: 19px;
+  margin-bottom: 10px;
+  margin-top: 10px;
   overflow: hidden;
   background-color: #f5f5f5;
   border-radius: 4px;
