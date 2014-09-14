@@ -18,7 +18,7 @@ $(document).ready(function(){
          var hpblocks = 100;//parseInt(hp)|100;
          var xpblocks = 100;//parseInt(xp)|100;
             $('#individual-name').append(name);
-            $('#individual-level').append('Level:'+level);
+            $('#individual-level').append('LEVEL'+level);
             
             $(".bighead").attr("src",photo);  // Rn
             $(".bighead").attr("width","100%"); // Rn
@@ -49,13 +49,11 @@ $(document).ready(function(){
                             var backcard = "<div class='card-box col-md-2'><a href='card_drawing.html'><img id='backcard' src='img/choosecard/back.png'></a></div>"; // Rn
                             $('div#OwnCardData').append(backcard);
                         }
-                        else{
-                            var s = getElementStringByowncard(card.get('imagesrc'), data[i].id);
-                            ccontainer += s;
-                            var string = "<div class='card-box col-md-2'> " + ccontainer + "</div>";
-                            $('div#OwnCardData').append(string);
-                            ccontainer = "";
-                        }
+                        var s = getElementStringByowncard(card.get('imagesrc'), data[i].id);
+                        ccontainer += s;
+                        var string = "<div class='card-box col-md-2'> " + ccontainer + "</div>";
+                        $('div#OwnCardData').append(string);
+                        ccontainer = "";
                     }
                         $('.card').on('click', function(){
                             var id = $(this).attr('id');
