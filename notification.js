@@ -17,7 +17,7 @@ $(document).ready(function(){
                     var s = useRecord(data[i]);
                     notification += s;
                     var strings = "<div class = 'notification-info'>" + notification + "</div>";
-                    $('div.notificationrows').append(strings);
+                    $('div#notificationrows').append(strings);
                     notification = "";
                 }
             },
