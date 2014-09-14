@@ -50,29 +50,56 @@ $(document).ready(function(){
                             $('div#OwnCardData').append(backcard);
                         }
                         else{
-                            var s = getElementStringByowncard(card.get('imagesrc'), data[i].id);
-                            ccontainer += s;
-                                var string = "<div class='card-box col-md-2'> " + ccontainer + "</div>";
-                                $('div#OwnCardData').append(string);
-                                ccontainer = "";
-                                $('.card').on('click', function(){
-                                    var id = $(this).attr('id');
-                                    localStorage['owncardId'] = id;
-                                    var owncardid = localStorage.getItem('owncardId');
-                                    var ownCard = Parse.Object.extend('Owncard');
-                                    var query = new Parse.Query(ownCard);
-                                    query.equalTo('objectId', owncardid);
-                                    query.include('Card_info');
-                                    query.first({
-                                        success: function(data){
-                                            var carddata = data.get('Card_info');
-                                            var cardtitle = carddata.get('name');
-                                            $('h4#CardTitle').append(cardtitle);
-                                            var s = getUsecard(carddata.get('imagesrc'), carddata.get('shortdes'));
-                                            $('div#CardData').append(s);
-                                        }
-                                    });
-                                })
+                            if((i+1) % 6 == 0){
+                                var s = getElementStringByowncard(card.get('imagesrc'), data[i].id);
+                                ccontainer += s;
+                                    var string = "<div class='card-box col-md-2'> " + ccontainer + "</div>";
+                                    $('div#OwnCardData').append(string);
+                                    ccontainer = "";
+                                    $('.card').on('click', function(){
+                                        var id = $(this).attr('id');
+                                        localStorage['owncardId'] = id;
+                                        var owncardid = localStorage.getItem('owncardId');
+                                        var ownCard = Parse.Object.extend('Owncard');
+                                        var query = new Parse.Query(ownCard);
+                                        query.equalTo('objectId', owncardid);
+                                        query.include('Card_info');
+                                        query.first({
+                                            success: function(data){
+                                                var carddata = data.get('Card_info');
+                                                var cardtitle = carddata.get('name');
+                                                $('h4#CardTitle').append(cardtitle);
+                                                var s = getUsecard(carddata.get('imagesrc'), carddata.get('shortdes'));
+                                                $('div#CardData').append(s);
+                                            }
+                                        });
+                                    })
+                            }
+                            else if(i == data.length - 1){
+                                var s = getElementStringByowncard(card.get('imagesrc'), data[i].id);
+                                ccontainer += s;
+                                    var string = "<div class='card-box col-md-2'> " + ccontainer + "</div>";
+                                    $('div#OwnCardData').append(string);
+                                    ccontainer = "";
+                                    $('.card').on('click', function(){
+                                        var id = $(this).attr('id');
+                                        localStorage['owncardId'] = id;
+                                        var owncardid = localStorage.getItem('owncardId');
+                                        var ownCard = Parse.Object.extend('Owncard');
+                                        var query = new Parse.Query(ownCard);
+                                        query.equalTo('objectId', owncardid);
+                                        query.include('Card_info');
+                                        query.first({
+                                            success: function(data){
+                                                var carddata = data.get('Card_info');
+                                                var cardtitle = carddata.get('name');
+                                                $('h4#CardTitle').append(cardtitle);
+                                                var s = getUsecard(carddata.get('imagesrc'), carddata.get('shortdes'));
+                                                $('div#CardData').append(s);
+                                            }
+                                        });
+                                    })
+                            }
                         }
                     }
             }
