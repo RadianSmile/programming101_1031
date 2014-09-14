@@ -21,8 +21,6 @@ $(document).ready(function(){
 });
 
 //Drawing card function
-var Shortdescription;
-var Title;
 var Imagesrc;
 
 function randomNum(length){
@@ -58,11 +56,7 @@ function getData(){
                 }
             })
 
-            Shortdescription = object[randomno].get('shortdes');
-            Title = object[randomno].get('name');
             Imagesrc = object[randomno].get('imagesrc');
-
-            $('h2#title').html(Title);
 
             $('#image1').attr("src", Imagesrc)
             $('#image2').attr("src", Imagesrc)
