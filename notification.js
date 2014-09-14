@@ -28,7 +28,6 @@ $(document).ready(function(){
                         success:function(data2){
                             var s = eventRecord(datai, data2);
                             eventnotification += s;
-                            console.log(eventnotification);
                             var strings = "<div class = 'notification-info'>" + eventnotification + "</div>";
                             $('div#notificationrows').append(strings);
                             eventnotification = "";
@@ -65,7 +64,6 @@ $(document).ready(function(){
                     })
                     var s = useRecord(data[i]);
                     notification += s;
-                    console.log(notification);
                     var strings = "<div class = 'notification-info'>" + notification + "</div>";
                     $('div#notificationrows').append(strings);
                     notification = "";
@@ -90,7 +88,6 @@ $(document).ready(function(){
                 for(var i = 0; i<data.length; i++){
                     var s = getRecord(data[i]);
                     notification1 += s;
-                    console.log(notification1);
                     var strings = "<div class = 'notification-info'>" + notification1 + "</div>";
                     $('div#notificationrows').append(strings);
                     notification1 = "";
