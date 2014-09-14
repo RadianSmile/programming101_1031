@@ -54,6 +54,7 @@ $(document).ready(function(){
                         var string = "<div class='card-box col-md-2'> " + ccontainer + "</div>";
                         $('div#OwnCardData').append(string);
                         ccontainer = "";
+                    }
                         $('.card').on('click', function(){
                             var id = $(this).attr('id');
                             localStorage['owncardId'] = id;
@@ -72,7 +73,6 @@ $(document).ready(function(){
                                 }
                             });
                         })
-                    }
             }
         })    
         $('#modalClose').on('click', function () {
