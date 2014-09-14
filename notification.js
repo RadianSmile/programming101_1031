@@ -39,13 +39,13 @@ $(document).ready(function(){
         //Card use
         var notification = "";
         var notif = Parse.Object.extend("Card_record");
-        var query1 = new Parse.Query(notif);
-        query1.equalTo('type', "use");
+        //var query1 = new Parse.Query(notif);
+        //query1.equalTo('type', "use");
         var query2 = new Parse.Query(notif);
         query2.equalTo('user', Parse.User.current());
         var query3 = new Parse.Query(notif);
         query3.equalTo('targetuser', Parse.User.current());
-        var query = Parse.Query.or(query1, query2, query3);
+        var query = Parse.Query.or(query2, query3);
         query.include('Card_info');
         query.include('user');
         query.include('targetuser');
@@ -63,11 +63,13 @@ $(document).ready(function(){
                             console.log(error.toString());
                         }
                     })
-                    var s = useRecord(data[i]);
-                    notification += s;
-                    var strings = "<div class = 'notification-info'>" + notification + "</div>";
-                    $('div#notificationrows').append(strings);
-                    notification = "";
+                    if(data.get('type') == "use"){
+                        var s = useRecord(data[i]);
+                        notification += s;
+                        var strings = "<div class = 'notification-info'>" + notification + "</div>";
+                        $('div#notificationrows').append(strings);
+                        notification = "";
+                    }
                 }
             },
             error:function(error){
