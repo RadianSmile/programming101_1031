@@ -92,7 +92,7 @@ $(document).ready(function(){
                 for(var i=0; i<data.length;i++){
                     var isnotif = data[i].get('isNoti');
                     if(isnotif == false){
-                        $(".glyphicon glyphicon-bell").css("background-color", "red");
+                        $("#bell").css("background-color", "red");
                     }
                 }
             },
