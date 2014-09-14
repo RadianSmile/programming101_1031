@@ -21,15 +21,6 @@ $(document).ready(function(){
                     $('div.notificationbox').append(strings);
                     notification = "";
                 }
-                data.set('isNotif', true);
-                data.save(null,{
-                    success:function(data1){
-                        console.log("IsNotif change to true!");
-                    },
-                    error:function(error){
-                        console.log(error.toString());
-                    }
-                })
             },
             error:function(error){
                 console.log(error.toString());
