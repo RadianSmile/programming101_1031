@@ -239,7 +239,7 @@ $(document).ready(function(){
                                             else{
                                                 alert("你選擇向" + targetusername + "偷了一張卡!");
                                                 cardUseRecord();
-                                                stealCard(cardid, targetuserid);
+                                                stealCard(targetuserid);
                                             }
                                         }
                                         //onemorecard
