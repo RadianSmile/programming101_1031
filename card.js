@@ -82,6 +82,24 @@ $(document).ready(function(){
             $('#CardTitle').html("");
             $('#CardData').html("");
         })
+
+        //Determine notification
+        var eventrecord = Parse.Object.extend("Event_Record");
+        var query1 = new Parse.Query(eventrecord);
+        query1.equalTo('target', Parse.User.current());
+        query1.find({
+            success:function(data){
+                for(var i=0; i<data.length;i++){
+                    var isnotif = data[i].get('isNoti');
+                    if(isnotif == false){
+                        $(".glyphicon glyphicon-bell").css("background-color", "red");
+                    }
+                }
+            },
+            error:function(error){
+                console.log(error.toString());
+            }
+        })
     }
 });
 
