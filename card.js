@@ -110,11 +110,6 @@ $(document).ready(function(){
     }
 });
 
-$('#cardModal').modal({
-    backdrop: 'static',
-    keyboard: false
-})
-
 function getElementStringByowncard(name, imagesrc, id){
     var s1 = "<img src='" + imagesrc + "'>";
     var s = "<a href='#' data-toggle='modal' data-target='#cardModal'><div class='card' id='"+id+"'>" + s1 + "</div></a>";
