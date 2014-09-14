@@ -4,6 +4,7 @@ $(document).ready(function(){
     //front-end user_status
     var userStatus=Parse.Object.extend('User_status');
     var query = new Parse.Query(userStatus);
+		if (Parse.User.current()){
     query.equalTo('User', Parse.User.current());
     query.include('User');
     query.first({
@@ -31,6 +32,7 @@ $(document).ready(function(){
 
           }
     });
+		}else{ alert ("你還沒登入");}
     
     //back-end owncard
     var current_user = Parse.User.current();
