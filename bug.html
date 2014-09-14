@@ -12,6 +12,8 @@
 <!----><link href="css/all.css" rel="stylesheet" />
 <!----><script type="text/javascript" src="js/all.js?1111"></script>
 <!---------------------->
+<script src="http://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" />
 
 
 <!--link rel="stylesheet" href="css/bug.css"-->
@@ -89,9 +91,6 @@
 	min-height:150px;
 }
 
-
-
-
 .add-bug-img {
 	background-color:rgba(255,255,255,1.00);
 
@@ -100,74 +99,56 @@
 	background-position:center center;
 	background-repeat:no-repeat;
 }
-/*
-.accept-bug-btn{
-	_text-indent:-99999px;
-	_background-image:url(img/check.png);
-	background-repeat:no-repeat;
-}
-.reject-bug-btn{
-	width:75px;
-	background-repeat:no-repeat;
-	_text-indent:-99999px;
-	cursor:pointer;
-	background-image:url(img/cross.png);
-}*/
-
 </style>
 
 </head>
 <body>
-<div class="container">
-
-
+<div class="container bug-pane">
 <!---------------------------------------------------------------------------------------------------------------------------->
-
-<div id="step1" class="bug" data-bugStatus="">   
+<div id="Bugid" class="bug bug-reporter-view " data-bugStatus="1">   
 <div class="media" style="background:none; border:none;">
   <a class="pull-left" href="#">
     <img class="media-object view-bug-img "  src="bug.jpg" alt="...">
   </a>
-	<div class="pull-right ">
+	<div class="pull-right">
 		<div class="bug-func-btns">
-			<div class="bug-debugger-control">
-				<div class="bug-debugger-step bug-func-btns" data-bugStep="1">
+			<div class="bug-bugger-control">
+				<div class="bug-step bug-func-btns" data-bugStep="1">
 					<a class="accept-bug-btn bug-func-btn" data-toggle="tooltip" data-placement="left" title="承認這筆BUG" ><span class="glyphicon glyphicon-ok"></span></a>
 					<a class="reject-bug-btn bug-func-btn" data-toggle="tooltip" data-placement="left" title="BUG並不存在" ><span class="glyphicon glyphicon-remove"></span></a>
 				</div>
-				<div class="bug-debugger-step" data-bugStep="2">
-					<a class="noti-reporter-bug-btn bug-func-btn bug-func-btn-lg" data-toggle="tooltip" data-placement="left" title="通知已經更新"><span class="glyphicon glyphicon-wrench"></span></a>
+				<div class="bug-step" data-bugStep="2">
+					<a class="noti-reporter-bug-btn bug-func-btn bug-func-btn-lg" data-toggle="tooltip" data-placement="left" title="通知呈報者已經更新"><span class="glyphicon glyphicon-bell"></span></a>
 				</div>
-				<div class="bug-debugger-step" data-bugStep="3">
-					<div class="bug-status bug-waiting-check" data-toggle="tooltip" data-placement="left" title="等待審核中"><span class="glyphicon glyphicon-time"></span></div>
+				<div class="bug-step" data-bugStep="3">
+					<div class="bug-status bug-waiting-check" data-toggle="tooltip" data-placement="left" title="等待呈報者審核中"><span class="glyphicon glyphicon-time"></span></div>
 				</div>
-				<div class="bug-debugger-step" data-bugStep="4">
-					<div class="bug-status bug-resolve"  data-toggle="tooltip" data-placement="left" title="已解除Bug"><span class="glyphicon glyphicon-tree-deciduous"></span></div>
+				<div class="bug-step" data-bugStep="4">
+					<div class="bug-status bug-resolve"  data-toggle="tooltip" data-placement="left" title="BUG已經解除"><span class="glyphicon glyphicon-tree-deciduous"></span></div>
 				</div>
 			</div>
 			<div class="bug-reporter-control">			
-				<div class="bug-reporter-step" data-bugStep="1">
-					<div class="bug-status bug-waiting-accept"  data-toggle="tooltip" data-placement="left" title="等待承認中"><span class="glyphicon glyphicon-question-sign"></span></div>
+				<div class="bug-step" data-bugStep="1">
+					<div class="bug-status bug-waiting-accept"  data-toggle="tooltip" data-placement="left" title="等待作者承認中"><span class="glyphicon glyphicon-question-sign"></span></div>
 				</div>
-				<div class="bug-reporter-step" data-bugStep="2">
-					<div class="bug-status bug-waiting-update" data-toggle="tooltip" data-placement="left" title="等待更新中"><span class="glyphicon glyphicon-time"></span></div>
+				<div class="bug-step" data-bugStep="2">
+					<div class="bug-status bug-waiting-update" data-toggle="tooltip" data-placement="left" title="等待作者更新中"><span class="glyphicon glyphicon-time"></span></div>
 				</div>
-				<div class="bug-reporter-step bug-func-btns" data-bugStep="3">
-					<a class="pass-bug-btn btn bug-func-btn "  data-toggle="tooltip" data-placement="left" title="通過"><span class="glyphicon glyphicon-leaf"></span></a>
-					<a class="fail-bug-btn btn bug-func-btn "  data-toggle="tooltip" data-placement="left" title="不通過"><span class="glyphicon glyphicon-remove"></span></a>
+				<div class="bug-step bug-func-btns" data-bugStep="3">
+					<a class="pass-bug-btn btn bug-func-btn "  data-toggle="tooltip" data-placement="left" title="作者成功解除BUG"><span class="glyphicon glyphicon-ok"></span></a>
+					<a class="fail-bug-btn btn bug-func-btn "  data-toggle="tooltip" data-placement="left" title="作者沒有成功解除BUG"><span class="glyphicon glyphicon-remove"></span></a>
 				</div>
-				<div class="bug-reporter-step" data-bugStep="4">
-					<div class="bug-status bug-resolve" data-bugStep="4"  data-toggle="tooltip" data-placement="left" title="已經解除霸個"><span class="glyphicon glyphicon-leaf"></span></div>
+				<div class="bug-step" data-bugStep="4">
+					<div class="bug-status bug-resolve" data-bugStep="4"  data-toggle="tooltip" data-placement="left" title="已經解除霸個"><span class="glyphicon glyphicon-ok-circle"></span></div>
 				</div>
 			</div>
 			<div class="bug-guest-control" >
 				<div class="bug-reporter-step" data-bugStep="4">
-					<div class="bug-status bug-resolve" data-bugStep="4"  data-toggle="tooltip" data-placement="left" title="已經解除霸個"><span class="glyphicon glyphicon-leaf"></span></div>
+					<div class="bug-status bug-resolve" data-bugStep="4"  data-toggle="tooltip" data-placement="left" title="已經解除霸個"><span class="glyphicon glyphicon-ok-circle"></span></div>
 				</div>
 			</div>
 		</div>
 	</div>
-
   <div class="media-body view-bug-des " >
 		在執行開始的動作時，會跑出奇怪的畫面，應該是哪裡沒有設定好
    <span class="view-bug-time">現在時間是dddd</span>
@@ -175,291 +156,19 @@
 </div>
 </div>
 
-<!---------------------------------------------------------------------------------------------------------------------------->
-<!---->
-
-
-<div id="step2" class="bug">   
-<div class="media" style="background:none; border:none;">
-  <a class="pull-left" href="#">
-    <img class="media-object view-bug-img "  src="bug.jpg" alt="...">
-  </a>
-	<div class="pull-right ">
-		<div class="bug-func-btns">
-			<div class="bug-debugger-control">
-				<div class="bug-debugger-step" data-bugStep="2">
-					<a class="noti-reporter-bug-btn bug-func-btn bug-func-btn-lg" data-toggle="tooltip" data-placement="left" title="通知已經更新"><span class="glyphicon glyphicon-wrench"></span></a>
-				</div>
-				<div class="bug-debugger-step" data-bugStep="3">
-					<div class="bug-status bug-waiting-check" data-toggle="tooltip" data-placement="left" title="等待審核中"><span class="glyphicon glyphicon-time"></span></div>
-				</div>
-				<div class="bug-debugger-step" data-bugStep="4">
-					<div class="bug-status bug-resolve"  data-toggle="tooltip" data-placement="left" title="已解除Bug"><span class="glyphicon glyphicon-tree-deciduous"></span></div>
-				</div>
-			</div>
-			<div class="bug-reporter-control">			
-				<div class="bug-reporter-step" data-bugStep="1">
-					<div class="bug-status bug-waiting-accept"  data-toggle="tooltip" data-placement="left" title="等待承認中"><span class="glyphicon glyphicon-question-sign"></span></div>
-				</div>
-				<div class="bug-reporter-step" data-bugStep="2">
-					<div class="bug-status bug-waiting-update" data-toggle="tooltip" data-placement="left" title="等待更新中"><span class="glyphicon glyphicon-time"></span></div>
-				</div>
-				<div class="bug-reporter-step bug-func-btns" data-bugStep="3">
-					<a class="accept-bug-btn btn bug-func-btn "  data-toggle="tooltip" data-placement="left" title="通過"><span class="glyphicon glyphicon-leaf"></span></a>
-					<a class="reject-bug-btn btn bug-func-btn "  data-toggle="tooltip" data-placement="left" title="不通過"><span class="glyphicon glyphicon-remove"></span></a>
-				</div>
-				<div class="bug-reporter-step" data-bugStep="4">
-					<div class="bug-status bug-resolve" data-bugStep="4"  data-toggle="tooltip" data-placement="left" title=""><span class=""></span></div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-  <div class="media-body view-bug-des" >
-		在執行開始的動作時，會跑出奇怪的畫面，應該是哪裡沒有設定好
-   <span class="view-bug-time">現在時間是dddd</span>
-  </div>
-</div>
-</div>
-
-
-
-
-<div id="step3" class="bug">   
-<div class="media" style="background:none; border:none;">
-  <a class="pull-left" href="#">
-    <img class="media-object view-bug-img "  src="bug.jpg" alt="...">
-  </a>
-	<div class="pull-right ">
-		<div class="bug-func-btns">
-			<div class="bug-debugger-control">
-				<div class="bug-debugger-step" data-bugStep="3">
-					<div class="bug-status bug-waiting-check" data-toggle="tooltip" data-placement="left" title="等待審核中"><span class="glyphicon glyphicon-time"></span></div>
-				</div>
-				<div class="bug-debugger-step" data-bugStep="4">
-					<div class="bug-status bug-resolve"  data-toggle="tooltip" data-placement="left" title="已解除Bug"><span class="glyphicon glyphicon-tree-deciduous"></span></div>
-				</div>
-			</div>
-			<div class="bug-reporter-control">			
-				<div class="bug-reporter-step" data-bugStep="1">
-					<div class="bug-status bug-waiting-accept"  data-toggle="tooltip" data-placement="left" title="等待承認中"><span class="glyphicon glyphicon-question-sign"></span></div>
-				</div>
-				<div class="bug-reporter-step" data-bugStep="2">
-					<div class="bug-status bug-waiting-update" data-toggle="tooltip" data-placement="left" title="等待更新中"><span class="glyphicon glyphicon-time"></span></div>
-				</div>
-				<div class="bug-reporter-step bug-func-btns" data-bugStep="3">
-					<a class="accept-bug-btn btn bug-func-btn "  data-toggle="tooltip" data-placement="left" title="通過"><span class="glyphicon glyphicon-leaf"></span></a>
-					<a class="reject-bug-btn btn bug-func-btn "  data-toggle="tooltip" data-placement="left" title="不通過"><span class="glyphicon glyphicon-remove"></span></a>
-				</div>
-				<div class="bug-reporter-step" data-bugStep="4">
-					<div class="bug-status bug-resolve" data-bugStep="4"  data-toggle="tooltip" data-placement="left" title=""><span class=""></span></div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-  <div class="media-body view-bug-des" >
-		在執行開始的動作時，會跑出奇怪的畫面，應該是哪裡沒有設定好
-   <span class="view-bug-time">現在時間是dddd</span>
-  </div>
-</div>
-</div>
-
-
-
-
-
-
-<div id="step4" class="bug">   
-<div class="media" style="background:none; border:none;">
-  <a class="pull-left" href="#">
-    <img class="media-object view-bug-img "  src="bug.jpg" alt="...">
-  </a>
-	<div class="pull-right ">
-		<div class="bug-func-btns">
-			<div class="bug-debugger-control">
-				<div class="bug-debugger-step" data-bugStep="4">
-					<div class="bug-status bug-resolve"  data-toggle="tooltip" data-placement="left" title="已解除Bug"><span class="glyphicon glyphicon-tree-deciduous"></span></div>
-				</div>
-			</div>
-			<div class="bug-reporter-control">			
-				<div class="bug-reporter-step" data-bugStep="1">
-					<div class="bug-status bug-waiting-accept"  data-toggle="tooltip" data-placement="left" title="等待承認中"><span class="glyphicon glyphicon-question-sign"></span></div>
-				</div>
-				<div class="bug-reporter-step" data-bugStep="2">
-					<div class="bug-status bug-waiting-update" data-toggle="tooltip" data-placement="left" title="等待更新中"><span class="glyphicon glyphicon-time"></span></div>
-				</div>
-				<div class="bug-reporter-step bug-func-btns" data-bugStep="3">
-					<a class="accept-bug-btn btn bug-func-btn "  data-toggle="tooltip" data-placement="left" title="通過"><span class="glyphicon glyphicon-leaf"></span></a>
-					<a class="reject-bug-btn btn bug-func-btn "  data-toggle="tooltip" data-placement="left" title="不通過"><span class="glyphicon glyphicon-remove"></span></a>
-				</div>
-				<div class="bug-reporter-step" data-bugStep="4">
-					<div class="bug-status bug-resolve" data-bugStep="4"  data-toggle="tooltip" data-placement="left" title=""><span class=""></span></div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-  <div class="media-body view-bug-des" >
-		在執行開始的動作時，會跑出奇怪的畫面，應該是哪裡沒有設定好
-   <span class="view-bug-time">現在時間是dddd</span>
-  </div>
-</div>
-</div>
-
-
-
-
-
-
--------------------------
-
-
-
-
-
-
-
-
-
-
-
-<div id="step" class="bug">   
-<div class="media" style="background:none; border:none;">
-  <a class="pull-left" href="#">
-    <img class="media-object view-bug-img "  src="bug.jpg" alt="...">
-  </a>
-	<div class="pull-right ">
-		<div class="bug-func-btns">
-			<div class="bug-reporter-control">			
-				<div class="bug-reporter-step" data-bugStep="1">
-					<div class="bug-status bug-waiting-accept"  data-toggle="tooltip" data-placement="left" title="等待承認中"><span class="glyphicon glyphicon-question-sign"></span></div>
-				</div>
-				<div class="bug-reporter-step" data-bugStep="2">
-					<div class="bug-status bug-waiting-update" data-toggle="tooltip" data-placement="left" title="等待更新中"><span class="glyphicon glyphicon-time"></span></div>
-				</div>
-				<div class="bug-reporter-step bug-func-btns" data-bugStep="3">
-					<a class="accept-bug-btn btn bug-func-btn "  data-toggle="tooltip" data-placement="left" title="通過"><span class="glyphicon glyphicon-leaf"></span></a>
-					<a class="reject-bug-btn btn bug-func-btn "  data-toggle="tooltip" data-placement="left" title="不通過"><span class="glyphicon glyphicon-remove"></span></a>
-				</div>
-				<div class="bug-reporter-step" data-bugStep="4">
-					<div class="bug-status bug-resolve" data-bugStep="4"  data-toggle="tooltip" data-placement="left" title=""><span class=""></span></div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-  <div class="media-body view-bug-des" >
-		在執行開始的動作時，會跑出奇怪的畫面，應該是哪裡沒有設定好
-   <span class="view-bug-time">現在時間是dddd</span>
-  </div>
-</div>
-</div>
-
-
-
-
-
-
-<div id="step" class="bug">   
-<div class="media" style="background:none; border:none;">
-  <a class="pull-left" href="#">
-    <img class="media-object view-bug-img "  src="bug.jpg" alt="...">
-  </a>
-	<div class="pull-right ">
-		<div class="bug-func-btns">
-			<div class="bug-reporter-control">			
-				<div class="bug-reporter-step" data-bugStep="2">
-					<div class="bug-status bug-waiting-update" data-toggle="tooltip" data-placement="left" title="等待更新中"><span class="glyphicon glyphicon-time"></span></div>
-				</div>
-				<div class="bug-reporter-step bug-func-btns" data-bugStep="3">
-					<a class="accept-bug-btn btn bug-func-btn "  data-toggle="tooltip" data-placement="left" title="通過"><span class="glyphicon glyphicon-leaf"></span></a>
-					<a class="reject-bug-btn btn bug-func-btn "  data-toggle="tooltip" data-placement="left" title="不通過"><span class="glyphicon glyphicon-remove"></span></a>
-				</div>
-				<div class="bug-reporter-step" data-bugStep="4">
-					<div class="bug-status bug-resolve" data-bugStep="4"  data-toggle="tooltip" data-placement="left" title=""><span class=""></span></div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-  <div class="media-body view-bug-des" >
-		在執行開始的動作時，會跑出奇怪的畫面，應該是哪裡沒有設定好
-   <span class="view-bug-time">現在時間是dddd</span>
-  </div>
-</div>
-</div>
-
-
-
-<div id="step" class="bug">   
-<div class="media" style="background:none; border:none;">
-  <a class="pull-left" href="#">
-    <img class="media-object view-bug-img "  src="bug.jpg" alt="...">
-  </a>
-	<div class="pull-right ">
-		<div class="bug-func-btns">
-			<div class="bug-reporter-control">			
-				<div class="bug-reporter-step bug-func-btns" data-bugStep="3">
-					<a class="accept-bug-btn btn bug-func-btn "  data-toggle="tooltip" data-placement="left" title="通過"><span class="glyphicon glyphicon-leaf"></span></a>
-					<a class="reject-bug-btn btn bug-func-btn "  data-toggle="tooltip" data-placement="left" title="不通過"><span class="glyphicon glyphicon-remove"></span></a>
-				</div>
-				<div class="bug-reporter-step" data-bugStep="4">
-					<div class="bug-status bug-resolve" data-bugStep="4"  data-toggle="tooltip" data-placement="left" title="已經解除BUG"><span class="glyphicon glyphicon-leaf"></span></div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-  <div class="media-body view-bug-des" >
-		在執行開始的動作時，會跑出奇怪的畫面，應該是哪裡沒有設定好
-   <span class="view-bug-time">現在時間是dddd</span>
-  </div>
-</div>
-</div>
-
-
-<div id="step" class="bug">   
-<div class="media" style="background:none; border:none;">
-  <a class="pull-left" href="#">
-    <img class="media-object view-bug-img "  src="bug.jpg" alt="...">
-  </a>
-	<div class="pull-right ">
-		<div class="bug-func-btns">
-			<div class="bug-reporter-control">			
-				<div class="bug-reporter-step" data-bugStep="4">
-					<div class="bug-status bug-resolve" data-bugStep="4"  data-toggle="tooltip" data-placement="left" title=""><span class="glyphicon glyphicon-leaf"></span></div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-  <div class="media-body view-bug-des" >
-		在執行開始的動作時，會跑出奇怪的畫面，應該是哪裡沒有設定好
-   <span class="view-bug-time">現在時間是dddd</span>
-  </div>
-</div>
-</div>
-
-
-
-
-
 
 <div id="add" class="add-bug bug	"> 
 	<form class="add-bug-form" >
-  
 <div class="media" style="background:none; border:none;">
   <a class="pull-left" href="#">
- 		<div class="add-bug-img media-object view-bug-img" alt=""></div>
+ 		<div class="add-bug-img media-object view-bug-img" ></div>
     <!--img  class="add-bug-img media-object view-bug-img" alt="" src="bug.jpg" -->
 		<input type="file" class="add-img-input hidden" />	
-
   </a>
 	
 	<div class="pull-right">
 			<div class="bug-func-btns">
-				<a  class="submit-bug bug-func-btn bug-func-btn-lg"  data-toggle="tooltip" data-placement="left" title="呈交霸個" > <span class="glyphicon glyphicon-cloud-upload"></span></a>
+				<a  class="submit-bug bug-func-btn bug-func-btn-lg"  data-toggle="tooltip" data-placement="left" title="呈交霸個" > <span class="glyphicon glyphicon-upload"></span></a>
 			</div>
 	</div>
 	
@@ -469,78 +178,157 @@
 </div>
 </div>
 
+<!---------------------------------------------------------------------------------------------------------------------------->
+<!---->
 
 
-<div class="contaienr">
-				<div class="bug-pane">
-					<div class="row bug-list">
-					
-					</div>
-						<div class="row add-bug ">
-							<div class="add-bug-img col-md-2" >
-							</div>
-							<div class="add-bug-des col-md-5">
-							</div>		
-						</div>
-						<div class="row">
-						</div>
-					</form>
-					</div>
-					</div>
+<script src="js/bug.js"></script>
 
-</div>
 
 
 <script>
 
+
+var aid ="0hrrBbiPsk";
+var currentUser = Parse.User.current();
 $('.bug-func-btn , .bug-status').tooltip();
 
-var currentUser = Parse.User.current();
-console.log (currentUser);
-
-
-function judgeStep(){
+function getControlPanes  (e) {
+	var $e = $(e);		
+	$e.$d = $e.find('.bug-bugger-control') ;
+	$e.$r = $e.find('.bug-reporter-control') ;
+	$e.$g = $e.find('.bug-guest-control') ;
+	return $e ;
+}
+function controlAllBugView (){
+	$(".bug-bugger-view").each(function(i, e) {
+			var $e = getControlPanes(e);
+			$e.$d.show();
+			$e.$r.remove();
+			$e.$g.remove();	
+	});
+	$(".bug-reporter-view").each(function(i, e) {
+			var $e = getControlPanes(e);
+			$e.$d.remove();
+			$e.$r.show();
+			$e.$g.remove();	
+	});
+	$(".bug-guest-view").each(function(i, e) {
+			var $e = getControlPanes(e);
+			$e.$d.remove();
+			$e.$r.remove();
+			$e.$g.show();	
+	});
+}
+function controlAllStepView (){
+	$('.bug').each(function(i,e) {
+		var $e = $(e);
+		var step = $e.data("bugStatus");
+		$e.find('.bug-step').each(function(ii, ee) {
+			var $ee = $(ee) ; 
+			if ($ee.data("bugStep") === step ){$ee.show();}
+		});		
+	});
+}
+function judgeStep(bugRecord){
 	var a = bugRecord.get(isAccept) ; 
 	var b = bugRecord.get(isUpdate) ;
 	var c = bugRecord.get(isSolve);
 	var s = a ? b ? c ? 4 : 3 : 2  : 1 ; console.log (s);
 	return s ;
 }
-function judgeBug( $this){ 
-	var $this =  $($this);
-	var bugger = bugRecord.get("debugger");
+
+function judgeRelation(bugRecord){ 
+	var bugger = bugRecord.get("bugger");
 	var reporter = bugRecord.get("reporter");
-	var bugstep = judgeStep ();
-	
-	
-	if (currentUser.id = bugger.id){ // Debug 模式
-		$this.find(".bug-reporter-control").remove();
-		processStep();
-	}else if (currentUser.id = reporter.id){ // Reporter 模式
-		$this.find(".bug-debugger-control").remove();
-		processStep();
+	if (currentUser.id === bugger.id){
+		return 'bugger';
+	}else if (currentUser.id  === reporter.id){
+		return 'reporter';
+	}else {
+		return 'guest';
 	}
-	function processStep (){
-		$this.find(".bug-debugger-step").each(function(i, e) {
-			var eleStep = $(e).data('bugStep') ;
-			if ( eleStep !=  bugstep ){
-				$(e).hide();
-			}
-		});
-
-	}
-	
-	
-	 { // 什麼都不是
-	}
-
-
 }
 
+function showBug (aid){
+	getBug(aid).then(function(bugs){
+		each(bugs,function (e,i){
+			var relation = judgeBug (e);
+			var step  = judgeStep(e);
+			var html = getBugHtml(e,relation,step);	
+			$('.bug-pane').append(html);
+		});
+	});
+}
+
+function getBugHtml (bug,relation,step)
+{
+	var id = bug.id ; 
+	var cls = "bug-"+relation+"-view" ;
+ 	var des = bug.get("des");
+	//var reviewer = b.get("reviewer");
+	//var des = b.get("des");
+	var imgUrl = b.get("img").url();
+	var time = b.createdAt ;
+ 	var html =  	'<div id="'+id+'" class="bug "'+cls+'" data-bugStatus="'+step+'">\
+<div class="media" style="background:none; border:none;">\
+  <a class="pull-left" href="#">\
+    <img class="media-object view-bug-img "  src="'+imgUrl+'" alt="...">\
+  </a>\
+	<div class="pull-right">\
+		<div class="bug-func-btns">\
+			<div class="bug-bugger-control">\
+				<div class="bug-step bug-func-btns" data-bugStep="1">\
+					<a class="accept-bug-btn bug-func-btn" data-toggle="tooltip" data-placement="left" title="承認這筆BUG" ><span class="glyphicon glyphicon-ok"></span></a>\
+					<a class="reject-bug-btn bug-func-btn" data-toggle="tooltip" data-placement="left" title="BUG並不存在" ><span class="glyphicon glyphicon-remove"></span></a>\
+				</div>\
+				<div class="bug-step" data-bugStep="2">\
+					<a class="noti-reporter-bug-btn bug-func-btn bug-func-btn-lg" data-toggle="tooltip" data-placement="left" title="通知呈報者已經更新"><span class="glyphicon glyphicon-bell"></span></a>\
+				</div>\
+				<div class="bug-step" data-bugStep="3">\
+					<div class="bug-status bug-waiting-check" data-toggle="tooltip" data-placement="left" title="等待呈報者審核中"><span class="glyphicon glyphicon-time"></span></div>\
+				</div>\
+				<div class="bug-step" data-bugStep="4">\
+					<div class="bug-status bug-resolve"  data-toggle="tooltip" data-placement="left" title="BUG已經解除"><span class="glyphicon glyphicon-tree-deciduous"></span></div>\
+				</div>\
+			</div>\
+			<div class="bug-reporter-control">			\
+				<div class="bug-step" data-bugStep="1">\
+					<div class="bug-status bug-waiting-accept"  data-toggle="tooltip" data-placement="left" title="等待作者承認中"><span class="glyphicon glyphicon-question-sign"></span></div>\
+				</div>\
+				<div class="bug-step" data-bugStep="2">\
+					<div class="bug-status bug-waiting-update" data-toggle="tooltip" data-placement="left" title="等待作者更新中"><span class="glyphicon glyphicon-time"></span></div>\
+				</div>\
+				<div class="bug-step bug-func-btns" data-bugStep="3">\
+					<a class="pass-bug-btn btn bug-func-btn "  data-toggle="tooltip" data-placement="left" title="作者成功解除BUG"><span class="glyphicon glyphicon-ok"></span></a>\
+					<a class="fail-bug-btn btn bug-func-btn "  data-toggle="tooltip" data-placement="left" title="作者沒有成功解除BUG"><span class="glyphicon glyphicon-remove"></span></a>\
+				</div>\
+				<div class="bug-step" data-bugStep="4">\
+					<div class="bug-status bug-resolve" data-bugStep="4"  data-toggle="tooltip" data-placement="left" title="已經解除霸個"><span class="glyphicon glyphicon-ok-circle"></span></div>\
+				</div>\
+			</div>\
+			<div class="bug-guest-control" >\
+				<div class="bug-reporter-step" data-bugStep="4">\
+					<div class="bug-status bug-resolve" data-bugStep="4"  data-toggle="tooltip" data-placement="left" title="已經解除霸個"><span class="glyphicon glyphicon-ok-circle"></span></div>\
+				</div>\
+			</div>\
+		</div>\
+	</div>\
+  <div class="media-body view-bug-des " >\
+		 '+des+'  \
+   <span class="view-bug-time">'+time+'</span>\
+  </div>\
+</div>\
+</div>' ;
+	return html ;
+
+	
+}
+
+showBug (aid);
 
 
-//$("#step1").
+
 </script>
-
 </body>
 </html>

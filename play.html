@@ -230,20 +230,20 @@
 
 <script>
 function qurAssign (id){
-	var Assign = Parse.Object.extend("Test_Assign");
+	var Assign = Parse.Object.extend("Assign");
 	var assign = new Assign();
 	var q = new Parse.Query(Assign);
 	q.include("maker");
 	return q.get(id) ;
 }
 function qurAssignInfo (nth){
-	var AssignInfo = Parse.Object.extend ("Test_Assign_Info");
+	var AssignInfo = Parse.Object.extend ("Assign_Info");
 	var q = new Parse.Query(AssignInfo);
 	q.equalTo("nth",nth);
 	return q.first();
 }
 function qurAssigns ( nth ,descendBy) {
-	var Assign = Parse.Object.extend("Test_Assign");
+	var Assign = Parse.Object.extend("Assign");
 	var q = new Parse.Query(Assign);
 	q.equalTo("nth",nth);
 	q.limit (5) ;
@@ -276,7 +276,7 @@ console.log ("get code!")
 	}
 }
 function qurBugs (id){
-	var BugRecord = Parse.Object.extend("Test_Bug_Record");
+	var BugRecord = Parse.Object.extend("Bug_Record");
 	var q = new Parse.Query (BugRecord);
 	q.equalTo("assign",id);
 	q.ascending("createdAt");

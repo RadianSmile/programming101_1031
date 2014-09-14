@@ -79,17 +79,7 @@ $("input:file.add-img-input")	.change(function () {
 
 
 // 呈交BUG
-$(document).on('click' ,".submit-bug",function (e){
-	//Rn!!!!!!!!!
-	var TestAssign = Parse.Object.extend ("Assign"),
-	testAssign = new TestAssign ();
-	testAssign.id = "i0SU8VMoY" ;
-	
-	var user = new Parse.User();
-	user.id  = "bimyHOmqMs" ;
-	//!!!!!!!!
-	
-	
+$(document).on('click',".submit-bug",function (e){
 	//檢查BUg 是否新增完成	
 	e.preventDefault();
 	//console.log ("true");
@@ -97,7 +87,7 @@ $(document).on('click' ,".submit-bug",function (e){
 	var i = $p.index();
 	var form = $p.find(".add-bug").get(0);;
 	var $img = $p.find(".add-img-input").first();
-	var $preImg = $p.find(".add-bug-img").first();
+	var $preImg = $p.find(".add-bug-img")
 	var base64 = $preImg.data("base64");
 	var $btn = $p.find(".submit-bug").first();
 	var des = $p.find(".add-des-input").first().val();
@@ -123,8 +113,8 @@ $(document).on('click' ,".submit-bug",function (e){
 			bugImg.save().then(function(img){
 				console.log(img);
 				bugRecord.set("reporter",currentUser);
-				bugRecord.set("assign",testAssign);//  !!!!!!!!!!!,AssignArr[i].get("assign"));
-				bugRecord.set("bugger",user);//!!!!!!!!!!!!! AssignArr[i].get("assign").get("maker"));
+				bugRecord.set("assign",AssignArr[i].get("assign"));
+				bugRecord.set("debugger",AssignArr[i].get("assign").get("maker"));
 				bugRecord.set("img",img);
 				bugRecord.set("des",des);
 				return bugRecord.save();
@@ -175,60 +165,3 @@ function Validate(oForm) { // http://stackoverflow.com/questions/4234589/validat
 
     return true;
 }
-
-/*
-// Ole Bug Submit
-$(document).on('click' ,".submit-bug",function (e){
-	//檢查BUg 是否新增完成	
-	e.preventDefault();
-	//console.log ("true");
-	var $p = $(this).closest(".bug").attr('id'); ;
-	var $img = $p.find(".add-img-input").first();
-	var $preImg = $p.find(".add-bug-img");
-	var base64 = $preImg.data("base64");
-	var $btn = $p.find(".submit-bug").first();
-	var des = $p.find(".add-des-input").first().val();
-	
-	var fileUploadControl = $img[0];
-	
-	if(des.length < 10 ){ 
-		alert("你的描述太過精簡，請至少超過十個字。"); 
-		return false ;
-	}
-	
-	if (fileUploadControl.files.length > 0) {
-		if (Validate(form)){
-			$btn.attr("disabled","disabled");
-	
-			var BugRecord = Parse.Object.extend("Bug_Record");
-			var bugRecord = new BugRecord();
-		
-			var file = fileUploadControl.files[0];
-			var name = file.name;
-			var bugImg = new Parse.File("Bug",{base64:base64});
-			//http://stackoverflow.com/questions/4459379/preview-an-image-before-it-is-uploaded
-			bugImg.save().then(function(img){
-				console.log(img);
-				bugRecord.set("reporter",currentUser);
-				bugRecord.set("assign",AssignArr[i].get("assign"));
-				bugRecord.set("bugger",AssignArr[i].get("assign").get("maker"));
-				bugRecord.set("img",img);
-				bugRecord.set("des",des);
-				return bugRecord.save();
-			}).then (function(bugRecord){
-				console.log(bugRecord);
-				apdBug (i,bugRecord);
-				$p.find(".add-bug-form").trigger('reset');
-				$preImg.removeAttr("style");
-				$btn.removeAttr("disabled");
-			},function(e){console.log(e);});
-		}else { // file is not image;
-			$img.trigger('click');
-		}
-	}else { // if 沒有點選附檔
-		alert("請附上Bug圖片");
-	}
-	return false ;
-});
-
-*/
