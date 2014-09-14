@@ -61,6 +61,7 @@ form{
 	height:100%;
 }
 #loading{
+	position:absolute;
 	top:30%;
 	left:40%;
 }
