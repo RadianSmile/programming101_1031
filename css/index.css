@@ -21,6 +21,8 @@ body{
 	margin-top: 0px;
 }
 
+
+
 .index-btn>a{
 	color: white;
 }
@@ -29,6 +31,16 @@ body{
 	width: 65%;
 	transition: 0.3s ease-in-out;
 }
+
+.index-btn>a:hover img{
+	width: 65%;
+	transition: 0.3s ease-in-out;
+}
+
+.btn-box{
+	height: 150px;
+}
+
 
 .index-btn img{
 	width: 60%;
