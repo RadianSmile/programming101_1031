@@ -59,3 +59,8 @@ form{
 	-webkit-transition: width 2s; /* Chrome, Safari, Opera */
   transition: width 2s;
 }
+
+#bigdiv{
+	width:100%;
+	height:100%;
+}
