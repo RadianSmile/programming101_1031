@@ -56,6 +56,9 @@ $(document).ready(function(){
                                             }
                                             else{
                                                 alert("這張卡片只能使用在自己身上！請選擇自己！");
+                                                $('div#bigdiv').html("");
+                                                $('div#bigdiv').css("top", "");
+                                                $('div#bigdiv').css("left", "");
                                             }
                                         }
                                         else if(cardid == "4c3uX1rZ1K"){
@@ -66,6 +69,9 @@ $(document).ready(function(){
                                             }
                                             else{
                                                 alert("這張卡片只能使用在自己身上！請選擇自己！");
+                                                $('div#bigdiv').html("");
+                                                $('div#bigdiv').css("top", "");
+                                                $('div#bigdiv').css("left", "");
                                             }
                                         }
                                         else if(cardid == "zLHR3S0hlb"){
@@ -76,6 +82,9 @@ $(document).ready(function(){
                                             }
                                             else{
                                                 alert("這張卡片只能使用在自己身上！請選擇自己！");
+                                                $('div#bigdiv').html("");
+                                                $('div#bigdiv').css("top", "");
+                                                $('div#bigdiv').css("left", "");
                                             }
                                         }
                                         else if(cardid == "7mn5hYmEWH"){
@@ -86,11 +95,17 @@ $(document).ready(function(){
                                             }
                                             else{
                                                 alert("這張卡片只能使用在自己身上！請選擇自己！");
+                                                $('div#bigdiv').html("");
+                                                $('div#bigdiv').css("top", "");
+                                                $('div#bigdiv').css("left", "");
                                             }
                                         }
                                         else if(cardid == "xJmFmNA97H"){
                                             if(data1.id == Parse.User.current().id){
                                                 alert("這張卡片只能使用在其他人！請選擇其他使用者！");
+                                                $('div#bigdiv').html("");
+                                                $('div#bigdiv').css("top", "");
+                                                $('div#bigdiv').css("left", "");
                                             }
                                             else{
                                                 alert("你讓" + targetusername + "增加10HP!");                                              
@@ -101,6 +116,9 @@ $(document).ready(function(){
                                         else if(cardid == "CsG1I2kDXT"){
                                             if(data1.id == Parse.User.current().id){
                                                 alert("這張卡片只能使用在其他人！請選擇其他使用者！");
+                                                $('div#bigdiv').html("");
+                                                $('div#bigdiv').css("top", "");
+                                                $('div#bigdiv').css("left", "");
                                             }
                                             else{
                                                 alert("你讓" + targetusername + "增加30HP!");                                                
@@ -116,6 +134,9 @@ $(document).ready(function(){
                                             }
                                             else{
                                                 alert("這張卡片只能使用在自己身上！請選擇自己！");
+                                                $('div#bigdiv').html("");
+                                                $('div#bigdiv').css("top", "");
+                                                $('div#bigdiv').css("left", "");
                                             }
                                         }
                                         else if(cardid == "aJONHaxQtM"){
@@ -126,11 +147,17 @@ $(document).ready(function(){
                                             }
                                             else{
                                                 alert("這張卡片只能使用在自己身上！請選擇自己！");
+                                                $('div#bigdiv').html("");
+                                                $('div#bigdiv').css("top", "");
+                                                $('div#bigdiv').css("left", "");
                                             }
                                         }
                                         else if(cardid == "10ypku2oZk"){
                                             if(data1.id == Parse.User.current().id){
                                                 alert("這張卡片只能使用在其他人！請選擇其他使用者！");
+                                                $('div#bigdiv').html("");
+                                                $('div#bigdiv').css("top", "");
+                                                $('div#bigdiv').css("left", "");
                                             }
                                             else{
                                                 alert("你對" + targetusername + "捐了10HP!你自己扣了10HP!");                                               
@@ -141,6 +168,9 @@ $(document).ready(function(){
                                         else if(cardid == "ysYpQz4TW0"){
                                             if(data1.id == Parse.User.current().id){
                                                 alert("這張卡片只能使用在其他人！請選擇其他使用者！");
+                                                $('div#bigdiv').html("");
+                                                $('div#bigdiv').css("top", "");
+                                                $('div#bigdiv').css("left", "");
                                             }
                                             else{
                                                 alert("你對" + targetusername + "捐了30HP!你自己扣了30HP!");                                               
@@ -151,6 +181,9 @@ $(document).ready(function(){
                                         else if(cardid == "y0pZ66Wl4X"){
                                             if(data1.id == Parse.User.current().id){
                                                 alert("這張卡片只能使用在其他人！請選擇其他使用者！");
+                                                $('div#bigdiv').html("");
+                                                $('div#bigdiv').css("top", "");
+                                                $('div#bigdiv').css("left", "");
                                             }
                                             else{
                                                 alert("你讓" + targetusername + "減少10HP!");                                               
@@ -161,6 +194,9 @@ $(document).ready(function(){
                                         else if(cardid == "ZLZIS7XbfQ"){
                                             if(data1.id == Parse.User.current().id){
                                                 alert("這張卡片只能使用在其他人！請選擇其他使用者！");
+                                                $('div#bigdiv').html("");
+                                                $('div#bigdiv').css("top", "");
+                                                $('div#bigdiv').css("left", "");
                                             }
                                             else{
                                                 alert("你讓" + targetusername + "減少30HP!");                                               
@@ -171,6 +207,9 @@ $(document).ready(function(){
                                         else if(cardid == "Byw6APXDGu"){
                                             if(data1.id == Parse.User.current().id){
                                                 alert("這張卡片只能使用在其他人！請選擇其他使用者！");
+                                                $('div#bigdiv').html("");
+                                                $('div#bigdiv').css("top", "");
+                                                $('div#bigdiv').css("left", "");
                                             }
                                             else{
                                                 alert("你向" + targetusername + "偷了10HP!你自己增加10HP!");                                              
@@ -181,6 +220,9 @@ $(document).ready(function(){
                                         else if(cardid == "jqxvogKdXQ"){
                                             if(data1.id == Parse.User.current().id){
                                                 alert("這張卡片只能使用在其他人！請選擇其他使用者！");
+                                                $('div#bigdiv').html("");
+                                                $('div#bigdiv').css("top", "");
+                                                $('div#bigdiv').css("left", "");
                                             }
                                             else{
                                                 alert("你向" + targetusername + "偷了30HP!你自己增加30HP!");                                               
@@ -191,6 +233,9 @@ $(document).ready(function(){
                                         else if(cardid == "1PF6Z8XISA"){
                                             if(data1.id == Parse.User.current().id){
                                                 alert("這張卡片只能使用在其他人！請選擇其他使用者！");
+                                                $('div#bigdiv').html("");
+                                                $('div#bigdiv').css("top", "");
+                                                $('div#bigdiv').css("left", "");
                                             }
                                             else{
                                                 alert("你選擇向" + targetusername + "偷了一張卡!");                                              
@@ -220,6 +265,9 @@ $(document).ready(function(){
                                                             }
                                                             else{
                                                                 alert("這張卡片只能使用在自己身上！請選擇自己！");
+                                                                $('div#bigdiv').html("");
+                                                                $('div#bigdiv').css("top", "");
+                                                                $('div#bigdiv').css("left", "");
                                                             }
                                                         },
                                                         error:function(error){
