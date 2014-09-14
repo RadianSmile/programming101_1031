@@ -307,15 +307,15 @@ function shuffle(o){ //v1.0
 
 
 
-var Test_User = Parse.Object.extend("Test_User");
-var Test_Assign =	Parse.Object.extend("Test_Assign");
+var User = Parse.Object.extend("User");
+var Assign =	Parse.Object.extend("Assign");
 
-var qa= new Parse.Query(Test_Assign);
+var qa= new Parse.Query(Assign);
 qa.equalTo("nth",ASSIGN_NTH);
 qa.include("maker");
 var AssignArr =[];
 
-var qu = new Parse.Query(Test_User);
+var qu = new Parse.Query(User);
 qu.equalTo("role","std");
 var UserArr = [];
 
@@ -339,7 +339,7 @@ function Record (){
 	UserArr ;
 	reviewRandomArr ;
 	var saveAllArr = [];
-	var ReviewRecord = Parse.Object.extend("Test_Review_Record");
+	var ReviewRecord = Parse.Object.extend("Review_Record");
 	for ( var i = 0 ; i < reviewRandomArr.length; i++){
 		var  row = reviewRandomArr[i] ;
 		for ( var j = 0  ; j < row.length; j++){

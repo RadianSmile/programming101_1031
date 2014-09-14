@@ -1,0 +1,196 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Untitled Document</title>
+<!-- Common links -->
+<!----><link rel="icon" type="image/png" href="/include/icon.png" />
+<!----><link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+<!----><script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<!----><script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<!----><script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.2.19.min.js"></script>
+<!----><link href="css/all.css" rel="stylesheet" />
+<!----><script type="text/javascript" src="js/all.js?1111"></script>
+<!---------------------->
+
+
+<!--link rel="stylesheet" href="css/bug.css"-->
+
+<style>
+
+
+.bug{
+	border:rgba(229,229,0,1.00) solid 1px;
+	background:rgba(227,238,255,1.00);	
+	padding:10px;
+	margin-top:20px;
+}
+.view-bug-img{
+	width:200px;
+	height:150px;
+}
+.view-bug-des{
+	font-size:16px;
+	_padding-top:10px;
+	padding: 0 10px 0 0;
+}
+.view-bug-time{
+	margin-top:10px;
+	color:gray;
+	display:block;	
+}
+.bug-func-btns{
+	height:150px;
+	width:75px;
+}
+.bug-func-btn{
+	width:100%;
+	height:50%;
+	background-size:70% 70%;
+	background-position:50% 50%;
+	_background:rgba(236,236,236,1.00);
+	_border:rgba(214,214,214,1.00) solid 1px;
+
+		transition: background-size .1s ease-in;
+		-moz-transition: background-size .1s ease-in;
+		-ms-transition: background-size .1s ease-in;
+		-o-transition: background-size .1s ease-in;
+		-webkit-transition: background-size .1s ease-in;
+
+}
+.bug-func-btn:hover{
+	background-size:100% 100% 
+}
+
+.accept-bug-btn{
+	width:75px;
+	text-indent:-99999px;
+	cursor:pointer;
+	background-image:url(img/check.png);
+	background-repeat:no-repeat;
+}
+.reject-bug-btn{
+	width:75px;
+	background-repeat:no-repeat;
+	text-indent:-99999px;
+	cursor:pointer;
+	background-image:url(img/cross.png);
+}
+
+</style>
+
+</head>
+<body>
+<div class="container">
+
+
+
+
+<div id="step1" class="bug">   
+<div class="media" style="background:none; border:none;">
+  <a class="pull-left" href="#">
+    <img class="media-object view-bug-img"  src="bug.jpg" alt="...">
+  </a>
+	<div class="pull-right ">
+		<div class="bug-func-btns">
+			<div class="bug-debugger-control">
+				<div class="bug-debugger-step bug-func-btns" data-bugStep="1">
+					<a class="accept-bug-btn btn bug-func-btn ">承認</a>
+					<a class="reject-bug-btn btn bug-func-btn ">否認</a>
+				</div>
+				<div class="bug-debugger-step" data-bugStep="2">
+					<a class="noti-reporter-bug-btn bug-func-btn-lg">通知已經更新</a>
+				</div>
+				<div class="bug-debugger-step" data-bugStep="2">
+					<div class="bug-status bug-waiting-check">等待審核中</div>
+				</div>
+				<div class="bug-debugger-step" data-bugStep="4">
+					<div class="bug-status bug-resolve">已解除Bug</div>
+				</div>
+			</div>
+			<div class="bug-reporter-control">			
+				<div class="bug-reporter-step" data-bugStep="1">
+					<div class="bug-status bug-waiting-accept">等待承認中</div>
+				</div>
+				<div class="bug-reporter-step" data-bugStep="2">
+					<div class="bug-status bug-waiting-update">等待更新中</div>
+				</div>
+				<div class="bug-reporter-step bug-func-btns" data-bugStep="3">
+					<a class="accept-bug-btn btn bug-func-btn ">通過</a>
+					<a class="reject-bug-btn btn bug-func-btn ">不通過</a>
+				</div>
+				<div class="bug-reporter-step" data-bugStep="4">
+					<div class="bug-status bug-resolve" data-bugStep="4">已解除Bug</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+  <div class="media-body view-bug-des" >
+		在執行開始的動作時，會跑出奇怪的畫面，應該是哪裡沒有設定好
+   <span class="view-bug-time">現在時間是dddd</span>
+  </div>
+</div>
+</div>
+
+
+
+</div>
+
+
+<script>
+
+var currentUser = Parse.User.current();
+console.log (currentUser);
+
+
+function judgeStep(){
+	var a = bugRecord.get(isAccept) ; 
+	var b = bugRecord.get(isUpdate) ;
+	var c = bugRecord.get(isSolve);
+	var s = a ? b ? c ? 4 : 3 : 2  : 1 ; console.log (s);
+	return s ;
+	
+}
+function judgeBug( $this){ 
+	var $this =  $($this);
+	var bugger = bugRecord.get("debugger");
+	var reporter = bugRecord.get("reporter");
+	var step = judgeStep ();
+	
+	
+	
+	
+	if (currentUser.id = bugger.id){ // Debug 模式
+		$this.find(".bug-reporter-control").remove();
+		processStep();
+	}else if (currentUser.id = reporter.id){ // Reporter 模式
+		$this.find(".bug-debugger-control").remove();
+		processStep();
+	}
+	function processStep (){
+		$this.find(".bug-debugger-step").each(function(i, e) {
+			var step = $(e).data('bugStep') ;
+			if ( step ==  "Rn!" ){
+				$(e).hide();
+			}else {
+				
+			}
+		});
+
+	}
+	
+	
+	 { // 什麼都不是
+	}
+
+
+}
+
+
+
+//$("#step1").
+</script>
+
+</body>
+</html>

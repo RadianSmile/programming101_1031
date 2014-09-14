@@ -26,7 +26,7 @@ gradeToStrRef[3] = "A";
 function generateReviewGrade (){
 	console.log("querying");
 var promise = new Parse.Promise();
-var Assign = Parse.Object.extend("Test_Review_Record");
+var Assign = Parse.Object.extend("Review_Record");
 var assign = new Assign();
 var q = new Parse.Query(Assign);
 q.limit(1000);
@@ -56,7 +56,7 @@ q.find().then(function(r){
 //Rn
 function getRecordOrderAssign (){
 
-var Assign = Parse.Object.extend("Test_Review_Record");
+var Assign = Parse.Object.extend("Review_Record");
 var assign = new Assign();
 var q = new Parse.Query(Assign);
 q.limit(1000);
@@ -171,23 +171,23 @@ function testAddStar(){
 
 //Rn src = https://www.parse.com/questions/how-to-query-for-class-with-pointer-equal-to-a-string-value
 var getRecordByAssign = function  (assignId){
-	var ReviewRecord = Parse.Object.extend ("Test_Review_Record");
+	var ReviewRecord = Parse.Object.extend ("Review_Record");
 	var q = new Parse.Query (ReviewRecord);
 	q.include("assign");
 	q.equalTo("assign", {
 		__type: "Pointer",
-		className: "Test_Assign",
+		className: "Assign",
 		objectId: assignId
 	});
 	return q.find();
 }
 var getRecordByReviewer = function (userId) {
-	var ReviewRecord = Parse.Object.extend ("Test_Review_Record");
+	var ReviewRecord = Parse.Object.extend ("Review_Record");
 	var q = new Parse.Query (ReviewRecord);
 	q.include("reviewer");
 	q.equalTo("reviewer", {
 		__type: "Pointer",
-		className: "Test_User",
+		className: "User",
 		objectId: userId
 	});
 	return q.find();
@@ -195,12 +195,12 @@ var getRecordByReviewer = function (userId) {
 
 	
 function getAssign(){
-	var Assign = Parse.Object.extend("Test_Assign");
+	var Assign = Parse.Object.extend("Assign");
 	var q = new Parse.Query (Assign);
 	return q.find();
 }
 function getUser(){
-	var User = Parse.Object.extend("Test_User");
+	var User = Parse.Object.extend("User");
 	var q = new Parse.Query (User);
 	return q.find();
 }
@@ -208,7 +208,7 @@ function getUser(){
 	
 	function ttt (e){
 	
-	var ReviewRecord = Parse.Object.extend ("Test_Review_Record");
+	var ReviewRecord = Parse.Object.extend ("Review_Record");
 	var reviewRecord = new ReviewRecord();
 	
 	

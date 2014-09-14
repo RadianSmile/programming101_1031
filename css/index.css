@@ -1,5 +1,40 @@
 @charset "utf-8";
 /* CSS Document */
+
+
+body{
+	color:rgb(61,94,109);
+	background-color:rgb(129,170,188);
+	font-family: 'Oswald', sans-serif;
+}
+
+.title{
+	text-align: center;
+}
+
+
+.title>h3{
+	margin-bottom: 0px;
+}
+
+.title>h1{
+	margin-top: 0px;
+}
+
+.index-btn>a{
+	color: white;
+}
+
+.index-btn>a:hover img{
+	width: 65%;
+	transition: 0.3s ease-in-out;
+}
+
+.index-btn img{
+	width: 60%;
+	transition: 0.3s ease-in-out;
+}
+
 #indexNavbar{
 	background-color:rgb(66,98,113);
 	border-color:rgb(66,98,113);
@@ -9,15 +44,33 @@
 	padding-left:20px;
 	padding-top:5px;
 }
-body{
-	color:rgb(61,94,109);
-	background-color:rgb(129,170,188);
-}
+
 .storyPic{
 	-moz-box-shadow:2px 2px 1px rgba(20%,20%,40%,0.5);
 	-webkit-box-shadow:2px 2px 1px rgba(20%,20%,40%,0.5);
 	position:relative;
+	width: 100%;
+	display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
+
+.story-text{
+	text-align: center;
+}
+
+.text-wrap p{
+	display: none;
+}
+
+.text-wrap .active>p{
+	display: inline;
+	font-size: 1.3em;
+	font-family: "微軟正黑體";
+	color: white;
+
+}
+
 .rotationA{
 	-moz-transform-origin:left top;
 	-moz-transform:rotate(-3deg);
@@ -27,14 +80,19 @@ body{
 	-o-transform:rotate(-3deg);
 	-ms-transform-origin:left top;
 	-ms-transform:rotate(-23deg);
+	transition: 0.3s ease-in-out;
 	margin-top:-3px;
 }
+
 .rotationB{
 	-moz-transform:rotate(1deg);
 	-webkit-transform:rotate(1deg);
 	-o-transform:rotate(1deg);
 	-ms-transform:rotate(1deg);
+	transition: 0.3s ease-in-out;
 }
+
+
 .rotationC{
 	-moz-transform-origin:right top;
 	-moz-transform:rotate(3deg);
@@ -45,6 +103,7 @@ body{
 	-ms-transform-origin:right top;
 	-ms-transform:rotate(3deg);
 	margin-top:-5px;
+	transition: 0.3s ease-in-out;
 }
 .rotationD{
 	-moz-transform-origin:left top;
@@ -55,7 +114,35 @@ body{
 	-o-transform:rotate(-2deg);
 	-ms-transform-origin:left top;
 	-ms-transform:rotate(-2deg);
+	transition: 0.3s ease-in-out;
 }
+
+
+.rotationA:hover{
+	-moz-box-shadow:3px 3px 15px rgba(10%,10%,10%,0.8);
+	-webkit-box-shadow:3px 3px 15px rgba(10%,10%,10%,0.8);
+	transition: 0.3s ease-in-out;
+}
+
+.rotationB:hover{
+	-moz-box-shadow:3px 3px 15px rgba(10%,10%,10%,0.8);
+	-webkit-box-shadow:3px 3px 15px rgba(10%,10%,10%,0.8);
+	transition: 0.3s ease-in-out;
+}
+
+.rotationC:hover{
+	-moz-box-shadow:3px 3px 15px rgba(10%,10%,10%,0.8);
+	-webkit-box-shadow:3px 3px 15px rgba(10%,10%,10%,0.8);
+	transition: 0.3s ease-in-out;
+}
+
+.rotationD:hover{
+	-moz-box-shadow:3px 3px 15px rgba(10%,10%,10%,0.8);
+	-webkit-box-shadow:3px 3px 15px rgba(10%,10%,10%,0.8);
+	transition: 0.3s ease-in-out;
+}
+
+
 .indentA{
 	margin-top:20px;
 }
@@ -81,15 +168,12 @@ body{
 }
 
 .machineBox{
-	width:16.66%;
-	text-align:center;
-	display:inline-block;
-	float:left;
+	display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 .machineBox > img {
-	width:85%;
-	display:inline-block;
-	text-align:center;
+	width:100%;
 }
 
 .genreWord{
@@ -99,9 +183,10 @@ body{
 	padding-top:2px;
 	display:inline-block;
 	margin-left:39%;
-	margin-right:28%;
+	margin-right:39%;
 	position:relative;
 	font-size:24px;
+	text-align: center;
 }
 .linePointL{
 	display:inline-block;
