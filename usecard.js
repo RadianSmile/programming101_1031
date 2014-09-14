@@ -51,7 +51,7 @@ $(document).ready(function(){
                                         if(cardid == "OSRGBnKpaP"){
                                             if(data1.id == Parse.User.current().id){
                                                 alert("你讓自己增加10XP!");
-                                                cardUseRecord(card, data1);
+                                                cardUseRecord();
                                                 addXP(cardid, targetuserid);
                                             }
                                             else{
@@ -64,7 +64,7 @@ $(document).ready(function(){
                                         else if(cardid == "4c3uX1rZ1K"){
                                             if(data1.id == Parse.User.current().id){                                            
                                                 alert("你讓自己增加30XP!");
-                                                cardUseRecord(card, data1);
+                                                cardUseRecord();
                                                 addXP(cardid, targetuserid);
                                             }
                                             else{
@@ -77,7 +77,7 @@ $(document).ready(function(){
                                         else if(cardid == "zLHR3S0hlb"){
                                             if(data1.id == Parse.User.current().id){
                                                 alert("你讓自己增加10HP!");                                               
-                                                cardUseRecord(card, data1);
+                                                cardUseRecord();
                                                 addHP(cardid, targetuserid);
                                             }
                                             else{
@@ -90,7 +90,7 @@ $(document).ready(function(){
                                         else if(cardid == "7mn5hYmEWH"){
                                             if(data1.id == Parse.User.current().id){
                                                 alert("你讓自己增加30HP!");                                               
-                                                cardUseRecord(card, data1);
+                                                cardUseRecord();
                                                 addHP(cardid, targetuserid);
                                             }
                                             else{
@@ -109,7 +109,7 @@ $(document).ready(function(){
                                             }
                                             else{
                                                 alert("你讓" + targetusername + "增加10HP!");                                              
-                                                cardUseRecord(card, data1);
+                                                cardUseRecord();
                                                 addHP(cardid, targetuserid);
                                             }
                                         }
@@ -122,14 +122,14 @@ $(document).ready(function(){
                                             }
                                             else{
                                                 alert("你讓" + targetusername + "增加30HP!");                                                
-                                                cardUseRecord(card, data1);
+                                                cardUseRecord();
                                                 addHP(cardid, targetuserid);
                                             }
                                         }                                         
                                         else if(cardid == "UDfyCM4Pyb"){
                                             if(data1.id == Parse.User.current().id){
                                                 alert("你補滿自己的HP!");                                               
-                                                cardUseRecord(card, data1);
+                                                cardUseRecord();
                                                 addHP(cardid, targetuserid);
                                             }
                                             else{
@@ -142,7 +142,7 @@ $(document).ready(function(){
                                         else if(cardid == "aJONHaxQtM"){
                                             if(data1.id == Parse.User.current().id){                                              
                                                 alert("你讓自己增加1條命!");
-                                                cardUseRecord(card, data1);
+                                                cardUseRecord();
                                                 addLife(cardid, targetuserid);
                                             }
                                             else{
@@ -161,7 +161,7 @@ $(document).ready(function(){
                                             }
                                             else{
                                                 alert("你對" + targetusername + "捐了10HP!你自己扣了10HP!");                                               
-                                                cardUseRecord(card, data1);
+                                                cardUseRecord();
                                                 donateHP(cardid, targetuserid);
                                             }
                                         }
@@ -174,7 +174,7 @@ $(document).ready(function(){
                                             }
                                             else{
                                                 alert("你對" + targetusername + "捐了30HP!你自己扣了30HP!");                                               
-                                                cardUseRecord(card, data1);
+                                                cardUseRecord();
                                                 donateHP(cardid, targetuserid);
                                             }
                                         }
@@ -187,7 +187,7 @@ $(document).ready(function(){
                                             }
                                             else{
                                                 alert("你讓" + targetusername + "減少10HP!");                                               
-                                                cardUseRecord(card, data1);
+                                                cardUseRecord();
                                                 minusHP(cardid, targetuserid);
                                             }
                                         }
@@ -200,7 +200,7 @@ $(document).ready(function(){
                                             }
                                             else{
                                                 alert("你讓" + targetusername + "減少30HP!");                                               
-                                                cardUseRecord(card, data1);
+                                                cardUseRecord();
                                                 minusHP(cardid, targetuserid);
                                             }
                                         }
@@ -213,7 +213,7 @@ $(document).ready(function(){
                                             }
                                             else{
                                                 alert("你向" + targetusername + "偷了10HP!你自己增加10HP!");                                              
-                                                cardUseRecord(card, data1);
+                                                cardUseRecord();
                                                 stealHP(cardid, targetuserid);
                                             }
                                         }
@@ -226,7 +226,7 @@ $(document).ready(function(){
                                             }
                                             else{
                                                 alert("你向" + targetusername + "偷了30HP!你自己增加30HP!");                                               
-                                                cardUseRecord(card, data1);
+                                                cardUseRecord();
                                                 stealHP(cardid, targetuserid);
                                             }
                                         }
@@ -239,7 +239,7 @@ $(document).ready(function(){
                                             }
                                             else{
                                                 alert("你選擇向" + targetusername + "偷了一張卡!");                                              
-                                                cardUseRecord(card, data1);
+                                                cardUseRecord();
                                                 stealCard(targetuserid);
                                             }
                                         }
@@ -260,7 +260,7 @@ $(document).ready(function(){
                                                             if(data.id == Parse.User.current().id){
                                                                 alert("你自己多了一次抽卡機會!");                                                                
                                                                 console.log("Draw record success!");
-                                                                cardUseRecord(card, data1);
+                                                                cardUseRecord();
                                                                 deletecard();
                                                             }
                                                             else{
@@ -278,7 +278,7 @@ $(document).ready(function(){
                                             })
                                         }
                                         //Record used card!
-                                        function cardUseRecord(card, data1){
+                                        function cardUseRecord(){
                                             var Cardrecord = Parse.Object.extend("Card_record");
                                             var cardrecord = new Cardrecord();
                                             cardrecord.set('user', Parse.User.current());
