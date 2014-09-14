@@ -100,6 +100,26 @@ $(document).ready(function(){
                 console.log(error.toString());
             }
         })
+
+        var cardrecord = Parse.Object.extend("Card_record");
+        var query2 = new Parse.Query(cardrecord);
+        query2.equalTo('type', "use");
+        query2.find({
+            success:function(data){
+                for(var i = 0; i<data.length; i++){
+                    var isnotif = data[i].get('isNotif');
+                    var target = data[i].get('targetuser');
+                    if(target == Parse.User.current()){
+                        if(isnotif == false){
+                            $("#bell").css("background-color", "red");
+                        }
+                    }
+                }
+            },
+            error:function(error){
+                console.log(error.toString());
+            }
+        })
     }
 });
 
