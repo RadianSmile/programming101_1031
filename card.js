@@ -46,7 +46,7 @@ $(document).ready(function(){
                     for(var i = 0; i<data.length; i++){
                         var card = data[i].get('Card_info');
                         if(card == undefined){
-                            var backcard = "<a href='card_drawing.html'><img id='backcard' src='img/choosecard/back.jpg'></a>"; // Rn
+                            var backcard = "<a href='card_drawing.html'><img id='backcard' src='img/choosecard/back.png'></a>"; // Rn
                             $('div.backcard').append(backcard);
                         }
                         else{
