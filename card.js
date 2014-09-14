@@ -47,14 +47,13 @@ $(document).ready(function(){
                         var card = data[i].get('Card_info');
                         if(card == undefined){
                             var backcard = "<a href='card_drawing.html'><img id='backcard' src='img/choosecard/back.png'></a>"; // Rn
-                            $('div.backcard').append(backcard);
+                            $('div#OwnCardData').append(backcard);
                         }
                         else{
-                            var s = getElementStringByowncard(card.get('name'), card.get('imagesrc'), data[i].id);
+                            var s = getElementStringByowncard(card.get('imagesrc'), data[i].id);
                             ccontainer += s;
-                            if((i+1) % 6 == 0){
-                                var string = "<div class='cards'> " + ccontainer + "</div>";
-                                $('div.cardbox').append(string);
+                                var string = "<div class='card-box col-md-2'> " + ccontainer + "</div>";
+                                $('div#OwnCardData').append(string);
                                 ccontainer = "";
                                 $('.card').on('click', function(){
                                     var id = $(this).attr('id');
@@ -74,30 +73,6 @@ $(document).ready(function(){
                                         }
                                     });
                                 })
-                            }
-                            else if(i == data.length - 1){
-                                var string = "<div class = 'cards'>" + ccontainer + "</div>";
-                                $('div.cardbox').append(string);
-                                ccontainer = "";
-                              $('.card').on('click', function(){    // Rn  img to  .card
-                                    var id = $(this).attr('id');
-                                    localStorage['owncardId'] = id;
-                                    var owncardid = localStorage.getItem('owncardId');
-                                    var ownCard = Parse.Object.extend('Owncard');
-                                    var query = new Parse.Query(ownCard);
-                                    query.equalTo('objectId', owncardid);
-                                    query.include('Card_info');
-                                    query.first({
-                                        success: function(data){
-                                            var carddata = data.get('Card_info');
-                                            var cardtitle = carddata.get('name');
-                                            $('h4#CardTitle').append(cardtitle);
-                                            var s = getUsecard(carddata.get('imagesrc'), carddata.get('shortdes'));
-                                            $('div#CardData').append(s);
-                                        }
-                                    });
-                                })
-                            }
                         }
                     }
             }
@@ -110,7 +85,7 @@ $(document).ready(function(){
     }
 });
 
-function getElementStringByowncard(name, imagesrc, id){
+function getElementStringByowncard(imagesrc, id){
     var s1 = "<img src='" + imagesrc + "'>";
     var s = "<a href='#' data-toggle='modal' data-target='#cardModal'><div class='card' id='"+id+"'>" + s1 + "</div></a>";
 
