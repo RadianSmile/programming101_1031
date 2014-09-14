@@ -512,6 +512,8 @@ function stealCard(targetId){
             var owncard = Parse.Object.extend('Owncard');
             var query2 = new Parse.Query(owncard);
             query2.equalTo('user',data);
+            query2.include('user');
+            query2.include('Card_info');
             query2.find({
                 success: function(data2){
                         console.log(data2);
