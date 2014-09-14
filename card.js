@@ -58,6 +58,20 @@ $(document).ready(function(){
                                 $('.card').on('click', function(){
                                     var id = $(this).attr('id');
                                     localStorage['owncardId'] = id;
+                                    var owncardid = localStorage.getItem('owncardId');
+                                    var ownCard = Parse.Object.extend('Owncard');
+                                    var query = new Parse.Query(ownCard);
+                                    query.equalTo('objectId', owncardid);
+                                    query.include('Card_info');
+                                    query.first({
+                                        success: function(data){
+                                            var carddata = data.get('Card_info');
+                                            var cardtitle = carddata.get('name');
+                                            $('h4#CardTitle').append(cardtitle);
+                                            var s = getUsecard(carddata.get('imagesrc'), carddata.get('shortdes'));
+                                            $('div#CardData').append(s);
+                                        }
+                                    });
                                 })
                             }
                             else if(i == data.length - 1){
@@ -67,26 +81,26 @@ $(document).ready(function(){
                               $('.card').on('click', function(){    // Rn  img to  .card
                                     var id = $(this).attr('id');
                                     localStorage['owncardId'] = id;
+                                    var owncardid = localStorage.getItem('owncardId');
+                                    var ownCard = Parse.Object.extend('Owncard');
+                                    var query = new Parse.Query(ownCard);
+                                    query.equalTo('objectId', owncardid);
+                                    query.include('Card_info');
+                                    query.first({
+                                        success: function(data){
+                                            var carddata = data.get('Card_info');
+                                            var cardtitle = carddata.get('name');
+                                            $('h4#CardTitle').append(cardtitle);
+                                            var s = getUsecard(carddata.get('imagesrc'), carddata.get('shortdes'));
+                                            $('div#CardData').append(s);
+                                        }
+                                    });
                                 })
                             }
                         }
                     }
             }
         })
-        var owncardid = localStorage.getItem('owncardId');
-        var ownCard = Parse.Object.extend('Owncard');
-        var query = new Parse.Query(ownCard);
-        query.equalTo('objectId', owncardid);
-        query.include('Card_info');
-        query.first({
-            success: function(data){
-                var carddata = data.get('Card_info');
-                var cardtitle = carddata.get('name');
-                $('h4#CardTitle').append(cardtitle);
-                var s = getUsecard(carddata.get('imagesrc'), carddata.get('shortdes'));
-                $('div#CardData').append(s);
-            }
-        });
         /*$('#cardModal').on('hidden', function() {
             localStorage.removeItem('owncardId');
         })*/    
