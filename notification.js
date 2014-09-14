@@ -14,21 +14,21 @@ $(document).ready(function(){
         query.find({
             success:function(data){
                 for(var i = 0; i<data.length; i++){
+                    data[i].set('isNotif', true);
+                    data[i].save(null,{
+                        success:function(data1){
+                            console.log("IsNotif change to true!");
+                        },
+                        error:function(error){
+                            console.log(error.toString());
+                        }
+                    })
                     var s = useRecord(data[i]);
                     notification += s;
                     var strings = "<div class = 'notification-info'>" + notification + "</div>";
                     $('div#notificationrows').append(strings);
                     notification = "";
                 }
-                data.set('isNotif', true);
-                data.save(null,{
-                    success:function(data1){
-                        console.log("IsNotif change to true!");
-                    },
-                    error:function(error){
-                        console.log(error.toString());
-                    }
-                })
             },
             error:function(error){
                 console.log(error.toString());
