@@ -41,7 +41,7 @@ var PersonalAssignArr = [] ;
 	function getAssignInfoByNthFromArr(nth){
 		var a = AssignInfoArr.getIndexByAttr("nth", nth) ;
 		if (a >= 0 ){
-			console.log(AssignInfoArr[a]);
+		//	console.log(AssignInfoArr[a]);
 			return AssignInfoArr[a];
 		}else{
 			return undefined;
@@ -49,7 +49,7 @@ var PersonalAssignArr = [] ;
 	}
 	
 	qurPersonalAssign(currentUser).then(function (a){ 
-		console.log ("1!!!!!!!!!");
+		//console.log ("1!!!!!!!!!");
 		getAsnDone = true; 
 		PersonalAssignArr = a ;
 		isNewAsn = (typeof (a) === 'undefined') ;
@@ -68,8 +68,8 @@ var PersonalAssignArr = [] ;
 	function start(){
 		$apd = $("#assignInfoArea");
 		for (var i = 1 ; i <= 1 ; i++){    // Rn 6
-			console.log ("正在 append");
-			console.log (generateAssignInfo( i.toString()));
+			//console.log ("正在 append");
+			//console.log (generateAssignInfo( i.toString()));
 			$apd.append(generateAssignInfo( i.toString()));
 			
 		}
@@ -93,7 +93,9 @@ function generateAssignInfo (nth) {
 		var submitDate = asnInfo.get("submitDate");
 		var reviewDate = asnInfo.get("reviewDate");
 		var reviewDue = asnInfo.get("reviewDue");
-		console.log (submitDate.toDateString(),reviewDate.toDateString(),reviewDue.toDateString());
+		console.log ("submitDate: " +submitDate.toDateString());
+		console.log ("reviewDate: " +reviewDate.toDateString());
+		console.log ("reviewDue : " +reviewDue.toDateString());
 		var uploadBtn =  
 			'<div class="note">\
 				<input class=" form-control input-md input-asnUrl" type="text" placeholder="請貼入遊戲play.html連結">\
