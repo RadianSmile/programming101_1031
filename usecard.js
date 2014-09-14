@@ -509,7 +509,6 @@ function stealCard(targetId){
     query1.equalTo('objectId',targetId);
     query1.first({
         success: function(data){
-            console.log(data);
             var owncard = Parse.Object.extend('Owncard');
             var query2 = new Parse.Query(owncard);
             query2.equalTo('user',data);
@@ -517,10 +516,9 @@ function stealCard(targetId){
             query2.include('Card_info');
             query2.find({
                 success: function(data2){
-                        console.log(data2);
                         var random = Math.floor(Math.random() * data2.length);
                         var own = new owncard();
-                        console.log(data2[random.id]);
+                        console.log(data2[random]);
                         if(data2[random.id] != undefined){
                             own.set('objectId',data2[random].id);
                             own.save(null,{
