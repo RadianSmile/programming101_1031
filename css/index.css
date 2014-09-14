@@ -190,29 +190,35 @@ body{
 
 .genreWord{
 	background-color:rgb(129,170,188);
-	padding-left:25px;
-	padding-right:25px;
+
 	padding-top:2px;
 	display:inline-block;
-	margin-left:39%;
-	margin-right:39%;
-	position:relative;
+
+
 	font-size:24px;
 	text-align: center;
 }
 .linePointL{
 	display:inline-block;
 	background-color:rgb(129,170,188);
-	float:left;
+	padding: 0px;
+	text-align: right;
 }
 .linePointR{
 	display:inline-block;
 	background-color:rgb(129,170,188);
-	float:right;
+	padding: 0px;
+	text-align: left;
 }
 .line{
 	background-image:url(../img/games/line1.png);
 	background-repeat:repeat-x;
 	padding-left:0px;
 	padding-right:0px;
+}
+
+.credit{
+	color: #80ABBC;
+	text-align: center;
+	margin-top: 50px;
 }
