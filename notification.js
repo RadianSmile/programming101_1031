@@ -63,7 +63,7 @@ $(document).ready(function(){
                             console.log(error.toString());
                         }
                     })
-                    if(data.get('type') == "use"){
+                    if(data[i].get('type') == "use"){
                         var s = useRecord(data[i]);
                         notification += s;
                         var strings = "<div class = 'notification-info'>" + notification + "</div>";
