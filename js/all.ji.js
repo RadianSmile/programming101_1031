@@ -1,8 +1,4 @@
 // JavaScript Document
-var userImageLink="http://static.mimigd.cc/wp-content/uploads/2009/01/kan.png";
-var userName="Anonymous";
-var linkTo="http://radiansmile.github.io/CodeEDU/dashboard.html";
-var userimageHeight=40;
 
 $("title").append(" | 程式學習平台");
 		Parse.initialize("9eo5r1mHWoIPSTCzmrpdKa3lcHPjySx4y5D6q8Nq", "R8SWwYxpJcy73ogQKuSD43y7FigrlDGjBLcy1lzC");
@@ -19,7 +15,6 @@ $("title").append(" | 程式學習平台");
 	// 規定只能使用這種，使用 status:true 會造成Parse出問題
   FB.getLoginStatus(function(response) {
 		FBinitDone();
-		changeBarView(response);
   });
 };
   (function(d, s, id) {
@@ -71,16 +66,6 @@ $(document).on("scroll","window",function(e){
 	}
 	
 });
-
-
-
-
-
-
-
-
-
-
 
 
 function each (arr,func ){
@@ -176,7 +161,7 @@ function renameClass (oldClass , newClass) {
 }
 
 
-
+//這個是用 value 來找到 object 再 array 中的位置，
 Array.prototype.getIndexByAttr = function (attr, value) {
     for (var i = 0; i < this.length; i++) {
         if (this[i]['attributes'][attr] == value) {
@@ -185,6 +170,10 @@ Array.prototype.getIndexByAttr = function (attr, value) {
     }
 		return -1
 }
+//比如說 result 是我把整個 eventinfo query 後的Array
+//所以 result[retult.getIndexByAttr('eid',value)] 就可以找到 eventInfo 的資料了
+
+
 Array.prototype.getIndexById = function (value) {
     for (var i = 0; i < this.length; i++) {
         if (this[i].id == value) {
@@ -194,26 +183,3 @@ Array.prototype.getIndexById = function (value) {
 		return -1
 }
 
-
-
-// -------------------------change logint to picture--------------------------
-function changeBarView(response){
-	if(response.status=="connected"){
-		$(".navbar-right a").empty();
-		$(".navbar-right a").attr("href",linkTo);
-		loadPic(userImageLink,".navbar-right a",userName)
-	}
-}
-function loadPic(userImageLink,dom,userName){
-	var img=new Image();
-	img.src=userImageLink;
-	var loadChecker = window.setInterval(function(){
-		if(img.complete){
-			window.clearInterval(loadChecker);
-			img.height=userimageHeight;
-			//console.log(img);
-			$(".navbar-right a").append(img);
-			$(".navbar-right a").append(userName);
-		}
-		},100);
-}

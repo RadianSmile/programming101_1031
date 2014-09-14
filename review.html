@@ -605,7 +605,7 @@ q.equalTo("nth",assignToReview);
 q.ascending("createdAt");
 q.include("assign");
 q.find().then(function(r){
-	for (var i = 0 ; i < r.length ; i++) gradeArr[i][0] = r[i].id ;
+	for (var i = 0 ; i < r.length ; i++) gradeArr[i][0] = '0hrrBbiPsk';   //Rn!!!!!!!!!!!  r[i].id ;
 	AssignArr = r ;
 	console.log ("AssignArr",AssignArr);
 	promise.resolve(r);
@@ -625,7 +625,14 @@ function showAssignAndBug(){
 		var url = 	r[i].get("assign").get("url"); 	
 		isInTime(url,i);	
 		getCode(url,i); ///
-		QueryBug(i);
+		getBug(AssignArr[i].get("assign").id).then(function(r){
+			for ( var j = 0 ; j < r.length ; j++ ){
+				var  b = r[j] ;
+				apdBug(i,b);
+			}
+			},function(e){console.log(e);
+		});
+		
 	}
 	},function (e){console.log (e);});
 }
