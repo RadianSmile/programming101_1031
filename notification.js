@@ -122,10 +122,7 @@ function useRecord(data){
 }
 
 function getRecord(data){
-    console.log(data);
     var userId = data.get('user').id;
-    console.log(data.get('Card_info'));
-    console.log(data.get('Card_info').get('name'));
     var cardName = data.get('Card_info').get('name');
     var createTime = data.createdAt;
     
