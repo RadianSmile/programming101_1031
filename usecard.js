@@ -237,7 +237,7 @@ $(document).ready(function(){
                                                 alert("你偷了自己一張卡片!等於沒偷!請選擇其他使用者!");
                                             }
                                             else{
-                                                alert("你向" + targetusername + "偷了一張卡!");
+                                                alert("你選擇向" + targetusername + "偷了一張卡!");
                                                 cardUseRecord();
                                                 stealCard(cardid, targetuserid);
                                             }
@@ -515,21 +515,21 @@ function stealCard(targetId){
             query2.find({
                 success: function(data2){
                     console.log(data2);
-                    if(data2 != []){
                         var random = Math.floor(Math.random() * data2.length);
                         var own = new owncard();
-                        own.set('objectId',data2[random].id);
-                        own.save(null,{
-                            success: function(own){
-                                own.set('user',user);
-                                own.save();
-                                deletecard();
-                            }
-                        });
-                    }
-                    else{
-                        alert("你點選的使用者並沒有卡片可以給你偷！請選擇其他使用者！");
-                    }
+                        if(data2[random.id] != undefined){
+                            own.set('objectId',data2[random].id);
+                            own.save(null,{
+                                success: function(own){
+                                    own.set('user',user);
+                                    own.save();
+                                    deletecard();
+                                }
+                            });
+                        }
+                        else{
+                            alert("你使用的對象沒有任何卡片，偷卡失敗，再選其他人吧！");
+                        }
                 },
                 error: function(error){
                     console.log(error);
