@@ -13,7 +13,7 @@ $(document).ready(function(){
                     data[i].set('isNoti', true);
                     data[i].save(null,{
                         success:function(data1){
-                            console.log("IsNoti change to true!");
+                            
                         },
                         error:function(error){
                             console.log(error.toString());
@@ -51,7 +51,7 @@ $(document).ready(function(){
                     data[i].set('isNotif', true);
                     data[i].save(null,{
                         success:function(data1){
-                            console.log("IsNotif change to true!");
+                            
                         },
                         error:function(error){
                             console.log(error.toString());
@@ -122,6 +122,7 @@ function useRecord(data){
 }
 
 function getRecord(data){
+    console.log(data);
     var userId = data.get('user').id;
     var cardName = data.get('Card_info').get('name');
     var createTime = data.createdAt;
