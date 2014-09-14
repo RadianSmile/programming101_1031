@@ -26,7 +26,6 @@ $(document).ready(function(){
                     query4.equalTo('eid', eid.toString());
                     query4.first({
                         success:function(data2){
-                            console.log(datai);
                             var s = eventRecord(datai, data2);
                             eventnotification += s;
                             var strings = "<div class = 'notification-info'>" + eventnotification + "</div>";
@@ -141,9 +140,9 @@ function eventRecord(data, data1){
     var result = data1.get('effect_target');
     var xp = result[0];
     var hp = result[1];
-    var life = result[2];
+    var draw = result[2];
     var s = "";
-    s = "因為" + eventdes + "，所以造成你的XP變動" + xp +"、你的HP變動" + hp + "、你的Life變動" + life + "。";
+    s = "因為" + eventdes + "，所以造成你的XP變動" + xp +"、你的HP變動" + hp + "、你的抽卡機會增加" + draw + "次。";
     container = "<div class = 'time-gray-color'>"+createTime+"</div><span class = 'glyphicon glyphicon-thumbs-down' style = 'white-space: nowrap;'>"+ s +"</span></div>";
     return container;
 }
