@@ -518,8 +518,7 @@ function stealCard(targetId){
                 success: function(data2){
                         var random = Math.floor(Math.random() * data2.length);
                         var own = new owncard();
-                        console.log(data2[random]);
-                        if(data2[random.id] != undefined){
+                        if(data2[random].id != undefined){
                             own.set('objectId',data2[random].id);
                             own.save(null,{
                                 success: function(own){
