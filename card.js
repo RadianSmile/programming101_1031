@@ -33,10 +33,6 @@ $(document).ready(function(){
           }
     });
 		}else{ alert ("你還沒登入");}
-    $('#cardModal').modal({
-        backdrop: 'static',
-        keyboard: false
-    })
     //back-end owncard
     var current_user = Parse.User.current();
     if(current_user){
@@ -113,6 +109,11 @@ $(document).ready(function(){
         })
     }
 });
+
+$('#cardModal').modal({
+    backdrop: 'static',
+    keyboard: false
+})
 
 function getElementStringByowncard(name, imagesrc, id){
     var s1 = "<img src='" + imagesrc + "'>";
