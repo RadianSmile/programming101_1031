@@ -87,14 +87,10 @@ $(document).ready(function(){
         var eventrecord = Parse.Object.extend("Event_Record");
         var query1 = new Parse.Query(eventrecord);
         query1.equalTo('target', Parse.User.current());
-        query1.find({
+        query1.equalTo('isNoti',false)
+        query1.first({
             success:function(data){
-                for(var i=0; i<data.length;i++){
-                    var isnotif = data[i].get('isNoti');
-                    if(isnotif == false){
-                        $("#bell").css("background-color", "red");
-                    }
-                }
+                $("#bell").css("background-color", "red");
             },
             error:function(error){
                 console.log(error.toString());
