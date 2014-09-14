@@ -261,7 +261,7 @@ $(document).ready(function(){
 function getElementStringByowncard(name, id, photo){
     var s = "<div  value='"+name+"'>"+name+"</div>";
     var s1 = "<img src ='"+photo+"''>";
-    var all = "<a href='#' data-toggle='modal' data-target='.userModal'><div class ='in' id='"+id+"'>"+ s + s1 + "</div></a>";
+    var all = "<div class ='in' id='"+id+"'>"+ s + s1 + "</div>";
 
     return all;
 };
