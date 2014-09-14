@@ -42,7 +42,8 @@ header ul li{
 .time-gray-color{
 	float:right;
 	color:#ddd;
-	width:400px;
+	width:200px;
+	font-size: 12px;
 }
 footer{
 	width:100%;
