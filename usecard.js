@@ -26,7 +26,7 @@ $(document).ready(function(){
                                         }
 
     				$('.in').on('click', function(){
-                        $('#bigdiv').append("<img src = 'img/loading.gif'>");
+                        $('#bigdiv').append("<img id='loading' src = 'img/loading.gif'>");
                         $('#bigdiv').css("z-index", "999");
     					var id = $(this).attr('id');
     					localStorage['userid'] = id;
