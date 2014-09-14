@@ -17,134 +17,9 @@
 
 <script src="http://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" />
-
 <script src="//cdnjs.cloudflare.com/ajax/libs/ace/1.1.3/ace.js" type="text/javascript" charset="utf-8"></script>
 
-
-
-<style>
-html {
-  margin:0;
-  padding:0;
-  overflow-x:hidden;
-}
-
-li.tab > a {
-	background-color:rgb(60,60,60);
-	color:rgb(140,156,156);
-}
-.tab > a:hover{
-	background:rgb(90,90,90) !important;
-	border-color:transparent !important;
-}
-.tab.active > a  {
-
-	background:rgba(50,50,50,1.00) !important;
-	color:rgba(225,225,225,1.00) !important;
-	border: solid 1px rgb(60,60,55) !important;
-	border-bottom-color: transparent;
-}
-.nav-row {
-	background-color: rgb(23,24,20);
-}
-.nav-tabs {
-	border-bottom: solid 1px rgb(60,60,55);
-}
-
-
-/* 這是關於前端小*/
-.play {
-	background:rgba(50,50,50,1.00);
-	height:100%;
-	padding:0;
-	position:relative;
-}
-.play iframe {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	margin-right: -50%;
-	transform: translate(-50%, -50%)	;
-}
-.editor-container {
-	position:relative;
-	height:100%;
-	background:rgb(20,20,20);
-}
- .editor { 
-	margin: 0;
-	position: absolute;
-	top: 0;
-	bottom: 0;
-	left: 0;
-	right: 0;
-}
-.showPane{
-	height:600px;
-	height:-webkit-calc(100vh - 54px); 
-	position:relative;
-}
-
-.expand {
-	width:50%;
-	background:rgba(199,199,199,1.00);
-	float:left;
-}
-.source { 
- color:rgba(53,53,53,1.00);
-}
-
-.no-padding  {
-	padding:0 !important;
-}
-
-
-.grade-preview {
-	display:inline;
-}
-
-.grading-pane {
-	position:absolute;
-	
-	bottom:0px;;
-	left:0px;
-	height:80px;
-	z-index:10;
-}.grading-pane > *{
-	display:inline-block;	
-}
-.star-graded {
-	color:red;
-}
-
-
-.-grading-button{
-		height:100%;
-		border:rgba(0,0,0,1.00) ;
-	width:25%;
-	float:left;
-	background:rgba(196,196,196,1.00);
-	color:rgba(0,0,0,1.00);
-}
-
-
-#review-tab{
-	padding-top:12px;
-}
-
-.control-area{
-	position:absolute;
-	right:10px;
-	padding:5px 0;
-	text-align:right;
-	
-}
-input.star{
-	display:none;
-	
-}
-
-</style>
+<link rel="stylesheet" href="css/review.css">
 <link rel="stylesheet" href="css/bug.css">
 
 </head>
@@ -170,19 +45,7 @@ input.star{
 </div><!-- /.modal -->
 </div>
 
-<style>
-.main-nav:hover {
-	height:50px !important;
 
-}
-.container-fluid {
-		-width:960px;
-}
-.container-fluid{
-	min-width:960px !important;
-	
-}
-</style>
 <div class="main-nav" style="  position:relative; height:5px; width:100%; background:rgba(71,176,213,1.00); transition:height .5s;">
 </div>
 <div class=" container-fluid">
@@ -239,491 +102,51 @@ input.star{
 				<button type="button" class="report-btn btn btn-default " data-toggle="modal" data-target="#report"><span class="glyphicon glyphicon-flag"></span></button>
 			</div> 
 		</div>
-				<div class="contaienr">
-					<div class="bug-pane">
-					<div class="row bug-list">
-					</div>
-					<form class="add-bug-form" >
-						<div class="row add-bug ">
-							<div class="add-bug-img col-md-2" >
-							</div>
-							<input type="file" class="add-img-input hidden" />	
-							<div class="add-bug-des col-md-5">
-								<textarea  class="add-des-input" ></textarea>
-							</div>		
-						</div>
-						<div class="row">
-							<button type="button" class="submit-bug btn btn-danger col-md-offset-6 col-md-1" >呈交霸個</button>
-						</div>
-					</form>
-					</div>
-					</div>
-	</div>
-	<!--- next tab --->
-  <div  class="tab-pane fade  " id="assign1">
-		<div class="row showPane">
-			<div class="play col-xs-7"></div>
-			<div class="editor-container col-xs-5">
-				<div class="editor"></div>
-			</div>
-		</div>
-		<div class="grading-pane col-xs-7">
-			<div style="width:40%;">
-			<select class=" grade grade-select form-control input-md" >
-				<option value="-">選取評等</option>
-				<option>A</option>
-				<option>B</option>
-				<option>C</option>
-				<option>X</option>
-			</select>
-			</div>
-			<div class="checkbox" >
-				<label style="padding-left:0">
-					<button type="button" class="btn btn-default star-btn "><span class="glyphicon glyphicon-star"></span> </button>
-					<input class="grade star" type="radio" name="star"  />
-				</label>
-			</div>
-			<div>
-			<button type="button" class="btn btn-danger togglebug" >顯示霸個</button>
-			</div>
-		</div>
-		
-		<div class="bug-pane">
-		<div class="row bug-list">
-		</div>
-		<form class="add-bug-form" >
-			<div class="row add-bug ">
-				<div class="add-bug-img col-md-2">
-					<input type="file" class="add-img-input" />	
-				</div>
-				<div class="add-bug-des col-md-5">
-				 	<textarea  class="add-des-input" ></textarea>
-				</div>		
-			</div>
-			<div class="row">
-				<button type="button" class="submit-bug btn btn-danger col-md-offset-6 col-md-1" >呈交霸個</button>
-			</div>
-		</form>
-		</div>
-	</div>
-	<!--- next tab --->
-  <div  class="tab-pane fade  " id="assign2">
-		<div class="row showPane">
-			<div class="play col-xs-7"></div>
-			<div class="editor-container col-xs-5">
-				<div class="editor"></div>
-			</div>
-		</div>
-		<div class="grading-pane col-xs-7">
-			<div style="width:40%;">
-			<select class=" grade grade-select form-control input-md" >
-				<option value="-">選取評等</option>
-				<option>A</option>
-				<option>B</option>
-				<option>C</option>
-				<option>X</option>
-			</select>
-			</div>
-			<div class="checkbox" >
-				<label style="padding-left:0">
-					<button type="button" class="btn btn-default star-btn "><span class="glyphicon glyphicon-star"></span> </button>
-					<input class="grade star" type="radio" name="star"  />
-				</label>
-			</div>
-			<div>
-			<button type="button" class="btn btn-danger togglebug" >顯示霸個</button>
-			</div>
-		</div>
-		
-		<div class="bug-pane">
-		<div class="row bug-list">
-		</div>
-		<form class="add-bug-form" >
-			<div class="row add-bug ">
-				<div class="add-bug-img col-md-2">
-					<input type="file" class="add-img-input" />	
-				</div>
-				<div class="add-bug-des col-md-5">
-				 	<textarea  class="add-des-input" ></textarea>
-				</div>		
-			</div>
-			<div class="row">
-				<button type="button" class="submit-bug btn btn-danger col-md-offset-6 col-md-1" >呈交霸個</button>
-			</div>
-		</form>
-		</div>
-	</div>
-	<!--- next tab --->
-  <div  class="tab-pane fade  " id="assign3">
-		<div class="row showPane">
-			<div class="play col-xs-7"></div>
-			<div class="editor-container col-xs-5">
-				<div class="editor"></div>
-			</div>
-		</div>
-		<div class="grading-pane col-xs-7">
-			<div style="width:40%;">
-			<select class=" grade grade-select form-control input-md" >
-				<option value="-">選取評等</option>
-				<option>A</option>
-				<option>B</option>
-				<option>C</option>
-				<option>X</option>
-			</select>
-			</div>
-			<div class="checkbox" >
-				<label style="padding-left:0">
-					<button type="button" class="btn btn-default star-btn "><span class="glyphicon glyphicon-star"></span> </button>
-					<input class="grade star" type="radio" name="star"  />
-				</label>
-			</div>
-			<div>
-			<button type="button" class="btn btn-danger togglebug" >顯示霸個</button>
-			</div>
-		</div>
-		
-		<div class="bug-pane">
-		<div class="row bug-list">
-		</div>
-		<form class="add-bug-form" >
-			<div class="row add-bug ">
-				<div class="add-bug-img col-md-2">
-					<input type="file" class="add-img-input" />	
-				</div>
-				<div class="add-bug-des col-md-5">
-				 	<textarea  class="add-des-input" ></textarea>
-				</div>		
-			</div>
-			<div class="row">
-				<button type="button" class="submit-bug btn btn-danger col-md-offset-6 col-md-1" >呈交霸個</button>
-			</div>
-		</form>
-		</div>
-	</div>
-	<!--- next tab --->
-  <div  class="tab-pane fade  " id="assign4">
-		<div class="row showPane">
-			<div class="play col-xs-7"></div>
-			<div class="editor-container col-xs-5">
-				<div class="editor"></div>
-			</div>
-		</div>
-		<div class="grading-pane col-xs-7">
-			<div style="width:40%;">
-			<select class=" grade grade-select form-control input-md" >
-				<option value="-">選取評等</option>
-				<option>A</option>
-				<option>B</option>
-				<option>C</option>
-				<option>X</option>
-			</select>
-			</div>
-			<div class="checkbox" >
-				<label style="padding-left:0">
-					<button type="button" class="btn btn-default star-btn "><span class="glyphicon glyphicon-star"></span> </button>
-					<input class="grade star" type="radio" name="star"  />
-				</label>
-			</div>
-			<div>
-			<button type="button" class="btn btn-danger togglebug" >顯示霸個</button>
-			</div>
-		</div>
-		
-		<div class="bug-pane">
-		<div class="row bug-list">
-		</div>
-		<form class="add-bug-form" >
-			<div class="row add-bug ">
-				<div class="add-bug-img col-md-2">
-					<input type="file" class="add-img-input" />	
-				</div>
-				<div class="add-bug-des col-md-5">
-				 	<textarea  class="add-des-input" ></textarea>
-				</div>		
-			</div>
-			<div class="row">
-				<button type="button" class="submit-bug btn btn-danger col-md-offset-6 col-md-1" >呈交霸個</button>
-			</div>
-		</form>
-		</div>
-	</div>
-  
- </div>
-
-<div class="bug-list container-fluid"></div>
 
 
+<div class="container bug-pane">
+</div>
+<div class="container">
+	<div id="add" class="add-bug bug	"> 
+		<form class="add-bug-form" >
+			<div class="media" style="background:none; border:none;">
+				<a class="pull-left" href="#">
+					<div class="add-bug-img media-object view-bug-img" ></div>
+					<input type="file" class="add-img-input hidden" />	
+				</a>
+				<div class="pull-right">
+					<div class="bug-func-btns">
+						<a  class="submit-bug bug-func-btn bug-func-btn-lg"  data-toggle="tooltip" data-placement="left" title="呈交霸個" > <span class="glyphicon glyphicon-upload"></span></a>
+					</div>
+				</div>
+				<div class="media-body view-bug-des add-bug-des" >
+					<textarea style="border:none; resize:none;"  class="add-des-input" placeholder="敘述請包含時間點與問題描述，內容至少十個字以上" ></textarea>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+</div><!--這是很厲害的 tab-pane 結尾！！-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
 
 
 </style>
 
-<!--div class="row">
-	<div class="one-game container no-padding">
-		<div class="expand game">
-			<iframe src="final_11/index.html" width="100%" frameborder="0" height="313"></iframe>
-		</div>
-		<div class="expand source" style="height:313px; overflow:hidden;">
-			
-		</div>
-	</div>
-</div-->
 
-<script data-file="grade">
-
-
-	$(document).on("change",".grade-select",function(){
-		var $this = $(this);
-		var $p = $this.closest(".tab-pane") ;
-		var i = $p.index();
-		console.log(i);		
-		var g = $this.val();	
-		$($(".tab").get(i)).find(".grade-preview").first().text(g)
-		gradeArr[i][1] = g ;
-		localStorage["gradeArr"] = JSON.stringify (gradeArr);
-	} );
-
-  $(document).on('click','.star-btn',function () {
-		
-		var $this = $(this);
-		var radio = $this.siblings('input:radio[name=star]')[0];
-		radio.checked = !radio.checked ;
-
-    $('.star-btn').each(function(i, e) {
-			if ($(e).siblings('input:radio[name=star]')[0].checked){ //被選了
-				$(e).addClass("btn-warning").removeClass("btn-default");
-				$($(".tab").get(i)).find(".glyphicon-star.preview").first().removeClass("hidden");
-				gradeArr[i][2] = true ;
-			}else { // 被取消
-				$(e).removeClass("btn-warning").addClass("btn-default");
-				$($(".tab").get(i)).find(".glyphicon-star.preview").first().addClass("hidden");
-				gradeArr[i][2] = false ;
-			}
-			localStorage["gradeArr"] = JSON.stringify (gradeArr);
-
-		});
-  });
-
-</script>
-
-
-<script>
-$('#review-tab a').click(function (e) {
-  e.preventDefault();
-  $(this).tab('show');
-});
-
-Parse.initialize("9eo5r1mHWoIPSTCzmrpdKa3lcHPjySx4y5D6q8Nq", "R8SWwYxpJcy73ogQKuSD43y7FigrlDGjBLcy1lzC");	
-
-
-var currentUser = Parse.User.current();		
-//var assignToReview = "1";
-
-//**Rn Test  ---------------**/
-var User  = Parse.Object.extend("User");
-var qqq = new Parse.Query (User);
-qqq.get("x4bNlnkioW").then (function(o){
-	currentUser =  o;
-	console.log(o);
-	console.log (o,o.id);
-	$(".add-bug").append(o.id);
-
-	showAssignAndBug ();
-	
-});
-//$('.btn').button();
-
-var AssignArr = [] ;
-var CodeArr =  [] ;
-var TimeArr = [] ;
-var gradeArr = [];
-init();
-
-function init (){
-	
-	//$(".bug-pane").css("display","none");
-	
-for (var i = 0 ; i < 5; i++){
-var tabEditor =  $($(".tab-pane")[i]).find(".editor").first().get(0);
-	var editor = ace.edit( tabEditor );
-	editor.setTheme("ace/theme/twilight");
-	editor.getSession().setUseWrapMode(true);
-	editor.getSession().setTabSize(2);
-	tabEditor.style.fontSize='14px';
-	editor.getSession().setMode("ace/mode/java");
-}
-//localStorage.clear();
-if (localStorage.getItem("gradeArr") !== null){
-	console.log (localStorage["gradeArr"],typeof(localStorage["gradeArr"]));
-	gradeArr = JSON.parse(localStorage["gradeArr"]);
-	console.log("init,local",gradeArr);
-	
-	showLocal();
-	
-}else {
-	for (var i = 0 ; i < 5 ; i++){
-		var arr = ["","-",false];
-		gradeArr.push(arr);
-	}
-}
-}
-
-function showLocal (){
-	for (var i = 0 ;  i < gradeArr.length ; i++){
-		if (gradeArr[i][1] !== '-'){
-			var Select = $($(".tab-pane").get(i)).find(".grade-select");
-			var opt = Select.find('option:contains("'+gradeArr[i][1]+'")');
-			$($(".tab").get(i)).find(".grade-preview").first().text(gradeArr[i][1]);
-			opt.attr("selected",true);
-			console.log (Select.val());
-			Select.val(gradeArr[i][1]);
-		}
-		if (gradeArr[i][2]){
-			var radio = $($(".tab-pane").get(i)).find(".star-btn").click();
-		}
-	}	
-}
-
-
-///**Rn  end**/
-
-
-
-// showAssign ();
-
-
-
-var QueryAssigns = function (){
-var promise = new Parse.Promise();
-var Assign = Parse.Object.extend("Review_Record");
-var assign = new Assign();
-
-var q = new Parse.Query(Assign);
-console.log(currentUser);
-q.equalTo("reviewer",currentUser);
-q.equalTo("nth",assignToReview);
-//q.include("maker");
-q.ascending("createdAt");
-q.include("assign");
-q.find().then(function(r){
-	for (var i = 0 ; i < r.length ; i++) gradeArr[i][0] = '0hrrBbiPsk';   //Rn!!!!!!!!!!!  r[i].id ;
-	AssignArr = r ;
-	console.log ("AssignArr",AssignArr);
-	promise.resolve(r);
-	//console.log("Parse Done, Querying Data..");
-
-},function(e){
-	promise.reject(e.message);
-
-	console.log(e.message);
-});
-	return promise ;
-}
-
-function showAssignAndBug(){
-	QueryAssigns().then (function(r){
-	for (var i = 0 ; i < r.length ; i++){
-		var url = 	r[i].get("assign").get("url"); 	
-		isInTime(url,i);	
-		getCode(url,i); ///
-		getBug(AssignArr[i].get("assign").id).then(function(r){
-			for ( var j = 0 ; j < r.length ; j++ ){
-				var  b = r[j] ;
-				apdBug(i,b);
-			}
-			},function(e){console.log(e);
-		});
-		
-	}
-	},function (e){console.log (e);});
-}
-function submitReview (e) {
-	//checkResult ; /**************************************/
-	console.log("click");
-	$(this).addClass("disabled");
-	var checkStar = false ;
-		for (var i = 0 ; i < AssignArr.length ; i++){
-			var g  =  gradeArr [i] ;
-			if (g[1] === "-"){ alert("#"+(i+1)+" 還沒評等喔！"); return false}	
-			AssignArr[i].set("grade",g[1]);
-			AssignArr[i].set("star",g[2]);
-			AssignArr[i].set("overtime",TimeArr[i]);
-			if (g[2]){checkStar = true ;}
-		}
-		if (!checkStar){alert("你還沒挑選最佳解喔！");
-		return false}
-		if (confirm("確定要繳交了嗎?繳交後就不能再更改囉")){
-			$(this).attr("disabled","disabled");
-			Parse.Object.saveAll(AssignArr).then (function (re){
-				console.log ("SaveResult",re);
-				localStorage.clear();
-				alert("繳交成功了!");
-			},function(e){
-				console.log ("e");
-			});
-		}
-}
-
-
-function isInTime(url,i){
-	console.log("Check Last Modified...");
-		$.ajax({
-			url : "lastModify.php",
-			async : false,
-			type: "POST",
-			data:{url:url},
-			dataType : 'text', //explicitly requesting the xml as text, rather than an xml document
-			success : function (data, status, xhr) {	
-			  data = JSON.parse(data);
-				console.log ("time",data['timenum']);
-				var t = Math.round(new Date().getTime() / 1000);
-				console.log ("t",t);
-				TimeArr[i] = data ;
-				var play = document.createElement("iframe");
-				play.frameBorder = 0 ;
-				play.style.width = "600px";
-				play.style.height = "400px";
-				play.setAttribute("src",url);
-				$($(".tab-pane")[i]).find(".play").first().html(play);
-			}
-		});
-}
-
-</script>
-
-
-
-<script data-file="這是程式預覽" >
-
-function getCode (url,i){
-		console.log("Ajaxing");
-		$.ajax({
-			url : "getcode.php",
-			async : true,
-			type: "POST",
-			data:{url:url},
-			dataType : 'text', //explicitly requesting the xml as text, rather than an xml document
-			success : function (data, status, xhr) {		
-				if (status == 'success') {
-					var tabEditor =  $($(".tab-pane")[i]).find(".editor").first().get(0);
-					//console.log(tabEditor);
-					var editor = ace.edit( tabEditor );
-			//		editor.setTheme("ace/theme/twilight");
-			//		editor.getSession().setUseWrapMode(true);
-			//		editor.getSession().setTabSize(2);
-			//		tabEditor.style.fontSize='14px';
-			//		editor.getSession().setMode("ace/mode/java");
-					editor.setValue(data);
-					CodeArr[i] = data ;				
-				}	
-			}
-		});
-}
-
-
-
-</script>
-
-
+<script type="text/javascript" src="js/review.js"></script>
 <script type="text/javascript" src="js/bug.js"></script>
 
 

@@ -1,0 +1,125 @@
+html {
+  margin:0;
+  padding:0;
+  overflow-x:hidden;
+}
+
+li.tab > a {
+	background-color:rgb(60,60,60);
+	color:rgb(140,156,156);
+}
+.tab > a:hover{
+	background:rgb(90,90,90) !important;
+	border-color:transparent !important;
+}
+.tab.active > a  {
+
+	background:rgba(50,50,50,1.00) !important;
+	color:rgba(225,225,225,1.00) !important;
+	border: solid 1px rgb(60,60,55) !important;
+	border-bottom-color: transparent;
+}
+.nav-row {
+	background-color: rgb(23,24,20);
+}
+.nav-tabs {
+	border-bottom: solid 1px rgb(60,60,55);
+}
+
+
+/* 這是關於前端小*/
+.play {
+	background:rgba(50,50,50,1.00);
+	height:100%;
+	padding:0;
+	position:relative;
+}
+.play iframe {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-right: -50%;
+	transform: translate(-50%, -50%)	;
+}
+.editor-container {
+	position:relative;
+	height:100%;
+	background:rgb(20,20,20);
+}
+ .editor { 
+	margin: 0;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+}
+.showPane{
+	height:600px;
+	height:-webkit-calc(100vh - 54px); 
+	position:relative;
+}
+
+.expand {
+	width:50%;
+	background:rgba(199,199,199,1.00);
+	float:left;
+}
+.source { 
+ color:rgba(53,53,53,1.00);
+}
+
+.no-padding  {
+	padding:0 !important;
+}
+
+
+.grade-preview {
+	display:inline;
+}
+
+.grading-pane {
+	position:absolute;
+	
+	bottom:0px;;
+	left:0px;
+	height:80px;
+	z-index:10;
+}.grading-pane > *{
+	display:inline-block;	
+}
+.star-graded {
+	color:red;
+}
+
+
+.-grading-button{
+		height:100%;
+		border:rgba(0,0,0,1.00) ;
+	width:25%;
+	float:left;
+	background:rgba(196,196,196,1.00);
+	color:rgba(0,0,0,1.00);
+}
+
+
+#review-tab{
+	padding-top:12px;
+}
+
+.control-area{
+	position:absolute;
+	right:10px;
+	padding:5px 0;
+	text-align:right;
+	
+}
+input.star{
+	display:none;
+	
+}
+
+.main-nav:hover {
+	height:50px !important;
+
+}

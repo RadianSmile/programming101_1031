@@ -1,11 +1,12 @@
 // JavaScript Document
+var userImageLink="http://static.mimigd.cc/wp-content/uploads/2009/01/kan.png";
 var userName="Anonymous";
-var linkTo="dashboard.html";
-var userimageHeight=19;
-var currentUser ;
+var linkTo="http://radiansmile.github.io/CodeEDU/dashboard.html";
+var userimageHeight=40;
+
 $("title").append(" | 程式學習平台");
 		Parse.initialize("9eo5r1mHWoIPSTCzmrpdKa3lcHPjySx4y5D6q8Nq", "R8SWwYxpJcy73ogQKuSD43y7FigrlDGjBLcy1lzC");
-		currentUser = Parse.User.current();
+
   window.fbAsyncInit = function() {
 		Parse.FacebookUtils.init({
 			appId      : '1452756891666119',
@@ -160,9 +161,9 @@ function paraCheck (para,msg){
 
 
 function renameClass (oldClass , newClass) {
-	qurClass(oldClass).then(function(a){
+	qurClass("Event_List").then(function(a){
 		var newArr = [],
-				N = Parse.Object.extend(newClass);
+				 			N = Parse.Object.extend(newClass);
 
 		each(a,function (r , i){
 					newArr[i]= new N ();
@@ -193,46 +194,16 @@ Array.prototype.getIndexById = function (value) {
 		return -1
 }
 
-$.fn.toggleDisabled = function () {
-	return this.each(function () {
-		var $this = $(this);
-		if ($this.prop('disabled')) {
-			$this.addClass("disabled");
-			$this.prop('disabled', false);
-		} else {
-			$this.removeClass("disabled");
-			$this.prop('disabled', true);
-		}
-	});
-};
-
-function isSet (a){
-	return (typeof(a) != undefined) ;
-}
 
 
 // -------------------------change logint to picture--------------------------
-
-
-var userImageLink=currentUser.get('photo');
-
-
 function changeBarView(response){
 	if(response.status=="connected"){
-		$("#nav-user-block a ").empty();
-	$("#nav-user-block a").attr("href",linkTo);
-	$("#nav-user-block a").append("<div></div>");
-	if($("#nav-user-block a").hasClass("index-head")){
-		$("#nav-user-block a div").css({"margin-right":7+"px"});
-		$("#nav-user-block a").append("<span></span>");
-		$(".index-head span").append(currentUser.get("name"));
-		$("#nav-user-block").css({"padding-right":"15px"});
-		$(".index-head span").css({"display":"inline-block","height":19+"px","line-height":"19px","vertical-align":"middle"});
-	}
-	loadPic(userImageLink,"#nav-user-block a",userName);
+		$(".navbar-right a").empty();
+		$(".navbar-right a").attr("href",linkTo);
+		loadPic(userImageLink,".navbar-right a",userName)
 	}
 }
-
 function loadPic(userImageLink,dom,userName){
 	var img=new Image();
 	img.src=userImageLink;
@@ -241,8 +212,8 @@ function loadPic(userImageLink,dom,userName){
 			window.clearInterval(loadChecker);
 			img.height=userimageHeight;
 			//console.log(img);
-			$(dom+" div").css({"width":userimageHeight+"px","height":userimageHeight+"px","overflow":"hidden","overflow":"hidden","display":"inline"});
-			$(dom+" div").append(img);
+			$(".navbar-right a").append(img);
+			$(".navbar-right a").append(userName);
 		}
 		},100);
 }

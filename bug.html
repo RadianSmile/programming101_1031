@@ -14,321 +14,49 @@
 <!---------------------->
 <script src="http://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" />
+<link rel="stylesheet" href="css/bug.css" rel="stylesheet">
 
+<script>
+//var tRelation = 'reporter' ; // reporter , bugger , guest 
+var tAid ="0hrrBbiPsk";
+var tTargetUserId	 = "HNSembpkZb" ; 
 
-<!--link rel="stylesheet" href="css/bug.css"-->
-
-<style>
-
-
-.bug{
-	border:rgba(229,229,0,1.00) solid 1px;
-	background:rgba(227,238,255,1.00);	
-	padding:10px;
-	margin-top:20px;
-}
-.view-bug-img{
-	width:200px;
-	height:150px;
-}
-.view-bug-des , add-bug-des{
-	font-size:16px;
-	_padding-top:10px;
-	padding: 0 0px 0 0;
-}
-.view-bug-time{
-	margin-top:10px;
-	color:gray;
-	display:block;	
-}
-.bug-func-btns{
-	height:150px;
-	width:75px;
-}
-.bug-func-btn , .bug-status{
-	display:block;
-	width:75px;
-	height:50%;
-	text-align:center ;
-	line-height:75px !important;
-	cursor:pointer;
-	font-size:20px !important;
-	_background-size:70% 70%;
-	_background-position:50% 50%;
-	_background:rgba(236,236,236,1.00);
-	_border:rgba(214,214,214,1.00) solid 1px;
-
-		transition: background-size .1s ease-in;
-		-moz-transition: background-size .1s ease-in;
-		-ms-transition: background-size .1s ease-in;
-		-o-transition: background-size .1s ease-in;
-		-webkit-transition: background-size .1s ease-in;
-
-}
-.bug-func-btn-lg , .bug-status{
-	height:150px;
-	line-height:150px !important;
-}
-.bug .glyphicon {
-	font-size:40px !important;
-	line-height:inherit !important;
-}
-.bug-status {
-	cursor:auto;
-	
-}
-
-.bug-func-btn:hover{
-	background-size:100% 100% 
-}
-
-
-
-
-
-.add-des-input {
-	width:100%;
-	min-height:150px;
-}
-
-.add-bug-img {
-	background-color:rgba(255,255,255,1.00);
-
-	background-image:url(img/photo-upload.jpg) !important;
-	background-size:contain;
-	background-position:center center;
-	background-repeat:no-repeat;
-}
-</style>
+var currentUser = Parse.User.current();
+</script>
 
 </head>
 <body>
 <div class="container bug-pane">
-<!---------------------------------------------------------------------------------------------------------------------------->
-<div id="Bugid" class="bug bug-reporter-view " data-bugStatus="1">   
-<div class="media" style="background:none; border:none;">
-  <a class="pull-left" href="#">
-    <img class="media-object view-bug-img "  src="bug.jpg" alt="...">
-  </a>
-	<div class="pull-right">
-		<div class="bug-func-btns">
-			<div class="bug-bugger-control">
-				<div class="bug-step bug-func-btns" data-bugStep="1">
-					<a class="accept-bug-btn bug-func-btn" data-toggle="tooltip" data-placement="left" title="承認這筆BUG" ><span class="glyphicon glyphicon-ok"></span></a>
-					<a class="reject-bug-btn bug-func-btn" data-toggle="tooltip" data-placement="left" title="BUG並不存在" ><span class="glyphicon glyphicon-remove"></span></a>
-				</div>
-				<div class="bug-step" data-bugStep="2">
-					<a class="noti-reporter-bug-btn bug-func-btn bug-func-btn-lg" data-toggle="tooltip" data-placement="left" title="通知呈報者已經更新"><span class="glyphicon glyphicon-bell"></span></a>
-				</div>
-				<div class="bug-step" data-bugStep="3">
-					<div class="bug-status bug-waiting-check" data-toggle="tooltip" data-placement="left" title="等待呈報者審核中"><span class="glyphicon glyphicon-time"></span></div>
-				</div>
-				<div class="bug-step" data-bugStep="4">
-					<div class="bug-status bug-resolve"  data-toggle="tooltip" data-placement="left" title="BUG已經解除"><span class="glyphicon glyphicon-tree-deciduous"></span></div>
-				</div>
-			</div>
-			<div class="bug-reporter-control">			
-				<div class="bug-step" data-bugStep="1">
-					<div class="bug-status bug-waiting-accept"  data-toggle="tooltip" data-placement="left" title="等待作者承認中"><span class="glyphicon glyphicon-question-sign"></span></div>
-				</div>
-				<div class="bug-step" data-bugStep="2">
-					<div class="bug-status bug-waiting-update" data-toggle="tooltip" data-placement="left" title="等待作者更新中"><span class="glyphicon glyphicon-time"></span></div>
-				</div>
-				<div class="bug-step bug-func-btns" data-bugStep="3">
-					<a class="pass-bug-btn btn bug-func-btn "  data-toggle="tooltip" data-placement="left" title="作者成功解除BUG"><span class="glyphicon glyphicon-ok"></span></a>
-					<a class="fail-bug-btn btn bug-func-btn "  data-toggle="tooltip" data-placement="left" title="作者沒有成功解除BUG"><span class="glyphicon glyphicon-remove"></span></a>
-				</div>
-				<div class="bug-step" data-bugStep="4">
-					<div class="bug-status bug-resolve" data-bugStep="4"  data-toggle="tooltip" data-placement="left" title="已經解除霸個"><span class="glyphicon glyphicon-ok-circle"></span></div>
-				</div>
-			</div>
-			<div class="bug-guest-control" >
-				<div class="bug-reporter-step" data-bugStep="4">
-					<div class="bug-status bug-resolve" data-bugStep="4"  data-toggle="tooltip" data-placement="left" title="已經解除霸個"><span class="glyphicon glyphicon-ok-circle"></span></div>
-				</div>
-			</div>
-		</div>
-	</div>
-  <div class="media-body view-bug-des " >
-		在執行開始的動作時，會跑出奇怪的畫面，應該是哪裡沒有設定好
-   <span class="view-bug-time">現在時間是dddd</span>
-  </div>
-</div>
 </div>
 
 
-<div id="add" class="add-bug bug	"> 
-	<form class="add-bug-form" >
-<div class="media" style="background:none; border:none;">
-  <a class="pull-left" href="#">
- 		<div class="add-bug-img media-object view-bug-img" ></div>
-    <!--img  class="add-bug-img media-object view-bug-img" alt="" src="bug.jpg" -->
-		<input type="file" class="add-img-input hidden" />	
-  </a>
-	
-	<div class="pull-right">
-			<div class="bug-func-btns">
-				<a  class="submit-bug bug-func-btn bug-func-btn-lg"  data-toggle="tooltip" data-placement="left" title="呈交霸個" > <span class="glyphicon glyphicon-upload"></span></a>
+<div class="container">
+	<div id="add" class="add-bug bug	"> 
+		<form class="add-bug-form" >
+			<div class="media" style="background:none; border:none;">
+				<a class="pull-left" href="#">
+					<div class="add-bug-img media-object view-bug-img" ></div>
+					<input type="file" class="add-img-input hidden" />	
+				</a>
+				<div class="pull-right">
+					<div class="bug-func-btns">
+						<a  class="submit-bug bug-func-btn bug-func-btn-lg"  data-toggle="tooltip" data-placement="left" title="呈交霸個" > <span class="glyphicon glyphicon-upload"></span></a>
+					</div>
+				</div>
+				<div class="media-body view-bug-des add-bug-des" >
+					<textarea style="border:none; resize:none;"  class="add-des-input" placeholder="敘述請包含時間點與問題描述，內容至少十個字以上" ></textarea>
+				</div>
 			</div>
+		</form>
 	</div>
-	
-  <div class="media-body view-bug-des add-bug-des" >
-		<textarea  class="add-des-input" placeholder="敘述請包含時間點與問題描述，內容至少十個字以上" ></textarea>
-  </div>
-</div>
 </div>
 
 <!---------------------------------------------------------------------------------------------------------------------------->
 <!---->
-
-
 <script src="js/bug.js"></script>
-
-
-
 <script>
-
-
-var aid ="0hrrBbiPsk";
-var currentUser = Parse.User.current();
-$('.bug-func-btn , .bug-status').tooltip();
-
-function getControlPanes  (e) {
-	var $e = $(e);		
-	$e.$d = $e.find('.bug-bugger-control') ;
-	$e.$r = $e.find('.bug-reporter-control') ;
-	$e.$g = $e.find('.bug-guest-control') ;
-	return $e ;
-}
-function controlAllBugView (){
-	$(".bug-bugger-view").each(function(i, e) {
-			var $e = getControlPanes(e);
-			$e.$d.show();
-			$e.$r.remove();
-			$e.$g.remove();	
-	});
-	$(".bug-reporter-view").each(function(i, e) {
-			var $e = getControlPanes(e);
-			$e.$d.remove();
-			$e.$r.show();
-			$e.$g.remove();	
-	});
-	$(".bug-guest-view").each(function(i, e) {
-			var $e = getControlPanes(e);
-			$e.$d.remove();
-			$e.$r.remove();
-			$e.$g.show();	
-	});
-}
-function controlAllStepView (){
-	$('.bug').each(function(i,e) {
-		var $e = $(e);
-		var step = $e.data("bugStatus");
-		$e.find('.bug-step').each(function(ii, ee) {
-			var $ee = $(ee) ; 
-			if ($ee.data("bugStep") === step ){$ee.show();}
-		});		
-	});
-}
-function judgeStep(bugRecord){
-	var a = bugRecord.get(isAccept) ; 
-	var b = bugRecord.get(isUpdate) ;
-	var c = bugRecord.get(isSolve);
-	var s = a ? b ? c ? 4 : 3 : 2  : 1 ; console.log (s);
-	return s ;
-}
-
-function judgeRelation(bugRecord){ 
-	var bugger = bugRecord.get("bugger");
-	var reporter = bugRecord.get("reporter");
-	if (currentUser.id === bugger.id){
-		return 'bugger';
-	}else if (currentUser.id  === reporter.id){
-		return 'reporter';
-	}else {
-		return 'guest';
-	}
-}
-
-function showBug (aid){
-	getBug(aid).then(function(bugs){
-		each(bugs,function (e,i){
-			var relation = judgeBug (e);
-			var step  = judgeStep(e);
-			var html = getBugHtml(e,relation,step);	
-			$('.bug-pane').append(html);
-		});
-	});
-}
-
-function getBugHtml (bug,relation,step)
-{
-	var id = bug.id ; 
-	var cls = "bug-"+relation+"-view" ;
- 	var des = bug.get("des");
-	//var reviewer = b.get("reviewer");
-	//var des = b.get("des");
-	var imgUrl = b.get("img").url();
-	var time = b.createdAt ;
- 	var html =  	'<div id="'+id+'" class="bug "'+cls+'" data-bugStatus="'+step+'">\
-<div class="media" style="background:none; border:none;">\
-  <a class="pull-left" href="#">\
-    <img class="media-object view-bug-img "  src="'+imgUrl+'" alt="...">\
-  </a>\
-	<div class="pull-right">\
-		<div class="bug-func-btns">\
-			<div class="bug-bugger-control">\
-				<div class="bug-step bug-func-btns" data-bugStep="1">\
-					<a class="accept-bug-btn bug-func-btn" data-toggle="tooltip" data-placement="left" title="承認這筆BUG" ><span class="glyphicon glyphicon-ok"></span></a>\
-					<a class="reject-bug-btn bug-func-btn" data-toggle="tooltip" data-placement="left" title="BUG並不存在" ><span class="glyphicon glyphicon-remove"></span></a>\
-				</div>\
-				<div class="bug-step" data-bugStep="2">\
-					<a class="noti-reporter-bug-btn bug-func-btn bug-func-btn-lg" data-toggle="tooltip" data-placement="left" title="通知呈報者已經更新"><span class="glyphicon glyphicon-bell"></span></a>\
-				</div>\
-				<div class="bug-step" data-bugStep="3">\
-					<div class="bug-status bug-waiting-check" data-toggle="tooltip" data-placement="left" title="等待呈報者審核中"><span class="glyphicon glyphicon-time"></span></div>\
-				</div>\
-				<div class="bug-step" data-bugStep="4">\
-					<div class="bug-status bug-resolve"  data-toggle="tooltip" data-placement="left" title="BUG已經解除"><span class="glyphicon glyphicon-tree-deciduous"></span></div>\
-				</div>\
-			</div>\
-			<div class="bug-reporter-control">			\
-				<div class="bug-step" data-bugStep="1">\
-					<div class="bug-status bug-waiting-accept"  data-toggle="tooltip" data-placement="left" title="等待作者承認中"><span class="glyphicon glyphicon-question-sign"></span></div>\
-				</div>\
-				<div class="bug-step" data-bugStep="2">\
-					<div class="bug-status bug-waiting-update" data-toggle="tooltip" data-placement="left" title="等待作者更新中"><span class="glyphicon glyphicon-time"></span></div>\
-				</div>\
-				<div class="bug-step bug-func-btns" data-bugStep="3">\
-					<a class="pass-bug-btn btn bug-func-btn "  data-toggle="tooltip" data-placement="left" title="作者成功解除BUG"><span class="glyphicon glyphicon-ok"></span></a>\
-					<a class="fail-bug-btn btn bug-func-btn "  data-toggle="tooltip" data-placement="left" title="作者沒有成功解除BUG"><span class="glyphicon glyphicon-remove"></span></a>\
-				</div>\
-				<div class="bug-step" data-bugStep="4">\
-					<div class="bug-status bug-resolve" data-bugStep="4"  data-toggle="tooltip" data-placement="left" title="已經解除霸個"><span class="glyphicon glyphicon-ok-circle"></span></div>\
-				</div>\
-			</div>\
-			<div class="bug-guest-control" >\
-				<div class="bug-reporter-step" data-bugStep="4">\
-					<div class="bug-status bug-resolve" data-bugStep="4"  data-toggle="tooltip" data-placement="left" title="已經解除霸個"><span class="glyphicon glyphicon-ok-circle"></span></div>\
-				</div>\
-			</div>\
-		</div>\
-	</div>\
-  <div class="media-body view-bug-des " >\
-		 '+des+'  \
-   <span class="view-bug-time">'+time+'</span>\
-  </div>\
-</div>\
-</div>' ;
-	return html ;
-
-	
-}
-
-showBug (aid);
-
-
-
+showBugs (tAid);
 </script>
+
 </body>
 </html>
