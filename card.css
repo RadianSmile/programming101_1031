@@ -59,10 +59,3 @@ form{
 	-webkit-transition: width 2s; /* Chrome, Safari, Opera */
   transition: width 2s;
 }
-#bigdiv{
-	width:100vh;
-	height:100vh;
-	background-color: #FFFFFF;
-	position:absolute;
-	z-index: 999;
-}
