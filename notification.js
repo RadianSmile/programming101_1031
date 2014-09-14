@@ -9,6 +9,7 @@ $(document).ready(function(){
         query3.equalTo('target', Parse.User.current());
         query3.find({
             success:function(data){
+                console.log(data);
                 for(var i = 0; i<data.length; i++){
                     data[i].set('isNoti', true);
                     data[i].save(null,{
@@ -20,11 +21,13 @@ $(document).ready(function(){
                         }
                     })
                     var eid = data[i].get('eid');
+                    console.log(eid);
                     var eventinfo = Parse.Object.extend("Event_Info");
                     var query4 = new Parse.Query(eventinfo);
                     query4.equalTo('eid', eid);
                     query4.first({
                         success:function(data2){
+                            console.log(data2);
                             var s = eventRecord(data[i], data2);
                             eventnotification += s;
                             var strings = "<div class = 'notification-info'>" + eventnotification + "</div>";
