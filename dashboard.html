@@ -5,14 +5,12 @@
 		<title>Dashboard</title>
 <!-- Common links -->
 <!----><link rel="icon" type="image/png" href="../include/icon.png" />
-<!----><link href="bootstrap/css/bootstrap.css" rel="stylesheet" />
-
+<!----><link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
 <!----><script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <!----><script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <!----><script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.2.19.min.js"></script>
 <!----><link href="css/all.css" rel="stylesheet" />
 <!----><script src="js/all.js"></script>
-	   <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
 <!---------------------->
 
 <!--script src="js/assignInfo.js"></script-->
@@ -24,181 +22,100 @@
 <!-- Rn -->
 
 </head>
-
-
-<body>
+	<body>
 	
 <!-- Assign Modal -->
 
 		
 <!-- Button trigger modal -->
 
-		<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-	        <div class="container-fluid">
-	            <a class="navbar-brand" href="index.html">PROGRAMING 101</a>
-
-	            <ul class="nav navbar-nav">
-	                <li><a href="#"><span class="glyphicon glyphicon-user"></span></a></li>
-	                <li><a href="#"><span class="glyphicon glyphicon-bell"></span></a></li>
-					<li><a href="#">Grading</a></li>
-					<li><a href="#">Student List</a></li>
-	            </ul>
-
-	            <ul class="nav navbar-nav navbar-right">
-					<li><a href="#">Sylibus</a></li>
-					<li><a href="#">Help</a></li>
-					<li><a href="#">Logout</a></li>
-	            </ul>
-	        </div>
-	    </nav>
-
+		<header>
+			<ul>
+				<li><a href="#">Profile</a></li>
+				<li><a href="#">Notification</a></li>
+				<li><a href="#">Granding</a></li>
+				<li><a href="#">Student List</a></li>
+				<li><a href="#">home</a></li>
+				<li><a href="#">Sylibus</a></li>
+				<li><a href="#">help</a></li>
+				<li><a href="#">logout</a></li>
+			</ul>	
+		</header>
 		
 	
-		<div class="container top">
-			
-			<div class="row">
-					<div class="col-md-12" id="Banner-Rotator">
-						<h5>鄭竣丰說 : 大家加油啊啊啊啊啊~! GOGOGO!</h5>
-					</div>	
-			</div>
-
-			<div class="row">
-				<div class="col-md-10 col-md-offset-1 individual-info">
-						
-						
-					<div class="col-md-3 individual-img">
-						<img src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xpa1/v/t1.0-1/p160x160/10382439_891148834232295_4347727905370620729_n.jpg?oh=43341fae20745c9291d59e8163e593d6&oe=548C4A0F&__gda__=1422426802_f936b547a67f6ac9ff8c709a6bd85cc4">
-					</div>
-
-					<div class="col-md-9 sub-individual-attr">
-
-						<h3 class="col-md-12" id="individual-name">CHEN YING HSIU</h3>
-						<h4 class="col-md-12" id="individual-level">LEVEL 10</h4>
-
-						<h4 class="col-md-1">HP</h4>
-						<div class="progress col-md-11">
-							<div id="individual-hp" class="progress-bar-danger" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">
-							</div>
-						</div>
-
-						<h4 class="col-md-1">XP</h4>
-						<div class="progress col-md-11">
-							<div id="individual-hp" class="progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">
-							</div>
-						</div>
-
-						<h4 class="col-md-1" id="life">LIFE</h4>
-						<div class="col-md-1 life-img">
-							<h3><span class="glyphicon glyphicon-heart "></span><h3>
-						</div>
-						<div class="col-md-1 life-img">
-							<h3><span class="glyphicon glyphicon-heart "></span><h3>
-						</div>
-						<div class="col-md-1 life-img">
-							<h3><span class="glyphicon glyphicon-heart "></span><h3>
-						</div>
-
-						<div>
-
-						</div>
-					</div>
-						
+		<div class="container" style="margin-top:55px;">
+		<div class="row">
+		<article class="col-md-12">
+		<section id="Banner-Rotator" style="text-align:center;">Banner-Rotator</section>	
+		<div class="individual-info">
+			<div class="individual-img"><img class="bighead"></div>
+				<div class="sub-individual-attr">
+				<h3 id="individual-name"></h3>
+				<h4 id="individual-level"></h4>
+				<div class="progress" style="width:500px;">
+				  <div id="individual-hp" class="progress-bar-danger" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width:0%;">
+				  <span style="height:16px; width:50px; margin-left:20px;">HP</span>
+				  </div>
 				</div>
-			</div>
-
-			<div class="row own-things">
-				<div class="col-md-10 col-md-offset-1">
-					<h3>GAMES</h3>
+				<div class="progress" style="width:500px;">
+				  <div id="individual-exp" class="progress-bar-success" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width:0%;">
+				  <span style="height:16px; width:50px; margin-left:20px;">EXP</span>
+				  </div>
 				</div>
-
-				<div class="col-md-10 col-md-offset-1">
-					<div class="machineBox col-md-2"><a href=""><img src="img/games/broke-01.png" /></a></div>
-                    <div class="machineBox col-md-2"><a href=""><img src="img/games/broke-02.png" /></a></div>
-                    <div class="machineBox col-md-2"><a href=""><img src="img/games/broke-03.png" /></a></div>
-                    <div class="machineBox col-md-2"><a href=""><img src="img/games/broke-04.png" /></a></div>
-                    <div class="machineBox col-md-2"><a href=""><img src="img/games/broke-05.png" /></a></div>
-                    <div class="machineBox col-md-2"><a href=""><img src="img/games/broke-06.png" /></a></div>
-				</div>
-
+				<div id="life" style="display:inline-block; font-size:20px; margin:3px;">Life:</div>
 				
-
 			</div>
-
-			<div class="row own-things">
-
-				<div class="col-md-10 col-md-offset-1">
-					<h3>CARDS</h3>
+		</div>		<!-- <div class="userstatus">
+			<div id="user">
+				<img id="bighead">
+				<h3 id="name"></h3>
+				<h4 id="level"></h4>
+				<table id="hp">
+					<h4>HP</h4>
+					<tbody>
+						<tr>
+							<td style="background-color: rgb(102, 102, 102);"></td>
+							<td style="background-color: rgb(102, 102, 102);"></td>
+							<td style="background-color: rgb(102, 102, 102);"></td>
+							<td style="background-color: rgb(102, 102, 102);"></td>
+							<td style="background-color: rgb(102, 102, 102);"></td>
+							<td style="background-color: rgb(102, 102, 102);"></td>
+							<td style="background-color: rgb(102, 102, 102);"></td>
+							<td style="background-color: rgb(102, 102, 102);"></td>
+							<td style="background-color: rgb(102, 102, 102);"></td>
+							<td style="background-color: rgb(102, 102, 102);"></td>
+						</tr>
+					</tbody>
+				</table>
+				<table id="xp">
+					<h4>XP</h4>
+					<tbody>
+						<tr>
+							<td style="background-color: rgb(102, 102, 102);"></td>
+							<td style="background-color: rgb(102, 102, 102);"></td>
+							<td style="background-color: rgb(102, 102, 102);"></td>
+							<td style="background-color: rgb(102, 102, 102);"></td>
+							<td style="background-color: rgb(102, 102, 102);"></td>
+							<td style="background-color: rgb(102, 102, 102);"></td>
+							<td style="background-color: rgb(102, 102, 102);"></td>
+							<td style="background-color: rgb(102, 102, 102);"></td>
+							<td style="background-color: rgb(102, 102, 102);"></td>
+							<td style="background-color: rgb(102, 102, 102);"></td>
+						</tr>
+					</tbody>
+				</table>
+				<div id="life">
+					<h4>Life</h4>
 				</div>
-
-				<div class="col-md-10 col-md-offset-1">
-					<div class="card-box col-md-2"><a href=""><img src="img/dashboard/back.png" /></a></div>
-					<div class="card-box col-md-2"><a href=""><img src="img/dashboard/back.png" /></a></div>
-					<div class="card-box col-md-2"><a href=""><img src="img/dashboard/steal_card.png" /></a></div>
-					<div class="card-box col-md-2"><a href=""><img src="img/dashboard/steal_card.png" /></a></div>
-					<div class="card-box col-md-2"><a href=""><img src="img/dashboard/plus_xp_10.png" /></a></div>
-					<div class="card-box col-md-2"><a href=""><img src="img/dashboard/steal_card.png" /></a></div>
-					<div class="card-box col-md-2"><a href=""><img src="img/dashboard/plus_xp_10.png" /></a></div>
-					<div class="card-box col-md-2"><a href=""><img src="img/dashboard/steal_card.png" /></a></div>
-
-				</div>
-
 			</div>
-
 		</div>
-					
-
-
-
-				<!-- <div class="userstatus">
-					<div id="user">
-						<img id="bighead">
-						<h3 id="name"></h3>
-						<h4 id="level"></h4>
-						<table id="hp">
-							<h4>HP</h4>
-							<tbody>
-								<tr>
-									<td style="background-color: rgb(102, 102, 102);"></td>
-									<td style="background-color: rgb(102, 102, 102);"></td>
-									<td style="background-color: rgb(102, 102, 102);"></td>
-									<td style="background-color: rgb(102, 102, 102);"></td>
-									<td style="background-color: rgb(102, 102, 102);"></td>
-									<td style="background-color: rgb(102, 102, 102);"></td>
-									<td style="background-color: rgb(102, 102, 102);"></td>
-									<td style="background-color: rgb(102, 102, 102);"></td>
-									<td style="background-color: rgb(102, 102, 102);"></td>
-									<td style="background-color: rgb(102, 102, 102);"></td>
-								</tr>
-							</tbody>
-						</table>
-						<table id="xp">
-							<h4>XP</h4>
-							<tbody>
-								<tr>
-									<td style="background-color: rgb(102, 102, 102);"></td>
-									<td style="background-color: rgb(102, 102, 102);"></td>
-									<td style="background-color: rgb(102, 102, 102);"></td>
-									<td style="background-color: rgb(102, 102, 102);"></td>
-									<td style="background-color: rgb(102, 102, 102);"></td>
-									<td style="background-color: rgb(102, 102, 102);"></td>
-									<td style="background-color: rgb(102, 102, 102);"></td>
-									<td style="background-color: rgb(102, 102, 102);"></td>
-									<td style="background-color: rgb(102, 102, 102);"></td>
-									<td style="background-color: rgb(102, 102, 102);"></td>
-								</tr>
-							</tbody>
-						</table>
-						<div id="life">
-							<h4>Life</h4>
-						</div>
-					</div>
-				</div>
-				<div class = "cardbox"></div>
-				<a class="btn btn-warning" href="http://radiansmile.github.io/CodeEDU/card_drawing.html">Draw a card!</a>
-				<a class="btn btn-default" href="http://radiansmile.github.io/CodeEDU/cardrecord.html">Card record!</a>
-				<a class="btn btn-primary" href="http://radiansmile.github.io/CodeEDU/assign.html?nth=1">遊戲連結</a>
-				<a class="btn btn-primary" href="http://radiansmile.github.io/CodeEDU/review.html">評分頁面</a>		 
-
+		<div class = "cardbox"></div>
+		<a class="btn btn-warning" href="http://radiansmile.github.io/CodeEDU/card_drawing.html">Draw a card!</a>
+		<a class="btn btn-default" href="http://radiansmile.github.io/CodeEDU/cardrecord.html">Card record!</a>
+		<a class="btn btn-primary" href="http://radiansmile.github.io/CodeEDU/assign.html?nth=1">遊戲連結</a>
+		<a class="btn btn-primary" href="http://radiansmile.github.io/CodeEDU/review.html">評分頁面</a>		 -->
+	</article>
+	</div>
 	
 	<div class="row">
 	<div class="games">
@@ -216,7 +133,7 @@
 
 	</div>
 
-	<div class="modal fade" id="cardModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+	<div class="modal fade" id="cardModal" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -250,7 +167,7 @@
 
 <div id="assignInfoArea">
 
-</div>-->
+</div>
 
 <script src="js/assignInfo.js"></script>
 <script src="js/dashboard.js"></script>
