@@ -81,6 +81,7 @@ function useRecord(data){
 function getRecord(data){
     var userId = data.get('user').id;
     var cardName = data.get('Card_info').get('name');
+    var createTime = data.createdAt;
     
     var s = "";
         if(userId == Parse.User.current().id){
