@@ -2,7 +2,6 @@ $(document).ready(function(){
     Parse.initialize("9eo5r1mHWoIPSTCzmrpdKa3lcHPjySx4y5D6q8Nq", "R8SWwYxpJcy73ogQKuSD43y7FigrlDGjBLcy1lzC");
     var current_user = Parse.User.current();
     if(current_user){
-        $('.bar').css("display", "none");
     	var user = Parse.Object.extend('User');
     	var query = new Parse.Query(user);
     	query.find({
@@ -27,7 +26,7 @@ $(document).ready(function(){
                                         }
 
     				$('.in').on('click', function(){
-                        $('.bar').css("display", "block");
+                        $('div#bigdiv').append("<img src='img/loading.gif'>");
     					var id = $(this).attr('id');
     					localStorage['userid'] = id;
                         var owncardid = localStorage.getItem('owncardId');
@@ -40,7 +39,6 @@ $(document).ready(function(){
                                 var card = data.get('Card_info');
                                 var cardid = card.id;
                                 var targetuser = localStorage.getItem('userid');
-
                                 var user = Parse.Object.extend('User');
                                 var query = new Parse.Query(user);
                                 query.equalTo('objectId', targetuser);
