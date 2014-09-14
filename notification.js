@@ -103,19 +103,19 @@ function useRecord(data){
     var userName = data.get('user').get('name');
     var createTime = data.createdAt;
     
-    var s = "";
+    var container = "";
         if(userId == Parse.User.current().id){
             if(targetId == Parse.User.current().id){
-                s = "你對自己使用了" + cardName + "。";
+                var s = "你對自己使用了" + cardName + "。";
                 container = "<div class = 'time-gray-color'>"+createTime+"</div><span class = 'glyphicon glyphicon-thumbs-down' style = 'white-space: nowrap;'>"+ s +"</span></div>";
             }
             else{
-                s = "你對" + targetName + "使用了" + cardName + "。";
+                var s = "你對" + targetName + "使用了" + cardName + "。";
                 container = "<div class = 'time-gray-color'>"+createTime+"</div><span class = 'glyphicon glyphicon-thumbs-down' style = 'white-space: nowrap;'>"+ s +"</span></div>";
             }
         }
         else if(targetId == Parse.User.current().id){
-            s = userName+"對你使用了" + cardName + "。";
+            var s = userName+"對你使用了" + cardName + "。";
             container = "<div class = 'time-gray-color'>"+createTime+"</div><span class = 'glyphicon glyphicon-thumbs-down' style = 'white-space: nowrap;'>"+ s +"</span></div>";
         }
     return container;
@@ -126,9 +126,9 @@ function getRecord(data){
     var cardName = data.get('Card_info').get('name');
     var createTime = data.createdAt;
     
-    var s = "";
+    var container = "";
         if(userId == Parse.User.current().id){
-            s = "你抽到了"+ cardName + "。";
+            var s = "你抽到了"+ cardName + "。";
             container = "<div class = 'time-gray-color'>"+createTime+"</div><span class = 'glyphicon glyphicon-thumbs-down' style = 'white-space: nowrap;'>"+ s +"</span></div>";
         }
     return container;
@@ -141,8 +141,8 @@ function eventRecord(data, data1){
     var xp = result[0];
     var hp = result[1];
     var draw = result[2];
-    var s = "";
-    s = "因為" + eventdes + "，所以造成你的XP變動" + xp +"、你的HP變動" + hp + "、你的抽卡機會增加" + draw + "次。";
+    var container = "";
+    var s = "因為" + eventdes + "，所以造成你的XP變動" + xp +"、你的HP變動" + hp + "、你的抽卡機會增加" + draw + "次。";
     container = "<div class = 'time-gray-color'>"+createTime+"</div><span class = 'glyphicon glyphicon-thumbs-down' style = 'white-space: nowrap;'>"+ s +"</span></div>";
     return container;
 }
