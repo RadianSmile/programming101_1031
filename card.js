@@ -18,7 +18,7 @@ $(document).ready(function(){
          var hpblocks = 100;//parseInt(hp)|100;
          var xpblocks = 100;//parseInt(xp)|100;
             $('#individual-name').append(name);
-            $('#individual-level').append('Level:'+level);
+            $('#individual-level').append('LEVEL'+level);
             
             $(".bighead").attr("src",photo);  // Rn
             $(".bighead").attr("width","100%"); // Rn
