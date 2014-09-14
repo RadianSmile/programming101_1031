@@ -26,8 +26,8 @@ $(document).ready(function(){
                                         }
 
     				$('.in').on('click', function(){
-                        $('bigdiv').append("<img src = 'img/loading.gif'>");
-                        $('bigdiv').css("z-index", "999");
+                        $('#bigdiv').append("<img src = 'img/loading.gif'>");
+                        $('#bigdiv').css("z-index", "999");
     					var id = $(this).attr('id');
     					localStorage['userid'] = id;
                         var owncardid = localStorage.getItem('owncardId');
