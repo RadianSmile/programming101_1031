@@ -149,23 +149,23 @@ function generateAssignInfo (nth) {
 			<div class="assign-info-outer">\
 				<div class="assignInfo container-fluid">\
 					<div class="row">\
-							<div class="col-xs-4 ">\
+							<div class="col-xs-3 ">\
 								<div class="assignInfo-photo">\
 			\						<img  src="'+imgUrl+'" width="100%" >\
 								</div>\
-								<div class="links">\
-								'+btns+' \
-								</div>\
 							</div>\
-						<div class=" col-xs-8">\
-			\				<h1 class="assignInfo-name">'+n +'</h1>\
+						<div class=" col-xs-9">\
+			\				<h2 class="assignInfo-name">'+n +'</h2>\
 							<div class="des-block intro">\
-								<h2>Introduction</h2>\
+								<h4>Introduction</h4>\
 			\					<div class="des assignInfo-intro">'+intro+'</div>				\
 							</div>\
 							<div class="des-block requirement">\
-								<h2>Requirement</h2>\
+								<h4>Requirement</h4>\
 			\					<div class="des assignInfo-requirement">'+req+'</div>\
+							</div>\
+							<div class="links">\
+								'+btns+' \
 							</div>\
 						</div>\
 					</div>\
