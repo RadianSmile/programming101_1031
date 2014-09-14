@@ -48,8 +48,8 @@ $(document).ready(function(){
                                         var targetusername = data1.get('name');
                                         if(cardid == "OSRGBnKpaP"){
                                             if(data1.id == Parse.User.current().id){
-                                                $('#userData').append("<img src ='img/loading.gif'>");
-                                                $('#userTitle').append("你讓自己增加10XP!");
+                                                $('.modal-content').append("<img src ='img/loading.gif'>");
+                                                $('.modal-content').append("你讓自己增加10XP!");
                                                 //alert("你讓自己增加10XP!");
                                                 cardUseRecord();
                                                 addXP(cardid, targetuserid);
@@ -60,8 +60,8 @@ $(document).ready(function(){
                                         }
                                         else if(cardid == "4c3uX1rZ1K"){
                                             if(data1.id == Parse.User.current().id){
-                                                $('#userData').append("<img src ='img/loading.gif'>");
-                                                $('#userTitle').append("你讓自己增加10XP!");                                                
+                                                $('.modal-content').append("<img src ='img/loading.gif'>");
+                                                $('.modal-content').append("你讓自己增加10XP!");                                                
                                                 //alert("你讓自己增加30XP!");
                                                 cardUseRecord();
                                                 addXP(cardid, targetuserid);
@@ -73,8 +73,8 @@ $(document).ready(function(){
                                         else if(cardid == "zLHR3S0hlb"){
                                             if(data1.id == Parse.User.current().id){
                                                 //alert("你讓自己增加10HP!");
-                                                $('#userData').append("<img src ='img/loading.gif'>");
-                                                $('#userTitle').append("你讓自己增加10XP!");                                                
+                                                $('.modal-content').append("<img src ='img/loading.gif'>");
+                                                $('.modal-content').append("你讓自己增加10XP!");                                                
                                                 cardUseRecord();
                                                 addHP(cardid, targetuserid);
                                             }
@@ -85,8 +85,8 @@ $(document).ready(function(){
                                         else if(cardid == "7mn5hYmEWH"){
                                             if(data1.id == Parse.User.current().id){
                                                 //alert("你讓自己增加30HP!");
-                                                $('#userData').append("<img src ='img/loading.gif'>");
-                                                $('#userTitle').append("你讓自己增加10XP!");                                                
+                                                $('.modal-content').append("<img src ='img/loading.gif'>");
+                                                $('.modal-content').append("你讓自己增加10XP!");                                                
                                                 cardUseRecord();
                                                 addHP(cardid, targetuserid);
                                             }
@@ -100,8 +100,8 @@ $(document).ready(function(){
                                             }
                                             else{
                                                 //alert("你讓" + targetusername + "增加10HP!");
-                                                $('#userData').append("<img src ='img/loading.gif'>");
-                                                $('#userTitle').append("你讓自己增加10XP!");                                                
+                                                $('.modal-content').append("<img src ='img/loading.gif'>");
+                                                $('.modal-content').append("你讓自己增加10XP!");                                                
                                                 cardUseRecord();
                                                 addHP(cardid, targetuserid);
                                             }
@@ -112,8 +112,8 @@ $(document).ready(function(){
                                             }
                                             else{
                                                 //alert("你讓" + targetusername + "增加30HP!");
-                                                $('#userData').append("<img src ='img/loading.gif'>");
-                                                $('#userTitle').append("你讓自己增加10XP!");                                                
+                                                $('.modal-content').append("<img src ='img/loading.gif'>");
+                                                $('.modal-content').append("你讓自己增加10XP!");                                                
                                                 cardUseRecord();
                                                 addHP(cardid, targetuserid);
                                             }
@@ -121,8 +121,8 @@ $(document).ready(function(){
                                         else if(cardid == "UDfyCM4Pyb"){
                                             if(data1.id == Parse.User.current().id){
                                                 //alert("你補滿自己的HP!");
-                                                $('#userData').append("<img src ='img/loading.gif'>");
-                                                $('#userTitle').append("你讓自己增加10XP!");                                                
+                                                $('.modal-content').append("<img src ='img/loading.gif'>");
+                                                $('.modal-content').append("你讓自己增加10XP!");                                                
                                                 cardUseRecord();
                                                 addHP(cardid, targetuserid);
                                             }
@@ -132,8 +132,8 @@ $(document).ready(function(){
                                         }
                                         else if(cardid == "aJONHaxQtM"){
                                             if(data1.id == Parse.User.current().id){
-                                                $('#userData').append("<img src ='img/loading.gif'>");
-                                                $('#userTitle').append("你讓自己增加10XP!");                                                
+                                                $('.modal-content').append("<img src ='img/loading.gif'>");
+                                                $('.modal-content').append("你讓自己增加10XP!");                                                
                                                 //alert("你讓自己增加1條命!");
                                                 cardUseRecord();
                                                 addLife(cardid, targetuserid);
@@ -148,8 +148,8 @@ $(document).ready(function(){
                                             }
                                             else{
                                                 //alert("你對" + targetusername + "捐了10HP!你自己扣了10HP!");
-                                                $('#userData').append("<img src ='img/loading.gif'>");
-                                                $('#userTitle').append("你讓自己增加10XP!");                                                
+                                                $('.modal-content').append("<img src ='img/loading.gif'>");
+                                                $('.modal-content').append("你讓自己增加10XP!");                                                
                                                 cardUseRecord();
                                                 donateHP(cardid, targetuserid);
                                             }
@@ -160,8 +160,8 @@ $(document).ready(function(){
                                             }
                                             else{
                                                 //alert("你對" + targetusername + "捐了30HP!你自己扣了30HP!");
-                                                $('#userData').append("<img src ='img/loading.gif'>");
-                                                $('#userTitle').append("你讓自己增加10XP!");                                                
+                                                $('.modal-content').append("<img src ='img/loading.gif'>");
+                                                $('.modal-content').append("你讓自己增加10XP!");                                                
                                                 cardUseRecord();
                                                 donateHP(cardid, targetuserid);
                                             }
@@ -172,8 +172,8 @@ $(document).ready(function(){
                                             }
                                             else{
                                                 //alert("你讓" + targetusername + "減少10HP!");
-                                                $('#userData').append("<img src ='img/loading.gif'>");
-                                                $('#userTitle').append("你讓自己增加10XP!");                                                
+                                                $('.modal-content').append("<img src ='img/loading.gif'>");
+                                                $('.modal-content').append("你讓自己增加10XP!");                                                
                                                 cardUseRecord();
                                                 minusHP(cardid, targetuserid);
                                             }
@@ -184,8 +184,8 @@ $(document).ready(function(){
                                             }
                                             else{
                                                 //alert("你讓" + targetusername + "減少30HP!");
-                                                $('#userData').append("<img src ='img/loading.gif'>");
-                                                $('#userTitle').append("你讓自己增加10XP!");                                                
+                                                $('.modal-content').append("<img src ='img/loading.gif'>");
+                                                $('.modal-content').append("你讓自己增加10XP!");                                                
                                                 cardUseRecord();
                                                 minusHP(cardid, targetuserid);
                                             }
@@ -196,8 +196,8 @@ $(document).ready(function(){
                                             }
                                             else{
                                                 //alert("你向" + targetusername + "偷了10HP!你自己增加10HP!");
-                                                $('#userData').append("<img src ='img/loading.gif'>");
-                                                $('#userTitle').append("你讓自己增加10XP!");                                                
+                                                $('.modal-content').append("<img src ='img/loading.gif'>");
+                                                $('.modal-content').append("你讓自己增加10XP!");                                                
                                                 cardUseRecord();
                                                 stealHP(cardid, targetuserid);
                                             }
@@ -208,8 +208,8 @@ $(document).ready(function(){
                                             }
                                             else{
                                                 //alert("你向" + targetusername + "偷了30HP!你自己增加30HP!");
-                                                $('#userData').append("<img src ='img/loading.gif'>");
-                                                $('#userTitle').append("你讓自己增加10XP!");                                                
+                                                $('.modal-content').append("<img src ='img/loading.gif'>");
+                                                $('.modal-content').append("你讓自己增加10XP!");                                                
                                                 cardUseRecord();
                                                 stealHP(cardid, targetuserid);
                                             }
@@ -220,8 +220,8 @@ $(document).ready(function(){
                                             }
                                             else{
                                                 //alert("你選擇向" + targetusername + "偷了一張卡!");
-                                                $('#userData').append("<img src ='img/loading.gif'>");
-                                                $('#userTitle').append("你讓自己增加10XP!");                                                
+                                                $('.modal-content').append("<img src ='img/loading.gif'>");
+                                                $('.modal-content').append("你讓自己增加10XP!");                                                
                                                 cardUseRecord();
                                                 stealCard(targetuserid);
                                             }
@@ -242,8 +242,8 @@ $(document).ready(function(){
                                                         success:function(data1){
                                                             if(data.id == Parse.User.current().id){
                                                                 //alert("你自己多了一次抽卡機會!");
-                                                                $('#userData').append("<img src ='img/loading.gif'>");
-                                                                $('#userTitle').append("你讓自己增加10XP!");                                                                
+                                                                $('.modal-content').append("<img src ='img/loading.gif'>");
+                                                                $('.modal-content').append("你讓自己增加10XP!");                                                                
                                                                 console.log("Draw record success!");
                                                                 cardUseRecord();
                                                                 deletecard();
@@ -293,7 +293,7 @@ $(document).ready(function(){
 function getElementStringByowncard(name, id, photo){
     var s = "<div  value='"+name+"'>"+name+"</div>";
     var s1 = "<img src ='"+photo+"''>";
-    var all = "<a href='#' data-toggle='modal' data-target='#userModal'><div class ='in' id='"+id+"'>"+ s + s1 + "</div></a>";
+    var all = "<a href='#' data-toggle='modal' data-target='.userModal'><div class ='in' id='"+id+"'>"+ s + s1 + "</div></a>";
 
     return all;
 };
