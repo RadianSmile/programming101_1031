@@ -24,7 +24,7 @@ $(document).ready(function(){
                     console.log(eid);
                     var eventinfo = Parse.Object.extend("Event_Info");
                     var query4 = new Parse.Query(eventinfo);
-                    query4.equalTo('eid', eid);
+                    query4.equalTo('eid', eid.toString());
                     query4.first({
                         success:function(data2){
                             console.log(data2);
