@@ -354,13 +354,11 @@ function addHP(cardid, target){
     query.equalTo('objectId',target);
     query.first({
         success: function(data){
-            console.log(data);
             var udata = Parse.Object.extend('User_status');
             var query = new Parse.Query(udata);
             query.equalTo('User',data); 
             query.first({
                 success: function(result){
-                    console.log(result);
                     var hp = result.get('HP');
                     var udata2 = new udata();
                     udata2.set('objectId',result.id);
@@ -652,8 +650,6 @@ function donateHP(cardid, target){
             var query = Parse.Query.or(query1, query2);
             query.find({
                 success: function(results){
-                    console.log(results);
-                    console.log(results[0].get('User').id);
                     if(results[0].get('User').id == Parse.User.current().id){
                         //- user hp
                         var udata1 = new udata();
