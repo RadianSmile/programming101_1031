@@ -64,16 +64,16 @@ function useRecord(data){
         if(userId == Parse.User.current().id){
             if(targetId == Parse.User.current().id){
                 s = "你對自己使用了" + cardName + "。";
-                container = "<div class = 'time-gray-color'>"+createTime+"</div><span class = 'glyphicon-thumbs-down' style = 'white-space: nowrap;'>"+ s +"</span></div>";
+                container = "<div class = 'time-gray-color'>"+createTime+"</div><span class = 'glyphicon glyphicon-thumbs-down' style = 'white-space: nowrap;'>"+ s +"</span></div>";
             }
             else{
                 s = "你對" + targetName + "使用了" + cardName + "。";
-                container = "<div class = 'time-gray-color'>"+createTime+"</div><span class = 'glyphicon-thumbs-down' style = 'white-space: nowrap;'>"+ s +"</span></div>";
+                container = "<div class = 'time-gray-color'>"+createTime+"</div><span class = 'glyphicon glyphicon-thumbs-down' style = 'white-space: nowrap;'>"+ s +"</span></div>";
             }
         }
         else if(targetId == Parse.User.current().id){
             s = userName+"對你使用了" + cardName + "。";
-            container = "<div class = 'time-gray-color'>"+createTime+"</div><span class = 'glyphicon-thumbs-down' style = 'white-space: nowrap;'>"+ s +"</span></div>";
+            container = "<div class = 'time-gray-color'>"+createTime+"</div><span class = 'glyphicon glyphicon-thumbs-down' style = 'white-space: nowrap;'>"+ s +"</span></div>";
         }
     return container;
 }
@@ -85,7 +85,7 @@ function getRecord(data){
     var s = "";
         if(userId == Parse.User.current().id){
             s = "你抽到了"+ cardName + "。";
-            container = "<div class = 'time-gray-color'>"+createTime+"</div><span class = 'glyphicon-thumbs-down' style = 'white-space: nowrap;'>"+ s +"</span></div>";
+            container = "<div class = 'time-gray-color'>"+createTime+"</div><span class = 'glyphicon glyphicon-thumbs-down' style = 'white-space: nowrap;'>"+ s +"</span></div>";
         }
     return container;
 }
