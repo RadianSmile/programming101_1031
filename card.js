@@ -104,11 +104,14 @@ $(document).ready(function(){
         var cardrecord = Parse.Object.extend("Card_record");
         var query2 = new Parse.Query(cardrecord);
         query2.equalTo('type', "use");
+        query2.include('targetuser');
         query2.find({
             success:function(data){
                 for(var i = 0; i<data.length; i++){
                     var isnotif = data[i].get('isNotif');
+                    console.log(isnotif);
                     var target = data[i].get('targetuser');
+                    console.log(target);
                     if(target == Parse.User.current()){
                         if(isnotif == false){
                             $("#bell").css("background-color", "red");
