@@ -3,8 +3,10 @@ Parse.initialize("9eo5r1mHWoIPSTCzmrpdKa3lcHPjySx4y5D6q8Nq", "R8SWwYxpJcy73ogQKu
 var userName="Anonymous";
 var linkTo="dashboard.html";
 var userimageHeight=19;
+var userPhoto ;
 var currentUser = Parse.User.current();
-console.log (currentUser);
+
+//console.log (currentUser);
 
 
 $("title").append(" | 程式學習平台");
@@ -20,7 +22,13 @@ $("title").append(" | 程式學習平台");
 	// 規定只能使用這種，使用 status:true 會造成Parse出問題
   FB.getLoginStatus(function(response) {
 		FBinitDone();
-		changeBarView(response);
+		currentUser.fetch().then(function(u){
+			userPhoto = u.get('photo');
+			changeBarView(response,userPhoto);
+		});
+		
+
+
   });
 };
   (function(d, s, id) {
@@ -36,9 +44,11 @@ Parse.User.prototype.ID = function () {
 	return this.get("ID");
 }
 
-function getLoginStatus () {
-	
-	}
+function getLoginStatus () {}
+
+
+
+
 function FBinitDone(){}
 /* make the API call */
 /*
@@ -275,10 +285,11 @@ function isSet (a){
 // -------------------------change logint to picture--------------------------
 
 
-var userImageLink= "http://icons.iconarchive.com/icons/yellowicon/game-stars/256/Mario-icon.png"//currentUser.get('photo');
+
+var userImageLink= userPhoto ;
 
 
-function changeBarView(response){
+function changeBarView(response,photourl){
 	if(response.status=="connected" && currentUser){
 		$("#nav-user-block a ").removeAttr('data-toggle');
 		$("#nav-user-block a ").empty();
@@ -291,7 +302,7 @@ function changeBarView(response){
 		$("#nav-user-block").css({"padding-right":"15px"});
 		$(".index-head span").css({"display":"inline-block","height":19+"px","line-height":"19px","vertical-align":"middle"});
 	}
-	loadPic(userImageLink,"#nav-user-block a",userName);
+	loadPic(photourl,"#nav-user-block a",userName);
 	//	$("#login-status a").empty();
 	//	$("#login-status a").attr("href",linkTo);
 	//	loadPic(userImageLink,"#login-status a",userName)
@@ -301,6 +312,7 @@ function changeBarView(response){
 function loadPic(userImageLink,dom,userName){
 	var img=new Image();
 	img.src=userImageLink;
+	img.id = 'userNavPhoto' ;
 	var loadChecker = window.setInterval(function(){
 		if(img.complete){
 			window.clearInterval(loadChecker);
