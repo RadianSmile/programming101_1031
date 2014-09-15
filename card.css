@@ -1,3 +1,6 @@
+body{
+	background-image: url('img/wood.png');
+}
 .in{
 	width:50px;
 	height:70px;
@@ -8,51 +11,6 @@
 }
 .in:hover{
 	cursor:pointer;
-}
-.container-fluid{
-	background-color:#FFFF99;
-}
-table, tr, td {
-        border: 2px solid;
-     }
-td {
-        width:30px;
-        height:15px;
-    }
-
-#bighead{
-	float:left;
-	width:250px;
-	height:250px;
-}
-#heart{
-	width:40px;
-	height:40px;
-}
-
-.userstatus{
-	background-color: #FFFF99;
-	height:300px;
-}
-#user{
-	margin-bottom:30px;
-	margin-left: 25%;
-}
-.card{
-	margin-left: 10%;
-	margin-top: 1%;
-	position:relative;
-	display: inline-block;
-	cursor:pointer;
-}
-.cardbox{
-	background-color: #FFFF99;
-}
-.carddata{
-	margin-left: 40%;
-}
-form{
-	margin-left: 40%;
 }
 
 #bigdiv{
