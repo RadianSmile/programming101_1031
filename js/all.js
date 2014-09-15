@@ -230,6 +230,9 @@ function changeBarView(response){
 		$(".index-head span").css({"display":"inline-block","height":19+"px","line-height":"19px","vertical-align":"middle"});
 	}
 	loadPic(userImageLink,"#nav-user-block a",userName);
+	//	$("#login-status a").empty();
+	//	$("#login-status a").attr("href",linkTo);
+	//	loadPic(userImageLink,"#login-status a",userName)
 	}
 }
 
@@ -243,6 +246,8 @@ function loadPic(userImageLink,dom,userName){
 			//console.log(img);
 			$(dom+" div").css({"width":userimageHeight+"px","height":userimageHeight+"px","overflow":"hidden","overflow":"hidden","display":"inline"});
 			$(dom+" div").append(img);
+//			$("#login-status a").append(img);
+//			$("#login-status a").append(userName);
 		}
 		},100);
 }

@@ -528,7 +528,10 @@ function stealCard(targetId){
                             });
                         }
                         else{
-                            alert("你使用的對象沒有任何卡片，偷卡失敗，再選其他人吧！");
+                            alert("你使用的對象沒有任何卡片，偷卡失敗，再選其他人吧！!");
+                            $('div#bigdiv').html("");
+                            $('div#bigdiv').css("top", "");
+                            $('div#bigdiv').css("left", "");
                         }
                 },
                 error: function(error){

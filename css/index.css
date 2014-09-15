@@ -1,4 +1,4 @@
-@charset "utf-8";
+s@charset "utf-8";
 /* CSS Document */
 
 
@@ -221,4 +221,9 @@ body{
 	color: #80ABBC;
 	text-align: center;
 	margin-top: 50px;
+}
+
+#login-status img{
+	height: 20px;
+
 }
