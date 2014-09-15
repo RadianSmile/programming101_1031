@@ -9,6 +9,7 @@ $(document).ready(function(){
     query.include('User');
     query.first({
         success:function(data){
+					 console.log (data);
             var photo = data.get('User').get('photo');
             var name = data.get('User').get('name');
             var level = data.get('Level');
@@ -32,7 +33,7 @@ $(document).ready(function(){
 
           }
     });
-		}else{ alert ("你還沒登入");}
+		}//else{ alert ("你還沒登入");}   Rn
     //back-end owncard
     var current_user = Parse.User.current();
     if(current_user){

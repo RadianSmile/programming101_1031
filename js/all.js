@@ -1,11 +1,13 @@
 // JavaScript Document
+Parse.initialize("9eo5r1mHWoIPSTCzmrpdKa3lcHPjySx4y5D6q8Nq", "R8SWwYxpJcy73ogQKuSD43y7FigrlDGjBLcy1lzC");
 var userName="Anonymous";
 var linkTo="dashboard.html";
 var userimageHeight=19;
-var currentUser ;
+var currentUser = Parse.User.current();
+console.log (currentUser);
+
+
 $("title").append(" | 程式學習平台");
-		Parse.initialize("9eo5r1mHWoIPSTCzmrpdKa3lcHPjySx4y5D6q8Nq", "R8SWwYxpJcy73ogQKuSD43y7FigrlDGjBLcy1lzC");
-		currentUser = Parse.User.current();
   window.fbAsyncInit = function() {
 		Parse.FacebookUtils.init({
 			appId      : '1452756891666119',
@@ -40,6 +42,7 @@ function getLoginStatus () {
 function FBinitDone(){}
 /* make the API call */
 /*
+
 FB.getLoginStatus(function(response) {
   if (response.status === 'connected') {
    
@@ -53,6 +56,64 @@ FB.getLoginStatus(function(response) {
   }
  });
 */
+
+
+
+
+function fb_login () {
+	FB.login(function(response){
+		//console.log(response);
+		var u = response.authResponse.userID;
+		var q = new Parse.Query(Parse.User);
+		q.equalTo("uid",u);
+		q.first().then(function(s){	
+//		console.log (s);
+			if(typeof(s) !== "undefined"){
+				Parse.FacebookUtils.logIn(null,{success:function(u){
+					if (!u.existed()) {
+						//這裡理論上不能發生！
+						
+						alert ("我幫你註冊了，但好像有哪裡不太對噢");
+						document.location="signup.html";
+					}else{
+	//asSs				alert("登入成功!");
+						document.location ="dashboard.html";	
+					}
+				}, error : function(){
+					alert("請重新整理頁面再試一次");
+					console.log(alert(error.message));
+				}});	
+					
+			}else{
+				
+				alert ("你尚未註冊，系統將自動跳轉註冊頁面。");
+				document.location="signup.html";
+			}
+			
+		},function(e){
+			console.log(e.message);	
+		});
+	});
+}
+
+
+
+
+
+$(document).on('click','#logout',logout);
+function logout () {   
+//FB.logout(function(response) {
+	 //console.log ("Logout");
+	
+	 Parse.User.logOut();
+	  alert("已經成功登出囉~\n");
+	window.location = 'index.html';
+//});
+}
+
+
+
+
 
 
 $(document).on("click",".toTop",function(e){
@@ -207,18 +268,19 @@ $.fn.toggleDisabled = function () {
 };
 
 function isSet (a){
-	return (typeof(a) != undefined) ;
+	return (typeof(a) !== 'undefined') ;
 }
 
 
 // -------------------------change logint to picture--------------------------
 
 
-var userImageLink=currentUser.get('photo');
+var userImageLink= "http://icons.iconarchive.com/icons/yellowicon/game-stars/256/Mario-icon.png"//currentUser.get('photo');
 
 
 function changeBarView(response){
-	if(response.status=="connected"){
+	if(response.status=="connected" && currentUser){
+		$("#nav-user-block a ").removeAttr('data-toggle');
 		$("#nav-user-block a ").empty();
 	$("#nav-user-block a").attr("href",linkTo);
 	$("#nav-user-block a").append("<div></div>");

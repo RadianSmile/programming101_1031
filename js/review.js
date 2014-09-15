@@ -94,15 +94,16 @@ function showLocal (){
 function QueryAssigns (){
 var promise = new Parse.Promise();
 var Assign = Parse.Object.extend("Review_Record");
-var assign = new Assign();
-
+console.log (currentUser , assignToReview); 
 var q = new Parse.Query(Assign);
 q.equalTo("reviewer",currentUser);
 q.equalTo("nth",assignToReview);
 q.ascending("createdAt");
 q.include("assign");
+q.limit(1000);
 q.find().then(function(r){
-	for (var i = 0 ; i < r.length ; i++) gradeArr[i][0] = '0hrrBbiPsk';   //Rn!!!!!!!!!!!  r[i].id ;
+	console.log (r);
+	for (var i = 0 ; i < r.length ; i++) gradeArr[i][0] =  r[i].id ;
 	AssignArr = r ;
 	console.log ("AssignArr",AssignArr);
 	promise.resolve(r);
@@ -116,21 +117,36 @@ q.find().then(function(r){
 }
 
 function showAssignAndBug(){
+	
+	var jobCount = 0 ;
+	var finalCount = 0 ; 
+	
 	QueryAssigns().then (function(r){
-	for (var i = 0 ; i < r.length ; i++){
-		var url = 	r[i].get("assign").get("url"); 	
-		isInTime(url,i);	
-		getCode(url,i); ///
-		getBug(AssignArr[i].get("assign").id).then(function(r){
-			for ( var j = 0 ; j < r.length ; j++ ){
-				var  b = r[j] ;
-				apdBug(i,b);
-			}
+		finalCount = r.length ;
+		for (var i = 0 ; i < r.length ; i++){
+			var url = 	r[i].get("assign").get("url"); 	
+			isInTime(url,i);	
+			getCode(url,i); ///
+			var id = AssignArr[i].get("assign").id; 
+			show(id , i );
+		}
+	},function (e){console.log (e);});
+	
+	function show (id,i){
+		qurBugs(id).then(function(r){
+				for ( var j = 0 ; j < r.length ; j++ ){
+					var  b = r[j] ;
+					console.log (j);
+					showBug(b,i);
+				}
+				finishCortrol (jobCount++);
 			},function(e){console.log(e);
 		});
-		
 	}
-	},function (e){console.log (e);});
+	function finishCortrol(){
+		console.log ("BugInit");
+		 jobCount === finalCount && bugInit() ;
+	}
 }
 
 
@@ -154,6 +170,7 @@ function submitReview (e) {
 				console.log ("SaveResult",re);
 				localStorage.clear();
 				alert("繳交成功了!");
+				document.location="dashboard.html";
 			},function(e){
 				console.log ("e");
 			});

@@ -1,6 +1,14 @@
 @charset "utf-8";
 /* CSS Document */
 
+.authBtn {
+	
+	width: 100%;
+	padding:10px;
+	margin-bottom:20px;
+	display:block;
+}
+
 
 body{
 	color:rgb(61,94,109);

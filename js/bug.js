@@ -9,7 +9,7 @@ function qurBugs (assignID){ // old name QueryBug
 	q.equalTo("assign",a);
 	q.include("reporter");
 	q.include("bugger");
-	q.ascending("createdAt");
+	q.descending("createdAt");
 	return q.find();
 }
 function getBug (bid){
@@ -90,19 +90,26 @@ function showBugs (aid){
 	console.log (aid);
 	qurBugs(aid).then(function(bugs){
 		each(bugs,showBug);
-		controlAllBugView();
-		controlAllStepView ();
+		bugInit();
 	},Log);
 
 }
 
-function showBug (e){
-	var relation = judgeRelation (e);
-	var step  = judgeStep(e);
-	var html = getBugHtml(e,relation,step);	
-	$('.bug-pane').append(html);
+function showBug (b , i ){
+	i = isSet(i) ? i : 0 ;
+	var relation = judgeRelation (b);
+	var step  = judgeStep(b);
+	var html = getBugHtml(b,relation,step);	
+	$($('.bug-pane')[i]).prepend(html);
+}
+
+
+function bugInit(){
+	controlAllBugView();
+	controlAllStepView ();
 	appendEvent();
 }
+
 
 function getBugHtml (b,relation,step)
 {
@@ -256,10 +263,10 @@ $("input:file.add-img-input")	.change(function () {
 });
 
 
-$('sample on submit').on('click' ,".submit-bug",function (e){
+$('sample_on_submit').on('click' ,".submit-bug",function (e){
 	//Rn!!!!!!!!!
 	
-	var aid = isSet(tAid) ? tAid : $(this).data('aid');
+	var aid = (this).data('aid');
 	
 	var Assign = Parse.Object.extend ("Assign"),
 	assign = new Assign ();
@@ -314,8 +321,7 @@ $('sample on submit').on('click' ,".submit-bug",function (e){
 				alert("BUG舉報成功，請等待作者確認");
 				console.log(bugRecord);
 				showBug(bugRecord);
-				controlAllBugView();
-				controlAllStepView ();
+				bugInit();
 
 				$p.find(".add-bug-form").trigger('reset');
 				$preImg.removeAttr("style");

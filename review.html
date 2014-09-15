@@ -6,12 +6,14 @@
 <title>評分頁面</title>
 
 <!-- Common links -->
-<!----><link rel="icon" type="image/png" href="/include/icon.png" />
-				<link href="bootstrap/css/bootstrap.css" rel="stylesheet"><!----><script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-<!----><script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<!----><link rel="icon" type="image/png" href="include/icon.png" />
+<!----><script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <!----><script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.2.19.min.js"></script>
-<!----><link href="/css/all.css" rel="stylesheet" />
-<!----><script src="/js/all.js"></script>
+<!----><script type="text/javascript" src="js/checkUser.js" ></script> 
+<!----><link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+<!----><script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<!----><link href="css/all.css" rel="stylesheet" />
+<!----><script src="js/all.js"></script>
 <!---------------------->
 
 <script src="http://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
@@ -121,8 +123,6 @@
 		</div>
 
 <h3 class="bug-block-title">遊戲霸個回報區</h3>
-<div class="container bug-pane">
-</div>
 <div class="container">
 	<div id="add" class="add-bug bug	"> 
 		<form class="add-bug-form" >
@@ -143,10 +143,12 @@
 		</form>
 	</div>
 </div>
+<div class="container bug-pane">
+</div>
+
 </div><!--這是很厲害的 tab-pane 結尾！！-->
 
-
-
+	<!--- next tab --->
   <div  class="tab-pane fade in" id="assign1">
 		<div class="row showPane">
 			<div class="play col-xs-7"></div>
@@ -176,8 +178,6 @@
 		</div>
 
 <h3 class="bug-block-title">遊戲霸個回報區</h3>
-<div class="container bug-pane">
-</div>
 <div class="container">
 	<div id="add" class="add-bug bug	"> 
 		<form class="add-bug-form" >
@@ -198,10 +198,12 @@
 		</form>
 	</div>
 </div>
+<div class="container bug-pane">
+</div>
+
 </div><!--這是很厲害的 tab-pane 結尾！！-->
 
-
-
+	<!--- next tab --->
   <div  class="tab-pane fade in" id="assign2">
 		<div class="row showPane">
 			<div class="play col-xs-7"></div>
@@ -231,8 +233,6 @@
 		</div>
 
 <h3 class="bug-block-title">遊戲霸個回報區</h3>
-<div class="container bug-pane">
-</div>
 <div class="container">
 	<div id="add" class="add-bug bug	"> 
 		<form class="add-bug-form" >
@@ -253,13 +253,16 @@
 		</form>
 	</div>
 </div>
+<div class="container bug-pane">
+</div>
+
 </div><!--這是很厲害的 tab-pane 結尾！！-->
 
 
 
 
-
-  <div  class="tab-pane fade in " id="assign3">
+	<!--- next tab --->
+  <div  class="tab-pane fade in" id="assign3">
 		<div class="row showPane">
 			<div class="play col-xs-7"></div>
 			<div class="editor-container col-xs-5">
@@ -288,8 +291,6 @@
 		</div>
 
 <h3 class="bug-block-title">遊戲霸個回報區</h3>
-<div class="container bug-pane">
-</div>
 <div class="container">
 	<div id="add" class="add-bug bug	"> 
 		<form class="add-bug-form" >
@@ -310,9 +311,12 @@
 		</form>
 	</div>
 </div>
+<div class="container bug-pane">
+</div>
+
 </div><!--這是很厲害的 tab-pane 結尾！！-->
 
-
+	<!--- next tab --->
   <div  class="tab-pane fade in" id="assign4">
 		<div class="row showPane">
 			<div class="play col-xs-7"></div>
@@ -342,8 +346,6 @@
 		</div>
 
 <h3 class="bug-block-title">遊戲霸個回報區</h3>
-<div class="container bug-pane">
-</div>
 <div class="container">
 	<div id="add" class="add-bug bug	"> 
 		<form class="add-bug-form" >
@@ -364,7 +366,14 @@
 		</form>
 	</div>
 </div>
+<div class="container bug-pane">
+</div>
+
 </div><!--這是很厲害的 tab-pane 結尾！！-->
+
+
+
+
 
 
 </div>
@@ -372,9 +381,8 @@
 
 </style>
 
-
-<script type="text/javascript" src="js/review.js"></script>
 <script type="text/javascript" src="js/bug.js"></script>
+<script type="text/javascript" src="js/review.js"></script>
 <script>
 
 
@@ -383,20 +391,7 @@
 
 
 $(document).on('click' ,".submit-bug",function (e){
-	//Rn!!!!!!!!!
-	
-	var aid = isSet(tAid) ? tAid : $(this).data('aid');
-	
-	var Assign = Parse.Object.extend ("Assign"),
-	assign = new Assign ();
-	assign.id = aid ;
-	
-	var user = new Parse.User();
-	console.log ("tTargetUserId",tTargetUserId);
-	user.id  = isSet(tTargetUserId) ?  tTargetUserId : currentUser.id;
-	//!!!!!!!!
-	
-	
+	//Rn!!!!!!!!!	
 	//檢查BUg 是否新增完成	
 	e.preventDefault();
 	//console.log ("true");
@@ -408,7 +403,8 @@ $(document).on('click' ,".submit-bug",function (e){
 	var base64 = $preImg.data("base64");
 	var $btn = $p.find(".submit-bug").first();
 	var des = $p.find(".add-des-input").first().val();
-	var assign = AssignArr[0];
+	var reviewRecord = AssignArr[i];
+	var assign = reviewRecord.get("assign");
 	var reporter = currentUser ;
 	var bugger = assign.get("maker");
 	
@@ -441,8 +437,8 @@ $(document).on('click' ,".submit-bug",function (e){
 				return bugRecord.save();
 			}).then (function(bugRecord){
 				alert("BUG舉報成功，請等待作者確認");
-				console.log(bugRecord);
-				showBug(bugRecord);
+				console.log("舉報成功後",bugRecord , i );
+				showBug(bugRecord, i);
 				controlAllBugView();
 				controlAllStepView ();
 

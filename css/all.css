@@ -21,3 +21,11 @@ a:focus , h4{
 	outline:none;
 	
 }
+.bar {
+	text-indent:-100000px;
+	
+}
+
+.temp {  /*把Rotator 註解掉要多出來的距離設定*/
+	margin-top:30px !important;
+}
