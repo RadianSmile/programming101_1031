@@ -65,7 +65,8 @@ div.cards{
 }
 
 .side{
-	position: absolute;	
+	position: absolute;
+	-webkit-backface-visibility: hidden;
 }
 
 .front{
