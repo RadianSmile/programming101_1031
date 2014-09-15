@@ -1,10 +1,11 @@
-s@charset "utf-8";
+@charset "utf-8";
 /* CSS Document */
 
 
 body{
 	color:rgb(61,94,109);
-	background-color:rgb(129,170,188);
+	background-color:rgb(129,170,188) !important;
+	background-color:rgb(129,170,188) !important;
 	font-family: 'Oswald', sans-serif;
 }
 

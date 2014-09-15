@@ -38,7 +38,7 @@ $('#review-tab a').click(function (e) {
   e.preventDefault();
   $(this).tab('show');
 });
-
+var assignToReview = '1';
 var AssignArr = [] ;
 var CodeArr =  [] ;
 var TimeArr = [] ;
