@@ -69,7 +69,6 @@ div.cards{
 	background-image: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#eee));
 	
 	-webkit-backface-visibility: hidden;
-	-webkit-box-shadow: 0 2px 5px #ccc;
 }
 
 .front{
@@ -109,20 +108,4 @@ left:1000px;
 top: 1000px;
 z-index: -10;
 
-}
-
-#backimage{
-	background-color: black;
-}
-
-#image1{
-	background-color: black;
-}
-
-#image2{
-	background-color: black;
-}
-
-#image3{
-	background-color: black;
 }
