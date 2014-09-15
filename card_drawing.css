@@ -66,9 +66,6 @@ div.cards{
 
 .side{
 	position: absolute;	
-	background-image: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#eee));
-	
-	-webkit-backface-visibility: hidden;
 }
 
 .front{
