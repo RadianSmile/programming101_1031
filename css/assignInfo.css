@@ -3,10 +3,11 @@
 
 .assign-info-outer {
 	padding:0 40px 40px 40px;
-	background:rgba(0,133,203,1.00);
+	background:#fff;
+	border-radius: 10px;
 }
 .assignInfo {
-	color:white;
+	color:#41626F;
 	padding:20px 0 ;
 }  
 
@@ -25,4 +26,20 @@
 }
 .game {
 	cursor:pointer;
+}
+
+.intro{
+	margin-top: 20px;
+}
+
+.requirement{
+	margin-top: 20px;
+}
+
+.requirement li{
+	padding-top: 5px;
+}
+
+.links{
+	margin-top: 20px;
 }

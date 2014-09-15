@@ -6,15 +6,13 @@
 <!-- Common links -->
 <!----><link rel="icon" type="image/png" href="../include/icon.png" />
 <!----><link href="bootstrap/css/bootstrap.css" rel="stylesheet" />
-
 <!----><script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <!----><script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <!----><script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.2.19.min.js"></script>
 <!----><link href="css/all.css" rel="stylesheet" />
-<!----><script src="js/all.js?1111"></script>
+<!----><script src="js/all.js"></script>
 	   <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
 <!---------------------->
-
 <!--script src="js/assignInfo.js"></script-->
 <script src="card.js" type="text/javascript"></script>
 <!--<link rel="stylesheet" type="text/css" href="card.css">-->
@@ -24,22 +22,14 @@
 <!-- Rn -->
 
 </head>
-
-
 <body>
-	
-<!-- Assign Modal -->
-
-		
-<!-- Button trigger modal -->
-
-		<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+		<nav class="navbar navbar-default navbar-fixed-top " role="navigation">
 	        <div class="container-fluid">
 	            <a class="navbar-brand" href="index.html">PROGRAMING 101</a>
 
 	            <ul class="nav navbar-nav">
 	                <li id="nav-user-block"><a href="#"><span class="glyphicon glyphicon-user"></span></a></li>   <!--RN-->
-	                <li><a href="#"><span class="glyphicon glyphicon-bell"></span></a></li>
+	                <li><a href="http://radiansmile.github.io/CodeEDU/notification.html" id="bell"><span class="glyphicon glyphicon-bell"></span></a></li>
 					<li><a href="#">Grading</a></li>
 					<li><a href="#">Student List</a></li>
 	            </ul>
@@ -51,9 +41,6 @@
 	            </ul>
 	        </div>
 	    </nav>
-
-		
-	
 		<div class="container top">
 			
 			<div class="row">
@@ -67,23 +54,25 @@
 						
 						
 					<div class="col-md-3 individual-img">
-						<img src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xpa1/v/t1.0-1/p160x160/10382439_891148834232295_4347727905370620729_n.jpg?oh=43341fae20745c9291d59e8163e593d6&oe=548C4A0F&__gda__=1422426802_f936b547a67f6ac9ff8c709a6bd85cc4">
+						<img class="bighead" src="">
 					</div>
 
 					<div class="col-md-9 sub-individual-attr">
 
-						<h3 class="col-md-12" id="individual-name">CHEN YING HSIU</h3>
-						<h4 class="col-md-12" id="individual-level">LEVEL 10</h4>
+						<h3 class="col-md-12" id="individual-name"></h3>
+						<h4 class="col-md-12" id="individual-level"></h4>
 
 						<h4 class="col-md-1">HP</h4>
 						<div class="progress col-md-11">
-							<div id="individual-hp" class="progress-bar-danger" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">
+							<div id="individual-hp" class="progress-bar-danger bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">
+								HP
 							</div>
 						</div>
 
 						<h4 class="col-md-1">XP</h4>
 						<div class="progress col-md-11">
-							<div id="individual-xp" class="progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">
+							<div id="individual-exp" class="progress-bar-warning bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">
+								XP
 							</div>
 						</div>
 
@@ -168,8 +157,6 @@
 			</div>
 
 		</div>
-
-
 		<div id="assignInfoArea"></div>
 					
 

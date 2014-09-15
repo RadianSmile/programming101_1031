@@ -13,7 +13,7 @@ $(document).ready(function(){
                     data[i].set('isNoti', true);
                     data[i].save(null,{
                         success:function(data1){
-                            console.log("IsNoti change to true!");
+                            
                         },
                         error:function(error){
                             console.log(error.toString());
@@ -39,29 +39,37 @@ $(document).ready(function(){
         //Card use
         var notification = "";
         var notif = Parse.Object.extend("Card_record");
-        var query = new Parse.Query(notif);
-        query.equalTo('type', "use");
+        //var query1 = new Parse.Query(notif);
+        //query1.equalTo('type', "use");
+        var query2 = new Parse.Query(notif);
+        query2.equalTo('user', Parse.User.current());
+        var query3 = new Parse.Query(notif);
+        query3.equalTo('targetuser', Parse.User.current());
+        var query = Parse.Query.or(query2, query3);
         query.include('Card_info');
         query.include('user');
         query.include('targetuser');
         query.descending('createdAt');
         query.find({
             success:function(data){
+                console.log(data);
                 for(var i = 0; i<data.length; i++){
                     data[i].set('isNotif', true);
                     data[i].save(null,{
                         success:function(data1){
-                            console.log("IsNotif change to true!");
+                            
                         },
                         error:function(error){
                             console.log(error.toString());
                         }
                     })
-                    var s = useRecord(data[i]);
-                    notification += s;
-                    var strings = "<div class = 'notification-info'>" + notification + "</div>";
-                    $('div#notificationrows').append(strings);
-                    notification = "";
+                    if(data[i].get('type') == "use"){
+                        var s = useRecord(data[i]);
+                        notification += s;
+                        var strings = "<div class = 'notification-info'>" + notification + "</div>";
+                        $('div#notificationrows').append(strings);
+                        notification = "";
+                    }
                 }
             },
             error:function(error){
@@ -74,6 +82,7 @@ $(document).ready(function(){
         var notif1 = Parse.Object.extend("Card_record");
         var query1 = new Parse.Query(notif1);
         query1.equalTo('type', "get");
+        query1.equalTo('user', Parse.User.current());
         query1.include('Card_info');
         query1.include('User');
         query1.ascending('createdAt');
@@ -103,6 +112,7 @@ function useRecord(data){
     var userName = data.get('user').get('name');
     var createTime = data.createdAt;
     
+    var container = "";
     var s = "";
         if(userId == Parse.User.current().id){
             if(targetId == Parse.User.current().id){
@@ -126,6 +136,7 @@ function getRecord(data){
     var cardName = data.get('Card_info').get('name');
     var createTime = data.createdAt;
     
+    var container = "";
     var s = "";
         if(userId == Parse.User.current().id){
             s = "你抽到了"+ cardName + "。";
@@ -141,6 +152,7 @@ function eventRecord(data, data1){
     var xp = result[0];
     var hp = result[1];
     var draw = result[2];
+    var container = "";
     var s = "";
     s = "因為" + eventdes + "，所以造成你的XP變動" + xp +"、你的HP變動" + hp + "、你的抽卡機會增加" + draw + "次。";
     container = "<div class = 'time-gray-color'>"+createTime+"</div><span class = 'glyphicon glyphicon-thumbs-down' style = 'white-space: nowrap;'>"+ s +"</span></div>";

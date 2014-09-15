@@ -26,6 +26,9 @@ $(document).ready(function(){
                                         }
 
     				$('.in').on('click', function(){
+                        $('div#bigdiv').append("<img id='loading' src='img/loading.gif'>");
+                        $('div#bigdiv').css("top", "10%");
+                        $('div#bigdiv').css("left", "10%");
     					var id = $(this).attr('id');
     					localStorage['userid'] = id;
                         var owncardid = localStorage.getItem('owncardId');
@@ -38,7 +41,6 @@ $(document).ready(function(){
                                 var card = data.get('Card_info');
                                 var cardid = card.id;
                                 var targetuser = localStorage.getItem('userid');
-
                                 var user = Parse.Object.extend('User');
                                 var query = new Parse.Query(user);
                                 query.equalTo('objectId', targetuser);
@@ -54,44 +56,59 @@ $(document).ready(function(){
                                             }
                                             else{
                                                 alert("這張卡片只能使用在自己身上！請選擇自己！");
+                                                $('div#bigdiv').html("");
+                                                $('div#bigdiv').css("top", "");
+                                                $('div#bigdiv').css("left", "");
                                             }
                                         }
                                         else if(cardid == "4c3uX1rZ1K"){
-                                            if(data1.id == Parse.User.current().id){
+                                            if(data1.id == Parse.User.current().id){                                            
                                                 alert("你讓自己增加30XP!");
                                                 cardUseRecord();
                                                 addXP(cardid, targetuserid);
                                             }
                                             else{
                                                 alert("這張卡片只能使用在自己身上！請選擇自己！");
+                                                $('div#bigdiv').html("");
+                                                $('div#bigdiv').css("top", "");
+                                                $('div#bigdiv').css("left", "");
                                             }
                                         }
                                         else if(cardid == "zLHR3S0hlb"){
                                             if(data1.id == Parse.User.current().id){
-                                                alert("你讓自己增加10HP!");
+                                                alert("你讓自己增加10HP!");                                               
                                                 cardUseRecord();
                                                 addHP(cardid, targetuserid);
                                             }
                                             else{
                                                 alert("這張卡片只能使用在自己身上！請選擇自己！");
+                                                $('div#bigdiv').html("");
+                                                $('div#bigdiv').css("top", "");
+                                                $('div#bigdiv').css("left", "");
                                             }
                                         }
                                         else if(cardid == "7mn5hYmEWH"){
                                             if(data1.id == Parse.User.current().id){
-                                                alert("你讓自己增加30HP!");
+                                                alert("你讓自己增加30HP!");                                               
                                                 cardUseRecord();
                                                 addHP(cardid, targetuserid);
                                             }
                                             else{
                                                 alert("這張卡片只能使用在自己身上！請選擇自己！");
+                                                $('div#bigdiv').html("");
+                                                $('div#bigdiv').css("top", "");
+                                                $('div#bigdiv').css("left", "");
                                             }
                                         }
                                         else if(cardid == "xJmFmNA97H"){
                                             if(data1.id == Parse.User.current().id){
                                                 alert("這張卡片只能使用在其他人！請選擇其他使用者！");
+                                                $('div#bigdiv').html("");
+                                                $('div#bigdiv').css("top", "");
+                                                $('div#bigdiv').css("left", "");
                                             }
                                             else{
-                                                alert("你讓" + targetusername + "增加10HP!");
+                                                alert("你讓" + targetusername + "增加10HP!");                                              
                                                 cardUseRecord();
                                                 addHP(cardid, targetuserid);
                                             }
@@ -99,39 +116,51 @@ $(document).ready(function(){
                                         else if(cardid == "CsG1I2kDXT"){
                                             if(data1.id == Parse.User.current().id){
                                                 alert("這張卡片只能使用在其他人！請選擇其他使用者！");
+                                                $('div#bigdiv').html("");
+                                                $('div#bigdiv').css("top", "");
+                                                $('div#bigdiv').css("left", "");
                                             }
                                             else{
-                                                alert("你讓" + targetusername + "增加30HP!");
+                                                alert("你讓" + targetusername + "增加30HP!");                                                
                                                 cardUseRecord();
                                                 addHP(cardid, targetuserid);
                                             }
                                         }                                         
                                         else if(cardid == "UDfyCM4Pyb"){
                                             if(data1.id == Parse.User.current().id){
-                                                alert("你補滿自己的HP!");
+                                                alert("你補滿自己的HP!");                                               
                                                 cardUseRecord();
                                                 addHP(cardid, targetuserid);
                                             }
                                             else{
                                                 alert("這張卡片只能使用在自己身上！請選擇自己！");
+                                                $('div#bigdiv').html("");
+                                                $('div#bigdiv').css("top", "");
+                                                $('div#bigdiv').css("left", "");
                                             }
                                         }
                                         else if(cardid == "aJONHaxQtM"){
-                                            if(data1.id == Parse.User.current().id){
+                                            if(data1.id == Parse.User.current().id){                                              
                                                 alert("你讓自己增加1條命!");
                                                 cardUseRecord();
                                                 addLife(cardid, targetuserid);
                                             }
                                             else{
                                                 alert("這張卡片只能使用在自己身上！請選擇自己！");
+                                                $('div#bigdiv').html("");
+                                                $('div#bigdiv').css("top", "");
+                                                $('div#bigdiv').css("left", "");
                                             }
                                         }
                                         else if(cardid == "10ypku2oZk"){
                                             if(data1.id == Parse.User.current().id){
                                                 alert("這張卡片只能使用在其他人！請選擇其他使用者！");
+                                                $('div#bigdiv').html("");
+                                                $('div#bigdiv').css("top", "");
+                                                $('div#bigdiv').css("left", "");
                                             }
                                             else{
-                                                alert("你對" + targetusername + "捐了10HP!你自己扣了10HP!");
+                                                alert("你對" + targetusername + "捐了10HP!你自己扣了10HP!");                                               
                                                 cardUseRecord();
                                                 donateHP(cardid, targetuserid);
                                             }
@@ -139,9 +168,12 @@ $(document).ready(function(){
                                         else if(cardid == "ysYpQz4TW0"){
                                             if(data1.id == Parse.User.current().id){
                                                 alert("這張卡片只能使用在其他人！請選擇其他使用者！");
+                                                $('div#bigdiv').html("");
+                                                $('div#bigdiv').css("top", "");
+                                                $('div#bigdiv').css("left", "");
                                             }
                                             else{
-                                                alert("你對" + targetusername + "捐了30HP!你自己扣了30HP!");
+                                                alert("你對" + targetusername + "捐了30HP!你自己扣了30HP!");                                               
                                                 cardUseRecord();
                                                 donateHP(cardid, targetuserid);
                                             }
@@ -149,9 +181,12 @@ $(document).ready(function(){
                                         else if(cardid == "y0pZ66Wl4X"){
                                             if(data1.id == Parse.User.current().id){
                                                 alert("這張卡片只能使用在其他人！請選擇其他使用者！");
+                                                $('div#bigdiv').html("");
+                                                $('div#bigdiv').css("top", "");
+                                                $('div#bigdiv').css("left", "");
                                             }
                                             else{
-                                                alert("你讓" + targetusername + "減少10HP!");
+                                                alert("你讓" + targetusername + "減少10HP!");                                               
                                                 cardUseRecord();
                                                 minusHP(cardid, targetuserid);
                                             }
@@ -159,9 +194,12 @@ $(document).ready(function(){
                                         else if(cardid == "ZLZIS7XbfQ"){
                                             if(data1.id == Parse.User.current().id){
                                                 alert("這張卡片只能使用在其他人！請選擇其他使用者！");
+                                                $('div#bigdiv').html("");
+                                                $('div#bigdiv').css("top", "");
+                                                $('div#bigdiv').css("left", "");
                                             }
                                             else{
-                                                alert("你讓" + targetusername + "減少30HP!");
+                                                alert("你讓" + targetusername + "減少30HP!");                                               
                                                 cardUseRecord();
                                                 minusHP(cardid, targetuserid);
                                             }
@@ -169,9 +207,12 @@ $(document).ready(function(){
                                         else if(cardid == "Byw6APXDGu"){
                                             if(data1.id == Parse.User.current().id){
                                                 alert("這張卡片只能使用在其他人！請選擇其他使用者！");
+                                                $('div#bigdiv').html("");
+                                                $('div#bigdiv').css("top", "");
+                                                $('div#bigdiv').css("left", "");
                                             }
                                             else{
-                                                alert("你向" + targetusername + "偷了10HP!你自己增加10HP!");
+                                                alert("你向" + targetusername + "偷了10HP!你自己增加10HP!");                                              
                                                 cardUseRecord();
                                                 stealHP(cardid, targetuserid);
                                             }
@@ -179,9 +220,12 @@ $(document).ready(function(){
                                         else if(cardid == "jqxvogKdXQ"){
                                             if(data1.id == Parse.User.current().id){
                                                 alert("這張卡片只能使用在其他人！請選擇其他使用者！");
+                                                $('div#bigdiv').html("");
+                                                $('div#bigdiv').css("top", "");
+                                                $('div#bigdiv').css("left", "");
                                             }
                                             else{
-                                                alert("你向" + targetusername + "偷了30HP!你自己增加30HP!");
+                                                alert("你向" + targetusername + "偷了30HP!你自己增加30HP!");                                               
                                                 cardUseRecord();
                                                 stealHP(cardid, targetuserid);
                                             }
@@ -189,9 +233,12 @@ $(document).ready(function(){
                                         else if(cardid == "1PF6Z8XISA"){
                                             if(data1.id == Parse.User.current().id){
                                                 alert("這張卡片只能使用在其他人！請選擇其他使用者！");
+                                                $('div#bigdiv').html("");
+                                                $('div#bigdiv').css("top", "");
+                                                $('div#bigdiv').css("left", "");
                                             }
                                             else{
-                                                alert("你選擇向" + targetusername + "偷了一張卡!");
+                                                alert("你選擇向" + targetusername + "偷了一張卡!");                                              
                                                 cardUseRecord();
                                                 stealCard(targetuserid);
                                             }
@@ -211,13 +258,16 @@ $(document).ready(function(){
 													owncard.save(null,{
                                                         success:function(data1){
                                                             if(data.id == Parse.User.current().id){
-                                                                alert("你自己多了一次抽卡機會!");
+                                                                alert("你自己多了一次抽卡機會!");                                                                
                                                                 console.log("Draw record success!");
                                                                 cardUseRecord();
                                                                 deletecard();
                                                             }
                                                             else{
                                                                 alert("這張卡片只能使用在自己身上！請選擇自己！");
+                                                                $('div#bigdiv').html("");
+                                                                $('div#bigdiv').css("top", "");
+                                                                $('div#bigdiv').css("left", "");
                                                             }
                                                         },
                                                         error:function(error){
@@ -304,13 +354,11 @@ function addHP(cardid, target){
     query.equalTo('objectId',target);
     query.first({
         success: function(data){
-            console.log(data);
             var udata = Parse.Object.extend('User_status');
             var query = new Parse.Query(udata);
             query.equalTo('User',data); 
             query.first({
                 success: function(result){
-                    console.log(result);
                     var hp = result.get('HP');
                     var udata2 = new udata();
                     udata2.set('objectId',result.id);
@@ -602,8 +650,6 @@ function donateHP(cardid, target){
             var query = Parse.Query.or(query1, query2);
             query.find({
                 success: function(results){
-                    console.log(results);
-                    console.log(results[0].get('User').id);
                     if(results[0].get('User').id == Parse.User.current().id){
                         //- user hp
                         var udata1 = new udata();

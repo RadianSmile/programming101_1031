@@ -18,7 +18,7 @@ $(document).ready(function(){
          var hpblocks = 100;//parseInt(hp)|100;
          var xpblocks = 100;//parseInt(xp)|100;
             $('#individual-name').append(name);
-            $('#individual-level').append('Level:'+level);
+            $('#individual-level').append('LEVEL'+level);
             
             $(".bighead").attr("src",photo);  // Rn
             $(".bighead").attr("width","100%"); // Rn
@@ -52,35 +52,73 @@ $(document).ready(function(){
                         else{
                             var s = getElementStringByowncard(card.get('imagesrc'), data[i].id);
                             ccontainer += s;
-                                var string = "<div class='card-box col-md-2'> " + ccontainer + "</div>";
-                                $('div#OwnCardData').append(string);
-                                ccontainer = "";
-                                $('.card').on('click', function(){
-                                    var id = $(this).attr('id');
-                                    localStorage['owncardId'] = id;
-                                    var owncardid = localStorage.getItem('owncardId');
-                                    var ownCard = Parse.Object.extend('Owncard');
-                                    var query = new Parse.Query(ownCard);
-                                    query.equalTo('objectId', owncardid);
-                                    query.include('Card_info');
-                                    query.first({
-                                        success: function(data){
-                                            var carddata = data.get('Card_info');
-                                            var cardtitle = carddata.get('name');
-                                            $('h4#CardTitle').append(cardtitle);
-                                            var s = getUsecard(carddata.get('imagesrc'), carddata.get('shortdes'));
-                                            $('div#CardData').append(s);
-                                        }
-                                    });
-                                })
+                            var string = "<div class='card-box col-md-2'> " + ccontainer + "</div>";
+                            $('div#OwnCardData').append(string);
+                            ccontainer = "";
                         }
                     }
+                        $('.card').on('click', function(){
+                            var id = $(this).attr('id');
+                            localStorage['owncardId'] = id;
+                            var owncardid = localStorage.getItem('owncardId');
+                            var ownCard = Parse.Object.extend('Owncard');
+                            var query = new Parse.Query(ownCard);
+                            query.equalTo('objectId', owncardid);
+                            query.include('Card_info');
+                            query.first({
+                                success: function(data){
+                                    var carddata = data.get('Card_info');
+                                    var cardtitle = carddata.get('name');
+                                    $('h4#CardTitle').append(cardtitle);
+                                    var s = getUsecard(carddata.get('imagesrc'), carddata.get('shortdes'));
+                                    $('div#CardData').append(s);
+                                }
+                            });
+                        })
             }
         })    
         $('#modalClose').on('click', function () {
             localStorage.removeItem('owncardId');
             $('#CardTitle').html("");
             $('#CardData').html("");
+        })
+
+        //Determine notification
+        var eventrecord = Parse.Object.extend("Event_Record");
+        var query1 = new Parse.Query(eventrecord);
+        query1.equalTo('target', Parse.User.current());
+        query1.equalTo('isNoti',false)
+        query1.first({
+            success:function(data){
+                if(data == undefined){
+
+                }
+                else{
+                    $("#bell").css("background-color", "red");
+                } 
+            },
+            error:function(error){
+                console.log(error.toString());
+            }
+        })
+
+        var cardrecord = Parse.Object.extend("Card_record");
+        var query2 = new Parse.Query(cardrecord);
+        query2.equalTo('targetuser', Parse.User.current());
+        query2.equalTo('isNotif', false);
+        query2.include('targetuser');
+        query2.first({
+            success:function(data){
+                if(data == undefined){
+
+                }
+                else{
+                    $("#bell").css("background-color", "red");
+                }              
+            },
+            error:function(error){
+                console.log(error.toString());
+            }
         })
     }
 });

@@ -3,6 +3,25 @@ html {
   padding:0;
   overflow-x:hidden;
 }
+body {
+	background:rgb(129,170,188);
+	
+}
+.navbar-fixed-top{ 
+	top:-45px;
+	max-height:5px !important; 
+	overflow:hidden !important;
+	transition:top .5s;
+	-webkit-transition:top .5s;
+font-family: "Oswald", "微軟正黑體", sans-serif;
+font-size: 14px;
+	margin-bottom:0;
+}.navbar-fixed-top:hover {
+	top:0px !important;
+}
+
+
+
 
 li.tab > a {
 	background-color:rgb(60,60,60);
@@ -26,7 +45,14 @@ li.tab > a {
 	border-bottom: solid 1px rgb(60,60,55);
 }
 
-
+.bug-block-title{
+	color:rgb(61,94,109);
+	text-align:center;
+}
+.bug {
+	margin-bottom:20px;
+	
+}
 /* 這是關於前端小*/
 .play {
 	background:rgba(50,50,50,1.00);
@@ -119,7 +145,3 @@ input.star{
 	
 }
 
-.main-nav:hover {
-	height:50px !important;
-
-}

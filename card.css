@@ -55,7 +55,13 @@ form{
 	margin-left: 40%;
 }
 
-.bar{
-	-webkit-transition: width 2s; /* Chrome, Safari, Opera */
-  transition: width 2s;
+#bigdiv{
+	position:absolute;
+	width:100%;
+	height:100%;
+}
+#loading{
+	position:absolute;
+	top:30%;
+	left:40%;
 }
