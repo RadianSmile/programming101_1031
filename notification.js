@@ -85,7 +85,7 @@ $(document).ready(function(){
         query1.equalTo('user', Parse.User.current());
         query1.include('Card_info');
         query1.include('User');
-        query1.ascending('createdAt');
+        query1.descending('createdAt');
         query1.find({
             success:function(data){
                 for(var i = 0; i<data.length; i++){
