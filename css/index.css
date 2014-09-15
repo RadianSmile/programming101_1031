@@ -223,6 +223,7 @@ body{
 	margin-top: 50px;
 }
 
-.login-status img{
+#login-status img{
 	height: 20px;
+
 }
