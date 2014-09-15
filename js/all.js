@@ -199,9 +199,9 @@ Array.prototype.getIndexById = function (value) {
 // -------------------------change logint to picture--------------------------
 function changeBarView(response){
 	if(response.status=="connected"){
-		$(".navbar-right a").empty();
-		$(".navbar-right a").attr("href",linkTo);
-		loadPic(userImageLink,".navbar-right a",userName)
+		$("#login-status a").empty();
+		$("#login-status a").attr("href",linkTo);
+		loadPic(userImageLink,"#login-status a",userName)
 	}
 }
 function loadPic(userImageLink,dom,userName){
@@ -212,8 +212,8 @@ function loadPic(userImageLink,dom,userName){
 			window.clearInterval(loadChecker);
 			img.height=userimageHeight;
 			//console.log(img);
-			$(".navbar-right a").append(img);
-			$(".navbar-right a").append(userName);
+			$("#login-status a").append(img);
+			$("#login-status a").append(userName);
 		}
 		},100);
 }
