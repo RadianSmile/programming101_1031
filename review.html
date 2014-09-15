@@ -375,6 +375,99 @@
 
 <script type="text/javascript" src="js/review.js"></script>
 <script type="text/javascript" src="js/bug.js"></script>
+<script>
+
+
+
+
+
+
+$(document).on('click' ,".submit-bug",function (e){
+	//Rn!!!!!!!!!
+	
+	var aid = isSet(tAid) ? tAid : $(this).data('aid');
+	
+	var Assign = Parse.Object.extend ("Assign"),
+	assign = new Assign ();
+	assign.id = aid ;
+	
+	var user = new Parse.User();
+	console.log ("tTargetUserId",tTargetUserId);
+	user.id  = isSet(tTargetUserId) ?  tTargetUserId : currentUser.id;
+	//!!!!!!!!
+	
+	
+	//檢查BUg 是否新增完成	
+	e.preventDefault();
+	//console.log ("true");
+	var $p = $(this).closest(".tab-pane") ;
+	var i = $p.index();
+	var form = $p.find(".add-bug-form").get(0);;
+	var $img = $p.find(".add-img-input").first();
+	var $preImg = $p.find(".add-bug-img").first();
+	var base64 = $preImg.data("base64");
+	var $btn = $p.find(".submit-bug").first();
+	var des = $p.find(".add-des-input").first().val();
+	var assign = AssignArr[0];
+	var reporter = currentUser ;
+	var bugger = assign.get("maker");
+	
+	var fileUploadControl = $img[0];
+	
+	if(des.length < 10 ){ 
+		alert("你的描述太過精簡，請至少超過十個字。"); 
+		return false ;
+	}
+	
+	if (fileUploadControl.files.length > 0) {
+		if (Validate(form)){
+			$btn.attr("disabled","disabled");
+			$btn.addClass('disabled');
+			var BugRecord = Parse.Object.extend("Bug_Record");
+			var bugRecord = new BugRecord();
+		
+			var file = fileUploadControl.files[0];
+			var name = file.name;
+			var bugImg = new Parse.File("Bug",{base64:base64});
+			
+			//http://stackoverflow.com/questions/4459379/preview-an-image-before-it-is-uploaded
+			bugImg.save().then(function(img){
+				console.log(img);
+				bugRecord.set("reporter",reporter);
+				bugRecord.set("assign",assign);
+				bugRecord.set("bugger",bugger);
+				bugRecord.set("img",img);
+				bugRecord.set("des",des);
+				return bugRecord.save();
+			}).then (function(bugRecord){
+				alert("BUG舉報成功，請等待作者確認");
+				console.log(bugRecord);
+				showBug(bugRecord);
+				controlAllBugView();
+				controlAllStepView ();
+
+				$p.find(".add-bug-form").trigger('reset');
+				$preImg.removeAttr("style");
+				$btn.removeClass('disabled');
+				$btn.removeAttr("disabled");
+			},function(e){console.log(e);});
+		}else { // file is not image;
+			$img.trigger('click');
+		}
+	}else { // if 沒有點選附檔
+		alert("請附上Bug圖片");
+	}
+	return false ;
+});
+
+
+
+
+
+
+</script>
+
+
 
 
 

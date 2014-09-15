@@ -39,9 +39,6 @@ $('#review-tab a').click(function (e) {
   $(this).tab('show');
 });
 
-Parse.initialize("9eo5r1mHWoIPSTCzmrpdKa3lcHPjySx4y5D6q8Nq", "R8SWwYxpJcy73ogQKuSD43y7FigrlDGjBLcy1lzC");	
-
-
 var AssignArr = [] ;
 var CodeArr =  [] ;
 var TimeArr = [] ;
@@ -50,6 +47,7 @@ init();
 
 function init (){	
 	for (var i = 0 ; i < 5; i++){
+		// Prepare editor
 		var tabEditor =  $($(".tab-pane")[i]).find(".editor").first().get(0);
 		var editor = ace.edit( tabEditor );
 		editor.setTheme("ace/theme/twilight");
@@ -58,7 +56,7 @@ function init (){
 		tabEditor.style.fontSize='14px';
 		editor.getSession().setMode("ace/mode/java");
 	}
-	//localStorage.clear();
+	// 判斷是否有 local gradeArr
 	if (localStorage.getItem("gradeArr") !== null){
 		console.log (localStorage["gradeArr"],typeof(localStorage["gradeArr"]));
 		gradeArr = JSON.parse(localStorage["gradeArr"]);
@@ -67,11 +65,13 @@ function init (){
 		showLocal();
 		
 	}else {
+		// 如果沒有，創造Local
 		for (var i = 0 ; i < 5 ; i++){
 			var arr = ["","-",false];
 			gradeArr.push(arr);
 		}
 	}
+	showAssignAndBug();
 }
 
 function showLocal (){
@@ -97,10 +97,8 @@ var Assign = Parse.Object.extend("Review_Record");
 var assign = new Assign();
 
 var q = new Parse.Query(Assign);
-console.log(currentUser);
 q.equalTo("reviewer",currentUser);
 q.equalTo("nth",assignToReview);
-//q.include("maker");
 q.ascending("createdAt");
 q.include("assign");
 q.find().then(function(r){
@@ -112,7 +110,6 @@ q.find().then(function(r){
 
 },function(e){
 	promise.reject(e.message);
-
 	console.log(e.message);
 });
 	return promise ;

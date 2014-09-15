@@ -256,7 +256,7 @@ $("input:file.add-img-input")	.change(function () {
 });
 
 
-$(document).on('click' ,".submit-bug",function (e){
+$('sample on submit').on('click' ,".submit-bug",function (e){
 	//Rn!!!!!!!!!
 	
 	var aid = isSet(tAid) ? tAid : $(this).data('aid');
