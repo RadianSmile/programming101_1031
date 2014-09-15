@@ -41,6 +41,7 @@ $(document).ready(function(){
         var query = new Parse.Query(ownCard);
         query.include('Card_info');
         query.equalTo('user', current_user);
+        query.descending('createdAt');
         query.find({
             success: function(data){
                     var ccontainer = "";
