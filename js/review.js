@@ -181,7 +181,7 @@ function submitReview (e) {
 function isInTime(url,i){
 	console.log("Check Last Modified...");
 		$.ajax({
-			url : "lastModify.php",
+			url : "http://ghost.cs.nccu.edu.tw/~programming101/lastModify.php",
 			async : false,
 			type: "POST",
 			data:{url:url},
@@ -210,7 +210,7 @@ function isInTime(url,i){
 function getCode (url,i){
 		console.log("Ajaxing");
 		$.ajax({
-			url : "getcode.php",
+			url : "http://ghost.cs.nccu.edu.tw/~programming101/getcode.php",
 			async : true,
 			type: "POST",
 			data:{url:url},
