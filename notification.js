@@ -13,7 +13,7 @@ $(document).ready(function(){
                     data[i].set('isNoti', true);
                     data[i].save(null,{
                         success:function(data1){
-                            
+                            console.log(data1);
                         },
                         error:function(error){
                             console.log(error.toString());
