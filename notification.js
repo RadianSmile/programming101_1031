@@ -158,7 +158,7 @@ function eventRecord(data, data1){
         container = "<div class = 'time-gray-color'>"+createTime+"</div><span class = 'glyphicon glyphicon-thumbs-down' style = 'white-space: nowrap;'>"+ s +"</span></div>";
     }
     else{
-        s = "因為" + eventdes + "，所以造成你的XP增加" + xp +"、你的HP減少" + hp + "、你的抽卡機會增加" + draw + "次。";
+        s = "因為" + eventdes + "，所以造成你的XP增加" + xp +"、你的HP被" + hp + "、你的抽卡機會增加" + draw + "次。";
         container = "<div class = 'time-gray-color'>"+createTime+"</div><span class = 'glyphicon glyphicon-thumbs-down' style = 'white-space: nowrap;'>"+ s +"</span></div>";
     }
     return container;
