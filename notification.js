@@ -27,6 +27,7 @@ $(document).ready(function(){
                     query4.equalTo('eid', eid.toString());
                     query4.first({
                         success:function(data2){
+                            console.log(data2);
                             var s = eventRecord(datai, data2);
                             eventnotification += s;
                             var strings = "<div class = 'notification-info'>" + eventnotification + "</div>";
