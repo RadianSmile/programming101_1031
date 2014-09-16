@@ -9,7 +9,6 @@ $(document).ready(function(){
         query3.equalTo('target', Parse.User.current());
         query3.find({
             success:function(data){
-                console.log(data);
                 for(var i = 0; i<data.length; i++){
                     data[i].set('isNoti', true);
                     data[i].save(null,{
@@ -27,7 +26,6 @@ $(document).ready(function(){
                     query4.equalTo('eid', eid.toString());
                     query4.first({
                         success:function(data2){
-                            console.log(data2);
                             var s = eventRecord(datai, data2);
                             eventnotification += s;
                             var strings = "<div class = 'notification-info'>" + eventnotification + "</div>";
