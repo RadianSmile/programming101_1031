@@ -202,7 +202,7 @@ $D.on('click',".submit-asnUrl",function(e){
 	function checkCode(URL){
 		console.log (URL);
 		$.ajax({
-			url:"getcode.php",
+			url:"http://ghost.cs.nccu.edu.tw/~programming101/getcode.php",
 			data:	{url:URL},
 			type: "POST",
 			success: function(d,s,x){
