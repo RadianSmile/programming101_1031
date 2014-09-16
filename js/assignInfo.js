@@ -1,7 +1,7 @@
 
 
 /** test control**/
-var now = new Date();//new Date (2014,8,30);
+var now = new  Date (2014,8,30) ;
 var currentUser = Parse.User.current() ;
 var $D = $(document);
 //console.log ("outer success , ",$("#assignModalInfo").length);
