@@ -153,7 +153,13 @@ function eventRecord(data, data1){
     var draw = result[2];
     var container = "";
     var s = "";
-    s = "因為" + eventdes + "，所以造成你的XP變動" + xp +"、你的HP變動" + hp + "、你的抽卡機會增加" + draw + "次。";
-    container = "<div class = 'time-gray-color'>"+createTime+"</div><span class = 'glyphicon glyphicon-thumbs-down' style = 'white-space: nowrap;'>"+ s +"</span></div>";
+    if(hp >=0){
+        s = "因為" + eventdes + "，所以造成你的XP增加" + xp +"、你的HP增加" + hp + "、你的抽卡機會增加" + draw + "次。";
+        container = "<div class = 'time-gray-color'>"+createTime+"</div><span class = 'glyphicon glyphicon-thumbs-down' style = 'white-space: nowrap;'>"+ s +"</span></div>";
+    }
+    else{
+        s = "因為" + eventdes + "，所以造成你的XP增加" + xp +"、你的HP減少" + hp + "、你的抽卡機會增加" + draw + "次。";
+        container = "<div class = 'time-gray-color'>"+createTime+"</div><span class = 'glyphicon glyphicon-thumbs-down' style = 'white-space: nowrap;'>"+ s +"</span></div>";
+    }
     return container;
 }
