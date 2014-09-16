@@ -9,6 +9,7 @@ $(document).ready(function(){
         query3.equalTo('target', Parse.User.current());
         query3.find({
             success:function(data){
+                console.log(data);
                 for(var i = 0; i<data.length; i++){
                     data[i].set('isNoti', true);
                     data[i].save(null,{
