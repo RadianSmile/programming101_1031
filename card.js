@@ -7,7 +7,8 @@ $(document).ready(function(){
 		if (Parse.User.current()){
     query.equalTo('User', Parse.User.current());
     query.include('User');
-    query.first({
+		query.include('LevelInfo');
+    query.first({	
         success:function(data){
 					 console.log (data);
             var photo = data.get('User').get('photo');
@@ -15,23 +16,41 @@ $(document).ready(function(){
             var level = data.get('Level');
             var hp = data.get('HP');
             var xp = data.get('XP');
-             var life = data.get('Life');
-         var hpblocks = 100;//parseInt(hp)|100;
-         var xpblocks = 100;//parseInt(xp)|100;
-            $('#individual-name').append(name);
-            $('#individual-level').append('LEVEL'+level);
-            
-            $(".bighead").attr("src",photo);  // Rn
-            $(".bighead").attr("width","100%"); // Rn
-            // Rn : 這裡是 animation 如果要調整%數或其他的，可以從這裡調整變數
-            $('#individual-hp').animate({
-                width:hp+'%'
-            },1000);        // Rn
-            $('#individual-exp').animate({
-                width:xp+'%'     
-            },2000);         // Rn
+/** Radina */
+						var levelInfo = data.get('LevelInfo');
+						var diota = levelInfo.get("diota") ;
+						var sum = levelInfo.get("sum");
+						console.log (diota);
+						var currentXp = xp - sum ;
+						console.log (currentXp);
+						 $('#individual-level').append('LEVEL '+level);						 
+						 var xpP = parseInt(currentXp / diota * 100)+'%'  ; 
+						 
 
-          }
+             var life = data.get('Life');
+						 $("#life-block .life-img").each(function(i, e) {
+							if (i < life){
+								 setTimeout(function(){
+								$(e).delay(i * 1000).addClass('exist');
+								 },i*500);
+							}
+						});
+						 /*function controlLife(life){
+								var $lifes = $('.life-img');
+							 for (var i = lifeElement ; i >=0 ; i-- ){
+									 $$lifes.get(i))
+							 }
+						 	
+						 }*/
+/****/						 
+            $('#individual-name').append(name);           
+            $(".bighead").attr("src",photo);  // Rn
+            $(".bighead").attr("width","100%"); // Rn	
+            // Rn : 這裡是 animation 如果要調整%數或其他的，可以從這裡調整變數
+            $('#individual-hp').text(hp+'%').css('width',hp+'%');
+            $('#individual-exp').text(xpP).css('width',xpP );
+							$('#individual-exp').closest('.progress').attr('title',xp + ' / '+sum).tooltip();
+	         }
     });
 		}//else{ alert ("你還沒登入");}   Rn
     //back-end owncard
