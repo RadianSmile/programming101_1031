@@ -30,3 +30,7 @@ a:focus , h4{
 .temp {  /*把Rotator 註解掉要多出來的距離設定*/
 	margin-top:30px !important;
 }
+
+.main-font{
+	font-family: 'Oswald', sans-serif !important;
+}

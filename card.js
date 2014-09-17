@@ -49,7 +49,7 @@ $(document).ready(function(){
             // Rn : 這裡是 animation 如果要調整%數或其他的，可以從這裡調整變數
             $('#individual-hp').text(hp+'%').css('width',hp+'%');
             $('#individual-exp').text(xpP).css('width',xpP );
-							$('#individual-exp').closest('.progress').attr('title',xp + ' / '+sum).tooltip();
+							$('#individual-exp').closest('.progress').attr('title',xp + '  / '+(sum + diota)).tooltip();
 	         }
     });
 		}//else{ alert ("你還沒登入");}   Rn

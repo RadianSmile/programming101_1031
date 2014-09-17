@@ -4,10 +4,8 @@
 <meta charset="UTF-8">
 
 <!-- Common links -->
-        <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
-
 <!----><link rel="icon" type="image/png" href="/include/icon.png" />
-        <link href="bootstrap/css/bootstrap.css" rel="stylesheet" />
+<!----><link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
 <!----><script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <!----><script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <!----><script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.2.19.min.js"></script>
@@ -21,8 +19,7 @@
 <script src="http://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" />
 
-<link rel="stylesheet" href="css/bug.css">
-<link rel="stylesheet" href="css/play.css">
+
 
 
 <style type="text/javascript">
@@ -181,77 +178,12 @@
 </style>
 
 
+<script>
+</script>
 <title>遊戲頁面</title>
 </head>
 <body>
-		<nav class="navbar navbar-default navbar-fixed-top  main-font" role="navigation">
-	        <div class="container-fluid">
-	            <a class="navbar-brand" href="index.html">PROGRAMING 101</a>
-
-	            <ul class="nav navbar-nav">
-	                <li id="nav-user-block"><a href="#"><span class="glyphicon glyphicon-user"></span></a></li>   <!--RN-->
-	                <li><a href="notification.html" id="bell"><span class="glyphicon glyphicon-bell"></span></a></li>
-					<li><a href="#">Grading</a></li>
-					<li><a href="#">Student List</a></li>
-	            </ul>
-
-	            <ul class="nav navbar-nav navbar-right">
-					<li><a href="#">Schedule</a></li>
-					<li><a href="#">Help</a></li>
-					<li><a id="logout" >Logout</a></li>
-	            </ul>
-	        </div>
-	    </nav>
-<div style="height:50px;">
-</div>
-
-
-
-<div class="container-fluid" >
-	<div class="row showPane">
-		<div class="play col-xs-7"></div>
-		<div class="editor-container col-xs-5">
-			<div class="editor"></div>
-		</div>
-	</div>
-</div>
-
-<div class="container-fluid">
-<div class="bug-block col-md-7">
-<h3 class="bug-block-title">遊戲霸個回報區</h3>
-	<div id="add" class="add-bug bug	"> 
-		<form class="add-bug-form" >
-			<div class="media" style="background:none; border:none;">
-				<a class="pull-left">
-					<div class="add-bug-img media-object view-bug-img" ></div>
-					<input type="file" class="add-img-input hidden" />	
-				</a>
-				<div class="pull-right">
-					<div class="bug-func-btns">
-						<a  class="submit-bug bug-func-btn bug-func-btn-lg"  data-toggle="tooltip" data-placement="left" title="呈交霸個" > <span class="glyphicon glyphicon-upload"></span></a>
-					</div>
-				</div>
-				<div class="media-body view-bug-des add-bug-des" >
-					<textarea style="border:none; resize:none;"  class="add-des-input" placeholder="敘述請包含時間點與問題描述，內容至少十個字以上" ></textarea>
-				</div>
-			</div>
-		</form>
-	</div>
-</div>
-<div class="others col-md-5">
-	<h3 class="bug-block-title">精選作品</h3>
-	<div style="width:100%; height:200px; background:rgba(255,255,255,1.00);">
-		
-	</div>	
-</div>
-</div>
-
-</div>
-
-
-
-
-<!--div class="container-fluid nav">
+<div class="container-fluid nav">
 	<div class="btn"></div>
 </div>
 <div class="container">
@@ -296,8 +228,8 @@
 			<div class="row">
 				<button type="button" class="submit-bug btn btn-danger col-md-offset-6 col-md-1" >呈交霸個</button>
 			</div>
-		</form>
-</div-->
+		</form-->
+</div>
 
 
 <script>
@@ -409,8 +341,8 @@ function handleError(e){
 function showPlay (url) {
 	var ifm = document.createElement("iframe");
 	ifm.src = url ;
-	ifm.width = 720 ;
-	ifm.height = 540 ;
+	ifm.width = 600 ;
+	ifm.height = 400 ;
 	ifm.border = 0 ;
 	ifm.className	+= "playFrame";
 	ifm.frameBorder = 0;

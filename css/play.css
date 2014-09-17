@@ -8,41 +8,6 @@ body {
 	
 }
 
-.navbar-fixed-top{ 
-	top:-45px;
-	max-height:5px !important; 
-	overflow:hidden !important;
-	transition:top .5s;
-	-webkit-transition:top .5s;
-	margin-bottom:0;
-}.navbar-fixed-top:hover {
-	top:0px !important;
-}
-
-
-
-
-li.tab > a {
-	background-color:rgb(60,60,60);
-	color:rgb(140,156,156);
-}
-.tab > a:hover{
-	background:rgb(90,90,90) !important;
-	border-color:transparent !important;
-}
-.tab.active > a  {
-
-	background:rgba(50,50,50,1.00) !important;
-	color:rgba(225,225,225,1.00) !important;
-	border: solid 1px rgb(60,60,55) !important;
-	border-bottom-color: transparent;
-}
-.nav-row {
-	background-color: rgb(23,24,20);
-}
-.nav-tabs {
-	border-bottom: solid 1px rgb(60,60,55);
-}
 
 .bug-block-title{
 	color:rgb(61,94,109);
@@ -81,7 +46,7 @@ li.tab > a {
 }
 .showPane{
 	height:600px;
-	height:-webkit-calc(100vh - 54px); 
+	height:-webkit-calc(100vh - 50px); 
 	position:relative;
 }
 
