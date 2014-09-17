@@ -66,6 +66,7 @@
 }
 
 .view-bug-img{
+	cursor:pointer;
 	background-repeat:no-repeat !important;
 	background-size:contain !important;
 	background-position:center center !important;

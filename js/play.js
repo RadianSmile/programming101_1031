@@ -126,7 +126,7 @@ function pprEditor (){ // Prepare
 }
 function showFB (href){
 	var cmtEle = document.getElementsByClassName("comment")[0];  
-	cmtEle.innerHTML = "<fb:comments href='" + href+ "' num_posts='10'></fb:comments>";  
+	cmtEle.innerHTML = "<fb:comments href='" + href+ "' num_posts='10' data-width='100%'></fb:comments>";  
 	FB.XFBML.parse(cmtEle);
 	
 	var likeEle = document.getElementsByClassName("fblike")[0];  
@@ -202,5 +202,106 @@ function showOther (other){
 		
 	},function (e){console.log(e);})
 
-	
 })();
+
+
+$(document).on('click' ,".submit-bug",function (e){
+	//Rn!!!!!!!!!
+	
+	var aid = (this).data('aid');
+	
+	var Assign = Parse.Object.extend ("Assign"),
+	assign = new Assign ();
+	assign.id = aid ;
+	
+	var user = new Parse.User();
+	console.log ("tTargetUserId",tTargetUserId);
+	user.id  = isSet(tTargetUserId) ?  tTargetUserId : currentUser.id;
+	//!!!!!!!!
+	
+	
+	//檢查BUg 是否新增完成	
+	e.preventDefault();
+	//console.log ("true");
+	var $p = $(this).closest(".bug") ;
+	var i = $p.index();
+	var form = $p.find(".add-bug-form").get(0);;
+	var $img = $p.find(".add-img-input").first();
+	var $preImg = $p.find(".add-bug-img").first();
+	var base64 = $preImg.data("base64");
+	var $btn = $p.find(".submit-bug").first();
+	var des = $p.find(".add-des-input").first().val();
+	
+	var fileUploadControl = $img[0];
+	
+	if(des.length < 10 ){ 
+		alert("你的描述太過精簡，請至少超過十個字。"); 
+		return false ;
+	}
+	
+	if (fileUploadControl.files.length > 0) {
+		if (Validate(form)){
+			$btn.attr("disabled","disabled");
+			$btn.addClass('disabled');
+			var BugRecord = Parse.Object.extend("Bug_Record");
+			var bugRecord = new BugRecord();
+		
+			var file = fileUploadControl.files[0];
+			var name = file.name;
+			var bugImg = new Parse.File("Bug",{base64:base64});
+			
+			//http://stackoverflow.com/questions/4459379/preview-an-image-before-it-is-uploaded
+			bugImg.save().then(function(img){
+				console.log(img);
+				bugRecord.set("reporter",currentUser);
+				bugRecord.set("assign",assign);
+				bugRecord.set("bugger",user);
+				bugRecord.set("img",img);
+				bugRecord.set("des",des);
+				return bugRecord.save();
+			}).then (function(bugRecord){
+				alert("BUG舉報成功，請等待作者確認");
+				console.log(bugRecord);
+				showBug(bugRecord);
+				bugInit();
+
+				$p.find(".add-bug-form").trigger('reset');
+				$preImg.removeAttr("style");
+				$btn.removeClass('disabled');
+				$btn.removeAttr("disabled");
+			},function(e){console.log(e);});
+		}else { // file is not image;
+			$img.trigger('click');
+		}
+	}else { // if 沒有點選附檔
+		alert("請附上Bug圖片");
+	}
+	return false ;
+});
+
+function Validate(oForm) { // http://stackoverflow.com/questions/4234589/validation-of-file-extension-before-uploading-file
+		var _validFileExtensions = [".jpg", ".jpeg", ".bmp", ".gif", ".png"];
+    var arrInputs = oForm.getElementsByTagName("input");
+    for (var i = 0; i < arrInputs.length; i++) {
+        var oInput = arrInputs[i];
+        if (oInput.type == "file") {
+            var sFileName = oInput.value;
+            if (sFileName.length > 0) {
+                var blnValid = false;
+                for (var j = 0; j < _validFileExtensions.length; j++) {
+                    var sCurExtension = _validFileExtensions[j];
+                    if (sFileName.substr(sFileName.length - sCurExtension.length, sCurExtension.length).toLowerCase() == sCurExtension.toLowerCase()) {
+                        blnValid = true;
+                        break;
+                    }
+                }
+                if (!blnValid) {
+                    alert("抱歉" + sFileName +"不符合格式！請重新選擇圖檔！ \n 允許格式：JPG,PNG,BMP,GIF");// + _validFileExtensions.join(", "));
+                    return false;
+                }
+            }
+        }
+    }
+
+    return true;
+}
