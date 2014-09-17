@@ -11,11 +11,11 @@ $(document).ready(function(){
     query.equalTo('user', Parse.User.current());
     query.first({
         success:function(data){
-            if(data == undefined){
+            /*if(data == undefined){
                 alert("You don't have the chance to draw the card! Back to dashboard!");
                 window.location.href="http://radiansmile.github.io/CodeEDU/dashboard.html";
             }
-            localStorage['drawrecord'] = data.id;
+            localStorage['drawrecord'] = data.id;*/
         }
     })
 });
@@ -45,6 +45,7 @@ function getData(){
             //Card_record!
             cardrecord.set('user', currentuser);
             cardrecord.set('Card_info', object[randomno]);
+            cardrecord.set('User', currentuser);
             cardrecord.set('type', "get");
             cardrecord.save(null,{
                 success:function(data){
@@ -90,30 +91,33 @@ function getData(){
 }
 
 function changeClass1(){
-    if(document.getElementById("block1").className == "block"){
-        document.getElementById("block1").className += " rotated";
-        document.getElementById("block2").className += " gone";
-        document.getElementById("block3").className += " gone";
+    if(document.getElementById("block1").className == "block col-md-2 col-md-offset-3"){
+        document.getElementById("back1").className += "gone";
+        document.getElementById("image1").className += "show";
+        document.getElementById("image2").className += "gone";
+        document.getElementById("image3").className += "gone";
     }
     else
         document.getElementById("block").className = "block";
         getData();
     };
 function changeClass2(){
-    if(document.getElementById("block2").className == "block"){
-        document.getElementById("block2").className += " rotated";
-        document.getElementById("block1").className += " gone";
-        document.getElementById("block3").className += " gone";
+    if(document.getElementById("block2").className == "block col-md-2"){
+        document.getElementById("back2").className += "gone";
+        document.getElementById("image1").className += "gone";
+        document.getElementById("image2").className += "show";
+        document.getElementById("image3").className += "gone";
     }
     else
         document.getElementById("block").className = "block";
         getData();  
     };      
 function changeClass3(){
-    if(document.getElementById("block3").className == "block"){
-        document.getElementById("block3").className += " rotated";
-        document.getElementById("block2").className += " gone";
-        document.getElementById("block1").className += " gone";
+    if(document.getElementById("block3").className == "block col-md-2"){
+        document.getElementById("back3").className += "gone";
+        document.getElementById("image1").className += "gone";
+        document.getElementById("image2").className += "gone";
+        document.getElementById("image3").className += "show";
     }
     else
         document.getElementById("block").className = "block";

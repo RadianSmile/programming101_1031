@@ -25,22 +25,39 @@ body{
 	width:100%;
 	position: relative;
 	top: 0px;
-
+	transition: 0.3s ease-in-out;
 }
 
 .back img{
 	width:100%;
 	position: relative;
 	top: 0px;
-
-
-	
+	z-index: =-1;
 }
 
 .front img:hover{
 	cursor: pointer;
 	position: relative;
 	top: -20px;
+	transition: 0.3s ease-in-out;
+}
+
+.cards{
+	transform-style: preserve-3d;
+}
+
+.back .show{
+	width:85%;
+	position: absolute;
+	top:0;
+	z-index: 10;
+	backface-visibility:hidden;
+	transform: rotateY(1080deg);
+	-webkit-transition: -webkit-transform 1.5s;
+}
+
+.gone{
+	display: none;
 	transition: 0.3s ease-in-out;
 }
 
