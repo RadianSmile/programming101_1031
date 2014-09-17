@@ -1,4 +1,51 @@
 body{
+	color:rgb(61,94,109);
+	background-color:rgb(129,170,188) !important;
+	background-color:rgb(129,170,188) !important;
+}
+
+.title{
+	text-align: center;
+	font-family: 'Oswald', sans-serif;
+	color: white;
+	padding-top: 30px;
+	padding-bottom: 30px;
+}
+
+.cards{
+	margin-top: 30px;
+
+}
+
+.block{
+	text-align: center;
+}
+
+.front img{
+	width:100%;
+	position: relative;
+	top: 0px;
+
+}
+
+.back img{
+	width:100%;
+	position: relative;
+	top: 0px;
+
+
+	
+}
+
+.front img:hover{
+	cursor: pointer;
+	position: relative;
+	top: -20px;
+	transition: 0.3s ease-in-out;
+}
+
+
+/*body{
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: contain;
@@ -51,7 +98,7 @@ div.cards{
 		-webkit-transform: rotateY(900deg);
 
 
-	/*-webkit-transform: rotateY(540deg);*/
+	-webkit-transform: rotateY(540deg);
 }
 
 .block .front{
@@ -65,7 +112,8 @@ div.cards{
 }
 
 .side{
-	position: absolute;	
+	position: absolute;
+	-webkit-backface-visibility: hidden;
 }
 
 .front{
@@ -106,3 +154,4 @@ top: 1000px;
 z-index: -10;
 
 }
+*/

@@ -67,8 +67,12 @@ $(document).ready(function(){
                     for(var i = 0; i<data.length; i++){
                         var card = data[i].get('Card_info');
                         if(card == undefined){
-                            var backcard = "<div class='card-box col-md-2'><a href='card_drawing.html'><img id='backcard' src='img/choosecard/back.png'></a></div>"; // Rn
+                            var backcard = "<div class='card-box col-md-2'><a href='card_drawing.html' data-toggle='tooltip' title='你有一張抽卡機會'><img id='backcard' src='img/choosecard/back.png'></a></div>"; // Rn
                             $('div#OwnCardData').append(backcard);
+                            $('a[data-toggle="tooltip"]').tooltip({
+                                animated: 'fade',
+                                placement: 'top',
+                            });
                         }
                         else{
                             var s = getElementStringByowncard(card.get('imagesrc'), data[i].id);

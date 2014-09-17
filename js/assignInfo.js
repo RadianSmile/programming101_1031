@@ -1,7 +1,7 @@
 
 
 /** test control**/
-var now = new Date (2014,8,30);
+var now = new  Date (2014,8,30) ;
 var currentUser = Parse.User.current() ;
 var $D = $(document);
 //console.log ("outer success , ",$("#assignModalInfo").length);
@@ -202,7 +202,7 @@ $D.on('click',".submit-asnUrl",function(e){
 	function checkCode(URL){
 		console.log (URL);
 		$.ajax({
-			url:"getcode.php",
+			url:"http://ghost.cs.nccu.edu.tw/~programming101/getcode.php",
 			data:	{url:URL},
 			type: "POST",
 			success: function(d,s,x){
