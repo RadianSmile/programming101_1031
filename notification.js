@@ -13,7 +13,6 @@ $(document).ready(function(){
                     data[i].set('isNoti', true);
                     data[i].save(null,{
                         success:function(data1){
-                            
                         },
                         error:function(error){
                             console.log(error.toString());
@@ -29,7 +28,7 @@ $(document).ready(function(){
                             var s = eventRecord(datai, data2);
                             eventnotification += s;
                             var strings = "<div class = 'notification-info'>" + eventnotification + "</div>";
-                            $('div#notificationrows').append(strings);
+                            $('#notificationrows').append(strings);
                             eventnotification = "";
                         }
                     })
@@ -66,7 +65,7 @@ $(document).ready(function(){
                         var s = useRecord(data[i]);
                         notification += s;
                         var strings = "<div class = 'notification-info'>" + notification + "</div>";
-                        $('div#notificationrows').append(strings);
+                        $('#notificationrows').append(strings);
                         notification = "";
                     }
                 }
@@ -146,14 +145,21 @@ function getRecord(data){
 
 function eventRecord(data, data1){
     var eventdes = data1.get('description');
+		console.log (eventdes);
     var createTime = data.createdAt;
     var result = data1.get('effect_target');
     var xp = result[0];
     var hp = result[1];
-    var draw = result[2];
+    var cd = result[2];
     var container = "";
     var s = "";
-    s = "因為" + eventdes + "，所以造成你的XP變動" + xp +"、你的HP變動" + hp + "、你的抽卡機會增加" + draw + "次。";
-    container = "<div class = 'time-gray-color'>"+createTime+"</div><span class = 'glyphicon glyphicon-thumbs-down' style = 'white-space: nowrap;'>"+ s +"</span></div>";
+		
+		var start = (xp !== 0 || hp !== 0 || cd !== 0 ) ? "因此你" : '' ;
+		var xpStr = (xp !== 0) ? (xp > 0 ) ? 'XP增加了'+Math.abs(xp)+"，" : 'XP減少了'+Math.abs(xp)+"，": '' ;
+		var hpStr = (hp !== 0) ? (hp > 0 ) ? 'HP增加了'+Math.abs(hp)+"，" : 'HP減少了'+Math.abs(hp)+"，": '' ; 
+		var cdStr = (cd !== 0) ? (cd > 0 ) ? '的卡片增加了'+Math.abs(cd)+"張，" : '的卡片減少了'+Math.abs(cd)+"張，": '' ; 
+		s = start + xpStr + hpStr + cdStr;
+		s = s.slice(0,-1) + "。";
+    container =  "<span class = 'glyphicon glyphicon-thumbs-down' style = 'white-space: nowrap;'></span>"+eventdes+"，"+s+"</div><div class = 'time-gray-color'>"+createTime+"</div>";
     return container;
 }
