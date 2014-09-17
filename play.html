@@ -391,7 +391,7 @@ function showOther (other){
 
 (function start (){
 	var srh = getQueryString () ,
-			asnId = typeof (srh.asn) === 'undefined' ? "LbQeJFDvRT" : srh.asn ,
+			asnId =   srh.id,//typeof (srh.asn) === 'undefined' ? "LbQeJFDvRT" : srh.asn ,
 			nth  ,
 			curUser = Parse.User.current();
 	if (typeof asnId ==='undefined' ){

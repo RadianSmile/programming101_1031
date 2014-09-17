@@ -14,6 +14,10 @@ if (isset($_POST['url']) )
 	echo "no val";
 	return false ;
 }
+/********* 暫時不貼心
+
+
+
 
 if (!file_get_contents($url)){ // 這邊在確定 file get content 能不能存取到 play.html
 //	echo file_get_contents($url);
@@ -29,8 +33,9 @@ if (!file_get_contents($url)){ // 這邊在確定 file get content 能不能存�
 	}
 }
 
-
 	//echo $host ;
+
+******************/
 
 
 $root = substr($url, 0 , strripos($url, "/") ) . "/";
@@ -52,7 +57,8 @@ if (gettype ($a) === "NULL"){
 $b = $root . $a->getAttribute("data-processing-sources");
 
 //error_reporting(0);
-echo  file_get_contents($b) ?  file_get_contents($b) : 'no code';
+$content = file_get_contents($b) ;
+echo  $content ? $content  : 'no code';
 
 
 /**Rn** http://stackoverflow.com/questions/5045598/getting-elements-of-a-div-from-another-page-php  */

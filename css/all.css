@@ -22,7 +22,8 @@ a:focus , h4{
 	
 }
 .bar {
-	text-indent:-100000px;
+	text-indent:10px;
+	color:rgba(255,255,255,1.00);
 	
 }
 
