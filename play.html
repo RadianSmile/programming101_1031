@@ -25,145 +25,23 @@
 <link rel="stylesheet" href="css/play.css">
 
 
-<style type="text/javascript">
+<style>
 
-.nav {
-	margin-bottom:15px;
-	
-	}
-.main {
-	_height:-webkit-calc(100vh - 50px);
-	min0height:430px;
-	overflow:hidden;
-	margin-bottom:15px;
+/*Other*/
 
-}
-.info {
-	min-height:100px;
-}
-.nav { 
-	height:50px;
-	background:rgba(59,168,229,1.00);
-}
-.head {
-	heigh:10vh;
-	background:rgba(0,0,0,1.00);
-	color:white;
-	padding:10px;
-	font-size:2em
-	
-}
-.code{
-	background:rgba(2,1,1,1.00);
-	height:-webkit-calc(100vh - 50px);
-	padding:0;
-	min-height:430px;
-}
-.editor-container {
-	position:relative;
-	height:100%;
-	background:rgb(20,20,20);
-}
- .editor { 
-	margin: 0;
-	position: absolute;
-	top: 0;
-	bottom: 0;
-	left: 0;
-	right: 0;
-}
-
-
-.show{
-	height:100%;
-	_background:rgba(45,45,45,1.00);
-}
-.play {
-	background:rgba(45,45,45,1.00);
-	height:-webkit-calc(70vh - 25px);
-	position:relative;
-}
-.playFrame{
-	position:absolute;
-    display:inline-block;
-    vertical-align:middle;
-
-
-	margin:auto;
-
-	
-}
 .info{
 	top:-webkit-calc(80vh +	 25px);
 	height:-webkit-calc(20vh - 25px);
 	background:rgba(77,77,77,1.00);
 }
 .comment{
-	background:rgba(127,187,255,1.00);
+	_background:rgba(127,187,255,1.00);
 	min-height:100px;
 }
 .others		 {
-	background:rgba(177,255,241,1.00);
+	_background:rgba(177,255,241,1.00);
 	min-height:100px;
 }
-
-
-/* BUGGGGG**/
-
-
-.add-bug-img{
-	cursor:pointer;
-}
-.fancy {
-	width:100%;
-	height:100%;
-	display:inline-block;
-}
-.bug {
-	padding:10px 0;
-	border-bottom:rgba(202,202,202,1.00) thin solid;
-	display:block;
-	min-height:150px;	
-}
-.bug-img  {
-	float:left;		
-	max-width: 100%;
-	margin-right:10px;
-	width:200px;
-	height:130px;
-	_background-image:url(img/bug.jpg);
-	background-size:cover;
-	position:relative;
-	overflow:hidden;
-	padding:0 !important; 
-}
-.bug-img-img{
-	position:absolute;
-	display:inline;
-	margin-left: auto;
-  margin-right: auto ;
-	margin-top:-75px;
-	top:50%;
-	width:200px;
-}
-
-
-.bug-des {
-		min-height:15	0px;
-	}
-.add-bug-img {
-	min-height:150px;
-	background:url(img/photo-upload.jpg);
-	background-size:contain;
-	background-position:center center;
-	background-repeat:no-repeat;
-}
-.bug-time{
-	color:rgba(186,186,186,1.00);
-}
-*/
-
-/*Other*/
 
 .other {
 	display:block;
@@ -184,24 +62,9 @@
 <title>遊戲頁面</title>
 </head>
 <body>
-		<nav class="navbar navbar-default navbar-fixed-top  main-font" role="navigation">
-	        <div class="container-fluid">
-	            <a class="navbar-brand" href="index.html">PROGRAMING 101</a>
+<script src="js/include/nav.js"></script>
+<script type="text/javascript" src="js/include/schedule.js"></script>
 
-	            <ul class="nav navbar-nav">
-	                <li id="nav-user-block"><a href="#"><span class="glyphicon glyphicon-user"></span></a></li>   <!--RN-->
-	                <li><a href="notification.html" id="bell"><span class="glyphicon glyphicon-bell"></span></a></li>
-					<li><a href="#">Grading</a></li>
-					<li><a href="#">Student List</a></li>
-	            </ul>
-
-	            <ul class="nav navbar-nav navbar-right">
-					<li><a href="#">Schedule</a></li>
-					<li><a href="#">Help</a></li>
-					<li><a id="logout" >Logout</a></li>
-	            </ul>
-	        </div>
-	    </nav>
 <div style="height:50px;">
 </div>
 
@@ -217,6 +80,14 @@
 </div>
 
 <div class="container-fluid">
+
+<div class="col-md-7">
+	<h3 class="bug-block-title">評論</h3>
+
+	<div class="comment">
+	</div>
+</div>
+
 <div class="bug-block col-md-7">
 <h3 class="bug-block-title">遊戲霸個回報區</h3>
 	<div id="add" class="add-bug bug	"> 
@@ -241,7 +112,8 @@
 <div class="others col-md-5">
 	<h3 class="bug-block-title">精選作品</h3>
 	<div style="width:100%; height:200px; background:rgba(255,255,255,1.00);">
-		
+		<div>
+		</div>
 	</div>	
 </div>
 </div>
@@ -276,8 +148,6 @@
 	</div>
 	<div class="row">
 		<div class="col-md-7">
-			<div class="comment">
-			</div>
 			<div class="bugs ">
 			</div>
 		</div>
@@ -300,217 +170,11 @@
 </div-->
 
 
-<script>
-function qurAssign (id){
-	var Assign = Parse.Object.extend("Assign");
-	var assign = new Assign();
-	var q = new Parse.Query(Assign);
-	q.include("maker");
-	return q.get(id) ;
-}
-function qurAssignInfo (nth){
-	var AssignInfo = Parse.Object.extend ("Assign_Info");
-	var q = new Parse.Query(AssignInfo);
-	q.equalTo("nth",nth);
-	return q.first();
-}
-function qurAssigns ( nth ,descendBy) {
-	var Assign = Parse.Object.extend("Assign");
-	var q = new Parse.Query(Assign);
-	q.equalTo("nth",nth);
-	q.limit (5) ;
-	q.descending(descendBy);
-	q.ascending("grade")
-	q.include("maker");
-	return q.find() ;
-}
-function getCode (url,callback){
-	console.log("Getting Code...");
-	$.ajax({
-		url : "/getcode.php",
-		async : true,
-		type: "POST",
-		data:{url:url},
-		dataType : 'text', //explicitly requesting the xml as text, rather than an xml document
-		success : callback
-	});
-}
-function showCode (data, status, xhr) {		
-console.log ("get code!")
-	if (status === 'success') {
-		console.log ($(".editor").get(0));
-		var editor =  $(".editor").get(0);
-		editor = ace.edit( editor );
-		console.log (editor);
-		editor.setValue(data);
-	}else {
-		alert("發生了某些狀況，請重新整理!");
-	}
-}
-function qurBugs (id){
-	var BugRecord = Parse.Object.extend("Bug_Record");
-	var q = new Parse.Query (BugRecord);
-	q.equalTo("assign",id);
-	q.ascending("createdAt");
-	return q.find();
-}
-
-function apdBug(b){
-	var reviewer = b.get("reviewer");
-	var des = b.get("des");
-	var imgUrl = b.get("img").url();
-	var time = b.createdAt;
-	console.log ("bugi" ,des);
-	var html =	
-	'<div id="'+b.id+'" class="bug">\
-		<!--div class="bug-reviewer col-md-1">'+reviewer.get("name")+'</div-->\
-		<div class="bug-img"><a class="fancy" tabindex="10" href="'+imgUrl+'"><img class="bug-img-img" src="'+imgUrl+'" /></a>'+'</div>\
-		<span class="bug-des">'+""+'</span>\
-		<div class="bug-time">'+time+'</div>\
-	</div>';
-		$(".bugs").append(html);
-		$("#"+b.id).find(".bug-des").text(des);
-
-}
-
-
-function getQueryString () {
-  // This function is anonymous, is executed immediately and 
-  // the return value is assigned to QueryString!
-  var query_string = {};
-  var query = window.location.search.substring(1);
-  var vars = query.split("&");
-  for (var i=0;i<vars.length;i++) {
-    var pair = vars[i].split("=");
-    	// If first entry with this name
-    if (typeof query_string[pair[0]] === "undefined") {
-      query_string[pair[0]] = pair[1];
-    	// If second entry with this name
-    } else if (typeof query_string[pair[0]] === "string") {
-      var arr = [ query_string[pair[0]], pair[1] ];
-      query_string[pair[0]] = arr;
-    	// If third or later entry with this name
-    } else {
-      query_string[pair[0]].push(pair[1]);
-    }
-  } 
-    return query_string;
-};
-function handleError(e){
-	var Error = Parse.Object.extend ("Error");
-	var error = new Error();
-	error.set("location");
-	error.set("error",JSON.stringify(e));
-	error.set("msg",e.message);
-	error.save().then(function(){
-		alert (e.message +"\n 試著重新整理頁面在操作一次，\n錯誤訊息我們以經回報給系統了~")	;
-	});
-}
-function showPlay (url) {
-	var ifm = document.createElement("iframe");
-	ifm.src = url ;
-	ifm.width = 720 ;
-	ifm.height = 540 ;
-	ifm.border = 0 ;
-	ifm.className	+= "playFrame";
-	ifm.frameBorder = 0;
-	var play = document.getElementsByClassName("play")[0];
-	play.appendChild(ifm);	
-}
-function pprEditor (){ // Prepare
-	var editorEle =  $(".editor").first().get(0); //editorElement
-	var editor = ace.edit( editorEle );
-	editor.setTheme("ace/theme/twilight");
-	editor.getSession().setUseWrapMode(true);
-	editor.getSession().setTabSize(2);
-	editorEle.style.fontSize='14px';	
-	editor.getSession().setMode("ace/mode/java");
-	return editor;
-}
-function showFB (href){
-	var cmtEle = document.getElementsByClassName("comment")[0];  
-	cmtEle.innerHTML = "<fb:comments href='" + href+ "' num_posts='10'></fb:comments>";  
-	FB.XFBML.parse(cmtEle);
-	
-	var likeEle = document.getElementsByClassName("fblike")[0];  
-	likeEle.innerHTML = '<div class="fb-like" data-href="'+href+'" data-width="300" data-layout="standard" data-action="like" data-show-faces="false" data-share="false"></div>';
-	FB.XFBML.parse(likeEle);
-}
-function FBinitDone(){
-	showFB (document.location);
-}
-
-function showOther (other){
-	var n = other.get("maker").get("uid	"),
-			p = other.get("maker").get("photo"),
-			g = other.get("grade"),
-			s = other.get("star"),
-			h = other.get("url"),
-			
-			$p = $(".others").first();
-	var html = 
-			'<a class="other" href="play.html?asn='+other.id+'">\
-				<span class="other-head"><img src="'+p+'"></span>\
-				<span class="other-name">'+n+'</span>\
-				<span class="other-grade">'+g+'</span>\
-				<span class="other-star">'+s+'</span>\
-			</a>';
-	$p.append(html);
-	
-}
+<script src="js/play.js"></script>
 
 
 
-(function start (){
-	var srh = getQueryString () ,
-			asnId =   srh.id,//typeof (srh.asn) === 'undefined' ? "LbQeJFDvRT" : srh.asn ,
-			nth  ,
-			curUser = Parse.User.current();
-	if (typeof asnId ==='undefined' ){
-		alert("系統無法辨別你要看哪個遊戲，請重新點取");
-		
-	/*	if (document.referrer === ""){
-			document.location = "http://codedu.com";
-		}else {
-			document.location = document.referrer;
-		}
-		return false ;	*/
-	}
-	
-	
-	qurAssign(asnId).then(function(a){
-		console.log ("fuck");
-		var url = a.get("url") ;
-		nth = a.get("nth");
-		showPlay (url); 
-		console.log ("what?");
-		$(".maker").text(a.get("maker").get("name"));
-		$(".count").text(a.get("count"));
-		$(".grade").text(a.get("grade"));
-		if (a.get("isBest")) $(".isBest").fadeIn();
-		
-		//if( curUser ){
-			pprEditor();
-			getCode(url,showCode);
-			qurBugs(asnId).then(function(bs){
-				console.log ("bugggg pull done");
-				each(bs,apdBug);
-			},handleError);
-		//}
-		
-		qurAssigns(nth,"isBest,star,grade,createdAt").then(function (assigns){
-		each(assigns,showOther);
-	});
-		
-	},function (e){console.log(e);})
-
-	
-})();
-
-
-</script>
-
-<script data-for="Bug">
+<!--script data-for="Bug">
 $(document).on('click','.add-bug-img',function(e){
 	$(this).siblings("input:file.add-img-input").first().trigger('click');
 });
@@ -529,6 +193,6 @@ $(".bugs").on("focusin", function(){
 
 
 
-</script>
+</script-->
 </body>
 </html>
