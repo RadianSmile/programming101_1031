@@ -34,15 +34,16 @@ header ul li{
 }
 .notification-info{
 	padding:10px;
-	font-size:18px;
+	font-size:1.1em;
 }
 .notification-info:hover{
 	background:#123df4;
 }
 .time-gray-color{
 	float:right;
+	padding-right:20px;
 	color:#ddd;
-	width:150px;
+	_width:150px;
 	font-size: 12px;
 }
 _footer{
@@ -51,4 +52,8 @@ _footer{
 	background:#426172;
 	position:absolute;
 	bottom:0;
+}
+.glyphicon{
+	margin-right:8px;
+	
 }

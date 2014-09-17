@@ -1,23 +1,19 @@
-        moment.locale('zh-TW');
+		moment.locale('zh-TW');
 
 $(document).ready(function(){
     Parse.initialize("9eo5r1mHWoIPSTCzmrpdKa3lcHPjySx4y5D6q8Nq", "R8SWwYxpJcy73ogQKuSD43y7FigrlDGjBLcy1lzC");
     var current_user = Parse.User.current();
     if(current_user){
-        
+        //eventnotification
         var eventnotification = "";
         var eventrecord = Parse.Object.extend("Event_Record");
         var query3 = new Parse.Query(eventrecord);
         query3.equalTo('target', Parse.User.current());
         query3.find({
             success:function(data){ // evetRecord
-						var saveArr = []
                 for(var i = 0; i<data.length; i++){
-                    
-                   	if (data[i].get('isNoti')){
-											data[i].set('isNoti', true);
-											saveArr.push (data[i]);
-										}
+                    data[i].set('isNoti', true);
+                   
                     var eid = data[i].get('eid');
                     var datai = data[i];
                     var eventinfo = Parse.Object.extend("Event_Info");
@@ -33,63 +29,58 @@ $(document).ready(function(){
                         }
                     })
                 } // for
-                Parse.Object.saveAll(saveArr).then(Log,Log);
+								
+									 Parse.Object.saveAll(data).then(Log,Log);
             }
         })
         //Card use
         var notification = "";
         var notif = Parse.Object.extend("Card_record");
-        var query1 = new Parse.Query(notif);
-        //query1.equalTo('type', "use");  
-				 //var q = new Parse.Query(notif);
-				 //q.equalTo('type', "get");
+        //var query1 = new Parse.Query(notif);
+        //query1.equalTo('type', "use");
         var query2 = new Parse.Query(notif);
         query2.equalTo('user', Parse.User.current());
         var query3 = new Parse.Query(notif);
         query3.equalTo('targetuser', Parse.User.current());
-        var query = Parse.Query.or(query2,query3);
-        //query1.include('User');
+        var query = Parse.Query.or(query2, query3);
         query.include('Card_info');
         query.include('user');
         query.include('targetuser');
         query.descending('createdAt');
         query.find({
             success:function(data){
-                var saveArr = [];
                 for(var i = 0; i<data.length; i++){
-                    if (data[i].get('isNotif')){
-                        data[i].set('isNotif', true);
-                        saveArr.push(data[i]);
-                    }               
-                    var strings ;
+                    data[i].set('isNotif', true);
+                    data[i].save(null,{
+                        success:function(data1){
+                            
+                        },
+                        error:function(error){
+                            console.log(error.toString());
+                        }
+                    })
                     if(data[i].get('type') == "use"){
                         var s = useRecord(data[i]);
-                        //notification += s;
-                        strings = "<div class = 'notification-info'>" + s + "</div>";
-                        //notification = "";
-                    }else{
-                       var s2 = getRecord(data[i]);
-                       strings = "<div class = 'notification-info'>" + s2 + "</div>";
+                        notification += s;
+                        var strings = "<div class = 'notification-info'>" + notification + "</div>";
+                        $('#cards').append(strings);
+                        notification = "";
                     }
-                    $('#cards').append(strings)
                 }
-                Parse.Object.saveAll(saveArr).then(Log,Log);
-
             },
             error:function(error){
                 console.log(error.toString());
             }
         });
 
-        //Card get 
-        /*
+        //Card get
         var notification1 = "";
         var notif1 = Parse.Object.extend("Card_record");
         var query1 = new Parse.Query(notif1);
         query1.equalTo('type', "get");
         query1.equalTo('user', Parse.User.current());
         query1.include('Card_info');
-        query1.include('user');
+        query1.include('User');
         query1.descending('createdAt');
         query1.find({
             success:function(data){
@@ -105,7 +96,7 @@ $(document).ready(function(){
                 console.log(error.toString());
             }
         });
-*/ 
+
     }
 })
 
@@ -116,7 +107,7 @@ function useRecord(data){
     var userId = data.get('user').id;
     var userName = data.get('user').get('name');
     var createTime = moment(data.createdAt).fromNow();  // Rn
-        console.log ("createTime",createTime.toLocaleString());
+		console.log ("createTime",createTime.toLocaleString());
     var container = "";
     var s = "";
         if(userId == Parse.User.current().id){
@@ -152,23 +143,23 @@ function getRecord(data){
 
 function eventRecord(data, data1){
     var eventdes = data1.get('description');
-        console.log (eventdes);
+		console.log (eventdes);
     var createTime = data.createdAt;
-        var m = moment(data.createdAt).fromNow();
-        
+		var m = moment(data.createdAt).fromNow();
+		
     var result = data1.get('effect_target');
     var xp = result[0];
     var hp = result[1];
     var cd = result[2];
     var container = "";
     var s = "";
-        
-        var start = (xp !== 0 || hp !== 0 || cd !== 0 ) ? "因此你" : '' ;
-        var xpStr = (xp !== 0) ? (xp > 0 ) ? 'XP增加了'+Math.abs(xp)+"，" : 'XP減少了'+Math.abs(xp)+"，": '' ;
-        var hpStr = (hp !== 0) ? (hp > 0 ) ? 'HP增加了'+Math.abs(hp)+"，" : 'HP減少了'+Math.abs(hp)+"，": '' ; 
-        var cdStr = (cd !== 0) ? (cd > 0 ) ? '的卡片增加了'+Math.abs(cd)+"張，" : '的卡片減少了'+Math.abs(cd)+"張，": '' ; 
-        s = start + xpStr + hpStr + cdStr;
-        s = s.slice(0,-1) + "。";
+		
+		var start = (xp !== 0 || hp !== 0 || cd !== 0 ) ? "因此你" : '' ;
+		var xpStr = (xp !== 0) ? (xp > 0 ) ? 'XP增加了'+Math.abs(xp)+"，" : 'XP減少了'+Math.abs(xp)+"，": '' ;
+		var hpStr = (hp !== 0) ? (hp > 0 ) ? 'HP增加了'+Math.abs(hp)+"，" : 'HP減少了'+Math.abs(hp)+"，": '' ; 
+		var cdStr = (cd !== 0) ? (cd > 0 ) ? '的卡片增加了'+Math.abs(cd)+"張，" : '的卡片減少了'+Math.abs(cd)+"張，": '' ; 
+		s = start + xpStr + hpStr + cdStr;
+		s = s.slice(0,-1) + "。";
     container =  "<span class = 'glyphicon glyphicon-thumbs-down' style = 'white-space: nowrap;'></span>"+eventdes+"，"+s+"<span class = 'time-gray-color'>"+m+"</span></div>";
 /*=======
     if(hp >=0){
