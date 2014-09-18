@@ -6,6 +6,6 @@ if (!isset($_SERVER['PHP_AUTH_USER'])) {
     exit;
 } else {
    
-	 echo
-}      
+	// echo
+}        
 ?>
