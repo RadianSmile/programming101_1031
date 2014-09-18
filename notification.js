@@ -14,7 +14,7 @@ $(document).ready(function(){
 						var saveArr = []
                 for(var i = 0; i<data.length; i++){
                     
-                   	if (data[i].get('isNoti')){
+                   	if (!data[i].get('isNoti')){
 											data[i].set('isNoti', true);
 											saveArr.push (data[i]);
 										}
