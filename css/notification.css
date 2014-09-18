@@ -40,6 +40,8 @@ header ul li{
 }
 .notification-info:hover{
 	background:#41626F;
+	border-radius: 3px;
+	color: white;
 }
 .time-gray-color{
 	float:right;
@@ -73,4 +75,9 @@ h3{
 #cards{
 	background-color: white;
 	border-radius: 5px;
+}
+
+hr{
+	margin-top: 10px;
+	margin-bottom: 10px;
 }
