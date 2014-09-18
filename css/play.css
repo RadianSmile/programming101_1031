@@ -7,19 +7,27 @@ body {
 	background:rgb(129,170,188);
 	
 }
-
-
-.bug-block-title{
+.block{
+	background:white;
+	padding:13px;
+	margin:20px 0 ;
+}
+.repadding{
+	padding:0 10px !important;
+	
+}
+.block-title{
 	color:rgb(61,94,109);
 	text-align:center;
+	
+	margin-top:5px;
 }
 .bug {
 	margin-bottom:20px;
-	
 }
 /* 這是關於前端小*/
 .play {
-	background:rgba(50,50,50,1.00);
+	background:rgba(20,20,20,1.00);
 	height:100%;
 	padding:0;
 	position:relative;
@@ -90,6 +98,11 @@ body {
 	float:left;
 	background:rgba(196,196,196,1.00);
 	color:rgba(0,0,0,1.00);
+}
+.comment{
+	padding:15px;
+	background:white;
+	
 }
 
 

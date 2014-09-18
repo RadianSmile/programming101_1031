@@ -312,7 +312,7 @@ Parse.Cloud.afterSave("Event_Record",function(request){
 	user.id = userOid;
 	
 	if(request.object.existed()) return false ; 
-
+	console.log (userOid);
 			
 	function qurStatus (){
 		var UserStatus = Parse.Object.extend("User_status");

@@ -85,7 +85,7 @@ function fb_login () {
 						
 						alert ("我幫你註冊了，但好像有哪裡不太對噢");
 						document.location="signup.html";
-					}else{
+					}else{ 
 	//asSs				alert("登入成功!");
 						document.location ="dashboard.html";	
 					}

@@ -107,7 +107,7 @@ function showPlay (url) {
 	var ifm = document.createElement("iframe");
 	ifm.src = url ;
 	ifm.width = 640 ;
-	ifm.height = 490 ;
+	ifm.height = 480 ;
 	ifm.border = 0 ;
 	ifm.className	+= "playFrame";
 	ifm.frameBorder = 0;
@@ -126,7 +126,7 @@ function pprEditor (){ // Prepare
 }
 function showFB (href){
 	var cmtEle = document.getElementsByClassName("comment")[0];  
-	cmtEle.innerHTML = "<fb:comments href='" + href+ "' num_posts='10' data-width='100%'></fb:comments>";  
+	cmtEle.innerHTML = "<div><fb:comments href='" + href+ "' num_posts='10' data-width='100%'></fb:comments></div>";  
 	FB.XFBML.parse(cmtEle);
 	
 	var likeEle = document.getElementsByClassName("fblike")[0];  
@@ -139,13 +139,13 @@ function FBinitDone(){
 }
 
 function showOther (other){
-	var n = other.get("maker").get("uid	"),
+	var n = other.get("maker").get("name	"),
 			p = other.get("maker").get("photo"),
 			g = other.get("grade"),
 			s = other.get("star"),
 			h = other.get("url"),
 			
-			$p = $(".others").first();
+			$p = $(".others  .inner").first();
 	var html = 
 			'<a class="other" href="play.html?asn='+other.id+'">\
 				<span class="other-head"><img src="'+p+'"></span>\
@@ -161,7 +161,7 @@ function showOther (other){
 
 (function start (){
 	var srh = getQueryString () ,
-			asnId =   srh.id,//typeof (srh.asn) === 'undefined' ? "LbQeJFDvRT" : srh.asn ,
+			asnId =   srh.aid,//typeof (srh.asn) === 'undefined' ? "LbQeJFDvRT" : srh.asn ,
 			nth  ,
 			curUser = Parse.User.current();
 	if (typeof asnId ==='undefined' ){
