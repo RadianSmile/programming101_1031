@@ -1,5 +1,14 @@
 Parse.initialize("9eo5r1mHWoIPSTCzmrpdKa3lcHPjySx4y5D6q8Nq", "R8SWwYxpJcy73ogQKuSD43y7FigrlDGjBLcy1lzC");
 
+
+if (localStorage['owncard'] === '' || localStorage.getItem('owncard') === null){
+	alert("沒有收到資料！請從新點取卡牌");
+	document.location = 'dashboard.html'
+	
+}else {
+	alert(localStorage['owncard']);
+}
+
 $(document).ready(function(){
     var current_user = Parse.User.current();
     if(current_user){
@@ -28,12 +37,12 @@ function randomNum(length){
         return(num);
 }
 
-function getData(){
+function getData(){  // 進行抽卡的動作
     var card = Parse.Object.extend("Card_info");
     var query = new Parse.Query(card);
-    var No = randomNum();
+   // var No = randomNum();     // 
     query.greaterThan("remain", 0);
-    query.find({
+    query.find({  // 抓取Remain 還不是0的卡排列
         success: function(results){
             var randomno = randomNum(results.length);
             var object = results;
@@ -44,10 +53,10 @@ function getData(){
 
             //Card_record!
             cardrecord.set('user', currentuser);
-            cardrecord.set('Card_info', object[randomno]);
+            cardrecord.set('Card_info', object[randomno]);  
             cardrecord.set('User', currentuser);
             cardrecord.set('type', "get");
-            cardrecord.save(null,{
+            cardrecord.save(null,{  								// 將抽卡結果儲存到 cardRecord
                 success:function(data){
                     console.log("Card drawing record success!");
                 },
@@ -62,27 +71,26 @@ function getData(){
             $('#image2').attr("src", Imagesrc)
             $('#image3').attr("src", Imagesrc)
 
-            substractCardNum(object[randomno].id);
+            substractCardNum(object[randomno].id); // 現在要去減少卡片的數量
 
-            var drawrecordid = localStorage.getItem('drawrecord');
-            var owncard = Parse.Object.extend("Owncard");
-            var query = new Parse.Query(owncard);
-            query.equalTo('objectId', drawrecordid);
-            query.first({
-                success:function(data){
-                    data.set('Card_info', object[randomno]);
-                    data.save(null, {
-                        success:function(){
-                            console.log("Save draw card success!");
-                            alert("你得到一張卡了!返回Dashboard~");
-                            window.location.href="http://radiansmile.github.io/CodeEDU/dashboard.html";
-                        },
-                        error: function(error){
-                            alert('Failed to create new object, with error code: ' + error.description);
-                        }        
-                    })
-                }
-            })
+							// Save Own Card
+            var owncardID = localStorage.getItem('owncard');
+
+				  	 var Owncard = Parse.Object.extend("Owncard");
+						 var owncard = new Owncard ();
+						 owncard.id = owncardID ; 
+						 owncard.set('Card_info', object[randomno])
+							owncard.save(null, {
+									success:function(){
+										localStorage.removeItem('owncard');
+											console.log("Save draw card success!");
+											alert("你得到一張卡了!返回Dashboard~");
+											window.location.href="dashboard.html";
+									},
+									error: function(error){
+											alert('Failed to create new object, with error code: ' + error.description);
+									}        
+							})
         },
         error: function(error){
             alert("Error: " + error.code + " " + error.message);
@@ -130,7 +138,7 @@ function remainCard(){
     query.greaterThan("remain",0);
     query.count({
         success: function(count){
-            if(count==0)
+            if(count===0)
                 setRemainCard();
         },
         error: function(error){
@@ -149,7 +157,7 @@ function setRemainCard(){
                 var num = Parse.Object.extend('Card_info');
                 var n = new num();
                 
-                n.set('objectId',element.id);
+                n.id = element.id;
                 n.save(null,{
                     success: function(n){
                         n.set('remain', no[index]);
@@ -164,25 +172,12 @@ function setRemainCard(){
 }
 
 function substractCardNum(id){
-    var  card = Parse.Object.extend('Card_info');
-    var query = new Parse.Query(card);
-    query.equalTo('objectId',id);
-    query.first({
-        success: function(data) {
-            var c = new card();
-            var no = data.get('remain');
-            c.set('objectId',data.id);
-            c.set('remain',no);
-
-            c.save(null,{
-                success: function(data){
-                    c.set('remain',--no);
-                    c.save();
-                }
-            });
-        },
-        error: function (error) {
-            console.log(error.toString());
-        }
-    });
+    var  Card = Parse.Object.extend('Card_info');
+		var card = new Card ();
+		card.id = id ; 
+		card.increment("remain", -1);
+		card.save().then(Log,Log);
+}
+function Log (s){
+	console.log(s);
 }

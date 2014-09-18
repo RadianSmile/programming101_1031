@@ -53,6 +53,7 @@ $(document).ready(function(){
 	         }
     });
 		}//else{ alert ("你還沒登入");}   Rn
+		
     //back-end owncard
     var current_user = Parse.User.current();
     if(current_user){
@@ -63,25 +64,27 @@ $(document).ready(function(){
         query.descending('createdAt');
         query.find({
             success: function(data){
+											
                     var ccontainer = "";
                     for(var i = 0; i<data.length; i++){
                         var card = data[i].get('Card_info');
-                        if(card == undefined){
-                            var backcard = "<div class='card-box col-md-2'><a href='card_drawing.html' data-toggle='tooltip' title='你有一張抽卡機會'><img id='backcard' src='img/choosecard/back.png'></a></div>"; // Rn
+                        
+													if(card == undefined){
+                            var backcard = "<div class='card-box col-md-2' data-owncard='"+data[i].id+"'><a data-toggle='tooltip' title='你有一張抽卡機會'><img id='backcard' src='img/choosecard/back.png'></a></div>"; // Rn
                             $('div#OwnCardData').append(backcard);
-                            $('a[data-toggle="tooltip"]').tooltip({
-                                animated: 'fade',
-                                placement: 'top',
-                            });
                         }
                         else{
                             var s = getElementStringByowncard(card.get('imagesrc'), data[i].id);
                             ccontainer += s;
                             var string = "<div class='card-box col-md-2'> " + ccontainer + "</div>";
-                            $('div#OwnCardData').append(string);
+                            $('div#OwnCardData').append(string); 
                             ccontainer = "";
                         }
                     }
+											$('a[data-toggle="tooltip"]').tooltip({
+												animated: 'fade',
+												placement: 'top',
+											});
                         $('.card').on('click', function(){
                             var id = $(this).attr('id');
                             localStorage['owncardId'] = id;
@@ -148,7 +151,7 @@ $(document).ready(function(){
     }
 });
 
-function getElementStringByowncard(imagesrc, id){
+function getElementStringByowncard(imagesrc, id){ // img and id 
     var s1 = "<img src='" + imagesrc + "'>";
     var s = "<a href='#' data-toggle='modal' data-target='#cardModal'><div class='card' id='"+id+"'>" + s1 + "</div></a>";
 
@@ -162,3 +165,9 @@ function getUsecard(imagesrc, shortdes){
 
     return s;
 };
+
+$(document).on('click','.card-box',function (){
+	document.location='card_drawing.html';
+	var o = $(this).data('owncard') ; 
+	localStorage['owncard'] = o ;	
+});
