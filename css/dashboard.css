@@ -145,13 +145,13 @@ article{
 	transition:all .6s ease;
 	-webkit-transition:all .4s ease;
 }
-.game , .glyphicon-heart {
+.machineBox , .glyphicon-heart {
 	transition:all .6s ease;
 	-webkit-transition:all .4s ease;
 }
 
 
-.glyphicon-heart:hover, .game:hover ,.card-box:hover{
+.glyphicon-heart:hover, .machineBox:hover ,.card-box:hover{
 	transform:scale(1.1,1.1);
 	-webkit-tranform:scale(1.1,1.1);
 }

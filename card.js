@@ -74,11 +74,12 @@ $(document).ready(function(){
                             $('div#OwnCardData').append(backcard);
                         }
                         else{
-                            var s = getElementStringByowncard(card.get('imagesrc'), data[i].id);
-                            ccontainer += s;
-                            var string = "<div class='card-box col-md-2'> " + ccontainer + "</div>";
-                            $('div#OwnCardData').append(string); 
-                            ccontainer = "";
+																var target_type = card.get("target_type");
+																var s = getElementStringByowncard(card.get('imagesrc'), data[i].id);
+																ccontainer += s;
+																var string = "<div class='card-box card-box-use col-md-2' data-targettype='"+target_type+"'> " + ccontainer + "</div>";
+																$('div#OwnCardData').append(string); 
+																ccontainer = "";
                         }
                     }
 											$('a[data-toggle="tooltip"]').tooltip({
@@ -170,4 +171,10 @@ $(document).on('click','.card-box-back',function (){
 	document.location='card_drawing.html';
 	var o = $(this).data('owncard') ; 
 	localStorage['owncard'] = o ;	
+});
+$(document).on('click','.card-box-use',function (){
+	if ($(this).data('targettype')){
+		
+		
+	}
 });

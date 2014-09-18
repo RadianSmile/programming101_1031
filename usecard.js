@@ -25,12 +25,26 @@ $(document).ready(function(){
                                                     }
                                         }
 
+
+/* click
+
+get TargetId ;
+get owncardId &> cardInfo
+判斷並alert結果
+cardUseRecord();
+addXP ownCard.effect[0]
+addHP ownCard.effect[1]
+addCD ownCard.effect[2]
+deletecard
+
+
+*/
     				$('.in').on('click', function(){
                         $('div#bigdiv').append("<img id='loading' src='img/loading.gif'>");
                         $('div#bigdiv').css("top", "10%");
                         $('div#bigdiv').css("left", "10%");
     					var id = $(this).attr('id');
-    					localStorage['userid'] = id;
+    					localStorage['userid'] = id;  // target id 
                         var owncardid = localStorage.getItem('owncardId');
                         var owncard = Parse.Object.extend('Owncard');
                         var query = new Parse.Query(owncard);
@@ -40,7 +54,7 @@ $(document).ready(function(){
                             success:function(data){
                                 var card = data.get('Card_info');
                                 var cardid = card.id;
-                                var targetuser = localStorage.getItem('userid');
+                                var targetuser = localStorage.getItem('userid');  
                                 var user = Parse.Object.extend('User');
                                 var query = new Parse.Query(user);
                                 query.equalTo('objectId', targetuser);

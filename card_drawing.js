@@ -1,12 +1,12 @@
 Parse.initialize("9eo5r1mHWoIPSTCzmrpdKa3lcHPjySx4y5D6q8Nq", "R8SWwYxpJcy73ogQKuSD43y7FigrlDGjBLcy1lzC");
 
 
-if (localStorage['owncard'] === '' || localStorage.getItem('owncard') === null){
-	alert("沒有收到資料！請從新點取卡牌");
+if (localStorage.getItem('owncard') === '' || localStorage.getItem('owncard') === null){
+	alert("沒有收到資料！請從新點取卡牌。");
 	document.location = 'dashboard.html'
 	
 }else {
-	alert(localStorage['owncard']);
+	//alert(localStorage['owncard']);
 }
 
 $(document).ready(function(){
