@@ -9,8 +9,11 @@
 .assignInfo {
 	color:#41626F;
 	padding:20px 0 ;
-}  
-
+}
+.assignInfo-line{
+	border-color:rgba(0,0,0,1.00) ; 
+	
+}
 .assignInfo-photo {
 	margin-top:20px;
 	text-align:center;

@@ -27,7 +27,6 @@ var PersonalAssignArr = [] ;
 	function qurAssignInfo (){
 		var AsnInfo = Parse.Object.extend("Assign_Info");
 		var q = new Parse.Query(AsnInfo);
-		console.log ("!!!!!!!!!!!!");
 		return	q.find();
 	}
 	function getPersonalAssignByNthFromArr(nth){
@@ -93,21 +92,30 @@ function generateAssignInfo (nth) {
 		var submitDate = asnInfo.get("submitDate");
 		var reviewDate = asnInfo.get("reviewDate");
 		var reviewDue = asnInfo.get("reviewDue");
-		console.log ("submitDate: " +submitDate.toDateString());
-		console.log ("reviewDate: " +reviewDate.toDateString());
-		console.log ("reviewDue : " +reviewDue.toDateString());
+		console.log ("submitDate: " +submitDate.toLocaleString());
+		console.log ("reviewDate: " +reviewDate.toLocaleString());
+		console.log ("reviewDue : " +reviewDue.toLocaleString());
 		var uploadBtn =  
 			'<div class="note">\
 				<input class=" form-control input-md input-asnUrl" type="text" placeholder="請貼入遊戲play.html連結">\
-				<a class="btn btn-default assignInfo-link submit-asnUrl" data-nth="'+nth+'" >上傳遊戲</a>\
+				<a class="btn btn-default assignInfo-link submit-asnUrl" data-nth="'+nth+'" >上傳遊戲連結</a>\
 			</div>';
+
+		var renewBtn =  
+			'<div class="note">\
+				<input class=" form-control input-md input-asnUrl" type="text" placeholder="貼入更新的遊戲play.html連結">\
+				<a class="btn btn-default assignInfo-link submit-asnUrl" data-nth="'+nth+'" >更新連結</a>\
+			</div>';
+
 			
 		var preUpload = 
-			'<div class="note">\
-				<a class="btn btn-default assignInfo-link submit-asnUrl disabled" >上傳遊戲連結</a>\
-			</div>';
+			'<div class="note" style="color:black;">\
+			 	 遊戲開放繳交日期：’'+submitDate.toLocaleString()+' ~ '+reviewDue.toLocaleString()+'\
+			 </div>';
+				//<a class="btn btn-default assignInfo-link submit-asnUrl disabled" >上傳遊戲連結</a>\
+			
 		console.log (isNewAsn);
-		var viewSelfBtn ='<a class="btn btn-default assignInfo-link view-self" href="play.html?id='+ (!isNewAsn ? asn.id :"")  +'">看自己的遊戲</a>';
+		var viewSelfBtn ='<a class="btn btn-default assignInfo-link view-self" href="play.html?aid='+ (!isNewAsn ? asn.id :"")  +'">看自己的遊戲</a><hr class="assignInfo-line">';
 		var reviewBtn =  '<a class="btn btn-default assignInfo-link to-review" href="review.html">前往評分</a>';
 		var viewAllBtn =	'<a class="btn btn-default assignInfo-link view-other" href="assign.html?nth='+nth+'">看別人遊戲</a>';
 	
@@ -115,8 +123,13 @@ function generateAssignInfo (nth) {
 		if (submitDate > now) { status = 1 ;l=" 第一區間：還沒開始作業" ;
 			btns +=preUpload;}
 		if (reviewDate > now && now > submitDate ){status = 2 ;	l =" 第二區間：開始作業";
+			if (!isNewAsn){ 
+				btns+=(viewSelfBtn);
+				btns+= renewBtn ;
+			}else{
 			btns+= uploadBtn ;
-			if (!isNewAsn) btns+=(viewSelfBtn);} 
+			}
+		}
 		if (reviewDue > now && now  > reviewDate  ){	status = 3 ; l =" 第三區間：開始評分";
 			btns+= reviewBtn + viewSelfBtn ;}
 		if (now > reviewDue){  status = 4 ;l ="四區間：結束評分";
