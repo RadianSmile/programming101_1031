@@ -1,5 +1,5 @@
 body{
-	background-image: url('img/wood.png');
+	background-color: #80ABBC;
 }
 .in{
 	width:50px;
@@ -30,11 +30,15 @@ body{
 }
 h1{
 	font-family: "Oswald", "微軟正黑體", sans-serif;
+	text-align: center;
+	margin-bottom: 30px;
+	color: white;
 }
 h4{
 	font-family: "Oswald", "微軟正黑體", sans-serif;
 	font-size: 14px;
 	text-align: center;
+	color: white;
 }
 
 #backtodashboard{
@@ -43,5 +47,12 @@ h4{
 }
 
 #dashboardbtn{
-	margin-top: 8%;
+	margin-top: 5%;
+	background-color: #41626F;
+	border-width: 0px;
+}
+
+#dashboardbtn:hover{
+	color: #41626F;
+	background-color: white;
 }

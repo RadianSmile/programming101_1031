@@ -145,7 +145,7 @@ function getRecord(data){
     var s = "";
         if(userId == Parse.User.current().id){
             s = "你抽到了"+ cardName + "。";
-            container = "<div class = 'time-gray-color'>"+createTime+"</div><span class = 'glyphicon glyphicon-bullhorn' style = 'white-space: nowrap;'></span>"+ s +"</div>";
+            container = "<div class = 'time-gray-color'>"+createTime+"</div><span class = 'glyphicon glyphicon-thumbs-up' style = 'white-space: nowrap;'></span>"+ s +"</div>";
         }
     return container;
 }
