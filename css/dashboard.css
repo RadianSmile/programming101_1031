@@ -140,7 +140,22 @@ article{
 	padding:0 !important;
 }
 	
-	|
+.card-box{
+	cursor:pointer;
+	transition:all .6s ease;
+	-webkit-transition:all .4s ease;
+}
+.game , .glyphicon-heart {
+	transition:all .6s ease;
+	-webkit-transition:all .4s ease;
+}
+
+
+.glyphicon-heart:hover, .game:hover ,.card-box:hover{
+	transform:scale(1.1,1.1);
+	-webkit-tranform:scale(1.1,1.1);
+}
+
 /*
 .individual-attr{
 	float:left;

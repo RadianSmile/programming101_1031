@@ -98,7 +98,12 @@ function getData(){  // 進行抽卡的動作
     });
 }
 
+function unbindAll(){
+	$('.cards *' ).removeAttr('onclick');
+	
+}
 function changeClass1(){
+	unbindAll();
     if(document.getElementById("block1").className == "block col-md-2 col-md-offset-3"){
         document.getElementById("back1").className += "gone";
         document.getElementById("image1").className += "show";
@@ -110,6 +115,7 @@ function changeClass1(){
         getData();
     };
 function changeClass2(){
+		unbindAll();
     if(document.getElementById("block2").className == "block col-md-2"){
         document.getElementById("back2").className += "gone";
         document.getElementById("image1").className += "gone";
@@ -121,6 +127,7 @@ function changeClass2(){
         getData();  
     };      
 function changeClass3(){
+		unbindAll();
     if(document.getElementById("block3").className == "block col-md-2"){
         document.getElementById("back3").className += "gone";
         document.getElementById("image1").className += "gone";
@@ -128,7 +135,7 @@ function changeClass3(){
         document.getElementById("image3").className += "show";
     }
     else
-        document.getElementById("block").className = "block";
+      //  document.getElementById("block").className = "block";
         getData();
     };
 

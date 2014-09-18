@@ -70,7 +70,7 @@ $(document).ready(function(){
                         var card = data[i].get('Card_info');
                         
 													if(card == undefined){
-                            var backcard = "<div class='card-box col-md-2' data-owncard='"+data[i].id+"'><a data-toggle='tooltip' title='你有一張抽卡機會'><img id='backcard' src='img/choosecard/back.png'></a></div>"; // Rn
+                            var backcard = "<div class='card-box card-box-back col-md-2' data-owncard='"+data[i].id+"'><a data-toggle='tooltip' title='你有一張抽卡機會'><img id='backcard' src='img/choosecard/back.png'></a></div>"; // Rn
                             $('div#OwnCardData').append(backcard);
                         }
                         else{
@@ -166,7 +166,7 @@ function getUsecard(imagesrc, shortdes){
     return s;
 };
 
-$(document).on('click','.card-box',function (){
+$(document).on('click','.card-box-back',function (){
 	document.location='card_drawing.html';
 	var o = $(this).data('owncard') ; 
 	localStorage['owncard'] = o ;	
