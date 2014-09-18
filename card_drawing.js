@@ -135,7 +135,7 @@ function changeClass3(){
         document.getElementById("image3").className += "show";
     }
     else
-      //  document.getElementById("block").className = "block";
+        document.getElementById("block").className = "block";
         getData();
     };
 
