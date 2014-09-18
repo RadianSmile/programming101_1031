@@ -122,16 +122,16 @@ function useRecord(data){
         if(userId == Parse.User.current().id){
             if(targetId == Parse.User.current().id){
                 s = "你對自己使用了" + cardName + "。";
-                container = "<div class = 'time-gray-color'>"+createTime+"</div><span class = 'glyphicon glyphicon-bullhorn' style = 'white-space: nowrap;'></span>"+ s +"</div>";
+                container = "<div class = 'time-gray-color'>"+createTime+"</div><span class = 'glyphicon glyphicon-plus-sign' style = 'white-space: nowrap;'></span>"+ s +"</div>";
             }
             else{
                 s = "你對" + targetName + "使用了" + cardName + "。";
-                container = "<div class = 'time-gray-color'>"+createTime+"</div><span class = 'glyphicon glyphicon-bullhorn' style = 'white-space: nowrap;'></span>"+ s +"</div>";
+                container = "<div class = 'time-gray-color'>"+createTime+"</div><span class = 'glyphicon glyphicon-record' style = 'white-space: nowrap;'></span>"+ s +"</div>";
             }
         }
         else if(targetId == Parse.User.current().id){
             s = userName+"對你使用了" + cardName + "。";
-            container = "<div class = 'time-gray-color'>"+createTime+"</div><span class = 'glyphicon glyphicon-bullhorn' style = 'white-space: nowrap;'></span>"+ s +"</div>";
+            container = "<div class = 'time-gray-color'>"+createTime+"</div><span class = 'glyphicon glyphicon-exclamation-sign' style = 'white-space: nowrap;'></span>"+ s +"</div>";
         }
     return container;
 }
@@ -169,7 +169,7 @@ function eventRecord(data, data1){
         var cdStr = (cd !== 0) ? (cd > 0 ) ? '的卡片增加了'+Math.abs(cd)+"張，" : '的卡片減少了'+Math.abs(cd)+"張，": '' ; 
         s = start + xpStr + hpStr + cdStr;
         s = s.slice(0,-1) + "。";
-    container =  "<span class = 'glyphicon glyphicon-thumbs-down' style = 'white-space: nowrap;'></span>"+eventdes+"，"+s+"<span class = 'time-gray-color'>"+m+"</span></div>";
+    container =  "<span class = 'glyphicon glyphicon-info-sign' style = 'white-space: nowrap;'></span>"+eventdes+"，"+s+"<span class = 'time-gray-color'>"+m+"</span></div>";
 /*=======
     if(hp >=0){
         s = "因為" + eventdes + "，所以造成你的XP增加" + xp +"、你的HP增加" + hp + "、你的抽卡機會增加" + draw + "次。";
