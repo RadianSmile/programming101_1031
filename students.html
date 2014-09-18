@@ -3,57 +3,26 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Dashboard</title>
-<!-- Common links -->
-<!----><link rel="icon" type="image/png" href="../include/icon.png" />
-<!----><link href="bootstrap/css/bootstrap.css" rel="stylesheet" />
-<!----><script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-<!----><script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-<!----><script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.2.19.min.js"></script>
-<!----><script src="js/checkUser.js"></script>
-
-<!----><link href="css/all.css" rel="stylesheet" />
-<!----><script src="js/all.js"></script>
-	   <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
-<!---------------------->
-
-<!-- Rn -->
-
+		<!--link rel="icon" type="image/png" href="../include/icon.png" />
+		<link href="bootstrap/css/bootstrap.css" rel="stylesheet" />
+		<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+		<script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.2.19.min.js"></script>
+		
+		<link href="css/all.css" rel="stylesheet" />
+		<link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'-->
+		
+		<link rel="stylesheet" href="css/students.css"> 
 </head>
 <body>
 
-<table id="tableArea" class=" table table-striped table-hover"  >
-</table>
+<div class="modal-header">
+  <h4 class="modal-title" id="myModalLabel">Student List</h4>
+</div>
+<div class="modal-body">
+<table id="tableArea" class=" table table-striped table-hover"  ></table>
 <script src="js/sortTable.js"></script>
-
-<script>
-
-var u = Parse.Object.extend("User_status");
-var q =  new Parse.Query (u);
-q.include("User");
-q.find().then(function(s){
-	var arr = [] ;
-	for (var i = 0 ; i < s.length ; i++){
-		var arr2 = [];
-		var ss = s[i];
-		console.log (s[i]);
-		var uu = s[i].get("User") ;
-		arr2[0] = uu.get("photo");
-		arr2[1] = uu.get("name");
-		arr2[2] = parseInt(uu.get("ID"));
-		arr2[3] = ss.get("Level");
-		arr2[4] = ss.get("XP");
-		arr2[5] = ss.get("HP");		
-		arr2[6] = ss.get("Life");				
-		arr.push(arr2);
-	}
-	main(arr);
-},function (){
-	
-});
-
-
-
-</script>
-
+</div>
+<div class="modal-footer">
+</div>
 </body>
 </html>

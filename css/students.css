@@ -1,0 +1,18 @@
+.title-row{
+	padding:8px 0;
+	
+}
+
+.table td, th {
+	vertical-align: middle !important;
+	text-align:center;
+}
+tr {
+	cursor:pointer;
+	
+}
+
+.uid{
+	display:none;
+	
+}

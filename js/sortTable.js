@@ -1,3 +1,38 @@
+(function(){
+var idArr = [] ;
+
+var u = Parse.Object.extend("User_status");
+var q =  new Parse.Query (u);
+q.include("User");
+q.find().then(function(s){
+	var arr = [] ;
+	for (var i = 0 ; i < s.length ; i++){
+		var arr2 = [];
+		var ss = s[i];
+		var uu = s[i].get("User") ;
+		var ID = parseInt(uu.get("ID"));
+		console.log (s[i]);
+		arr2[0] = uu.get("photo");
+		arr2[2] = ID;
+		arr2[1] = uu.get("name")+"<span class='uid'>"+ID+"</span>";
+		arr2[3] = ss.get("Level");
+		arr2[4] = ss.get("XP");
+		arr2[5] = ss.get("HP");		
+		arr2[6] = ss.get("Life");				
+		arr.push(arr2);
+	}
+	main(arr);
+},function (){
+	
+});
+
+$(document).on('click','.user',function(e){
+	var uid = $(this).find('.uid').first().text();
+	document.location="profile.html?uid="+uid;
+});
+
+
+
 // JavaScript Document
 var dataArray;
 var attrNum=7;
@@ -90,7 +125,7 @@ function tableInitialize (sortBy) {
 	var tableHeader;
 	var sortPlace=attrToPlace(sortBy);
 	var wordArray=new Array(attrNum-1);
-	tableHeader=tH(" ");
+	tableHeader=tH("照片");
 	wordArray[0]="Name";
 	wordArray[1]="ID Number";
 	wordArray[2]="Level";
@@ -112,7 +147,7 @@ function tableInitialize (sortBy) {
 		};
 		tableHeader+=tH(tmpWord);
 	};
-	$(tableDom).append(tableHeader);
+	$(tableDom).append("<tr class='table-head'>"+tableHeader+"</tr>");
 }
 function tableBuilder (rankArray,sortBy) {
 	var sorting=attrToPlace(sortBy);
@@ -181,7 +216,7 @@ function formatter (type,rData) {
 	var rItem="";
 	switch(type){
 		case "img":
-			rItem="<img width='50' src="+rData+" />";
+			rItem="<img width='50' height='50' src="+rData+" />";
 		break;
 		case "stay":
 			rItem=rData;
@@ -236,3 +271,4 @@ function quickSort(array){
 	}
 }
 */
+})();

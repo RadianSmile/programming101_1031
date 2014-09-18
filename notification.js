@@ -14,10 +14,6 @@ $(document).ready(function(){
 						var saveArr = []
                 for(var i = 0; i<data.length; i++){
                     
-                   	if (!data[i].get('isNoti')){
-											data[i].set('isNoti', true);
-											saveArr.push (data[i]);
-										}
                     var eid = data[i].get('eid');
                     var datai = data[i];
                     var eventinfo = Parse.Object.extend("Event_Info");
@@ -31,9 +27,18 @@ $(document).ready(function(){
                             $('#works').append(strings);
                             eventnotification = "";
                         }
-                    })
+                    });
+										  if (data[i].get('isNoti') !== true){
+											data[i].set('isNoti', true);
+											saveArr.push (data[i]);
+										}
+
+							
                 } // for
-                Parse.Object.saveAll(saveArr).then(Log,Log);
+                Parse.Object.saveAll(saveArr).then(alr,Log);
+								function alr (a){
+									alert("!");
+								}
             }
         })
         //Card use
@@ -57,7 +62,7 @@ $(document).ready(function(){
             success:function(data){
                 var saveArr = [];
                 for(var i = 0; i<data.length; i++){
-                    if (data[i].get('isNotif')){
+                    if (data[i].get('isNotif') !== true){
                         data[i].set('isNotif', true);
                         saveArr.push(data[i]);
                     }               
