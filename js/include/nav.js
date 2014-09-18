@@ -1,4 +1,12 @@
-document.write('<nav class="navbar navbar-default navbar-fixed-top " role="navigation">\
+document.write(
+'<style type="text/css">\
+.headroom {position: fixed;top: 0;left: 0;right: 0;transition: all .6s ease-in-out;}\
+.headroom--unpinned {top: -48px;}\
+.headroom--pinned {top: 0;}\
+</style>'
+);
+
+document.write('<nav class="navbar navbar-default navbar-fixed-top headroom " role="navigation">\
 		<div class="container-fluid">\
 				<a class="navbar-brand" href="index.html">PROGRAMING 101</a>\
 \
