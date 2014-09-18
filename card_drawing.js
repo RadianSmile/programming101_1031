@@ -85,7 +85,7 @@ function getData(){  // 進行抽卡的動作
 										localStorage.removeItem('owncard');
 											console.log("Save draw card success!");
 											alert("你得到一張卡了!返回Dashboard~");
-											window.location.href="dashboard.html";
+		//									window.location.href="dashboard.html";
 									},
 									error: function(error){
 											alert('Failed to create new object, with error code: ' + error.description);
