@@ -134,7 +134,7 @@ function tableBuilder (rankArray,sortBy) {
 }
 
 function rowBuilder (serial) {
-	var roContent="<tr>";
+	var roContent="<tr class='user'>";
 	for (var i = 0; i < attrNum; i++) {
 		if (attrTypeArr[i]=="img"||attrTypeArr[i]=="stay") {
 			roContent+= tD(formatter(attrTypeArr[i],dataArray[serial][i]));
