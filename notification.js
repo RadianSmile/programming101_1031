@@ -34,7 +34,6 @@ $(document).ready(function(){
 											saveArr.push (data[i]);
 										}
 
-							
                 } // for
                 Parse.Object.saveAll(saveArr).then(Log,Log);
             }
@@ -60,21 +59,22 @@ $(document).ready(function(){
             success:function(data){
                 var saveArr = [];
                 for(var i = 0; i<data.length; i++){
-            
+            					
+											var newClass = (!data[i].get('isNotif'))? 'noti-new' : ''
                     var strings ;
                     if(data[i].get('type') == "use"){
                         var s = useRecord(data[i]);
                         //notification += s;
-                        strings = "<div class = 'notification-info "+(function(){return (!data[i].get('isNotif'))? 'noti-new' : ''})()+" '>" + s + "</div>";
+                        strings = "<div class = 'notification-info"+newClass+"'>" + s + "</div>";
                         //notification = "";
                     }else{
                        var s2 = getRecord(data[i]);
-                       strings = "<div class = 'notification-info "+(function(){return (!data[i].get('isNotif'))? 'noti-new' : ''})()+" '>" + s2 + "</div>";
+                       strings = "<div class = 'notification-info "+newClass+" '>" + s2 + "</div>";
                     }
                     $('#cards').append(strings);
-										    if (data[i].get('isNotif') !== true){
-                        data[i].set('isNotif', true);
-                        saveArr.push(data[i]);
+											if (data[i].get('isNotif') !== true){
+												data[i].set('isNotif', true);
+												saveArr.push(data[i]);
                     }    
                 }
                 Parse.Object.saveAll(saveArr).then(Log,Log);
