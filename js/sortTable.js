@@ -27,6 +27,7 @@ q.find().then(function(s){
 });
 
 $(document).on('click','.user',function(e){
+	e.preventDefault();
 	var uid = $(this).find('.uid').first().text();
 	document.location="profile.html?uid="+uid;
 });
@@ -52,8 +53,9 @@ function main (array) {
 	tableBuilder (numSort("ID Number","DESC"),"ID Number");
 }
 //---------------------------click reaction---------------
-$(tableDom).click(function(e) {
-    var targetDom=e.target;
+$(document).on('click','.table-head th', function(e) {
+//$(tableDom).click(function(e) {
+  var targetDom=e.target;
 	var distinctWord=$(targetDom).text();
 	var actualPlace;
 	//console.log("enter");

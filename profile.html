@@ -1,22 +1,177 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
+	<head>
+		<meta charset="UTF-8">
+		<title>Dashboard</title>
+<!-- Common links -->
 <!----><link rel="icon" type="image/png" href="include/icon.png" />
-<!----><link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+<!----><link href="bootstrap/css/bootstrap.css" rel="stylesheet" />
 <!----><script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-<!----><script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<!----><script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <!----><script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.2.19.min.js"></script>
-<!----><link href="css/all.css" rel="stylesheet" />
+<!----><script src="js/checkUser.js"></script>
 <!----><script src="js/all.js"></script>
 
-<script src="profile.js"></script>
+<script src="js/profile.js"></script>
+<!----><link href="css/all.css" rel="stylesheet" />
 
+<link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+<!---------------------->
+<script src="profile_card.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="css/dashboard.css">
+<link rel="stylesheet" type="text/css" href="css/assignInfo.css">
 
-<title><script></script></title>
+<!-- Rn -->
 
 </head>
-
 <body>
-</body>
+
+<script src="js/include/nav.js"></script>
+<script type="text/javascript" src="js/include/schedule.js"></script>
+
+		<div class="container top">
+			
+			<!--div class="row">
+					<div class="col-md-12" id="Banner-Rotator">
+						<h5>鄭竣丰說 : 大家加油啊啊啊啊啊~! GOGOGO!</h5>
+					</div>	
+			</div-->
+ 
+			<div class="row">
+				<div class="col-md-10 col-md-offset-1 individual-info temp">
+						
+						
+					<div class="col-md-3 individual-img">
+						<img class="bighead" src="">
+					</div>
+
+					<div class="col-md-9 sub-individual-attr">
+
+						<h3 class="col-md-12" id="individual-name"></h3>
+						<h4 class="col-md-12" id="individual-level"></h4>
+
+						<h4 class="col-md-1">HP</h4>
+						<div class="progress col-md-11" >
+							<div id="individual-hp" class="progress-bar progress-bar-danger bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">
+								HP
+							</div>
+						</div>
+
+						<h4 class="col-md-1">XP</h4>
+						<div class="progress col-md-11" data-toggle="tooltip" data-placement="bottom">
+							<div id="individual-exp" class="progress-bar bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">
+								XP
+							</div>
+						</div>
+						<div id="life-block">
+						<h4 class="col-md-1" id="life">LIFE</h4>
+						<div class="col-md-1 life-img">
+							<h3><span class="glyphicon glyphicon-heart "></span></h3>
+						</div>
+						<div class="col-md-1 life-img">
+							<h3><span class="glyphicon glyphicon-heart "></span></h3>
+						</div>
+						<div class="col-md-1 life-img">
+							<h3><span class="glyphicon glyphicon-heart "></span></h3>
+						</div>
+						</div>
+					</div>
+						
+				</div>
+			</div>
+
+			<div class="row own-things">
+				<div class="col-md-10 col-md-offset-1">
+					<h3>GAMES</h3>
+				</div>
+
+				<div class="col-md-10 col-md-offset-1 games">
+					
+											<div class="machineBox col-md-2">
+												<a data-nth="1" class="game">
+													<img src="img/games/broke-01.png" />
+												</a>
+											</div>
+								
+                    <div class="machineBox col-md-2">
+                    	<a data-nth="2" class="game">
+                    		<img src="img/games/broke-02.png" />
+                    	</a>
+                    </div>
+
+                    <div class="machineBox col-md-2">
+                    	<a  data-nth="3" class="game">
+                    		<img src="img/games/broke-03.png" />
+                    	</a>
+                    </div>
+
+                    <div class="machineBox col-md-2">
+                    	<a data-nth="4" class="game">
+                    		<img src="img/games/broke-04.png" />
+                    	</a>
+                    </div>
+
+                    <div class="machineBox col-md-2">
+                    	<a data-nth="5" class="game">
+                    		<img src="img/games/broke-05.png" />
+                    	</a>
+                    </div>
+
+                    <div class="machineBox col-md-2">
+                    	<a data-nth="6" class="game">
+                    		<img src="img/games/broke-06.png" />
+                    	</a>
+                    </div>
+
+				</div>
+
+				
+
+			</div>
+
+			<div class="row own-things">
+
+				<div class="col-md-10 col-md-offset-1">
+					<h3>CARDS</h3>
+				</div>
+
+				<div class="col-md-10 col-md-offset-1" id="OwnCardData">
+
+				</div>
+
+			</div>
+
+		</div>
+		<div id="assignInfoArea"></div>
+
+	<div class="modal fade" id="cardModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true" data-backdrop="static" 
+   data-keyboard="false" >
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            	<h4 class="modal-title" id="CardTitle"></h4>
+            </div>
+            <div class="modal-body" id="CardData">
+                
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" id="modalClose">Close</button>
+                <a href="usecard.html"><button id="dashboardbtn" type="button" class="btn btn-primary">使用卡片</button></a>
+        	</div>
+    	</div>
+  	</div>
+	</div>
+	
+</div>
+	
+
+
+	<footer style="text-align:center;">
+		
+	</footer>
+	
+
+<script src="js/profile_assignInfo.js"></script>
+<script src="js/dashboard.js"></script>
+	</body>
 </html>
