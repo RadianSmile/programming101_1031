@@ -111,7 +111,7 @@ function showPersonAndCard(profileUser){
             $('#CardData').html("");
         });
    // }
-}
+}//);
 
 function getElementStringByowncard(imagesrc, id){ // img and id 
     var s1 = "<img src='" + imagesrc + "'>";

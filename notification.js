@@ -35,10 +35,7 @@ $(document).ready(function(){
 
 							
                 } // for
-                Parse.Object.saveAll(saveArr).then(alr,Log);
-								function alr (a){
-									alert("!");
-								}
+                Parse.Object.saveAll(saveArr).then(Log,Log);
             }
         })
         //Card use
@@ -62,10 +59,7 @@ $(document).ready(function(){
             success:function(data){
                 var saveArr = [];
                 for(var i = 0; i<data.length; i++){
-                    if (data[i].get('isNotif') !== true){
-                        data[i].set('isNotif', true);
-                        saveArr.push(data[i]);
-                    }               
+            
                     var strings ;
                     if(data[i].get('type') == "use"){
                         var s = useRecord(data[i]);
@@ -74,9 +68,13 @@ $(document).ready(function(){
                         //notification = "";
                     }else{
                        var s2 = getRecord(data[i]);
-                       strings = "<div class = 'notification-info'>" + s2 + "</div>";
+                       strings = "<div class = 'notification-info "+(!data[i].get('isNotif'))? 'new ' : '' +"'>" + s2 + "</div>";
                     }
-                    $('#cards').append(strings)
+                    $('#cards').append(strings);
+										    if (data[i].get('isNotif') !== true){
+                        data[i].set('isNotif', true);
+                        saveArr.push(data[i]);
+                    }    
                 }
                 Parse.Object.saveAll(saveArr).then(Log,Log);
 
