@@ -18,7 +18,7 @@ $(document).ready(function(){
                     var eventinfo = Parse.Object.extend("Event_Info");
                     var query4 = new Parse.Query(eventinfo);
                     query4.equalTo('eid', eid.toString());
-											var j = (!data[i].get('isNoti'))? 'noti-new' : '' ;
+											var j = (data[i].get('isNoti') !== true)? 'noti-new' : '' ;
 
                     query4.first({
                         success:function(data2){
@@ -60,12 +60,12 @@ $(document).ready(function(){
                 var saveArr = [];
                 for(var i = 0; i<data.length; i++){
             					
-											var newClass = (!data[i].get('isNotif'))? 'noti-new' : ''
+											var newClass = (data[i].get('isNotif') !== true)? 'noti-new' : ''
                     var strings ;
                     if(data[i].get('type') == "use"){
                         var s = useRecord(data[i]);
                         //notification += s;
-                        strings = "<div class = 'notification-info"+newClass+"'>" + s + "</div>";
+                        strings = "<div class = 'notification-info "+newClass+"'>" + s + "</div>";
                         //notification = "";
                     }else{
                        var s2 = getRecord(data[i]);
