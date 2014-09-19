@@ -34,7 +34,8 @@ header ul li{
 	padding:17px 10px 18px 10px;
 }
 .notification-info{
-	padding:10px;
+	padding:7px;
+	margin:5px 0 ;
 	font-size:1.1em;
 	border-radius: 3px;
 }
@@ -60,7 +61,6 @@ _footer{
 }
 .glyphicon{
 	margin-right:8px;
-	
 }
 
 h3{
@@ -76,6 +76,10 @@ h3{
 	background-color: white;
 	border-radius: 5px;
 }
+.noti-new{
+	background:rgba(129,170,188,.1);	
+}
+
 
 hr{
 	margin-top: 10px;

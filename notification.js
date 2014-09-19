@@ -1,5 +1,4 @@
-        moment.locale('zh-TW');
-
+moment.locale('zh-TW');
 $(document).ready(function(){
     Parse.initialize("9eo5r1mHWoIPSTCzmrpdKa3lcHPjySx4y5D6q8Nq", "R8SWwYxpJcy73ogQKuSD43y7FigrlDGjBLcy1lzC");
     var current_user = Parse.User.current();
@@ -10,7 +9,7 @@ $(document).ready(function(){
         var query3 = new Parse.Query(eventrecord);
         query3.equalTo('target', Parse.User.current());
         query3.find({
-            success:function(data){ // evetRecord
+           success:function(data){ // evetRecord
 						var saveArr = []
                 for(var i = 0; i<data.length; i++){
                     
@@ -19,11 +18,13 @@ $(document).ready(function(){
                     var eventinfo = Parse.Object.extend("Event_Info");
                     var query4 = new Parse.Query(eventinfo);
                     query4.equalTo('eid', eid.toString());
+											var j = (!data[i].get('isNoti'))? 'noti-new' : '' ;
+
                     query4.first({
                         success:function(data2){
                             var s = eventRecord(datai, data2);
                             eventnotification += s;
-                            var strings = "<div class = 'notification-info'>" + eventnotification + "</div>";
+                            var strings = "<div class = 'notification-info "+ j +"'>" + eventnotification + "</div>";   //Rn
                             $('#works').append(strings);
                             eventnotification = "";
                         }
@@ -64,11 +65,11 @@ $(document).ready(function(){
                     if(data[i].get('type') == "use"){
                         var s = useRecord(data[i]);
                         //notification += s;
-                        strings = "<div class = 'notification-info'>" + s + "</div>";
+                        strings = "<div class = 'notification-info "+(function(){return (!data[i].get('isNotif'))? 'noti-new' : ''})()+" '>" + s + "</div>";
                         //notification = "";
                     }else{
                        var s2 = getRecord(data[i]);
-                       strings = "<div class = 'notification-info "+(!data[i].get('isNotif'))? 'new ' : '' +"'>" + s2 + "</div>";
+                       strings = "<div class = 'notification-info "+(function(){return (!data[i].get('isNotif'))? 'noti-new' : ''})()+" '>" + s2 + "</div>";
                     }
                     $('#cards').append(strings);
 										    if (data[i].get('isNotif') !== true){

@@ -152,7 +152,7 @@ deletecard
                                                 $('div#bigdiv').css("top", "");
                                                 $('div#bigdiv').css("left", "");
                                             }
-                                        }
+                                        } 
                                         else if(cardid == "aJONHaxQtM"){
                                             if(data1.id == Parse.User.current().id){                                              
                                                 alert("你讓自己增加1條命!");
