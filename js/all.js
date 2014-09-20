@@ -1,5 +1,5 @@
 // JavaScript Document
-Parse.initialize("9eo5r1mHWoIPSTCzmrpdKa3lcHPjySx4y5D6q8Nq", "R8SWwYxpJcy73ogQKuSD43y7FigrlDGjBLcy1lzC");
+Parse.initialize("sdPsOfCJu21F7DIrFF08tDwuVtfZZbx1sLwMbMDB", "11wLPl0BPrkmtTlba00jZfvPtxKR9TNCxoLp3Rrb");
 var userName="Anonymous";
 var linkTo="dashboard.html";
 var userimageHeight=19;
@@ -27,7 +27,11 @@ $("title").append(" | 程式學習平台");
 			changeBarView(response,userPhoto);
 		});
 		
-
+FB.Event.subscribe("auth.logout", function() {
+ Parse.User.logOut();
+	window.location = 'index.html';
+	
+});
 
   });
 };
@@ -112,14 +116,10 @@ function fb_login () {
 
 $(document).on('click','#logout',logout);
 function logout () {   
-//FB.logout(function(response) {
-	 //console.log ("Logout");
-	
-	 Parse.User.logOut();
-	  alert("已經成功登出囉~\n");
-	window.location = 'index.html';
-//});
+FB.logout(function(response) {	
+});
 }
+
 
 
 
@@ -203,6 +203,7 @@ function getQueryString () {
   } 
     return query_string;
 };
+
 
 //## handle error ;
 

@@ -156,6 +156,10 @@ article{
 	-webkit-tranform:scale(1.1,1.1);
 }
 
+.card-box a {
+	display:block;
+}
+
 /*
 .individual-attr{
 	float:left;

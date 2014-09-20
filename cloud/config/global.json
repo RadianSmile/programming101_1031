@@ -1,14 +1,14 @@
 {
     "applications": {
-        "Codedu": {
-            "applicationId": "9eo5r1mHWoIPSTCzmrpdKa3lcHPjySx4y5D6q8Nq", 
-            "masterKey": "eaZQgR00D42lVdRIXZNUp5agsCWxZ5D9o9TP3X9E"
-        }, 
         "_default": {
-            "link": "Codedu"
+            "link": "programming101"
+        }, 
+        "programming101": {
+            "applicationId": "sdPsOfCJu21F7DIrFF08tDwuVtfZZbx1sLwMbMDB", 
+            "masterKey": "CxvhXUkZeb7FpKe5FAlnrGi8N0Zap3KFdYIEf33u"
         }
     }, 
     "global": {
-        "parseVersion": "1.2.19"
+        "parseVersion": "1.3.0"
     }
 }

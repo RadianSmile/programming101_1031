@@ -34,3 +34,7 @@ a:focus , h4{
 .main-font{
 	font-family: 'Oswald', sans-serif !important;
 }
+.hasNoti{
+	background:rgba(241,80,82,1.00);
+	
+}

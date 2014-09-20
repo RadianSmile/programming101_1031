@@ -72,6 +72,7 @@ var PersonalAssignArr = [] ;
 				console.log ("showing");
 				var gameUrl = 'play.html?aid='+userAsns[j].id;
 				$e.attr('href',gameUrl);
+				$e.attr('target','_blank');
 				$e.find('img').first().attr('src','img/games/dark-0'+nth+'.png');
 			}
 		});	

@@ -1,7 +1,8 @@
 
+Parse.initialize("sdPsOfCJu21F7DIrFF08tDwuVtfZZbx1sLwMbMDB", "11wLPl0BPrkmtTlba00jZfvPtxKR9TNCxoLp3Rrb");
 
 /** test control**/
-var now = new  Date (2014,8,30) ;
+var now = new  Date();//Date (2014,8,30) ;
 var currentUser = Parse.User.current() ;
 var $D = $(document);
 //console.log ("outer success , ",$("#assignModalInfo").length);
@@ -66,7 +67,7 @@ var PersonalAssignArr = [] ;
 	}
 	function start(){
 		$apd = $("#assignInfoArea");
-		for (var i = 1 ; i <= 1 ; i++){    // Rn 6
+		for (var i = 1 ; i <= AssignInfoArr.length ; i++){    // Rn 6
 			//console.log ("正在 append");
 			//console.log (generateAssignInfo( i.toString()));
 			$apd.append(generateAssignInfo( i.toString()));
@@ -98,26 +99,26 @@ function generateAssignInfo (nth) {
 		var uploadBtn =  
 			'<div class="note">\
 				<input class=" form-control input-md input-asnUrl" type="text" placeholder="請貼入遊戲play.html連結">\
-				<a class="btn btn-default assignInfo-link submit-asnUrl" data-nth="'+nth+'" >上傳遊戲連結</a>\
+				<a class="btn btn-default assignInfo-link submit-asnUrl" data-nth="'+nth+'" >繳交遊戲連結</a>\
 			</div>';
 
 		var renewBtn =  
 			'<div class="note">\
 				<input class=" form-control input-md input-asnUrl" type="text" placeholder="貼入更新的遊戲play.html連結">\
-				<a class="btn btn-default assignInfo-link submit-asnUrl" data-nth="'+nth+'" >更新連結</a>\
+				<a class="btn btn-default assignInfo-link submit-asnUrl" data-nth="'+nth+'" >更新遊戲連結</a>\
 			</div>';
 
 			
 		var preUpload = 
 			'<div class="note" style="color:black;">\
-			 	 遊戲開放繳交日期：’'+submitDate.toLocaleString()+' ~ '+reviewDue.toLocaleString()+'\
+			 	 遊戲開放繳交日期：'+submitDate.toLocaleString()+' ~ '+reviewDate.toLocaleString()+'\
 			 </div>';
 				//<a class="btn btn-default assignInfo-link submit-asnUrl disabled" >上傳遊戲連結</a>\
 			
 		console.log (isNewAsn);
-		var viewSelfBtn ='<a class="btn btn-default assignInfo-link view-self" href="play.html?aid='+ (!isNewAsn ? asn.id :"")  +'">看自己的遊戲</a><hr class="assignInfo-line">';
+		var viewSelfBtn ='<a class="btn btn-default assignInfo-link view-self" href="play.html?aid='+ (!isNewAsn ? asn.id :"")  +'">查看作業</a><hr class="assignInfo-line">';
 		var reviewBtn =  '<a class="btn btn-default assignInfo-link to-review" href="review.html">前往評分</a>';
-		var viewAllBtn =	'<a class="btn btn-default assignInfo-link view-other" href="assign.html?nth='+nth+'">看別人遊戲</a>';
+		var viewAllBtn =	'<a class="btn btn-default assignInfo-link view-other" href="assign.html?nth='+nth+'">看別人的遊戲</a>';
 	
 		var l ="";
 		if (submitDate > now) { status = 1 ;l=" 第一區間：還沒開始作業" ;

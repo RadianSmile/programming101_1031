@@ -7,7 +7,6 @@
 <!----><link rel="icon" type="image/png" href="include/icon.png" />
 <!----><script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <!----><script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.2.19.min.js"></script>
-<!----><script src="js/checkUser.js"></script>
 <!----><link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
 <!----><script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <!----><link href="css/all.css" rel="stylesheet" />
@@ -20,6 +19,16 @@
 </script>
 
 <style>
+body {
+	background-color:rgb(129,170,188);
+}
+.color1 {
+	color:rgb(61,94,109);
+}
+.color2 {
+	color:white;
+}
+
 .unvisible {
 	display:none;
 }
@@ -63,9 +72,13 @@ function checkLoginStatus (goStep3)  {
 				console.log(typeof (o));
 				if (typeof (o) !== "undefined"){ // 已經存在了
 				  console.log("已經登入了，而且也註冊了。");
-
-					alert("嘿，"+o.get("name")+"，你已經註冊過惹噢... \n即將跳轉到個人頁面");
-					document.location = "dashboard.html"; 
+					Parse.FacebookUtils.logIn(null, {
+						success:function (){
+							alert("嘿，"+o.get("name")+"，你已經註冊過惹噢... \n即將跳轉到個人頁面");
+						document.location = "dashboard.html"; 
+						}	
+					});
+					
 				}else {//登入了，但還沒存在，但，將第二步的資訊準備好
 				  console.log("已經登入，但尚未註冊了");
 					fb_getInfo(goStep3);
@@ -97,7 +110,7 @@ function fb_getInfo (goStep3) {
 		if (response && !response.error) {
 			console.log(response);
 			var url = response.data.url;
-			$("#pf_photo").html("<img src='" + url + "' />")//.append("");
+			$("#pf_photo").html("<img width='50' height src='" + url + "' />")//.append("");
 			$("#pf_des").text("歡迎，您已經登入了，請直接完成第三步");
 
 		}
@@ -116,6 +129,7 @@ function showLoginBtn () {
 }
 
 function signUp () {
+	$("#SignUpBtn").addClass('disable').attr('disabled',true).text('註冊中，請稍後');
 	console.log($("#name").val().length);
 	if($("#id").val().length === 9 ||$("#id").val().length === 8){
 	}else{
@@ -130,7 +144,8 @@ function signUp () {
 	 FB.login(function(response) {
 		Parse.FacebookUtils.logIn(null, {
 		 success: function(user) {
-			 alert(a);
+			 //alert(a);
+			user.set("role",localStorage.getItem('role'))
 			user.set("rolePwd",a);
 			user.set("uid",user.get("authData").facebook.id);
 			user.set("ID",$("#id").val());
@@ -142,6 +157,8 @@ function signUp () {
 					document.location="dashboard.html";
 				},
 				error: function(userdata, error) {
+						$("#SignUpBtn").removeClass('disable').attr('disabled',false).text('註冊');
+
 					alert('Failed to create new object, with error code: ' + error.message);
 				}
 			});
@@ -205,30 +222,62 @@ function syntaxHighlight(json) {
 
 
 </script>
+<style>
+legend{
+	text-align:center;
+	border: none;
+	color:rgba(34,106,142,1.00);
+	padding:15px 0;
+}
+.form-horizontal{
+	padding:20px 0 ;
+	background:rgba(158,194,210,1.00);
+	margin-bottom:20px;
+	box-shadow:2px 2px 2px  rgba(158,194,210,1.00);
+}
+.hint{
+	
+}
+.title {
+	margin: 30px auto;
+	color:white;
+	text-align:center;
+	text-shadow: 2px 2px 2px  rgba(0,0,0,1.00);
+}
+#checkPwdBtn{
+	display:none ;
+}
+input {
+	text-align:center
+	
+}
+
+</style>
 <div id="declareRole" data-role="signup"></div>
-<div class="row">
 <div class="container">
-<form class="form-horizontal" onsubmit="return false;">
+	<div class="row">
+<h2 class="title">歡迎加入 Programming 101 !!</h2>
+	</div>
+</div>
+
+
+<div class="container -outer">
+<div class="row -middle ">
+
+<form  id="step1"class="form-horizontal" onsubmit="return false;">
 <fieldset>
 
 <!-- Form Name -->
-<legend>Step 1. 請輸入課程密碼</legend>
+<legend>Step 1. 請輸入課程密後，點選鍵盤Enter繼續</legend>
 
 <!-- Password input-->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="pwd">請輸入課程密碼</label>
-  <div class="col-md-4">
-    <input id="pwd" name="pwd" type="password" placeholder="" class="form-control input-md" required="">
-    
-  </div>
-</div>
-
+    <input id="pwd" name="pwd" type="password" placeholder="" style="width:30%; margin:auto;" class="form-control input-md" required="">
+	    <button id="checkPwdBtn" name="checkPwdBtn" class="btn btn-info"  onClick="checkPassword();">驗證密碼</button><br>
 <!-- Button -->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="checkPwdBtn"></label>
-  <div class="col-md-4">
-    <button id="checkPwdBtn" name="checkPwdBtn" class="btn btn-info"  onClick="checkPassword();">驗證密碼</button><br>
-	<div class="hint" style="margin-top:10px;">如果忘記密碼，請<a href="mailto:100102035@nccu.edu.tw">寄信給助教</a></div>
+  <label class="col-md-3 control-label" for="checkPwdBtn"></label>
+  <div class="col-md-12">
+	<div class="hint" style=" text-align:center;">如果忘記密碼，請<a href="mailto:100102035@nccu.edu.tw">寄信給助教</a></div>
 
   </div>
 </div>
@@ -247,18 +296,18 @@ function syntaxHighlight(json) {
 
 <!-- Button -->
 <div id="fb_login_btn" class="form-group unvisible">
-  <label class="col-md-4 control-label" for="cntFB"></label>
-  <div class="col-md-4">
+  <label class="col-md-5 control-label" for="cntFB"></label>
+  <div class="col-md-7">
     <button id="cntFB" name="cntFB" class="btn btn-primary" onClick="fb_login();">與 Facebook 帳號連結</button>
   </div>
 </div>
 
 
 <div id="fb_status" class="form-group unvisible">
-	<div id="pf_photo" class="col-md-4" style="text-align:right;">
+	<div id="pf_photo" class="col-md-5" style="text-align:right;">
 		
 	</div>
-	<div id="pf_des" class="col-md-4 ">
+	<div id="pf_des" class="col-md-7 ">
 	</div>
 </div>
 
@@ -281,18 +330,18 @@ function syntaxHighlight(json) {
 
 <!-- Text input-->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="id">請輸入真實學號</label>  
+  <label class="col-md-4 control-label" for="id"></label>  
   <div class="col-md-4">
-  <input id="id" name="id" type="text" placeholder="ex: 100202001" class="form-control input-md" value="">
+  <input id="id" name="id" type="text" placeholder="請輸入真實學號 ex: 100202001" class="form-control input-md" value="">
     
   </div>
 </div>
 
 <!-- Text input-->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="name">請輸入真實姓名</label>  
+  <label class="col-md-4 control-label" for="name"></label>  
   <div class="col-md-4">
-  <input id="name" name="name" type="text" placeholder="姓名" class="form-control input-md" required="" value="">
+  <input id="name" name="name" type="text" placeholder="請輸入真實姓名 ex: 洛克人 " class="form-control input-md" required="" value="">
     
   </div>
 </div>
@@ -301,7 +350,9 @@ function syntaxHighlight(json) {
 <div class="form-group">
   <label class="col-md-4 control-label" for=""></label>
   <div class="col-md-4">
-<button id="tt" class="btn btn-primary"   onClick="signUp();">註冊</button>
+	<div>
+	<div class="col-md-4"></div>
+<button id="SignUpBtn" class=" btn btn-primary"   onClick="signUp();">註冊</button>
   </div>
 </div>
 
@@ -342,22 +393,31 @@ function checkPassword() {
 	});
 }
 function showForms(data){ 
+		localStorage.setItem('role',data);
 		var role = "" ;
 		if (data === "student"){
+			$("#step1").animate({'opacity':0,'height':0},500,function(){
+				$(this).hide();	
+			});
 			$("#step2").fadeIn();
 			checkLoginStatus (true); 
 			role = "學生";
+			localStorage.setItem('role',data)
 			$("#pwd").attr("disabled","disabled");
 			//跑出FB登入頁面	
-		}else if (data === "teacher"){ 
+		}else if (data === "teacher"){
+						$("#step1").fadeOut();
+ 
 			$("#step2").fadeIn();
 			$("#fb_login_btn").fadeIn();
 			checkLoginStatus (true); 
 			$("#pwd").attr("disabled","disabled");
-
+			
 			role = "老師";			
 			//跑出FB登入頁面	
-		}else if (data === "ta"){
+		}else if (data === "TA"){
+						$("#step1").fadeOut();
+
 			checkLoginStatus (true); 
 			$("#step2").fadeIn();
 			$("#pwd").attr("disabled","disabled");

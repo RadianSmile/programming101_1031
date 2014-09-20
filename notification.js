@@ -1,9 +1,13 @@
 moment.locale('zh-TW');
 $(document).ready(function(){
-    Parse.initialize("9eo5r1mHWoIPSTCzmrpdKa3lcHPjySx4y5D6q8Nq", "R8SWwYxpJcy73ogQKuSD43y7FigrlDGjBLcy1lzC");
+    Parse.initialize("sdPsOfCJu21F7DIrFF08tDwuVtfZZbx1sLwMbMDB", "11wLPl0BPrkmtTlba00jZfvPtxKR9TNCxoLp3Rrb");
     var current_user = Parse.User.current();
     if(current_user){
-        
+        function getEventInfo (){
+				   var eventrecord = Parse.Object.extend("Event_Record");
+				}
+				
+				
         var eventnotification = "";
         var eventrecord = Parse.Object.extend("Event_Record");
         var query3 = new Parse.Query(eventrecord);
@@ -14,7 +18,7 @@ $(document).ready(function(){
                 for(var i = 0; i<data.length; i++){
                     
                     var eid = data[i].get('eid');
-                    var datai = data[i];
+                    var datai = data[i]; // Event Record
                     var eventinfo = Parse.Object.extend("Event_Info");
                     var query4 = new Parse.Query(eventinfo);
                     query4.equalTo('eid', eid.toString());
@@ -22,7 +26,9 @@ $(document).ready(function(){
 
                     query4.first({
                         success:function(data2){
-                            var s = eventRecord(datai, data2);
+															 var er = datai ;
+															 console.log ("er",er);
+                            var s = eventRecord(er, data2);
                             eventnotification += s;
                             var strings = "<div class = 'notification-info "+ j +"'>" + eventnotification + "</div>";   //Rn
                             $('#works').append(strings);
@@ -158,6 +164,7 @@ function eventRecord(data, data1){
     var eventdes = data1.get('description');
         console.log (eventdes);
     var createTime = data.createdAt;
+				console.log (createTime);
         var m = moment(data.createdAt).fromNow();
         
     var result = data1.get('effect_target');

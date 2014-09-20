@@ -86,58 +86,36 @@ Parse.Cloud.beforeSave(Parse.User,function(request,response){
 
 Parse.Cloud.afterSave(Parse.User,function(rq){
 	Parse.Cloud.useMasterKey();
-	
-	// welcom card ;
-	var obj = requers.object ;
-	var user = new Parse.User({id:obj.id});
-	var eid = 10 ;
-	if (!obj.existed()){
-		sendEvent(user,10).then(function (s){
-			var e = s.get("eid");
-				console.log("send Event "+eid +" success!!");
-		})
-	}
-
-
-
-	
-	// add user status row ;
 	var Status = Parse.Object.extend("User_status");
-	var obj = rq.object;
-	var l ;
 	var LevelInfo = Parse.Object.extend('Level_Info');
 	var ql = new Parse.Query (LevelInfo);
-	ql.ascending('Level');
-	ql.first().then(function(s){
-		l = s ; return new Parse.Promise();
-	})
-		.then(firstStatusRow)
-		.then(addStatusRow)
-		.then(function(s){
-			console.log ("Status Row 新增成功！！！");			
-		},function(e){console.log (e.message);})
 	
-	function firstStatusRow (){
-		console.log ("正在抓取status");
-		var q = new Parse.Query(Status);
-		q.equalTo("User",obj);
-		return q.first();
+	var obj = rq.object ;
+	var l ;
+	var eid = 10 ;
+
+	if (!obj.existed()){
+		console.log (obj.id);
+		
+		// welcom card ;
+		sendEvent(obj,10).then(sucMes);
+		
+		// Level 
+		ql.ascending('Level');
+		ql.first()
+			.then(addStatusRow)
+			.then(sucMes,Log);
 	}
-	function addStatusRow (s){ // 再次確認他有沒有 status
-		//console.log ("first的長度 "+typeof(s));
-		if (typeof(s)=== 'undefined'){ // 代表這時候還沒有任何 status///
-		 console.log ("這時候還沒有任何的status row");
-			var status = new Status ();		
-			status.set("User",obj);
-			status.set("HP",90);
-			status.set("XP",0);
-			status.set("Life",3);
-			status.set("Level",1);
-			status.set("LevelInfo",l);
-			return status.save();
-		}else{
-			console.log ("已經有UserStatus了") ;
-		}		
+	
+	function addStatusRow (l){
+		var status = new Status ();
+		status.set("User",obj);
+		status.set("HP",90);
+		status.set("XP",0);
+		status.set("Life",3);
+		status.set("Level",1);
+		status.set("LevelInfo",l);
+		return status.save();	
 	}
 });
 
@@ -186,8 +164,8 @@ Parse.Cloud.beforeSave("User_status",function(request,response){
 	q.find()
 		.then(getNewLevel)
 		.then(modifyLevel)
-		.then(sendRaiseEvent)
-		.then(success,error);
+		.then(sendRaiseEvent);
+		
 //----------
 	function getNewLevel (l){
 		console.log ("getNewLevel");
@@ -199,7 +177,7 @@ Parse.Cloud.beforeSave("User_status",function(request,response){
  				newLevel = i ;
 				p.resolve(i); // 
 				obj.set("LevelInfo",l[i]);
-			break ;
+				break ;
 			}
 		}
 		return p ;
@@ -217,14 +195,11 @@ Parse.Cloud.beforeSave("User_status",function(request,response){
 			console.log ("Level Not Change")
 		}
 		obj.set("Level",newLevel);
-		
-
-		return p
-
+ 		return p
 	}		
 	function sendRaiseEvent(a){
 		var d = newLevel - level ;
-		console.log("sending evnet---------- " + d);
+		//console.log("sending evnet---------- " + d);
 		var saveArr = [] ;
 		if (d > 0){
 			for (var i = 0 ; i < d ; i++ ){
@@ -234,6 +209,7 @@ Parse.Cloud.beforeSave("User_status",function(request,response){
 				saveArr.push (er);
 			}
 		}
+		success();
 		return Parse.Object.saveAll(saveArr);
 	}
 	function success (){
@@ -305,6 +281,10 @@ Parse.Cloud.afterSave("User_status",function(request){
 
 });    */
 //-＋-＋-＋-＋-＋-＋-＋-＋-＋-＋-＋-＋-＋-＋-＋-＋-＋-＋-＋-＋-＋-＋-＋-＋-＋-＋-＋-＋-＋-＋-＋-＋
+
+Parse.Cloud.beforeSave("Event_Record",function(request,response){
+
+});
 
 Parse.Cloud.afterSave("Event_Record",function(request){
 	var user = new Parse.User();
@@ -567,7 +547,11 @@ function pointer (objectID,className){
 function sendEvent (user,eidNum){
 	var EventRecord = Parse.Object.extend("Event_Record");
 	var e = new EventRecord ();
-	e.set("User",user);
+	e.set("target",user); // Target
 	e.set("eid",eidNum);
+	e.set("")
 	return e.save();
+}
+function sucMes(s){
+	console.log ("成功完成！");
 }

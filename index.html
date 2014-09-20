@@ -1,15 +1,20 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
-				
+<!----><script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.2.19.min.js"></script>
+<!----><script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+
 				<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <link rel="icon" type="image/png" href="/include/icon.png" />
         <link href="bootstrap/css/bootstrap.css" rel="stylesheet" />
         <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
         <link href="css/all.css" rel="stylesheet" />      
         <link href="css/index.css" rel="stylesheet"/>
-				<script src="js/assignInfo.js"></script>
+
+<link rel="stylesheet" type="text/css" href="css/assignInfo.css">
+
     </head>
+		<div id="assignInfoArea"></div>
 		<div class="declareCodRole" data-role="index">
 		
 		</div>
@@ -36,7 +41,7 @@
                 <div class="row indentB btn-box">
 
                    	<div class="col-md-2 col-md-offset-3 text-center index-btn">
-                        <a href="">
+                        <a href="#games">
                         <img src="img/games/btn-02.png"/>
                         <h4>GAMES</h4>
                         </a>
@@ -121,13 +126,52 @@
                 </div>
 
                 <div class="row indentA">
-                    <div class="machineBoxs">
-                    	<div class="machineBox col-md-2"><a href=""><img src="img/games/broke-01.png" /></a></div>
-                        <div class="machineBox col-md-2"><a href=""><img src="img/games/broke-02.png" /></a></div>
-                        <div class="machineBox col-md-2"><a href=""><img src="img/games/broke-03.png" /></a></div>
-                        <div class="machineBox col-md-2"><a href=""><img src="img/games/broke-04.png" /></a></div>
-                        <div class="machineBox col-md-2"><a href=""><img src="img/games/broke-05.png" /></a></div>
-                        <div class="machineBox col-md-2"><a href=""><img src="img/games/broke-06.png" /></a></div>
+
+
+                    <div id="games" class="machineBoxs">
+                    	<div class="machineBox col-md-2">
+													<a data-toggle="modal" data-target="#assignModalInfo1" data-nth="1" class="indexGame" >
+														<img src="img/games/broke-01.png" />
+													</a>
+												</div>
+
+
+                    	<div class="machineBox col-md-2">
+													<a data-toggle="modal" data-target="#assignModalInfo2" data-nth="2" class="indexGame" >
+														<img src="img/games/broke-02.png" />
+													</a>
+												</div>
+
+
+                    	<div class="machineBox col-md-2">
+													<a data-toggle="modal" data-target="#assignModalInfo3" data-nth="3" class="indexGame" >
+														<img src="img/games/broke-03.png" />
+													</a>
+												</div>
+
+
+                    	<div class="machineBox col-md-2">
+													<a data-toggle="modal" data-target="#assignModalInfo4" data-nth="4" class="indexGame" >
+														<img src="img/games/broke-04.png" />
+													</a>
+												</div>
+
+
+                    	<div class="machineBox col-md-2">
+													<a data-toggle="modal" data-target="#assignModalInfo5" data-nth="5" class="indexGame" >
+														<img src="img/games/broke-05.png" />
+													</a>
+												</div>
+
+
+                    	<div class="machineBox col-md-2">
+													<a data-toggle="modal" data-target="#assignModalInfo6" data-nth="6" class="indexGame" >
+														<img src="img/games/broke-06.png" />
+													</a>
+												</div>
+
+
+
                     </div>
                 </div>
 
@@ -144,10 +188,6 @@
             </div>
 
 
-<script type="text/javascript" src="js/include/schedule.js"></script>
-<script type="text/javascript" src="js/include/students.js"></script>
-
-		<div id="assignInfoArea"></div>
 
 <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -185,9 +225,14 @@
 
         <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
         <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.2.19.min.js"></script>
+				
         <script src="bootstrap/js/bootstrap.min.js"></script>
         <script src="js/index.js"></script>
         <script src="js/all.js"></script>
+				
+<script src="js/game.js"></script>
+<script type="text/javascript" src="js/include/schedule.js"></script>
+<script type="text/javascript" src="js/include/students.js"></script>
 
     </body>
 </html>
